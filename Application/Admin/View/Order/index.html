@@ -1,0 +1,105 @@
+<extend name="Index:shouye" />
+<block name="body">  
+<style>
+    .head-title{float:left;height:auto;line-height:1;padding:15px 0 0;}
+    .head-text{float:left;margin:6px 0px 0px 0px;}
+</style>   
+    <div class="main">
+        <div class="head-content">
+            <div class="content" style="position: relative;">
+                <form method="get" action="{:U('index')}">
+                   <div style="float:left;height:55px;">
+                        <div class="head-title">会员列表</div>
+                        <div class="head-text" style="margin:15px 0 0 10px;">
+                            推广大使：{$count_user.er}元 创业合伙人：{$count_user.san}元 <br/>积分商品：{$count_user.yi}元 累计收款：{$count_user.si}元
+                        </div>
+                    </div>
+                   
+                        <div class="head-search" style="margin-right: 0px;">
+                            <div class="form-input-btn" style="margin-left: 10px;cursor: pointer;">
+                                <!-- <select name="clsea" class="is_vip" style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;" id="clsea">
+                                    <option value='1'>昵称/姓名/手机号</option>
+                                    <option value='2'>购买日期</option>
+                                </select> -->
+                                <input type="hidden" name="clsea" value="" class="clsea">
+                            </div>
+                            <div class="form-input-btn select_1">
+                                              
+                                <input style="width:200px;" type="text" name="clvar" class="form-input-small clvar" placeholder="请输入昵称/姓名/手机号" value="{$clvar}">
+                            </div>
+                            <div class="form-input-btn select_2">
+                                              
+                                <input style="width:160px;" type="text" name="clvar_date" class="form-input-small clvar" placeholder="请输入购买日期"onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});" value="{$clvar_date}">
+                                至
+                            </div>
+
+                            <div class="form-input-btn select_3">
+                                              
+                                <input style="width:160px;" type="text" name="clvar_date_er" class="form-input-small clvar" placeholder="请输入购买日期"onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});" value="{$clvar_date_er}">
+                            </div>
+                            <input type="submit" class="form-button color-bg-green" value="查找" style="width: 80px;">&nbsp;
+                        </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $('.select_1').click(function(){
+            $('.clsea').val(1);
+        })
+                </script>
+        <div class="table-list">
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th style="width: 5%">头像</th>
+                    <th style="width: 10%">昵称</th>
+                    <th style="width: 8%">收货姓名</th>
+                    <th style="width: 15%">收货地址</th>
+                    <th style="width: 7%">消费类型</th>
+                    <th style="width: 7%">花费金额</th>
+                    <th style="width: 7%">购买时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="v">
+                    <tr>
+                      <td><img src="{$v.headimgurl}"style="width:40px;height:40px;"> </td>
+                      <td> {$v.nickname} </td>
+                      <td> {$v.name} </td>
+                      <td> {$v.address} </td>
+                      <td> 
+                        <if condition="$v['classify'] eq 1">积分商品</if>
+                        <if condition="$v['classify'] eq 2">卡片一</if> 
+                        <if condition="$v['classify'] eq 3">卡片二</if> 
+                      </td>
+                      <td class="surplus-money"> {$v.money} </td>
+                      <td> {$v.date} </td>
+                    </tr>
+                  </volist>
+                </tbody>
+            </table>
+            <div class="page">
+                {$page}
+            </div>
+            <style>
+                .prev,.num,.next{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .news-left .current{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .table-list table img {
+                    width: 60px;
+                    margin: 0;
+                }
+                .photo:hover div{display:block!important;}
+            </style>
+        </div>
+    </div>
+    <script>
+    $(".surplus-money").each(function(){
+        var num =parseFloat($(this).text(),10); 
+       
+        var n = num.toFixed(1); 
+        $(this).text(n);
+    });
+       
+    </script>
+</block>
+

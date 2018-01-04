@@ -15,7 +15,7 @@
             width:500px;padding:0 0 40px 0;border-radius: 10px;}
         .adminlogoHead{width:220px;margin-bottom:17px;}
         .adminForm{display:block;font-size:0;background:#fff;width:330px;margin:0 auto;margin-bottom:22px;border-radius: 5px;border:1px solid #fff;height: 45px;}
-        input.adminForm{color:#fff;background-color:#ff4351;border: none;font-size:16px;font-weight: bold;outline: none;margin-top:30px; }
+        input.adminForm{color:#fff;background-color:#ff4351;border: none;font-size:16px;font-weight: bold;outline: none;margin-top:30px;text-align: center; }
         input.adminForm:hover{background-color: #f92131;}
         .adminForm img{float:left;width:15px;margin-top:11px;margin-left:12px;}
         .adminForm input{float:right;font-size:14px;height:28px;width:296px;margin-top:7px;background-color: transparent;color:#666;border: none;outline: none;text-indent: 10px;font-size:15px;line-height: 28px;}
@@ -40,7 +40,7 @@
                     <img src="__PUBLIC__/Admin/images/password.png"/>
                     <input name="password" autocomplete="off" type="password" placeholder="请输入您的登录密码"/>
                 </label>
-                <input type="submit" class="adminForm" id="adminForm" value="登  录" style="cursor: pointer;"></input>
+                <input type="buttom" class="adminForm" id="adminForm" value="登  录" style="cursor: pointer;"></input>
             </form>
         </div>
 </div>
@@ -53,7 +53,7 @@
 	}
 </style>
 <script type="text/javascript">
-    /*$("#adminForm").click(function(){
+    $("#adminForm").click(function(){
         var self = $("form");
         $.post(self.attr("action"), self.serialize(), success, "json");
         return false;
@@ -65,7 +65,7 @@
                 window.location.href = data.url;
             }
         };
-    });*/
+    });
     document.onkeydown=function(event){
         var e = event || window.event || arguments.callee.caller.arguments[0];          
         if(e && e.keyCode==13){ // enter 键

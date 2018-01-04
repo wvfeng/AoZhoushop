@@ -1,0 +1,79 @@
+<extend name="Index:shouye" />
+<block name="body">
+    <div class="main">
+        <div class="head-content">
+            <div class="content" style="position: relative;">
+                <a href="{:U('add')}" style="display: block;position:absolute;top:10px;right:10px;width: 100px;height: 36px;text-align: center;line-height: 36px;color: #fff;font-size: 14px;background: #34d1a1;border-radius:3px; ">添加</a>
+                    <div class="head-title">分类列表</div>
+            </div>
+        </div>
+        <div class="table-list">
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>日期</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="list" id="v">
+                        <tr>
+                            <td class="color">{$v.classname|default="-"}</td>
+                            <td class="color">{$v.date|default="-"}</td>
+                            <td>
+                                <div class="operate-list">
+                                    <a class="pen" style="line-height:22px;width:40px;" href="{:U('edit',array('id'=>$v['id']))}" title="编辑">
+                                        <i class="iconfont">编辑</i>
+                                    </a>
+                                    <a class="delete" style="line-height:22px;width:40px;" href="#" data-id="{$v.id}" title="删除">
+                                        <i class="iconfont">删除</i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="page">
+                {$page}
+            </div>
+            <style>
+                .prev,.num,.next{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .news-left .current{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .table-list table img {
+                    width: 60px;
+                }
+                .photo:hover div{display:block!important;}
+            </style>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        $(".delete").click(function(){
+            var id = $(".delete").attr('data-id');
+            $.ajax({
+                type: 'POST',
+                url: "{:U('remove')}",
+                data: {id:id},
+                dataType: 'json',
+                success : function (data){
+                    if(data==1){
+                        window.location.href = "{:U('index')}";
+                    }else{
+                        alert('删除失败');
+                    }
+                    
+                }
+            });
+        });
+    </script>
+    <script>
+    $(".surplus-money").each(function(){
+        var num =parseFloat($(this).text(),10); 
+        var n = num.toFixed(1); 
+        $(this).text(n);
+    });
+       
+    </script>
+</block>

@@ -31,21 +31,21 @@
                 </a>
             </li>
             <li>
-                <a class="first" href="<?php echo U('Cash/index');?>" target="main">
+                <a class="first" href="<?php echo U('Classify/index');?>" target="main">
                     <i class="iconfont icon-huodong"></i>
-                    <span>提现申请</span>
+                    <span>分类管理</span>
                 </a>
             </li>
-            <li>
+            <!--<li>
                 <a class="first" href="<?php echo U('Bankname/index');?>" target="main">
                     <i class="iconfont icon-liebiao"></i>
                     <span>银行管理</span>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a class="first" href="javascript:;">
                     <i class="iconfont icon-weiguanwangshezhi01"></i>
-                    <span>积分商城管理</span>
+                    <span>商品管理</span>
                     <i class="iconfont down icon-xiajiantou"></i>
                     <i class="iconfont down up icon-shangjiantou"></i>
                 </a>
@@ -58,11 +58,6 @@
                     <li>
                         <a href="<?php echo U('Shop/add');?>" target="main">
                             添加商品
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo U('Shop/duihuan');?>" target="main">
-                            兑换记录
                         </a>
                     </li>
                 </ul>

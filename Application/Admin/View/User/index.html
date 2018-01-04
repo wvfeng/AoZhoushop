@@ -1,0 +1,164 @@
+<extend name="Index:shouye" />
+<block name="body"> 
+<style>
+    .head-title{width:300px;float:none;height:auto;line-height:1;padding:10px 0 0;}
+    .head-text{float:left;margin:6px 0px 0px 0px;}
+</style>   
+    <div class="main">
+        <div class="head-content">
+            <div class="content" style="position: relative;">
+                <form action="{:U('index')}" method="get" style="float:right;">
+                    <input type="hidden" name="excel" value="1">
+                    <input type="submit" class="form-button color-bg-green" value="导出" style="width: 80px;">
+                </form>
+                <form method="get" action="{:U('index')}">
+                    <div style="float:left;height:55px;">
+                        <div class="head-title">会员列表</div>
+                        <div class="head-text" style="">
+                            推广大使：{$count_user.yi|default="-"}人 创业合伙人：{$count_user.er|default="-"}人 未付费：{$count_user.san|default="-"}人 
+                        </div>
+                    </div>    
+                        <div class="head-search" style="margin-right: 0px;">
+                            <div class="form-input-btn" style="margin-left: 10px;cursor: pointer;">
+                                <!-- <select name="clsea" class="is_vip" style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;" id="clsea">
+                                    <option value='1'>昵称/姓名/手机号</option>
+                                    <option value='2'>级别</option>
+                                    <option value='3'>购卡类型</option>
+                                </select> -->
+                                <input type="hidden" name="clsea" value="1" class="clsea">
+                            </div>
+                            <div class="form-input-btn select_1">                                <input style="width:230px;" type="text" name="clvar" class="form-input-small" placeholder="请输入昵称/姓名/手机号" id="clvar" value="{$clvar}">
+                            </div>
+                            <div class="form-input-btn select_2">
+                                <select name="clsea_grade"style="color: #666;width:159px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                                    <option value='0'>选择级别</option>
+                                    <volist name="grade" id="v">
+                                    <option value='{$v.id}'<if condition="$v['id'] eq $clsea_grade">
+                                        selected="selected"
+                                    </if>>{$v.lev_name}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <div class="form-input-btn select_3">
+                                <select name="clip_type"style="color: #666;width:159px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                                    <option value='0'<if condition="$clip_type eq 0">
+                                        selected="selected"
+                                    </if>>购卡类型</option>
+                                    <option value='1'<if condition="$clip_type eq 1">
+                                        selected="selected"
+                                    </if>>卡片一</option>
+                                    <option value='2'<if condition="$clip_type eq 2">
+                                        selected="selected"
+                                    </if>>卡片二</option>
+                                    <option value='3'<if condition="$clip_type eq 3">
+                                        selected="selected"
+                                    </if>>卡片一二</option>
+                                </select>
+                            </div>
+                            <input type="submit" class="form-button color-bg-green" value="查找" style="width: 80px;">&nbsp;
+                        </div>
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        $('.select_1').click(function(){
+            $('.clsea').val(1);
+        })
+        $('.select_2').click(function(){
+            $('.clsea').val(2);
+        })
+        $('.select_3').click(function(){
+            $('.clsea').val(3);
+        })
+                /*$('#clsea').change(function(){
+                  if($(this).val()=='1'){
+                    $('#clvar').attr('placeholder','请输入昵称/姓名/手机号');
+                    $('.select_1').show();
+                    $('.select_2').hide();
+                  }
+                  if($(this).val()=='2'){
+                    $('#clvar').attr('placeholder','请输入级别');
+                    $('.select_2').show();
+                    $('.select_1').hide();
+                  }
+                  if($(this).val()=='3'){
+                    $('.select_3').show();
+                    $('.select_2').hide();
+                    $('.select_1').hide();
+                  }
+                })*/
+                </script>
+        <div class="table-list">
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th style="width: 5%">头像</th>
+                    <th style="width: 10%">昵称</th>
+                    <th style="width: 8%">姓名</th>
+                    <th style="width: 7%">手机号</th>
+                    <th style="width: 15%">收货地址</th>
+                    <th style="width: 7%">购卡类型</th>
+                    <th style="width: 5%">级别</th>
+                    <th style="width: 10%">时间</th>
+                    <th style="width: 7%">余额 
+                        <if condition="$order eq 'desc'">
+                        <a href="{:U('index',['order'=>'asc'])}"><span style="color:#999;font-size:16px;margin-right:2px;">↑</span><span style="color:#999;font-size:16px;">↓</span></a>
+                        <else />
+                        <a href="{:U('index',['order'=>'desc'])}"><span style="color:#999;font-size:16px;margin-right:2px;">↑</span><span style="color:#999;font-size:16px;">↓</span></a>
+                        </if>
+                    </th>
+                    <th style="width: 7%">积分</th>
+                    <th style="width: 18%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="v">
+                    <tr>
+                      <td><img src="{$v.headimgurl}"style="width:40px;height:40px;"> </td>
+                      <td> {$v.nickname} </td>
+                      <td> {$v.name|default="-"} </td>
+                      <td> {$v.iphone|default="-"} </td>
+                      <td> {$v.address|default="-"} </td>
+                      <td> 
+                        <if condition="$v['clip_type'] eq 1">会员卡一</if> 
+                        <if condition="$v['clip_type'] eq 2">会员卡二</if> 
+                        <if condition="$v['clip_type'] eq 3">会员卡一二</if> 
+                        <if condition="$v['clip_type'] eq 0">无</if> 
+                        </td>
+                      <td> {$v.lev_name} </td>
+                      <td> {$v.date} </td>
+                      <td class="surplus-money"> {$v.surplus_money} </td>
+                      <td> {$v.surplus_int} </td>
+                      <td>
+                        <a href="{:U('duihuan',['id'=>$v['id']])}" style="display:inline-block;padding:2px 4px;background:rgb(52, 209, 161);color:#fff;border-radius:3px;">订单</a>
+                    </td>
+                    </tr>
+                  </volist>
+                </tbody>
+            </table>
+            <div class="page">
+                {$page}
+            </div>
+            <style>
+                .prev,.num,.next{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .news-left .current{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .table-list table img {
+                    width: 60px;
+                    margin: 0;
+                }
+                .photo:hover div{display:block!important;}
+            </style>
+        </div>
+    </div>
+    <script>
+    $(".surplus-money").each(function(){
+        var num =parseFloat($(this).text(),10); 
+        
+        var n = num.toFixed(1); 
+        $(this).text(n);
+    });
+       
+    </script>
+</block>
+

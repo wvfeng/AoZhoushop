@@ -1,0 +1,63 @@
+<extend name="Index:shouye" />
+<block name="body">    
+    <div class="main">
+        <div class="head-content">
+            <div class="content" style="position: relative;">
+                    <div class="head-title">{$nickname}的团队成员 </div>
+                    <div class="head-text" style="float: left;margin-top: 20px;margin-left: 10px;">
+                            团队数量：{$leiji|default="-"}名
+                    </div>
+                    <div class="head-title"style="float:right;">
+                      <a href="javascript:history.go(-1);">返回上一级</a>
+                    </div>
+            </div>
+        </div>
+        <div class="table-list">
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th style="width: 5%">头像</th>
+                    <th style="width: 10%">昵称</th>
+                    <th style="width: 8%">姓名</th>
+                    <th style="width: 10%">手机号</th>
+                    <th style="width: 15%">收货地址</th>
+                    <th style="width: 7%">购卡类型</th>
+                    <th style="width: 7%">级别</th>
+                    <th style="width: 7%">余额</th>
+                    <th style="width: 7%">积分</th>
+                    <th style="width: 10%">直属上级</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="v">
+                    <tr>
+                      <td><img src="{$v.user.headimgurl}"style="width:40px;height:40px;"> </td>
+                      <td> {$v.user.nickname} </td>
+                      <td> {$v.user.name} </td>
+                      <td> {$v.user.iphone} </td>
+                      <td> {$v.user.address} </td>
+                      <td> <if condition="$v['user']['clip_type'] eq 1">会员卡一<else />会员卡二</if> </td>
+                      <td> {$v.user.lev_name} </td>
+                      <td> {$v.user.surplus_money} </td>
+                      <td> {$v.user.surplus_int} </td>
+                      <td> {$v.user.up_name}</td>
+                    </tr>
+                  </volist>
+                </tbody>
+            </table>
+            <div class="page">
+                {$page}
+            </div>
+            <style>
+                .prev,.num,.next{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .news-left .current{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .table-list table img {
+                    width: 60px;
+                    margin: 0;
+                }
+                .photo:hover div{display:block!important;}
+            </style>
+        </div>
+    </div>
+</block>
+
