@@ -1,0 +1,33 @@
+<extend name="Index:shouye" />
+<block name="body">
+    <div class="info-main main">
+        <h1>管理员添加</h1>
+        <form method="post" action="{:U('Admin/insert')}" id="postform">
+            <div class="info-list clearfix">
+                <div class="info-right" style="width: 700px;">                  
+                    <div class="info-model clearfix">
+                        <span>账号名称</span>
+                        <div><input type="text" name="name" placeholder="账号名称"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>密码</span>
+                        <div><input type="text" name="password" placeholder="密码"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>确认密码</span>
+                        <div><input type="text" name="repassword" placeholder="确认密码"/></div>
+                    </div>
+                    
+                    <div class="info-model clearfix checkboxist">
+                        <span>是否开启</span>
+                        <span style="overflow: hidden;line-height:15px;height: auto;float: left;width:457px;">
+                            <label><input type="radio" name="status" checked value="1"/>开启</label>
+                            <label><input type="radio" name="status" value="0"/>关闭</label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <button class="info-submit" type="submit" style="cursor: pointer;">确定</button>
+        </form>
+    </div>
+</block>

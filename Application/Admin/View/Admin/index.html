@@ -1,0 +1,94 @@
+<extend name="Index:shouye" />
+<block name="body">    
+    <div class="main">
+        <div class="head-content">
+            <div class="content" style="position: relative;">
+                <a href="{:U('Admin/add')}" style="display: block;position:absolute;top:10px;right:10px;width: 100px;height: 36px;text-align: center;line-height: 36px;color: #fff;font-size: 14px;background: #34d1a1;border-radius:3px; ">添加</a>
+                <form method="get" action="{:U('Admin/index')}">
+                    <div class="head-title">管理员列表</div>
+                    
+                </form>
+            </div>
+        </div>
+        <div class="table-list">
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>账号</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th width="200">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <foreach name="list" item="vo">
+                    <tr>
+                        <td class="color">{$vo.name}</td>
+                        <td class="color">{$vo.create_time}</td>
+                        <td class="color">
+                            <eq name="vo.status" value="1"><span style="color:#34d1a1;">启用</span>/<a class="status" data-id="{$vo.id}" data-status="0" style="color:#666666;" href="{:U('Admin/status',array('id'=>$vo['id'],'status'=>'0'))}">停用</a></eq>
+                            <eq name="vo.status" value="0"><a class="status" data-id="{$vo.id}" data-status="1" style="color:#666666;" href="{:U('Admin/status',array('id'=>$vo['id'],'status'=>'1'))}">启用/<span style="color:red;">停用</span></a></eq>
+                        </td>
+                        <td>
+                            <div class="operate-list">
+                                <a class="pen" style="line-height:22px;width:40px;" href="{:U('Admin/edit',array('id'=>$vo['id']))}" title="编辑">
+                                    <i class="iconfont">编辑</i>
+                                </a>
+                                <a class="delete_o" style="line-height:22px;width:40px;" href="#" data-id="{$vo.id}" title="删除">
+                                    <i class="iconfont">删除</i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </foreach>
+                </tbody>
+            </table>
+            <div class="page">
+                {$page}
+            </div>
+            <style>
+                .prev,.num,.next{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .news-left .current{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+                .table-list table img {
+                    width: 60px;
+                    margin: 0;
+                }
+            </style>
+        </div>
+        <script type="text/javascript">
+            $(".status").click(function(){
+                var id = $(this).attr('data-id');
+                var status = $(this).attr('data-status');
+                $.ajax({
+                    type: 'POST',
+                    url: "{:U('Admin/status')}",
+                    data: {id:id,status:status},
+                    dataType: 'json',
+                    success : function (data){
+                         window.location.href = "{:U('index')}";
+                    }
+                });
+                return false;
+            });
+            $('.delete_o').click(function(){
+                $(".pop-up-delete").show();
+                var id = $(this).attr('data-id');
+                $('.entrue').click(function(){
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:U('Admin/del')}",
+                        data: {id:id},
+                        dataType: 'json',
+                        success : function (data){
+                             window.location.href = "{:U('index')}";
+                        }
+                    });
+                    return false;
+                })
+                
+
+            })
+        </script>
+    </div>
+</block>
+
