@@ -1,0 +1,1279 @@
+[ 2018-01-03T11:13:55+08:00 ] ::1 /mallplatform/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T11:16:20+08:00 ] ::1 /mallplatform/index.php/Admin/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T11:25:59+08:00 ] ::1 /mallplatform/index.php/Admin/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T11:26:02+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T11:28:41+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T11:31:00+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T11:31:00+08:00 ] ::1 /mallplatform/index.php/Admin/Login/undefined
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:undefined
+
+[ 2018-01-03T11:31:17+08:00 ] ::1 /mallplatform/index.php/Admin/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T11:31:21+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T11:40:50+08:00 ] ::1 /mallplatform/index.php/Admin/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T11:40:52+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T12:55:17+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T13:02:07+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T13:02:43+08:00 ] ::1 /mallplatform/index.php/Admin/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:02:44+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T13:03:20+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+ERR: 1146:Table 'mallplatform.malladmin' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `malladmin`
+
+[ 2018-01-03T13:04:13+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin` WHERE `name` = 'chong' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:04:14+08:00 ] ::1 /mallplatform/index.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.000000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:05:38+08:00 ] ::1 /mallplatform/index.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:06:05+08:00 ] ::1 /mallplatform/index.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:06:05+08:00 ] ::1 /mallplatform/index.php/Admin/Index/top.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: userinfo C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\bdb24232b8dcb412d439a202b1caa9a5.php 第 41 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:06:06+08:00 ] ::1 /mallplatform/index.php/Admin/Index/shouye.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 149 行.
+NOTIC: [8] Undefined variable: activity C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 195 行.
+NOTIC: [8] Undefined variable: activity C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 196 行.
+NOTIC: [8] Undefined variable: activity C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 197 行.
+NOTIC: [8] Undefined variable: old_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 211 行.
+NOTIC: [8] Undefined variable: old_list C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 227 行.
+NOTIC: [8] Undefined variable: today_watch C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 292 行.
+NOTIC: [8] Undefined variable: today_share C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 296 行.
+NOTIC: [8] Undefined variable: today_download C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 300 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 305 行.
+NOTIC: [8] Use of undefined constant data - assumed 'data' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 305 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 305 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 306 行.
+NOTIC: [8] Use of undefined constant data - assumed 'data' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 306 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 306 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 307 行.
+NOTIC: [8] Use of undefined constant data - assumed 'data' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 307 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 307 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 311 行.
+NOTIC: [8] Use of undefined constant type - assumed 'type' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 311 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 311 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 312 行.
+NOTIC: [8] Use of undefined constant type - assumed 'type' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 312 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 312 行.
+NOTIC: [8] Undefined variable: names C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 316 行.
+NOTIC: [8] Undefined variable: data1 C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 342 行.
+NOTIC: [8] Undefined variable: data2 C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 352 行.
+NOTIC: [8] Undefined variable: user_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 363 行.
+NOTIC: [8] Undefined variable: sign_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 364 行.
+NOTIC: [8] Undefined variable: evaluate_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 365 行.
+NOTIC: [8] Undefined variable: materiel_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 366 行.
+NOTIC: [8] Undefined variable: feedback_no_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 372 行.
+NOTIC: [8] Undefined variable: feedback_list C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 373 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:06:06+08:00 ] ::1 /mallplatform/index.php/Admin/Index/leftnav.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:06:07+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:08:10+08:00 ] ::1 /mallplatform/index.php/Admin/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:User
+
+[ 2018-01-03T13:08:10+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:08:12+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\82f4efac697b2e42d74f6bbc51f1b0e1.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\82f4efac697b2e42d74f6bbc51f1b0e1.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\82f4efac697b2e42d74f6bbc51f1b0e1.php 第 149 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:08:13+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:09:37+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:09:38+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:21:31+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/edit/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b64e0870e99206b74f3c41c0218e59fb.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b64e0870e99206b74f3c41c0218e59fb.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b64e0870e99206b74f3c41c0218e59fb.php 第 149 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:23:19+08:00 ] ::1 /mallplatform/index.php/Admin/Order/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:Order
+
+[ 2018-01-03T13:23:20+08:00 ] ::1 /mallplatform/index.php/Admin/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:User
+
+[ 2018-01-03T13:23:20+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:26:25+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:26:34+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: UPDATE `mall_admin` SET `status`='0' WHERE `id` = 1 [ RunTime:0.0030s ]
+
+[ 2018-01-03T13:26:34+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:26:35+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: UPDATE `mall_admin` SET `status`='0' WHERE `id` = 13 [ RunTime:0.0040s ]
+
+[ 2018-01-03T13:26:35+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:26:36+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: UPDATE `mall_admin` SET `status`='1' WHERE `id` = 1 [ RunTime:0.0020s ]
+
+[ 2018-01-03T13:26:36+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:26:37+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: UPDATE `mall_admin` SET `status`='1' WHERE `id` = 13 [ RunTime:0.0040s ]
+
+[ 2018-01-03T13:26:37+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:27:01+08:00 ] ::1 /mallplatform/index.php/Admin/Login/out.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:27:01+08:00 ] ::1 /mallplatform/index.php/Admin/Index/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2018-01-03T13:27:01+08:00 ] ::1 /mallplatform/index.php/Admin/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:27:03+08:00 ] ::1 /mallplatform/index.php/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin` WHERE `name` = 'chong' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:27:04+08:00 ] ::1 /mallplatform/index.php/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.003000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:27:04+08:00 ] ::1 /mallplatform/index.php/Admin/Index/top.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: userinfo C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\bdb24232b8dcb412d439a202b1caa9a5.php 第 41 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:27:05+08:00 ] ::1 /mallplatform/index.php/Admin/Index/leftnav.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T13:27:05+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T13:27:05+08:00 ] ::1 /mallplatform/index.php/Admin/Index/shouye.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 149 行.
+NOTIC: [8] Undefined variable: activity C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 195 行.
+NOTIC: [8] Undefined variable: activity C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 196 行.
+NOTIC: [8] Undefined variable: activity C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 197 行.
+NOTIC: [8] Undefined variable: old_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 211 行.
+NOTIC: [8] Undefined variable: old_list C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 227 行.
+NOTIC: [8] Undefined variable: today_watch C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 292 行.
+NOTIC: [8] Undefined variable: today_share C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 296 行.
+NOTIC: [8] Undefined variable: today_download C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 300 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 305 行.
+NOTIC: [8] Use of undefined constant data - assumed 'data' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 305 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 305 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 306 行.
+NOTIC: [8] Use of undefined constant data - assumed 'data' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 306 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 306 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 307 行.
+NOTIC: [8] Use of undefined constant data - assumed 'data' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 307 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 307 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 311 行.
+NOTIC: [8] Use of undefined constant type - assumed 'type' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 311 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 311 行.
+NOTIC: [8] Undefined variable: data C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 312 行.
+NOTIC: [8] Use of undefined constant type - assumed 'type' C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 312 行.
+NOTIC: [8] Undefined variable: type C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 312 行.
+NOTIC: [8] Undefined variable: names C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 316 行.
+NOTIC: [8] Undefined variable: data1 C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 342 行.
+NOTIC: [8] Undefined variable: data2 C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 352 行.
+NOTIC: [8] Undefined variable: user_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 363 行.
+NOTIC: [8] Undefined variable: sign_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 364 行.
+NOTIC: [8] Undefined variable: evaluate_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 365 行.
+NOTIC: [8] Undefined variable: materiel_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 366 行.
+NOTIC: [8] Undefined variable: feedback_no_count C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 372 行.
+NOTIC: [8] Undefined variable: feedback_list C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\128ab25a5bcea3f3f4aba13f4e94dcd4.php 第 373 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T14:41:48+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-03T14:41:49+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T14:42:01+08:00 ] ::1 /mallplatform/index.php/Admin/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:User
+
+[ 2018-01-03T14:42:02+08:00 ] ::1 /mallplatform/index.php/Admin/Order/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:Order
+
+[ 2018-01-03T14:42:02+08:00 ] ::1 /mallplatform/index.php/Admin/Cash/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:Cash
+
+[ 2018-01-03T14:42:03+08:00 ] ::1 /mallplatform/index.php/Admin/Order/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Order
+
+[ 2018-01-03T14:42:03+08:00 ] ::1 /mallplatform/index.php/Admin/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:User
+
+[ 2018-01-03T14:42:03+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T14:48:04+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T15:41:52+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-03T15:43:22+08:00 ] ::1 /mallplatform/index.php/Admin/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:User
+
+[ 2018-01-03T15:43:23+08:00 ] ::1 /mallplatform/index.php/Admin/Order/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:Order
+
+[ 2018-01-03T15:43:24+08:00 ] ::1 /mallplatform/index.php/Admin/Cash/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Cash
+
+[ 2018-01-03T15:43:24+08:00 ] ::1 /mallplatform/index.php/Admin/Bankname/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:Bankname
+
+[ 2018-01-03T15:43:26+08:00 ] ::1 /mallplatform/index.php/Admin/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Shop
+
+[ 2018-01-03T15:43:27+08:00 ] ::1 /mallplatform/index.php/Admin/Bankname/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Bankname
+
+[ 2018-01-03T15:43:27+08:00 ] ::1 /mallplatform/index.php/Admin/Cash/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:Cash
+
+[ 2018-01-03T15:43:28+08:00 ] ::1 /mallplatform/index.php/Admin/Order/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:Order
+
+[ 2018-01-03T15:43:29+08:00 ] ::1 /mallplatform/index.php/Admin/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载控制器:User
+
+[ 2018-01-03T15:43:29+08:00 ] ::1 /mallplatform/index.php/Admin/Admin/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `mall_admin` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `mall_admin`  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 89 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 126 行.
+NOTIC: [8] Undefined variable: Think C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 149 行.
+NOTIC: [8] Undefined variable: page C:\phpStudy\PHPTutorial\WWW\mallplatform\Application\Runtime\Cache\Admin\b682812e058c4f7cab74d08ab9eabe11.php 第 208 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
