@@ -73,14 +73,14 @@
                 <thead>
                     <tr>
                         <th>名称</th>
-                        <th>日期</th>
+                        <th>等级</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr>
                             <td class="color"><?php echo ((isset($v["classname"]) && ($v["classname"] !== ""))?($v["classname"]):"-"); ?></td>
-                            <td class="color"><?php echo ((isset($v["date"]) && ($v["date"] !== ""))?($v["date"]):"-"); ?></td>
+                            <td class="color"><?php echo ((isset($v["level"]) && ($v["level"] !== ""))?($v["level"]):"-"); ?></td>
                             <td>
                                 <div class="operate-list">
                                     <a class="pen" style="line-height:22px;width:40px;" href="<?php echo U('edit',array('id'=>$v['id']));?>" title="编辑">

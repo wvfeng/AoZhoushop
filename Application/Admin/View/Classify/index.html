@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th>名称</th>
-                        <th>日期</th>
+                        <th>等级</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -20,7 +20,7 @@
                     <volist name="list" id="v">
                         <tr>
                             <td class="color">{$v.classname|default="-"}</td>
-                            <td class="color">{$v.date|default="-"}</td>
+                            <td class="color">{$v.level|default="-"}</td>
                             <td>
                                 <div class="operate-list">
                                     <a class="pen" style="line-height:22px;width:40px;" href="{:U('edit',array('id'=>$v['id']))}" title="编辑">
