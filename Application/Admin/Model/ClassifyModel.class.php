@@ -20,6 +20,7 @@ class ClassifyModel extends Model {
     public function remove($id){
         if(!empty($id)){
             $res = M('classify')->where(['id'=>$id])->delete();
+            M('classify')->where(['uid'=>$id])->delete();
             return $res;
         }
     }

@@ -1,7 +1,7 @@
 <?php if (!defined('THINK_PATH')) exit();?><html>
 <head>
     <meta charset="utf-8"/>
-    <title>会员系统</title>
+    <title>澳洲商城</title>
 </head>
 <div style="width: 20px;height: 100%;position: absolute;left: 200px;top: 0;"></div>
     <frameset rows="50px,80%" border="0">

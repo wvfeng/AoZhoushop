@@ -4,22 +4,22 @@
 	<meta http-equiv="pragram" content="no-cache">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>后台管理</title>
-	<link href="/mallplatform/Public/Admin/css/swiper.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/mallplatform/Public/Admin/css/user.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/animate.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
-	<script src="/mallplatform/Public/Admin/js/jquery-1.11.1.min.js"></script>
-	<script src="/mallplatform/Public/Admin/js/publicjquery.js"></script>
-	<script src="/mallplatform/Public/Admin/js/swiper.min.js"></script>
-	<script type="text/javascript" src="/mallplatform/Public/Admin/js/echarts.min.js"></script>    
-    <script src="/mallplatform/Public/Admin/js/jquery-ui.js"></script>
-    <script src="/mallplatform/Public/Admin/js/CalendarHandler.js"></script>
-    <script src="/mallplatform/Public/Index/js/layer.js"></script>
-    <script src="/mallplatform/Public/Admin/laydate/laydate.js"></script>
-    <script src="/mallplatform/Public/Admin/js/jquery.form.js"></script>
-    <script src="/mallplatform/Public/Admin/js/plupload/plupload.full.min.js"></script>
-    <script src="/mallplatform/Public/Admin/js/My97DatePicker/WdatePicker.js"></script>
+	<link href="/azshop/Public/Admin/css/swiper.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/azshop/Public/Admin/css/user.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
+	<script src="/azshop/Public/Admin/js/jquery-1.11.1.min.js"></script>
+	<script src="/azshop/Public/Admin/js/publicjquery.js"></script>
+	<script src="/azshop/Public/Admin/js/swiper.min.js"></script>
+	<script type="text/javascript" src="/azshop/Public/Admin/js/echarts.min.js"></script>    
+    <script src="/azshop/Public/Admin/js/jquery-ui.js"></script>
+    <script src="/azshop/Public/Admin/js/CalendarHandler.js"></script>
+    <script src="/azshop/Public/Index/js/layer.js"></script>
+    <script src="/azshop/Public/Admin/laydate/laydate.js"></script>
+    <script src="/azshop/Public/Admin/js/jquery.form.js"></script>
+    <script src="/azshop/Public/Admin/js/plupload/plupload.full.min.js"></script>
+    <script src="/azshop/Public/Admin/js/My97DatePicker/WdatePicker.js"></script>
 	<style>
 	    .current{
 	        background: #34d1a1;
@@ -51,7 +51,7 @@
             <a href="">×</a>
         </div>
         <div class="pop-up-main">
-            <img src="/mallplatform/Public/Admin/images/tips.png" />
+            <img src="/azshop/Public/Admin/images/tips.png" />
             <p>确定要这么做吗？</p> 
         </div>
         <div class="pop-up-submit pop-up-btn">
@@ -85,7 +85,7 @@
                 <tbody>
                     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr>
                             <td class="color"><?php echo ((isset($v["tit"]) && ($v["tit"] !== ""))?($v["tit"]):"无"); ?></td>
-                            <td class="color"><img src="/mallplatform/Public/shopimg/<?php echo ($v["img"]); ?>"style="width:80px;height:80px;"></td>
+                            <td class="color"><img src="/azshop/Public/shopimg/<?php echo ($v["img"]); ?>"style="width:80px;height:80px;"></td>
                             <td class="color"><?php echo ((isset($v["introduce"]) && ($v["introduce"] !== ""))?($v["introduce"]):"无"); ?></td>
                             <td class="color"><?php echo ((isset($v["integral"]) && ($v["integral"] !== ""))?($v["integral"]):"无"); ?></td>
                             <td class="color surplus-money"><?php echo ((isset($v["price"]) && ($v["price"] !== ""))?($v["price"]):"无"); ?></td>

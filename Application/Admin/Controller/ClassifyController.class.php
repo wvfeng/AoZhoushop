@@ -11,11 +11,16 @@ class ClassifyController extends Controller {
 		}
 		$show = $Page->show();
 		$list = $table->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+        foreach ($list as $key => &$v) {
+            $v['pname'] = $table->where(['id'=>$v['uid']])->getField('classname');
+        }
 		$this->assign('list',$list);
 		$this->assign('page',$show);
 		$this->display();
     }
     public function add(){
+        $one = M('classify')->where(['level'=>1])->select();
+        $this->assign('one',$one);
     	$this->display();
     }
     public function edit(){
@@ -23,10 +28,19 @@ class ClassifyController extends Controller {
     		$res = D('Classify')->find(I('id'));
     		$this->assign('res',$res);
     	}
+        $one = M('classify')->where(['level'=>1])->select();
+        $this->assign('one',$one);
     	$this->display();
     }
     public function doadd(){
     	$data['classname'] = I('classname');
+        $data['img'] = I('img');
+        $data['uid'] = I('uid');
+        if(I('uid')){
+            $data['level'] = 2;
+        }else{
+            $data['level'] = 1;
+        }
     	if(I('id')){
     		$res = D('Classify')->doadd(I('id'),$data);
     	}else{
@@ -47,6 +61,20 @@ class ClassifyController extends Controller {
     	}else{
     		$this->error('出错');
     	}
-    	
+    }
+    public function upload(){
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize   =     13145728 ;// 设置附件上传大小
+        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath  =      './Public/shopimg/'; // 设置附件上传根目录
+        $upload->autoSub = true;
+        $upload->subName = array('date','Ymd');
+        // 上传单个文件 
+        $info   =   $upload->uploadOne($_FILES['file']);
+        if(!$info) {// 上传错误提示错误信息
+            $this->error($upload->getError());
+        }else{// 上传成功 获取上传文件信息
+             echo $info['savepath'].$info['savename'];
+        }
     }
 }

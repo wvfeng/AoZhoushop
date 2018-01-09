@@ -4,15 +4,16 @@
         <div class="head-content">
             <div class="content" style="position: relative;">
                 <a href="{:U('add')}" style="display: block;position:absolute;top:10px;right:10px;width: 100px;height: 36px;text-align: center;line-height: 36px;color: #fff;font-size: 14px;background: #34d1a1;border-radius:3px; ">添加</a>
-                    <div class="head-title">分类列表</div>
+                    <div class="head-title">类别列表</div>
             </div>
         </div>
         <div class="table-list">
             <table cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>名称</th>
-                        <th>等级</th>
+                        <th>类别名称</th>
+                        <th>图片</th>
+                        <th>属于类别</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -20,7 +21,13 @@
                     <volist name="list" id="v">
                         <tr>
                             <td class="color">{$v.classname|default="-"}</td>
-                            <td class="color">{$v.level|default="-"}</td>
+                            <td class="color"><img src="__PUBLIC__/shopimg/{$v.img}"style="width:80px;height:80px;"></td>
+                            <if condition="$v['level'] eq 1">
+                            <td class="color" style="color:red">顶级分类</td>
+                            <else />
+                            <td class="color">{$v.pname|default="-"}</td>
+                            </if>
+                            
                             <td>
                                 <div class="operate-list">
                                     <a class="pen" style="line-height:22px;width:40px;" href="{:U('edit',array('id'=>$v['id']))}" title="编辑">
@@ -51,7 +58,7 @@
     </div>
     <script type="text/javascript">
         $(".delete").click(function(){
-            var id = $(".delete").attr('data-id');
+            var id = $(this).attr('data-id');
             $.ajax({
                 type: 'POST',
                 url: "{:U('remove')}",

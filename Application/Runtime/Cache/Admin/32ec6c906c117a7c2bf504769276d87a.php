@@ -4,11 +4,11 @@
     <meta http-equiv="pragram" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>后台登录</title>
-    <script type="text/javascript" src="/mallplatform/Public/Admin/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/azshop/Public/Admin/js/jquery-1.11.1.min.js"></script>
     <style>
         .homeAdminContent{position: absolute;left:0;right: 0;bottom: 0;top:0;min-width: 1100px;min-height: 600px;}
         .footCopyright{position: absolute;left:0;right: 0;bottom: 0;line-height:35px;color:#fff;color:rgba(255,255,255,0.7);background-color:#333;background-color:rgba(0,0,0,0.5);font-size:12px;text-align: center;}
-        .homeAdmin{position: absolute;left:0;right: 0;top: 0;bottom:0;background-size: cover;background-position: center;background-repeat: no-repeat;background-image: url(/mallplatform/Public/Admin/images/homeAdminBg.jpg);min-width: 1100px;text-align: center;}
+        .homeAdmin{position: absolute;left:0;right: 0;top: 0;bottom:0;background-size: cover;background-position: center;background-repeat: no-repeat;background-image: url(/azshop/Public/Admin/images/homeAdminBg.jpg);min-width: 1100px;text-align: center;}
         .homeAdmin>span{display: inline-block;height: 100%;vertical-align: middle;}
         .adminLoginForm{display: inline-block;vertical-align: middle;color:#fff;background-color: rgba(255,255,255,0.23);
             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000); 
@@ -25,7 +25,7 @@
 <body>
 <div class="homeAdminContent">
     <div class="homeAdmin">
-        <!-- <div class="logo_tu" style="width: 200px;height: 50px;position: absolute;top: 40px;left: 45px;"><img src="/mallplatform/Public/Admin/images/yihui.png" alt=""></div> -->
+        <!-- <div class="logo_tu" style="width: 200px;height: 50px;position: absolute;top: 40px;left: 45px;"><img src="/azshop/Public/Admin/images/yihui.png" alt=""></div> -->
         <span></span>
         <div class="big_box" style="width: 500px;height: 350px;position: absolute;top: 0;left: 0;right: 0;bottom:0;margin: auto;">
         <div class="adminLoginForm"> 
@@ -33,11 +33,11 @@
                 <!-- <img class="adminlogoHead" src="images/logoHead.png"/> -->
                 <h3>欢迎登录会员系统</h3>
                 <label class="adminForm">
-                    <img src="/mallplatform/Public/Admin/images/account.png"/>
+                    <img src="/azshop/Public/Admin/images/account.png"/>
                     <input name="name" autocomplete="off" type="text" placeholder="请输入您的登录账号" />
                 </label>
                 <label class="adminForm">
-                    <img src="/mallplatform/Public/Admin/images/password.png"/>
+                    <img src="/azshop/Public/Admin/images/password.png"/>
                     <input name="password" autocomplete="off" type="password" placeholder="请输入您的登录密码"/>
                 </label>
                 <input type="buttom" class="adminForm" id="adminForm" value="登  录" style="cursor: pointer;"></input>

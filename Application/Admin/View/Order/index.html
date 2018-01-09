@@ -3,16 +3,16 @@
 <style>
     .head-title{float:left;height:auto;line-height:1;padding:15px 0 0;}
     .head-text{float:left;margin:6px 0px 0px 0px;}
-</style>   
+</style>
     <div class="main">
         <div class="head-content">
             <div class="content" style="position: relative;">
                 <form method="get" action="{:U('index')}">
                    <div style="float:left;height:55px;">
-                        <div class="head-title">会员列表</div>
-                        <div class="head-text" style="margin:15px 0 0 10px;">
+                        <div class="head-title">购买列表</div>
+                        <!-- <div class="head-text" style="margin:15px 0 0 10px;">
                             推广大使：{$count_user.er}元 创业合伙人：{$count_user.san}元 <br/>积分商品：{$count_user.yi}元 累计收款：{$count_user.si}元
-                        </div>
+                        </div> -->
                     </div>
                    
                         <div class="head-search" style="margin-right: 0px;">
@@ -55,7 +55,6 @@
                     <th style="width: 10%">昵称</th>
                     <th style="width: 8%">收货姓名</th>
                     <th style="width: 15%">收货地址</th>
-                    <th style="width: 7%">消费类型</th>
                     <th style="width: 7%">花费金额</th>
                     <th style="width: 7%">购买时间</th>
                 </tr>
@@ -67,11 +66,6 @@
                       <td> {$v.nickname} </td>
                       <td> {$v.name} </td>
                       <td> {$v.address} </td>
-                      <td> 
-                        <if condition="$v['classify'] eq 1">积分商品</if>
-                        <if condition="$v['classify'] eq 2">卡片一</if> 
-                        <if condition="$v['classify'] eq 3">卡片二</if> 
-                      </td>
                       <td class="surplus-money"> {$v.money} </td>
                       <td> {$v.date} </td>
                     </tr>

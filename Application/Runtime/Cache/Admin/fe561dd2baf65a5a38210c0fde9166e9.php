@@ -4,22 +4,22 @@
 	<meta http-equiv="pragram" content="no-cache">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>后台管理</title>
-	<link href="/mallplatform/Public/Admin/css/swiper.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/mallplatform/Public/Admin/css/user.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/animate.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
-	<script src="/mallplatform/Public/Admin/js/jquery-1.11.1.min.js"></script>
-	<script src="/mallplatform/Public/Admin/js/publicjquery.js"></script>
-	<script src="/mallplatform/Public/Admin/js/swiper.min.js"></script>
-	<script type="text/javascript" src="/mallplatform/Public/Admin/js/echarts.min.js"></script>    
-    <script src="/mallplatform/Public/Admin/js/jquery-ui.js"></script>
-    <script src="/mallplatform/Public/Admin/js/CalendarHandler.js"></script>
-    <script src="/mallplatform/Public/Index/js/layer.js"></script>
-    <script src="/mallplatform/Public/Admin/laydate/laydate.js"></script>
-    <script src="/mallplatform/Public/Admin/js/jquery.form.js"></script>
-    <script src="/mallplatform/Public/Admin/js/plupload/plupload.full.min.js"></script>
-    <script src="/mallplatform/Public/Admin/js/My97DatePicker/WdatePicker.js"></script>
+	<link href="/azshop/Public/Admin/css/swiper.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/azshop/Public/Admin/css/user.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
+	<script src="/azshop/Public/Admin/js/jquery-1.11.1.min.js"></script>
+	<script src="/azshop/Public/Admin/js/publicjquery.js"></script>
+	<script src="/azshop/Public/Admin/js/swiper.min.js"></script>
+	<script type="text/javascript" src="/azshop/Public/Admin/js/echarts.min.js"></script>    
+    <script src="/azshop/Public/Admin/js/jquery-ui.js"></script>
+    <script src="/azshop/Public/Admin/js/CalendarHandler.js"></script>
+    <script src="/azshop/Public/Index/js/layer.js"></script>
+    <script src="/azshop/Public/Admin/laydate/laydate.js"></script>
+    <script src="/azshop/Public/Admin/js/jquery.form.js"></script>
+    <script src="/azshop/Public/Admin/js/plupload/plupload.full.min.js"></script>
+    <script src="/azshop/Public/Admin/js/My97DatePicker/WdatePicker.js"></script>
 	<style>
 	    .current{
 	        background: #34d1a1;
@@ -51,7 +51,7 @@
             <a href="">×</a>
         </div>
         <div class="pop-up-main">
-            <img src="/mallplatform/Public/Admin/images/tips.png" />
+            <img src="/azshop/Public/Admin/images/tips.png" />
             <p>确定要这么做吗？</p> 
         </div>
         <div class="pop-up-submit pop-up-btn">
@@ -65,22 +65,27 @@
         <div class="head-content">
             <div class="content" style="position: relative;">
                 <a href="<?php echo U('add');?>" style="display: block;position:absolute;top:10px;right:10px;width: 100px;height: 36px;text-align: center;line-height: 36px;color: #fff;font-size: 14px;background: #34d1a1;border-radius:3px; ">添加</a>
-                    <div class="head-title">分类列表</div>
+                    <div class="head-title">类别列表</div>
             </div>
         </div>
         <div class="table-list">
             <table cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>名称</th>
-                        <th>等级</th>
+                        <th>类别名称</th>
+                        <th>图片</th>
+                        <th>属于类别</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr>
                             <td class="color"><?php echo ((isset($v["classname"]) && ($v["classname"] !== ""))?($v["classname"]):"-"); ?></td>
-                            <td class="color"><?php echo ((isset($v["level"]) && ($v["level"] !== ""))?($v["level"]):"-"); ?></td>
+                            <td class="color"><img src="/azshop/Public/shopimg/<?php echo ($v["img"]); ?>"style="width:80px;height:80px;"></td>
+                            <?php if($v['level'] == 1): ?><td class="color" style="color:red">顶级分类</td>
+                            <?php else: ?>
+                            <td class="color"><?php echo ((isset($v["pname"]) && ($v["pname"] !== ""))?($v["pname"]):"-"); ?></td><?php endif; ?>
+                            
                             <td>
                                 <div class="operate-list">
                                     <a class="pen" style="line-height:22px;width:40px;" href="<?php echo U('edit',array('id'=>$v['id']));?>" title="编辑">
@@ -110,7 +115,7 @@
     </div>
     <script type="text/javascript">
         $(".delete").click(function(){
-            var id = $(".delete").attr('data-id');
+            var id = $(this).attr('data-id');
             $.ajax({
                 type: 'POST',
                 url: "<?php echo U('remove');?>",

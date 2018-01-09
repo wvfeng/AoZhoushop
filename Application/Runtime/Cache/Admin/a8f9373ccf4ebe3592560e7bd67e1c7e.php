@@ -3,11 +3,11 @@
     <head>
         <meta http-equiv="pragram" content="no-cache">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>会员系统</title>
-        <link href="/mallplatform/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
-        <link href="/mallplatform/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
-        <script src="/mallplatform/Public/Admin/js/jquery-1.11.1.min.js"></script>
-        <script src="/mallplatform/Public/Admin/js/publicjquery.js"></script>
+        <title>澳洲商城</title>
+        <link href="/azshop/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
+        <link href="/azshop/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
+        <script src="/azshop/Public/Admin/js/jquery-1.11.1.min.js"></script>
+        <script src="/azshop/Public/Admin/js/publicjquery.js"></script>
     </head>
     <body style="background:#2b333e;" onselectstart="return false">
         <ul class="nav-first">
@@ -33,7 +33,7 @@
             <li>
                 <a class="first" href="<?php echo U('Classify/index');?>" target="main">
                     <i class="iconfont icon-huodong"></i>
-                    <span>分类管理</span>
+                    <span>商品类别</span>
                 </a>
             </li>
             <!--<li>

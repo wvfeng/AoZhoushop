@@ -4,22 +4,22 @@
 	<meta http-equiv="pragram" content="no-cache">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>后台管理</title>
-	<link href="/mallplatform/Public/Admin/css/swiper.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/mallplatform/Public/Admin/css/user.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/animate.css" rel="stylesheet" type="text/css">
-	<link href="/mallplatform/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
-	<script src="/mallplatform/Public/Admin/js/jquery-1.11.1.min.js"></script>
-	<script src="/mallplatform/Public/Admin/js/publicjquery.js"></script>
-	<script src="/mallplatform/Public/Admin/js/swiper.min.js"></script>
-	<script type="text/javascript" src="/mallplatform/Public/Admin/js/echarts.min.js"></script>    
-    <script src="/mallplatform/Public/Admin/js/jquery-ui.js"></script>
-    <script src="/mallplatform/Public/Admin/js/CalendarHandler.js"></script>
-    <script src="/mallplatform/Public/Index/js/layer.js"></script>
-    <script src="/mallplatform/Public/Admin/laydate/laydate.js"></script>
-    <script src="/mallplatform/Public/Admin/js/jquery.form.js"></script>
-    <script src="/mallplatform/Public/Admin/js/plupload/plupload.full.min.js"></script>
-    <script src="/mallplatform/Public/Admin/js/My97DatePicker/WdatePicker.js"></script>
+	<link href="/azshop/Public/Admin/css/swiper.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/azshop/Public/Admin/css/user.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/animate.css" rel="stylesheet" type="text/css">
+	<link href="/azshop/Public/Admin/css/iconfont.css" rel="stylesheet" type="text/css">
+	<script src="/azshop/Public/Admin/js/jquery-1.11.1.min.js"></script>
+	<script src="/azshop/Public/Admin/js/publicjquery.js"></script>
+	<script src="/azshop/Public/Admin/js/swiper.min.js"></script>
+	<script type="text/javascript" src="/azshop/Public/Admin/js/echarts.min.js"></script>    
+    <script src="/azshop/Public/Admin/js/jquery-ui.js"></script>
+    <script src="/azshop/Public/Admin/js/CalendarHandler.js"></script>
+    <script src="/azshop/Public/Index/js/layer.js"></script>
+    <script src="/azshop/Public/Admin/laydate/laydate.js"></script>
+    <script src="/azshop/Public/Admin/js/jquery.form.js"></script>
+    <script src="/azshop/Public/Admin/js/plupload/plupload.full.min.js"></script>
+    <script src="/azshop/Public/Admin/js/My97DatePicker/WdatePicker.js"></script>
 	<style>
 	    .current{
 	        background: #34d1a1;
@@ -51,7 +51,7 @@
             <a href="">×</a>
         </div>
         <div class="pop-up-main">
-            <img src="/mallplatform/Public/Admin/images/tips.png" />
+            <img src="/azshop/Public/Admin/images/tips.png" />
             <p>确定要这么做吗？</p> 
         </div>
         <div class="pop-up-submit pop-up-btn">
@@ -64,16 +64,16 @@
 <style>
     .head-title{float:left;height:auto;line-height:1;padding:15px 0 0;}
     .head-text{float:left;margin:6px 0px 0px 0px;}
-</style>   
+</style>
     <div class="main">
         <div class="head-content">
             <div class="content" style="position: relative;">
                 <form method="get" action="<?php echo U('index');?>">
                    <div style="float:left;height:55px;">
-                        <div class="head-title">会员列表</div>
-                        <div class="head-text" style="margin:15px 0 0 10px;">
+                        <div class="head-title">购买列表</div>
+                        <!-- <div class="head-text" style="margin:15px 0 0 10px;">
                             推广大使：<?php echo ($count_user["er"]); ?>元 创业合伙人：<?php echo ($count_user["san"]); ?>元 <br/>积分商品：<?php echo ($count_user["yi"]); ?>元 累计收款：<?php echo ($count_user["si"]); ?>元
-                        </div>
+                        </div> -->
                     </div>
                    
                         <div class="head-search" style="margin-right: 0px;">
@@ -116,7 +116,6 @@
                     <th style="width: 10%">昵称</th>
                     <th style="width: 8%">收货姓名</th>
                     <th style="width: 15%">收货地址</th>
-                    <th style="width: 7%">消费类型</th>
                     <th style="width: 7%">花费金额</th>
                     <th style="width: 7%">购买时间</th>
                 </tr>
@@ -127,11 +126,6 @@
                       <td> <?php echo ($v["nickname"]); ?> </td>
                       <td> <?php echo ($v["name"]); ?> </td>
                       <td> <?php echo ($v["address"]); ?> </td>
-                      <td> 
-                        <?php if($v['classify'] == 1): ?>积分商品<?php endif; ?>
-                        <?php if($v['classify'] == 2): ?>卡片一<?php endif; ?> 
-                        <?php if($v['classify'] == 3): ?>卡片二<?php endif; ?> 
-                      </td>
                       <td class="surplus-money"> <?php echo ($v["money"]); ?> </td>
                       <td> <?php echo ($v["date"]); ?> </td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
