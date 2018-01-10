@@ -11,10 +11,9 @@
             <table cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>名称</th>
+                        <th>商品品牌</th>
+                        <th>商品名称</th>
                         <th>图片</th>
-                        <th>简介</th>
-                        <th>积分</th>
                         <th>现金</th>
                         <th>日期</th>
                         <th>上/下架</th>
@@ -24,12 +23,11 @@
                 <tbody>
                     <volist name="list" id="v">
                         <tr>
-                            <td class="color">{$v.tit|default="无"}</td>
+                            <td class="color">{$v.classify_name|default="-"}</td>
+                            <td class="color">{$v.tit|default="-"}</td>
                             <td class="color"><img src="__PUBLIC__/shopimg/{$v.img}"style="width:80px;height:80px;"></td>
-                            <td class="color">{$v.introduce|default="无"}</td>
-                            <td class="color">{$v.integral|default="无"}</td>
-                            <td class="color surplus-money">{$v.price|default="无"}</td>
-                            <td class="color">{$v.date|default="无"}</td>
+                            <td class="color surplus-money">{$v.price|default="-"}</td>
+                            <td class="color">{$v.date|default="-"}</td>
                             <td>
                                 <if condition="$v['status'] eq 1">
                                     <a href="{:U('doupdown',['status'=>0,'id'=>$v['id']])}">已上架</a>
@@ -43,9 +41,6 @@
                                     <a class="pen" style="line-height:22px;width:40px;" href="{:U('Shop/edit',array('id'=>$v['id']))}" title="编辑">
                                         <i class="iconfont">编辑</i>
                                     </a>
-                                    <!-- <a class="delete" style="line-height:22px;width:40px;" href="#" data-id="{$v.id}" title="删除">
-                                        <i class="iconfont">删除</i>
-                                    </a> -->
                                 </div>
                             </td>
                         </tr>
@@ -66,25 +61,7 @@
         </div>
 
     </div>
-    <script type="text/javascript">
-        $(".entrue").click(function(){
-            var id = $(".delete").attr('data-id');
-            $.ajax({
-                type: 'POST',
-                url: "{:U('Shop/remove')}",
-                data: {id:id},
-                dataType: 'json',
-                success : function (data){
-                    if(data==1){
-                        window.location.href = "{:U('index')}";
-                    }else{
-                        alert('删除失败');
-                    }
-                    
-                }
-            });
-        });
-    </script>
+
     <script>
     $(".surplus-money").each(function(){
         var num =parseFloat($(this).text(),10); 

@@ -67,8 +67,42 @@
             <div class="info-list clearfix">
                 <div class="info-right" style="width: 700px;">
                     <div class="info-model clearfix">
+                        <span>选择品牌</span>
+                        <div>
+                            <select name="classify_id" class="is_vip" style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                                    <option value='0'>无</option>
+                                    <?php if(is_array($classify)): $i = 0; $__LIST__ = $classify;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo ($v["classname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="info-model clearfix"id="_type"style="width:800px;">
+                        <span>选择类型</span>
+                        <div style="width:199px;">
+                            <select name="type" class="is_vip _type" style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                                    <option value='0'>无</option>
+                                    <option value="今日上新">今日上新</option>
+                                    <option value="今日特价">今日特价</option>
+                                    <option value="热门品牌">热门品牌</option>
+                                    <option value="会员特权">会员特权</option>
+                            </select>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                    $("._type").change(function(){
+                        $('#_type').append("<input type='hidden' name='type_all[]' value='"+$(this).val()+"'><span><a title='点击删除' style='color:red;cursor: pointer;'>"+$(this).val()+"</a></span>");
+                    })
+                    $('#_type').delegate('a','click',function(){
+                        $(this).parent().prev().remove();
+                        $(this).parent().remove();
+                    })
+                    </script>
+                    <div class="info-model clearfix">
                         <span>商品名称</span>
                         <div><input type="text" name="tit" value="" placeholder="名称"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>商品名称(en)</span>
+                        <div><input type="text" name="tit_en" value="" placeholder="名称(en)"/></div>
                     </div>
                     <div class="info-model clearfix">
                         <span>商品图片<br/>(390*260)</span>
@@ -82,11 +116,26 @@
                         <div style="height:80px;" class="slp">
                             <img src="/azshop/Public/Admin/images/up.jpg"style="width:80px;height:80px;cursor: pointer;" id="browse_slid">
                         </div>
-                        
                     </div>
                     <div class="info-model clearfix">
-                        <span>商品简介</span>
-                        <div style="height:auto;"><textarea placeholder="简介" name="introduce"></textarea></div>
+                        <span>所需现金</span>
+                        <div><input type="number" name="price" value="" placeholder="现金"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>商品规格</span>
+                        <div><input type="text" name="specifications" value="" placeholder="规格"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>商品产地</span>
+                        <div><input type="text" name="origin" value="" placeholder="产地"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>储存方法</span>
+                        <div><input type="text" name="storage" value="" placeholder="储存方法"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>商品汇率</span>
+                        <div><input type="text" name="rate" value="" placeholder="汇率"/></div>
                     </div>
                     <div class="info-model clearfix">
                         <span>商品详情</span>
@@ -95,12 +144,10 @@
                         </div>
                     </div>
                     <div class="info-model clearfix">
-                        <span>所需积分</span>
-                        <div><input type="number" name="integral" value="" placeholder="积分"/></div>
-                    </div>
-                    <div class="info-model clearfix">
-                        <span>所需现金</span>
-                        <div><input type="number" name="price" value="" placeholder="现金"/></div>
+                        <span>商品详情(en)</span>
+                        <div style="height:auto;">
+                            <textarea name="detail_en" id="container_en" style="height:300px;width:800px" ></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,6 +205,74 @@
     <script type='text/javascript' src='/azshop/Public/ueditor/ueditor.all.min.js'></script>
     <script type="text/javascript">
         var ue = UE.getEditor('container', {
+            toolbars: [['bold', //加粗
+                    'fontfamily', //字体
+                    'fontsize', //字号
+                    'customstyle',
+                    'simpleupload', //单图上传
+                    'justifyleft', //居左对齐
+                    'justifyright', //居右对齐
+                    'justifycenter', //居中对齐
+                    'justifyjustify', //两端对齐
+                    'forecolor', //字体颜色
+                    'fullscreen', //全屏
+                    'imagenone', //默认
+                    'imagecenter', //居中
+                    'link',
+                    'insertvideo',
+                    'undo',
+                    'redo',
+                    'bold',
+                    'italic',
+                    'underline',
+                    'fontborder',
+                    'strikethrough',
+                    'superscript',
+                    'subscript',
+                    'removeformat',
+                    'formatmatch',
+                    'autotypeset',
+                    'pasteplain',
+                    'forecolor',
+                    'backcolor',
+                    'insertorderedlist',
+                    'insertunorderedlist',
+                    'rowspacingtop',
+                    'rowspacingbottom',
+                    'lineheight',
+                    'indent',
+                    'unlink',
+                    'insertimage',
+                    'scrawl',
+                    'music',
+                    'attachment',
+                    'map',
+                    'insertframe',
+                    'pagebreak',
+                    'background',
+                    'horizontal',
+                    'date',
+                    'time',
+                    'snapscreen',
+                    'inserttable',
+                    'spechars',
+                    'gmap',
+                    'emotion',
+                    'simpleupload',
+                    'anchor',
+                    'selectall',
+                    'mergecells',
+                    'mergeright',
+                    'mergedown',
+                    'charts',
+                    'print',
+                    'preview',
+                    'searchreplace',
+                    'help',
+                    'drafts',
+                ]]
+        });
+var ue_en = UE.getEditor('container_en', {
             toolbars: [['bold', //加粗
                     'fontfamily', //字体
                     'fontsize', //字号

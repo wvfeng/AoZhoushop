@@ -10,7 +10,7 @@ class ClassifyController extends Controller {
 		    $Page->parameter[$key]   =   urlencode($val);
 		}
 		$show = $Page->show();
-		$list = $table->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
+		$list = $table->where($map)->order('level asc')->limit($Page->firstRow.','.$Page->listRows)->select();
         foreach ($list as $key => &$v) {
             $v['pname'] = $table->where(['id'=>$v['uid']])->getField('classname');
         }

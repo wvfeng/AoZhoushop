@@ -1,0 +1,27 @@
+<extend name="Index:shouye" />
+<block name="body">
+    <div class="info-main main FromUpToDown">
+        <h1>物流公司编辑 <a href="javascript:history.go(-1);"style="float:right;">返回上一级</a></h1>
+        <form method="post" action="{:U('doadd')}" id="postform">
+            <div class="info-list clearfix">
+                <div class="info-right" style="width: 700px;">
+                    <div class="info-model clearfix">
+                        <span>物流名称</span>
+                        <div><input type="text" name="wname" value="{$res.wname}" placeholder="物流公司名称"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>物流手机号</span>
+                        <div><input type="text" name="wiphone" value="{$res.wiphone}" placeholder="物流公司手机"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>排序</span>
+                        <div><input type="number" name="wsort" value="{$res.wsort}" placeholder="排序"/></div>
+                    </div>
+                    <input type="hidden" name="id" value="{$res.id}">
+                </div>
+            </div>
+            <button class="info-submit" type="submit">确定</button>
+        </form>
+    </div>
+
+</block>

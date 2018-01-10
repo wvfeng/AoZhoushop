@@ -11,34 +11,53 @@ class ShopController extends Controller {
 		}
 		$show = $Page->show();
 		$list = $table->where($map)->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-		$this->assign('list',$list);
+		foreach ($list as $key => &$v) {
+            $v['classify_name'] = M('classify')->where(['id'=>$v['classify_id']])->getField('classname');
+        }
+        $this->assign('list',$list);
 		$this->assign('page',$show);
 		$this->display();
     }
     public function add(){
+        $classify = M('classify')->where(['level'=>2])->select();
+        $this->assign('classify',$classify);
     	$this->display();
     }
     public function edit(){
     	if(I('id')){
     		$res = D('Shop')->find(I('id'));
             $res['sliedimg'] = explode('|*|',$res['sliedimg']);
+            $res['type'] = explode('|*|',$res['type']);
             foreach ($res['sliedimg'] as $key => $v) {
                 if(empty($v)){
                     unset($res['sliedimg'][$key]);
                 }
             }
+            foreach ($res['type'] as $key => $v) {
+                if(empty($v)){
+                    unset($res['type'][$key]);
+                }
+            }
     		$this->assign('res',$res);
     	}
+        $classify = M('classify')->where(['level'=>2])->select();
+        $this->assign('classify',$classify);
     	$this->display();
     }
     public function doadd(){
         $data['sliedimg'] = implode('|*|', I('slide')).'|*|';
+        $data['type'] = implode('|*|', array_unique(I('type_all'))).'|*|';
     	$data['tit'] = I('tit');
-        $data['introduce'] = I('introduce');
-        $data['integral'] = I('integral');
         $data['price'] = I('price');
         $data['detail'] = I('detail');
     	$data['img'] = I('img');
+        $data['tit_en'] = I('tit_en');
+        $data['detail_en'] = I('detail_en');
+        $data['specifications'] = I('specifications');
+        $data['origin'] = I('origin');
+        $data['storage'] = I('storage');
+        $data['rate'] = I('rate');
+        $data['classify_id'] = I('classify_id');
     	if(I('id')){
     		$res = D('Shop')->doadd(I('id'),$data);
     	}else{

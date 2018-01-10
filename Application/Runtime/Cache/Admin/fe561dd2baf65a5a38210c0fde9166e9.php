@@ -72,19 +72,19 @@
             <table cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>类别名称</th>
-                        <th>图片</th>
                         <th>属于类别</th>
+                        <th>图片</th>
+                        <th>类别名称</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr>
-                            <td class="color"><?php echo ((isset($v["classname"]) && ($v["classname"] !== ""))?($v["classname"]):"-"); ?></td>
-                            <td class="color"><img src="/azshop/Public/shopimg/<?php echo ($v["img"]); ?>"style="width:80px;height:80px;"></td>
                             <?php if($v['level'] == 1): ?><td class="color" style="color:red">顶级分类</td>
                             <?php else: ?>
                             <td class="color"><?php echo ((isset($v["pname"]) && ($v["pname"] !== ""))?($v["pname"]):"-"); ?></td><?php endif; ?>
+                            <td class="color"><img src="/azshop/Public/shopimg/<?php echo ($v["img"]); ?>"style="width:80px;height:80px;"></td>
+                            <td class="color"><?php echo ((isset($v["classname"]) && ($v["classname"] !== ""))?($v["classname"]):"-"); ?></td>
                             
                             <td>
                                 <div class="operate-list">

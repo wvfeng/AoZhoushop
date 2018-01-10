@@ -72,10 +72,9 @@
             <table cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>名称</th>
+                        <th>商品品牌</th>
+                        <th>商品名称</th>
                         <th>图片</th>
-                        <th>简介</th>
-                        <th>积分</th>
                         <th>现金</th>
                         <th>日期</th>
                         <th>上/下架</th>
@@ -84,12 +83,11 @@
                 </thead>
                 <tbody>
                     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><tr>
-                            <td class="color"><?php echo ((isset($v["tit"]) && ($v["tit"] !== ""))?($v["tit"]):"无"); ?></td>
+                            <td class="color"><?php echo ((isset($v["classify_name"]) && ($v["classify_name"] !== ""))?($v["classify_name"]):"-"); ?></td>
+                            <td class="color"><?php echo ((isset($v["tit"]) && ($v["tit"] !== ""))?($v["tit"]):"-"); ?></td>
                             <td class="color"><img src="/azshop/Public/shopimg/<?php echo ($v["img"]); ?>"style="width:80px;height:80px;"></td>
-                            <td class="color"><?php echo ((isset($v["introduce"]) && ($v["introduce"] !== ""))?($v["introduce"]):"无"); ?></td>
-                            <td class="color"><?php echo ((isset($v["integral"]) && ($v["integral"] !== ""))?($v["integral"]):"无"); ?></td>
-                            <td class="color surplus-money"><?php echo ((isset($v["price"]) && ($v["price"] !== ""))?($v["price"]):"无"); ?></td>
-                            <td class="color"><?php echo ((isset($v["date"]) && ($v["date"] !== ""))?($v["date"]):"无"); ?></td>
+                            <td class="color surplus-money"><?php echo ((isset($v["price"]) && ($v["price"] !== ""))?($v["price"]):"-"); ?></td>
+                            <td class="color"><?php echo ((isset($v["date"]) && ($v["date"] !== ""))?($v["date"]):"-"); ?></td>
                             <td>
                                 <?php if($v['status'] == 1): ?><a href="<?php echo U('doupdown',['status'=>0,'id'=>$v['id']]);?>">已上架</a>
                                 <?php else: ?>
@@ -101,9 +99,6 @@
                                     <a class="pen" style="line-height:22px;width:40px;" href="<?php echo U('Shop/edit',array('id'=>$v['id']));?>" title="编辑">
                                         <i class="iconfont">编辑</i>
                                     </a>
-                                    <!-- <a class="delete" style="line-height:22px;width:40px;" href="#" data-id="<?php echo ($v["id"]); ?>" title="删除">
-                                        <i class="iconfont">删除</i>
-                                    </a> -->
                                 </div>
                             </td>
                         </tr><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -123,25 +118,7 @@
         </div>
 
     </div>
-    <script type="text/javascript">
-        $(".entrue").click(function(){
-            var id = $(".delete").attr('data-id');
-            $.ajax({
-                type: 'POST',
-                url: "<?php echo U('Shop/remove');?>",
-                data: {id:id},
-                dataType: 'json',
-                success : function (data){
-                    if(data==1){
-                        window.location.href = "<?php echo U('index');?>";
-                    }else{
-                        alert('删除失败');
-                    }
-                    
-                }
-            });
-        });
-    </script>
+
     <script>
     $(".surplus-money").each(function(){
         var num =parseFloat($(this).text(),10); 

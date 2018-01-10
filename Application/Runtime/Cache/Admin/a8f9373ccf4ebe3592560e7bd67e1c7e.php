@@ -45,7 +45,7 @@
             <li>
                 <a class="first" href="javascript:;">
                     <i class="iconfont icon-weiguanwangshezhi01"></i>
-                    <span>商品管理</span>
+                    <span>商城管理</span>
                     <i class="iconfont down icon-xiajiantou"></i>
                     <i class="iconfont down up icon-shangjiantou"></i>
                 </a>
@@ -58,6 +58,21 @@
                     <li>
                         <a href="<?php echo U('Shop/add');?>" target="main">
                             添加商品
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo U('Logistics/index');?>" target="main">
+                            物流公司管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo U('Logsince/index');?>" target="main">
+                            自提点管理
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo U('Coupons/index');?>" target="main">
+                            优惠券管理
                         </a>
                     </li>
                 </ul>

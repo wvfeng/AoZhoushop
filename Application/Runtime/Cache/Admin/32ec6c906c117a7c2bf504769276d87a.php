@@ -31,7 +31,7 @@
         <div class="adminLoginForm"> 
             <form method="post" action="<?php echo U('Login/login');?>">
                 <!-- <img class="adminlogoHead" src="images/logoHead.png"/> -->
-                <h3>欢迎登录会员系统</h3>
+                <h3>欢迎登录澳洲商城</h3>
                 <label class="adminForm">
                     <img src="/azshop/Public/Admin/images/account.png"/>
                     <input name="name" autocomplete="off" type="text" placeholder="请输入您的登录账号" />
