@@ -72,9 +72,8 @@ class UserController extends CommonController {
         foreach ($list as $key => &$v) {
             $v['shop_name'] = M('shop')->where(['id'=>$v['shop_id']])->getField('tit');
         }
-        $nickname = M('user')->where(['id'=>I('id')])->getField('nickname');
+        //$nickname = M('user')->where(['id'=>I('id')])->getField('nickname');
         $leiji['money'] = $table->where(['user_id'=>I('id'),'classify'=>1])->sum('money');
-        $leiji['integral'] = $table->where(['user_id'=>I('id'),'classify'=>1])->sum('integral');
         $this->assign('leiji',$leiji);
         $this->assign('list',$list);
         $this->assign('page',$show);
@@ -90,30 +89,17 @@ class UserController extends CommonController {
             $n=1;
             //$objSheet = $objPHPExcel->createSheet();  
             $objSheet=$objPHPExcel->getActiveSheet();//获取当前活动sheet
-            $objSheet->setCellValue('A1','昵称')->setCellValue('B1','姓名')->setCellValue('C1','手机号')->setCellValue('D1','收货地址')
-            ->setCellValue('E1','购卡类型')->setCellValue('F1','级别')->setCellValue('G1','余额')->setCellValue('H1','积分');
+            $objSheet->setCellValue('A1','昵称')->setCellValue('B1','姓名')->setCellValue('C1','手机号');
             $list = $this->vlist;
-            foreach ($list as $key => &$v) {
-                $v['lev_name'] = M('grade')->where(['id'=>$v['grade_id']])->getField('lev_name');
-                if($v['clip_type']==1){
-                    $v['clip_type_name'] = '会员卡一';
-                }else{
-                    $v['clip_type_name'] = '会员卡二';
-                }
-            }
             foreach($list as $k=>$val){
-                $objSheet->setCellValue("A".$j,$val['nickname'])->setCellValue("B".$j,$val['name'])->setCellValue("C".$j,$val['iphone'])
-                ->setCellValue("D".$j,$val['address'])->setCellValue("E".$j,$val['clip_type_name'])
-                ->setCellValue("F".$j,$val['lev_name'])
-                ->setCellValue("G".$j,$val['surplus_money'])->setCellValue("H".$j,$val['surplus_int']);
+                $objSheet->setCellValue("A".$j,1)->setCellValue("B".$j,2)->setCellValue("C".$j,3);
                 $j++;$n++;
                 //数据大于50，换页
                 if($n>50){
                     $n=1;
                     $j=2;
                     $objSheet = $objPHPExcel->createSheet();    
-                    $objSheet->setCellValue('A1','昵称')->setCellValue('B1','姓名')->setCellValue('C1','手机号')->setCellValue('D1','收货地址')
-            ->setCellValue('E1','购卡类型')->setCellValue('F1','级别')->setCellValue('G1','余额')->setCellValue('H1','积分');
+                    $objSheet->setCellValue('A1','昵称')->setCellValue('B1','姓名')->setCellValue('C1','手机号');
                 }
             }
             $objWriter=\PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel5');//生成excel文件

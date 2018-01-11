@@ -28,13 +28,13 @@ class LogsinceController extends Controller {
     	$this->display();
     }
     public function doadd(){
-        $data['wname'] = I('wname');
-        $data['wiphone'] = I('wiphone');
-        $data['wsort'] = I('wsort');
+        $data['zname'] = I('zname');
+        $data['zaddress'] = I('zaddress');
+        $data['zman'] = I('zman');
+        $data['ziphone'] = I('ziphone');
     	if(I('id')){
     		$res = M('Logsince')->where(['id'=>I('id')])->save($data);
     	}else{
-            $data['wtype'] = 1;
             $data['status'] = 1;
     		$data['date'] = date("Y-m-d H:i:s");
     		$res = M('Logsince')->add($data);

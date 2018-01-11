@@ -4,34 +4,29 @@
         <div class="head-content">
             <div class="content" style="position: relative;">
                 <a href="{:U('add')}" style="display: block;position:absolute;top:10px;right:10px;width: 100px;height: 36px;text-align: center;line-height: 36px;color: #fff;font-size: 14px;background: #34d1a1;border-radius:3px; ">添加</a>
-                <div class="head-title">物流公司列表</div>
+                <div class="head-title">自提点列表</div>
             </div>
         </div>
         <div class="table-list">
             <table cellpadding="0" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>物流公司名称</th>
-                        <th>物流公司手机</th>
-                        <th>排序</th>
-                        <th>开/关闭</th>
+                        <th>自提名称</th>
+                        <th>地址</th>
+                        <th>联系人</th>
+                        <th>联系电话</th>
+                        <th>发布时间</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <volist name="list" id="v">
                         <tr>
-                            <td class="color">{$v.wname|default="-"}</td>
- 
-                            <td class="color">{$v.wiphone|default="-"}</td>
-                            <td class="color">{$v.wsort|default="-"}</td>
-                            <td>
-                                <if condition="$v['wtype'] eq 1">
-                                    <a href="{:U('doupdown',['wtype'=>0,'id'=>$v['id']])}">正常</a>
-                                <else />
-                                    <a href="{:U('doupdown',['wtype'=>1,'id'=>$v['id']])}" style="color:#999;">关闭</a>
-                                </if>
-                            </td>
+                            <td class="color">{$v.zname|default="-"}</td>
+                            <td class="color">{$v.zaddress|default="-"}</td>
+                            <td class="color">{$v.zman|default="-"}</td>
+                            <td class="color">{$v.ziphone|default="-"}</td>
+                            <td class="color">{$v.date|default="-"}</td>
                             <td>
                                 <div class="operate-list">
                                     <a class="pen" style="line-height:22px;width:40px;" href="{:U('edit',array('id'=>$v['id']))}" title="编辑">

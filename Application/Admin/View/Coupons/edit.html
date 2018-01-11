@@ -1,0 +1,35 @@
+<extend name="Index:shouye" />
+<block name="body">
+    <div class="info-main main FromUpToDown">
+        <h1>优惠券编辑 <a href="javascript:history.go(-1);"style="float:right;">返回上一级</a></h1>
+        <form method="post" action="{:U('doadd')}" id="postform">
+            <div class="info-list clearfix">
+                <div class="info-right" style="width: 700px;">
+                    <div class="info-model clearfix">
+                        <span>优惠券名称</span>
+                        <div><input type="text" name="yname" value="{$res.yname}" placeholder="优惠券名称"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>面额</span>
+                        <div><input type="text" name="ymoney" value="{$res.ymoney}" placeholder="面额"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>发放数量</span>
+                        <div><input type="text" name="ynum" value="{$res.ynum}" placeholder="发放数量"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>开始时间</span>
+                        <div><input type="text" name="ystart_date" placeholder="有效期开始时间"onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"value="{$res.ystart_date}"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>结束时间</span>
+                        <div><input type="text" name="yend_date"onclick="WdatePicker({dateFmt:'yyyy-MM-dd'});"value="{$res.yend_date}" placeholder="有效期结束时间"/></div>
+                    </div>
+                    <input type="hidden" name="id" value="{$res.id}">
+                </div>
+            </div>
+            <button class="info-submit" type="submit">确定</button>
+        </form>
+    </div>
+
+</block>

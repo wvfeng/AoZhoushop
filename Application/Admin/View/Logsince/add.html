@@ -1,21 +1,25 @@
 <extend name="Index:shouye" />
 <block name="body">
     <div class="info-main main FromUpToDown">
-        <h1>物流公司添加</h1>
+        <h1>自提点添加</h1>
         <form method="post" action="{:U('doadd')}">
             <div class="info-list clearfix">
                 <div class="info-right" style="width: 700px;">
                     <div class="info-model clearfix">
-                        <span>物流名称</span>
-                        <div><input type="text" name="wname" value="" placeholder="物流公司名称"/></div>
+                        <span>自提名称</span>
+                        <div><input type="text" name="zname" value="" placeholder="自提名称"/></div>
                     </div>
                     <div class="info-model clearfix">
-                        <span>物流手机号</span>
-                        <div><input type="text" name="wiphone" value="" placeholder="物流公司手机"/></div>
+                        <span>地址</span>
+                        <div><input type="text" name="zaddress" value="" placeholder="地址"/></div>
                     </div>
                     <div class="info-model clearfix">
-                        <span>排序</span>
-                        <div><input type="number" name="wsort" value="" placeholder="排序"/></div>
+                        <span>联系人</span>
+                        <div><input type="text" name="zman" value="" placeholder="联系人"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>联系电话</span>
+                        <div><input type="text" name="ziphone" value="" placeholder="联系电话"/></div>
                     </div>
                 </div>
             </div>

@@ -62,17 +62,17 @@
                     </li>
                     <li>
                         <a href="<?php echo U('Logistics/index');?>" target="main">
-                            物流公司管理
+                            物流公司
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo U('Logsince/index');?>" target="main">
-                            自提点管理
+                            自提点
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo U('Coupons/index');?>" target="main">
-                            优惠券管理
+                            优惠券
                         </a>
                     </li>
                 </ul>

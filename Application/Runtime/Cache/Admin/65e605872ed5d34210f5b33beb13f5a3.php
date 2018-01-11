@@ -140,9 +140,10 @@
                       <td> <?php echo ($v["date"]); ?> </td>
                       <td class="surplus-money"> <?php echo ((isset($v["surplus_money"]) && ($v["surplus_money"] !== ""))?($v["surplus_money"]):"-"); ?> </td>
                       <td> <?php echo ((isset($v["surplus_int"]) && ($v["surplus_int"] !== ""))?($v["surplus_int"]):"-"); ?> </td>
-                      <td>
+                      <td>-</td>
+                      <!-- <td>
                         <a href="<?php echo U('duihuan',['id'=>$v['id']]);?>" style="display:inline-block;padding:2px 4px;background:rgb(52, 209, 161);color:#fff;border-radius:3px;">订单</a>
-                    </td>
+                                          </td> -->
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                 </tbody>
             </table>
