@@ -8,5 +8,4 @@ return array(
     'DB_PWD'                =>  'Buyun666888!',      // 密码
     'DB_PORT'               =>  '3306',      // 端口
     'DB_PREFIX'				=>	'mall_',			 // 表前缀
-
 );
