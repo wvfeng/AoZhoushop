@@ -16,7 +16,7 @@ class CommonController extends RestController
 //            }
 //        }
 
-        //实例化当前控制器对应的模型并保存到当前控制器的model属性中
+        //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
         $this->Model = static::getModel($this);
     }
 
@@ -161,7 +161,10 @@ class CommonController extends RestController
         if(!is_object($obj)) return M();
         //记录所有数据表名
         $tables = S("tables");
+        $namespaces = C('__NAMESPACE__');
         $table = preg_replace('/(?:\w+)\\\(?:\w+\\\)+(\w+)Controller/',"$1",get_class($obj));
+        $model = D($table);
+        if(get_class($model) != "Think\Model") return $model;
         $table = strtolower($table);
         //判断控制器对应模型控制的数据表是否真实存在，如果存在就实例化并保存在当前对象的model属性中
         if(in_array(C("DB_PREFIX") . $table,$tables)){
@@ -169,8 +172,13 @@ class CommonController extends RestController
             $namespace = preg_replace('/(\w+)\\\(?:\w+\\\)+(?:\w+)Controller/',"$1",get_class($obj));
             $model = D($namespace."/".$table);
             if(get_class($model) == "Think\Model"){
-                $namespace = ($namespace == "Home") ? "Admin" : "Home";
-                $model = D($namespace."/".$table);
+                foreach ($namespaces as $name)
+                    if($name != $namespace){
+                        $model = D($name."/".$table);
+                        if(get_class($model) != "Think\Model"){
+                            return $model;
+                        }
+                    }
             }
             return $model;
         }else{
