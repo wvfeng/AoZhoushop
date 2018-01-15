@@ -7,5 +7,7 @@ namespace Mobile\Controller;
  */
 class TestController extends CommonController
 {
-    //测试使用
+    public function a(){
+    	$this->returnAjaxError(I(''),'a');
+    }
 }
