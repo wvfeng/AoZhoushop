@@ -24,6 +24,7 @@ class CommonController extends RestController
     const CODE_ERROR = 400;
     const CODE_LOGIN_ERROR = 401;
     const CODE_REFRESH_ERROR = 302;
+    const CODE_ARGUMENTS_ERROR = 505; //参数错误
 
     /**
      * AJAX 返回成功
@@ -89,7 +90,7 @@ class CommonController extends RestController
                 'success'  =>  isset($data['success']) ? $data['success']:$tmp['success'],
                 'message'  =>  isset($data['message']) ? $data['message']:$tmp['message'],
                 'status'   =>  isset($data['status'])  ? $data['status']:$tmp['status'],
-                'code'     =>  isset($data['code'])    ? $data['code']:$tmp['code'],
+                'code'     =>  isset($data['code'])    ? static::$data['code']:$tmp['code'],
                 'data'     =>  (object)(isset($data['data']) ? $data['data']:[])
             ];
         }elseif(!is_null(json_decode($data)) && is_array($data = json_decode($data,true))){

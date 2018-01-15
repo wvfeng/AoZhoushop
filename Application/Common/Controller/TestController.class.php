@@ -8,14 +8,8 @@ namespace Common\Controller;
 class TestController extends CommonController
 {
     //快递鸟
-    public function kuaidiniao(){
-        //接收数据
-        //运单编号  必须
-        $LogisticCode = I('request.LogisticCode');
-        //快递公司  必须
-        $ShipperCode  = I('request.ShipperCode');
-        //订单编号 非必需
-        $OrderCode    = I('request.OrderCode');
+    public function kuaidiniao($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
+        if(empty($LogisticCode) || empty($ShipperCode)) $this->returnAjaxError(['message'=>'缺少必要的参数，运单号或快递公司编码','status'=>'CODE_ARGUMENTS_ERROR']);
         //如果有缓存就返回缓存信息
         if(!empty(S($OrderCode))) $this->ajaxReturn(S($OrderCode));
         /*
@@ -42,13 +36,11 @@ class TestController extends CommonController
           $SelectEvent = new \Home\Express\SelectExpress($LogisticCode,$ShipperCode,$OrderCode);
         */
 
-        $order = M('order')->where(array("id"=>$_GET['id']))->find();
-        var_dump($order);
         //方式三
         $SelectEvent = A('Select','Express');
-        $SelectEvent->OrderCode    = $order['sn'];
-        $SelectEvent->ShipperCode  = $order['express_code'];
-        $SelectEvent->LogisticCode = $order['express'];
+        $SelectEvent->OrderCode    = $OrderCode;
+        $SelectEvent->ShipperCode  = $ShipperCode;
+        $SelectEvent->LogisticCode = $LogisticCode;
 
 
         //以上三种方式任选一种
@@ -64,13 +56,7 @@ class TestController extends CommonController
     }
 
     //快递100
-    public function kuaidi100(){
-        //运单编号  必须
-        $LogisticCode = I('request.LogisticCode');
-        //快递公司  必须
-        $ShipperCode = I('request.ShipperCode');
-        //订单编号 非必需
-        $OrderCode = I('request.OrderCode');
+    public function kuaidi100($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
 
         //模拟数据
         //运单编号  必须
