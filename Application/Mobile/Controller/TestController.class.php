@@ -8,6 +8,7 @@ namespace Mobile\Controller;
 class TestController extends CommonController
 {
     public function a(){
-    	$this->returnAjaxError(I(''),'a');
+    	$data['data'] = I('');
+    	$this->returnAjaxSuccess($data);
     }
 }

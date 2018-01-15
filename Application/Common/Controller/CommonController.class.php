@@ -16,7 +16,7 @@ class CommonController extends RestController
 //            }
 //        }
 
-        //实例化当前控制器对应的模型并保存到当前控制器的model属性中
+        //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
         $this->Model = static::getModel($this);
     }
 
@@ -24,6 +24,7 @@ class CommonController extends RestController
     const CODE_ERROR = 400;
     const CODE_LOGIN_ERROR = 401;
     const CODE_REFRESH_ERROR = 302;
+    const CODE_ARGUMENTS_ERROR = 505; //参数错误
 
     /**
      * AJAX 返回成功
@@ -89,7 +90,7 @@ class CommonController extends RestController
                 'success'  =>  isset($data['success']) ? $data['success']:$tmp['success'],
                 'message'  =>  isset($data['message']) ? $data['message']:$tmp['message'],
                 'status'   =>  isset($data['status'])  ? $data['status']:$tmp['status'],
-                'code'     =>  isset($data['code'])    ? $data['code']:$tmp['code'],
+                'code'     =>  isset($data['code'])    ? static::$data['code']:$tmp['code'],
                 'data'     =>  (object)(isset($data['data']) ? $data['data']:[])
             ];
         }elseif(!is_null(json_decode($data)) && is_array($data = json_decode($data,true))){
@@ -160,7 +161,10 @@ class CommonController extends RestController
         if(!is_object($obj)) return M();
         //记录所有数据表名
         $tables = S("tables");
+        $namespaces = C('__NAMESPACE__');
         $table = preg_replace('/(?:\w+)\\\(?:\w+\\\)+(\w+)Controller/',"$1",get_class($obj));
+        $model = D($table);
+        if(get_class($model) != "Think\Model") return $model;
         $table = strtolower($table);
         //判断控制器对应模型控制的数据表是否真实存在，如果存在就实例化并保存在当前对象的model属性中
         if(in_array(C("DB_PREFIX") . $table,$tables)){
@@ -168,8 +172,13 @@ class CommonController extends RestController
             $namespace = preg_replace('/(\w+)\\\(?:\w+\\\)+(?:\w+)Controller/',"$1",get_class($obj));
             $model = D($namespace."/".$table);
             if(get_class($model) == "Think\Model"){
-                $namespace = ($namespace == "Home") ? "Admin" : "Home";
-                $model = D($namespace."/".$table);
+                foreach ($namespaces as $name)
+                    if($name != $namespace){
+                        $model = D($name."/".$table);
+                        if(get_class($model) != "Think\Model"){
+                            return $model;
+                        }
+                    }
             }
             return $model;
         }else{

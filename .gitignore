@@ -1,3 +1,2 @@
-# 排除的文件或目录列表
-.idea #PhpStorm的解析目录
-Application/Runtime #ThinkPHP的临时文件目录
+.idea
+Application/Runtime
