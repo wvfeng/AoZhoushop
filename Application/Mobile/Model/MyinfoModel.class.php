@@ -20,8 +20,12 @@ class MyinfoModel extends RelationModel
             ],
     ];
 
+    protected $_map = [
+        //'表单' => '字段名'
+    ];
+
     //获取个人数据
-    public function getIndexInfo($id){
+    public function getUserInfo($id){
         if(empty($id)) return false;
         $data = $this->field('iphone,email,password',true)->relation('User_detail')->find($id);
         $data['Order'] = array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true));
