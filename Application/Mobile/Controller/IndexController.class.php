@@ -15,5 +15,6 @@ class IndexController extends CommonController
     	$data = $db->where(['level'=>1])->select();
         return $data;
     }
+
     
 }
