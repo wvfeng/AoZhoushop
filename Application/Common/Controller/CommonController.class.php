@@ -130,7 +130,7 @@ class CommonController extends RestController
      */
     private function cheCkUser(){
         if(empty(session('userInfo'))){
-            static::returnAjaxError(['message'=>'请登您先登陆！']);
+            static::returnAjaxError(['message'=>'请您先登陆！']);
         }
     }
 
@@ -167,9 +167,7 @@ class CommonController extends RestController
         if(class_exists(MODULE_NAME.'\Model\\'.$table.'Model')) return D($table);
         $namespaces = array_diff($namespaces,[MODULE_NAME]);
         foreach ($namespaces as $name){
-            if(class_exists("{$name}\Model\{$table}Model")){
-                return D($table);
-            }
+            if(class_exists("{$name}\Model\{$table}Model")) return D($table);
         }
         $table = strtolower($table);
         //判断控制器对应模型控制的数据表是否真实存在，如果存在就实例化并保存在当前对象的model属性中

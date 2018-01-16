@@ -15,5 +15,12 @@ class IndexController extends CommonController
     	$data = $db->where(['level'=>1])->select();
         return $data;
     }
+    public function ceshi(){
+        // session('userInfo','1');
+        // print_r(11);die;
+        $db = M('admin');
+        $con = $db->where()->select();
+        return $con;
+    }
     
 }
