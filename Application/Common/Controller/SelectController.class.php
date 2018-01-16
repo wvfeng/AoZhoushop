@@ -5,76 +5,59 @@ namespace Common\Controller;
 /**
  * 快递控制器
  */
-class TestController extends CommonController
+class SelectController extends CommonController
 {
-    //快递鸟
-    public function kuaidiniao($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
-        if(empty($LogisticCode) || empty($ShipperCode)) $this->returnAjaxError(['message'=>'缺少必要的参数，运单号或快递公司编码','status'=>'CODE_ARGUMENTS_ERROR']);
+
+    public function autoSelectExpress($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
+        if(empty($LogisticCode) || empty($ShipperCode))
+            static::returnAjaxError(['message'=>'缺少必要的参数，运单号或快递公司编码','status'=>'CODE_ARGUMENTS_ERROR']);
         //如果有缓存就返回缓存信息
-        if(!empty(S($OrderCode))) $this->ajaxReturn(S($OrderCode));
-        /*
-         //方式一
-         $data = [
-             //运单编号  必须
-            'LogisticCode' => '3350162158341',
-            //快递公司  必须
-            'ShipperCode'  => 'STO',
-             //订单编号 非必需
-            'OrderCode'    => ''
-        ];
-        $SelectEvent = new \Home\Express\SelectExpress($data);
-        */
+        if(!empty(S(md5($OrderCode.$LogisticCode)))) static::quickReturn(S(md5($OrderCode.$LogisticCode)));
 
-        /*
-         //方式二
-            //运单编号  必须
-            $LogisticCode = '3350162158341',
-            //快递公司  必须
-            $ShipperCode = 'STO',
-            //订单编号 非必需
-            $OrderCode = ''
-          $SelectEvent = new \Home\Express\SelectExpress($LogisticCode,$ShipperCode,$OrderCode);
-        */
-
-        //方式三
-        $SelectEvent = A('Select','Express');
-        $SelectEvent->OrderCode    = $OrderCode;
-        $SelectEvent->ShipperCode  = $ShipperCode;
-        $SelectEvent->LogisticCode = $LogisticCode;
-
-
-        //以上三种方式任选一种
-        $res = $SelectEvent->Send();
+        //通过快递100查询快递信息
+        $res = static::kuaidi100($LogisticCode,$ShipperCode);
         $data = json_decode($res,true);
-        if($data['Success']){
-            //如果获取成功，缓存30分钟
-            S($OrderCode,$data,1800);
+        if($data['message'] == 'ok' && !empty($data['data'])){
+            $Traces['LogisticCode'] = $data['nu'];
+            $Traces['OrderCode'] = $OrderCode;
+            $Traces['ShipperCode']  = $data['com'];
+            $Traces['State']        = $data['state'];
+            $Traces['Traces']       = $data['data'];
+            static::ExpressReturn($Traces,md5($OrderCode.$LogisticCode));
         }
-        var_dump($data);
-        $this->dispaly();
-//        $this->ajaxReturn($data);
+
+        //通过快递鸟查询快递信息
+        $res = static::kuaidiniao($LogisticCode,$ShipperCode,$OrderCode);
+        $data = json_decode($res,true);
+        if($data['message'] == 'ok' && !empty($data['data'])){
+            $Traces['LogisticCode'] = $data['LogisticCode'];
+            $Traces['OrderCode']    = $data['OrderCode'];
+            $Traces['ShipperCode']  = $data['ShipperCode'];
+            $Traces['State']        = $data['State'];
+            $Traces['Traces']       = $data['Traces'];
+            static::ExpressReturn($Traces,md5($OrderCode.$LogisticCode));
+        }
+
+        //查询失败
+        static::quickReturn(null,'查询');
+    }
+    //快递鸟
+    private static function kuaidiniao($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
+        return (new \Common\Express\SelectExpress($LogisticCode,$ShipperCode,$OrderCode))->Send();
     }
 
     //快递100
-    public function kuaidi100($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
-
-        //模拟数据
-        //运单编号  必须
-        $LogisticCode = '3350162158341';
-        //快递公司  必须
-        $ShipperCode = 'shentong';
-        //订单编号 非必需
-        $OrderCode = 'H4564512455';
-        if(!empty(S($OrderCode))) $this->ajaxReturn(S($OrderCode));
-        $url = "https://www.kuaidi100.com/query?type={$ShipperCode}&postid={$LogisticCode}&temp=0.".time();
-
-        $res = file_get_contents($url);
-        $data = json_decode($res,true);
-        if($data['Success']){
-            //如果获取成功，缓存30分钟
-            S($OrderCode,$data,1800);
+    private static function kuaidi100($LogisticCode = null,$ShipperCode = null){
+        $url = "www.kuaidi100.com/query?type={$ShipperCode}&postid={$LogisticCode}&temp=0.".time();
+        if($res = file_get_contents('http://'.$url)){
+            return $res;
+        }else{
+            return file_get_contents('https://'.$url);
         }
-//        $this->assign('data',$data)->dispaly();
-        $this->ajaxReturn($data);
+    }
+
+    private static function ExpressReturn($res,$OrderCode){
+        S($OrderCode,$res,1800);
+        static::quickReturn($res);
     }
 }
