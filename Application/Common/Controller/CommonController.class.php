@@ -163,6 +163,7 @@ class CommonController extends RestController
         $tables = S("tables");
         $namespaces = C('__NAMESPACE__');
         $table = preg_replace('/(?:\w+)\\\(?:\w+\\\)+(\w+)Controller/',"$1",get_class($obj));
+
         //检测当前模块有没有控制器的同名模型
         if(class_exists(MODULE_NAME.'\Model\\'.$table.'Model')) return D($table);
         $namespaces = array_diff($namespaces,[MODULE_NAME]);
