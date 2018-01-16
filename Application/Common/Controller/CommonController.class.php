@@ -163,11 +163,11 @@ class CommonController extends RestController
         $tables = S("tables");
         $namespaces = C('__NAMESPACE__');
         $table = preg_replace('/(?:\w+)\\\(?:\w+\\\)+(\w+)Controller/',"$1",get_class($obj));
-        $model = D($table);
-        if(get_class($model) != "Think\Model") return $model;
         $table = strtolower($table);
         //判断控制器对应模型控制的数据表是否真实存在，如果存在就实例化并保存在当前对象的model属性中
         if(in_array(C("DB_PREFIX") . $table,$tables)){
+            $model = D($table);
+            if(get_class($model) != "Think\Model") return $model;
             //拼接命名空间
             $namespace = preg_replace('/(\w+)\\\(?:\w+\\\)+(?:\w+)Controller/',"$1",get_class($obj));
             $model = D($namespace."/".$table);
