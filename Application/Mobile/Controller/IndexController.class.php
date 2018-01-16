@@ -29,5 +29,4 @@ class IndexController extends CommonController
         }
         return $data;
     }
-
 }
