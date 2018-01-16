@@ -24,8 +24,7 @@ class MyinfoModel extends RelationModel
     public function getIndexInfo($id){
         if(empty($id)) return false;
         $data = $this->field('iphone,email,password',true)->relation('User_detail')->find($id);
-        print_r(M('Order')->field('count(id) no_pay')->where(['user_id'=>'1'])->getField('type'));die;
-        $data['Order'] = array_count_values(M('Order')->field('count(id) no_pay')->where(['user_id'=>$id])->getField('type'));
+        $data['Order'] = array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true));
         return $data;
     }
 }
