@@ -12,8 +12,7 @@ class MyinfoController extends CommonController
         $this->quickReturn($this->Model->getIndexInfo($id));
     }
 
-    public function test($str){
-        echo url_encode($str).PHP_EOL;
-        echo url_decode(url_encode($str));
+    public function test(){
+//        print_r(D('Shou'));
     }
 }
