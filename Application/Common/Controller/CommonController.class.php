@@ -163,21 +163,25 @@ class CommonController extends RestController
         $tables = S("tables");
         $namespaces = C('__NAMESPACE__');
         $table = preg_replace('/(?:\w+)\\\(?:\w+\\\)+(\w+)Controller/',"$1",get_class($obj));
+        //检测当前模块有没有控制器的同名模型
+        if(class_exists(MODULE_NAME.'\Model\\'.$table.'Model')) return D($table);
+        $namespaces = array_diff($namespaces,[MODULE_NAME]);
+        foreach ($namespaces as $name){
+            if(class_exists("{$name}\Model\{$table}Model")){
+                return D($table);
+            }
+        }
         $table = strtolower($table);
         //判断控制器对应模型控制的数据表是否真实存在，如果存在就实例化并保存在当前对象的model属性中
         if(in_array(C("DB_PREFIX") . $table,$tables)){
-            $model = D($table);
-            if(get_class($model) != "Think\Model") return $model;
             //拼接命名空间
             $namespace = preg_replace('/(\w+)\\\(?:\w+\\\)+(?:\w+)Controller/',"$1",get_class($obj));
             $model = D($namespace."/".$table);
             if(get_class($model) == "Think\Model"){
                 foreach ($namespaces as $name)
-                    if($name != $namespace){
-                        $model = D($name."/".$table);
-                        if(get_class($model) != "Think\Model"){
-                            return $model;
-                        }
+                    $model = D($name."/".$table);
+                    if(get_class($model) != "Think\Model"){
+                        return $model;
                     }
             }
             return $model;
