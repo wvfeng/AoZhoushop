@@ -20,17 +20,20 @@ class SelectExpress
     //订单编号  必须
     public $LogisticCode = '';
 
-    public function _initialize($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
-        if(empty($LogisticCode) || empty($ShipperCode)) return false;
-        if(is_array($LogisticCode)){
-            $this->OrderCode    = $LogisticCode['OrderCode'];
-            $this->ShipperCode  = $LogisticCode['ShipperCode'];
-            $this->LogisticCode = $LogisticCode['LogisticCode'];
-        }else{
-            $this->OrderCode    = $OrderCode;
-            $this->ShipperCode  = $ShipperCode;
-            $this->LogisticCode = $LogisticCode;
-        }
+    public function __construct($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
+        $this->OrderCode    = $OrderCode;
+        $this->ShipperCode  = $ShipperCode;
+        $this->LogisticCode = $LogisticCode;
+//        if(empty($LogisticCode) || empty($ShipperCode)) return false;
+//        if(is_array($LogisticCode)){
+//            $this->OrderCode    = $LogisticCode['OrderCode'];
+//            $this->ShipperCode  = $LogisticCode['ShipperCode'];
+//            $this->LogisticCode = $LogisticCode['LogisticCode'];
+//        }else{
+//            $this->OrderCode    = $OrderCode;
+//            $this->ShipperCode  = $ShipperCode;
+//            $this->LogisticCode = $LogisticCode;
+//        }
     }
     //调用查询物流轨迹
     //---------------------------------------------
