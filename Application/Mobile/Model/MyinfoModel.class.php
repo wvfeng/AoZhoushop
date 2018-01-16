@@ -24,11 +24,8 @@ class MyinfoModel extends RelationModel
     public function getIndexInfo($id){
         if(empty($id)) return false;
         $data = $this->field('iphone,email,password',true)->relation('User_detail')->find($id);
-        $data['Order'] = array_shift(M('Order')->field('count(id) no_pay')->where(['user_id'=>$id,'type'=>'0'])->select());
-        $data['Order'] += array_shift(M('Order')->field('count(id) no_shipments')->where(['user_id'=>$id,'type'=>'1'])->select());
-        $data['Order'] += array_shift(M('Order')->field('count(id) on_shipments')->where(['user_id'=>$id,'type'=>'2'])->select());
-        $data['Order'] += array_shift(M('Order')->field('count(id) no_appraise')->where(['user_id'=>$id,'type'=>'3'])->select());
-        $data['Order'] += array_shift(M('Order')->field('count(id) on_after')->where(['user_id'=>$id,'type'=>['GT','4']])->select());
+        print_r(M('Order')->field('count(id) no_pay')->where(['user_id'=>'1'])->getField('type'));die;
+        $data['Order'] = array_count_values(M('Order')->field('count(id) no_pay')->where(['user_id'=>$id])->getField('type'));
         return $data;
     }
 }

@@ -11,8 +11,4 @@ class MyinfoController extends CommonController
         if(empty($id)) $this->returnAjaxError(['message'=>'用户ID不能为空！']);
         $this->quickReturn($this->Model->getIndexInfo($id));
     }
-
-    public function test(){
-//        print_r(D('Shou'));
-    }
 }
