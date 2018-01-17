@@ -6,6 +6,9 @@ use Think\Controller\RestController;
  */
 class CommonController extends RestController
 {
+    //引入分页特性
+    use page;
+
     public function _initialize()
     {
         //登陆验证
@@ -144,18 +147,6 @@ class CommonController extends RestController
         ]);
     }
 
-    /**
-     * 设置分页数据
-     */
-    public function page(){
-        $page = isset($_POST['page']) ? $_POST['page']:1;
-        $pagesize = isset($_POST['pagesize']) ? $_POST['pagesize']:C('__PAGESIZE__');
-        $offset = ($page-1) * $pagesize;
-        $this->offset   = $offset;
-        $this->pagesize = $pagesize;
-        return $offset.','.$pagesize;
-    }
-
     //模型工厂
     private static function getModel($obj){
         if(!is_object($obj)) return M();
@@ -219,5 +210,19 @@ class CommonController extends RestController
                 static::returnAjaxSuccess(['message'=>$action.'成功！']);
             }
         }
+    }
+}
+
+    /**
+     * 设置分页数据
+     */
+    trait page {
+    public function page(){
+        $page = isset($_POST['page']) ? $_POST['page']:1;
+        $pagesize = isset($_POST['pagesize']) ? $_POST['pagesize']:C('__PAGESIZE__');
+        $offset = ($page-1) * $pagesize;
+        $this->offset   = $offset;
+        $this->pagesize = $pagesize;
+        return $offset.','.$pagesize;
     }
 }
