@@ -15,7 +15,7 @@ class CollectModel extends CommonModel
             'mapping_type'  => self::BELONGS_TO,
             'class_name'    => 'shop',
             'foreign_key'   => 's_id',
-            'as_fields'     => 'id,tit,tit_en,price,rate'
+            'as_fields'     => 'tit,tit_en,price,rate'
         ],
     ];
 
@@ -24,7 +24,14 @@ class CollectModel extends CommonModel
     ];
 
     public function getList($id){
-        print_r($this->where(['u_id'=>1])->relation('shop')->limit($this->page())->select());
-        print_r($this->_sql());die;
+        return $this->field(['id','s_id'])->where(['u_id'=>$id])->relation('shop')->limit($this->page())->select();
+    }
+
+    public function addCollect($UserID,$ShopID){
+        return $this->add(['u_id'=>$UserID,'s_id'=>$ShopID]);
+    }
+
+    public function removeCollect($id){
+        return $this->limit($this->page())->delete($id);
     }
 }
