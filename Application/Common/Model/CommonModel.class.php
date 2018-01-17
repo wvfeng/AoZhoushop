@@ -2,7 +2,7 @@
 
 namespace Common\Model;
 
-use Think\Model;
+use Think\Model\RelationModel;;
 
 /**
  * Class CommonModel
@@ -10,7 +10,7 @@ use Think\Model;
  * 公共模型库
  */
 
-class CommonModel extends Model
+class CommonModel extends RelationModel
 {
     //根据数据表获取全部字段信息
     public function getFields($obj){
