@@ -12,6 +12,7 @@ use Think\Model\RelationModel;;
 
 class CommonModel extends RelationModel
 {
+    use \Common\Controller\page;
     //根据数据表获取全部字段信息
     public function getFields($obj){
 
