@@ -18,11 +18,11 @@ class MyinfoController extends CommonController
         $this->quickReturn($this->Model->save(),'修改');
     }
 
-    public function addCollect(){
-
-    }
-
-    public function rmCollect(){
-
+    public function Collect($id =null,$type = null,$action = null){
+        if(empty($id) || empty($type)) $this->returnAjaxError(['message'=>'ID和类型不能为空！']);
+        $model = D('Common\Model\CollectModel');
+        if($type == 'list'){
+            $this->quickReturn($this->Model->where(['u_id'=>$id])->limit($this->page())->select());
+        }
     }
 }
