@@ -6,7 +6,7 @@ use Common\CommonModel as Model;
 
 /**
  * Class CommonModel
- * @package Home\Model
+ * @package Computer\Model
  * 公共模型库
  */
 
