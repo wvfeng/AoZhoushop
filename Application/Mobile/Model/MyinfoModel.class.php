@@ -7,8 +7,8 @@ namespace Mobile\Model;
  * @package Home\Model
  * 用户模型库
  */
-use Think\Model\RelationModel;
-class MyinfoModel extends RelationModel
+
+class MyinfoModel extends CommonModel
 {
     protected $tableName = 'User';
     protected $_link = [
