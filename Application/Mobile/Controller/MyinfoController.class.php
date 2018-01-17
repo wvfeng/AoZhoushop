@@ -18,11 +18,21 @@ class MyinfoController extends CommonController
         $this->quickReturn($this->Model->save(),'修改');
     }
 
-    public function Collect($id =null,$type = null,$action = null){
-        if(empty($id) || empty($type)) $this->returnAjaxError(['message'=>'ID和类型不能为空！']);
+    public function Collect($UserID =null,$ShopID = null,$CollectID = null,$type = null){
+        if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空！']);
         $model = D('Common/Collect');
+        $type = strtolower($type);
         if($type == 'list'){
-            $this->quickReturn($model->getList($id));
+            if(empty($UserID)) $this->returnAjaxError(['message'=>'缺少用户ID']);
+            $this->quickReturn($model->getList($UserID));
+        }elseif($type == 'add'){
+            if(empty($UserID) || empty($ShopID)) $this->returnAjaxError(['message'=>'缺少用户或商品ID']);
+            $this->quickReturn($model->addCollect($UserID,$ShopID),'收藏');
+        }elseif(in_array($type,['delete','remove'])){
+            if(empty($CollectID)) $this->returnAjaxError(['message'=>'缺少收藏ID']);
+            $this->quickReturn($model->removeCollect($CollectID),'收藏');
+        }else{
+            $this->returnAjaxError(['message'=>'空类型！']);
         }
     }
 }
