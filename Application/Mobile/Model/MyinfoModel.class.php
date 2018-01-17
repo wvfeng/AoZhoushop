@@ -3,8 +3,8 @@
 namespace Mobile\Model;
 
 /**
- * Class CommonModel
- * @package Home\Model
+ * Class MyinfoModel
+ * @package Mobile\Model
  * 用户模型库
  */
 
@@ -28,6 +28,7 @@ class MyinfoModel extends CommonModel
     public function getUserInfo($id){
         if(empty($id)) return false;
         $data = $this->field('iphone,email,password',true)->relation('User_detail')->find($id);
+        $data['id'] = url_encode($data['id'],7,'day');
         $data['Order'] = array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true));
         return $data;
     }

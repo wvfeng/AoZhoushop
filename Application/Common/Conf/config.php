@@ -11,8 +11,9 @@ return array(
 
     //配置文件上传路径
     '__PATH_ROOT__'   => '/bweb/azshop/',                       // 接口根目录
-    '__PATH_UPLOAD__' => C('__PATH_ROOT__').'Public/Uploads/',  // 文件上传目录
+    '__PATH_UPLOAD__' => 'Public/Uploads/',  // 文件上传目录
     '__PATH_IMAGE__'  => C('__PATH_UPLOAD__').'image/',         // 图片路径
+    '__PATH_TUIHUAN__'=> C('__PATH_UPLOAD__').'image/tuihuan/', // 退换货，售后
     '__PATH_PHOTO__'  => C('__PATH_UPLOAD__').'image/photo/',   // 相册目录，上线后加深一个层级
     '__PATH_VIDEO__'  => C('__PATH_UPLOAD__').'video/',         // 视频和视频缩略图资源
     '__PATH_HEADER__' => C('__PATH_UPLOAD__').'header/',        // 用户头像像资源

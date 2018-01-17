@@ -217,12 +217,13 @@ class CommonController extends RestController
      * 设置分页数据
      */
 Trait page {
-    public function page(){
+    public function page($boolean = false){
         $page = isset($_POST['page']) ? $_POST['page']:1;
         $pagesize = isset($_POST['pagesize']) ? $_POST['pagesize']:C('__PAGESIZE__');
         $offset = ($page-1) * $pagesize;
         $this->offset   = $offset;
         $this->pagesize = $pagesize;
+        if($boolean) return $pagesize;
         return $offset.','.$pagesize;
     }
 }
