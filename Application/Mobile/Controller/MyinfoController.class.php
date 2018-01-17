@@ -22,7 +22,7 @@ class MyinfoController extends CommonController
         if(empty($id) || empty($type)) $this->returnAjaxError(['message'=>'ID和类型不能为空！']);
         $model = D('Common/Collect');
         if($type == 'list'){
-            $this->quickReturn($this->Model->where(['u_id'=>$id])->limit($this->page())->select());
+            $this->quickReturn($model->getList($id));
         }
     }
 }
