@@ -168,22 +168,12 @@ class CommonController extends RestController
         if(class_exists(MODULE_NAME.'\Model\\'.$table.'Model')) return D($table);
         $namespaces = array_diff($namespaces,[MODULE_NAME]);
         foreach ($namespaces as $name){
-            if(class_exists("{$name}\Model\{$table}Model")) return D($table);
+            if(class_exists("{$name}\Model\{$table}Model")) return D($name."/".$table);
         }
         $table = strtolower($table);
         //判断控制器对应模型控制的数据表是否真实存在，如果存在就实例化并保存在当前对象的model属性中
         if(in_array(C("DB_PREFIX") . $table,$tables)){
-            //拼接命名空间
-            $namespace = preg_replace('/(\w+)\\\(?:\w+\\\)+(?:\w+)Controller/',"$1",get_class($obj));
-            $model = D($namespace."/".$table);
-            if(get_class($model) == "Think\Model"){
-                foreach ($namespaces as $name)
-                    $model = D($name."/".$table);
-                    if(get_class($model) != "Think\Model"){
-                        return $model;
-                    }
-            }
-            return $model;
+            return M($table);
         }else{
             $res = M()->query("SHOW TABLES LIKE '%{$table}'");
             if(empty($res)){
