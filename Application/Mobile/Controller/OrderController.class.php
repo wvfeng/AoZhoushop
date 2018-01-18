@@ -76,6 +76,19 @@ class OrderController extends CommonController
             $this->returnAjaxError(['data'=>['msg'=>'失败']]);
         }
     }
+    //付款成功
+    public function paysuccess(){
+        $orderid = I('orderid');
+        if(empty($this->isorder($orderid))){
+            $this->_empty();
+        }
+        $data['data'] = M('order')->where(['id'=>$orderid])->field('name,iphone,address,paymoney')->find();
+        if(!empty(count($data))){
+            $this->returnAjaxSuccess($data);
+        }else{
+            $this->returnAjaxError(['data'=>['msg'=>'失败']]);
+        }
+    }
     //是否有这个订单
     protected function isorder($id){
         return M('order')->where(['id'=>$id])->count();
