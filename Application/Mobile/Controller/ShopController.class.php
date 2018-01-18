@@ -121,7 +121,6 @@ class ShopController extends CommonController
         $data['date'] = date('Y-m-d');
         $data['type'] = 1;
         $data['money'] = $total;
-        $data['pick_type'] = I('pick_type');//1或2
         $res = M('order')->add($data);
         if(!empty($res)){
             $this->returnAjaxSuccess(['data'=>['msg'=>'成功','orderid'=>$res]]);
