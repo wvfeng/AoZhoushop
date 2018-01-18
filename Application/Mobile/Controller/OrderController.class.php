@@ -46,8 +46,35 @@ class OrderController extends CommonController
         }
         $mapClassify['classify_id'] = array('in',array_unique($classify_id));
         $mapId['id'] = array('not in',$shop);
-        $data = M('shop')->where($mapClassify)->where($mapId)->select();
-        print_r($data);die;
+        $data['data'] = M('shop')->where($mapClassify)->where($mapId)->limit(2)->field('img,id,tit,price,rate')->select();
+        if(!empty(count($data))){
+            $this->returnAjaxSuccess($data);
+        }else{
+            $this->returnAjaxError(['data'=>['msg'=>'失败']]);
+        }
+    }
+    //其他人也在买
+    public function otherbuying(){
+        $mapUser['user_id'] = array('not in',array(session('user_id')));
+        $order = M('order')->where($mapUser)->order('id desc')->field('shop_id')->select();
+        $shopCount = array();
+        foreach ($order as $key => $v) {
+            $shop = explode('|*|',$v['shop_id']);
+            if($shop[0]==$shopCount[0]){
+                break;
+            }
+            $shopCount[$key] = $shop[0];
+            if(count($shopCount)>=2){
+                break;
+            }
+        }
+        $shopMap['id'] = array('in',$shopCount);
+        $data['data'] = M('shop')->where($shopMap)->field('img,id,tit,price,rate')->select();
+        if(!empty(count($data))){
+            $this->returnAjaxSuccess($data);
+        }else{
+            $this->returnAjaxError(['data'=>['msg'=>'失败']]);
+        }
     }
     //是否有这个订单
     protected function isorder($id){
