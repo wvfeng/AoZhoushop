@@ -40,8 +40,19 @@ class MyinfoController extends CommonController
     public function creditOrder($UserID =null,$ShopID = null,$type = null,$content = null){
         if(empty($UserID) || empty($ShopID)) $this->returnAjaxError(['message'=>'缺少用户或商品ID!']);
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空!']);
+        if(in_array(strtolower($type),['退货','换货','售后','1','2','3'])) $this->returnAjaxError(['message'=>'类型错误!']);
         $model = D('Credit');
         $model->create();
-        $this->quickReturn($model->save(),'申请'.$type);
+        $this->quickReturn($model->add(),'申请'.$type);
+    }
+
+    public function addExpress(){
+        $model = D('Credit');
+        $model->create();
+        $this->quickReturn($model->save(),'添加物流信息');
+    }
+
+    public function creditList(){
+        var_dump(eval('return strlen(pow(10,10));'));
     }
 }
