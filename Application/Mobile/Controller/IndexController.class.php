@@ -14,7 +14,7 @@ class IndexController extends CommonController
         $this->quickReturn($data);
     }
     //获取一级分类
-    protected function classify(){1
+    protected function classify(){
     	$db = M('classify');
     	return $db->where(['level'=>1])->select();
     }
