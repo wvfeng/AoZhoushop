@@ -8,7 +8,7 @@ return array(
     'DB_PWD'                =>  'Buyun666888!',   // 密码
     'DB_PORT'               =>  '3306',           // 端口
     'DB_PREFIX'				=>	'mall_',		  // 表前缀
-
+    'url_model'=>0,
     //配置文件上传路径
     '__PATH_ROOT__'   => '/bweb/azshop/',                       // 接口根目录
     '__PATH_UPLOAD__' => 'Public/Uploads/',  // 文件上传目录
