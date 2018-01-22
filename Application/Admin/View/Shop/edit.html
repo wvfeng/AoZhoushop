@@ -34,12 +34,21 @@
                     <script type="text/javascript">
                     $("._type").change(function(){
                         $('#_type').append("<input type='hidden' name='type_all[]' value='"+$(this).val()+"'><span><a title='点击删除' style='color:red;cursor: pointer;'>"+$(this).val()+"</a></span>");
+                        if($(this).val()=='今日特价'){
+                            $('.oldprice').show();
+                        }else{
+                            $('.oldprice').hide();
+                        }
                     })
                     $('#_type').delegate('a','click',function(){
                         $(this).parent().prev().remove();
                         $(this).parent().remove();
                     })
                     </script>
+                    <div class="info-model clearfix oldprice" style="display:none;">
+                        <span>原本价格</span>
+                        <div><input type="number" name="oldprice" value="" placeholder="原本价格"/></div>
+                    </div>
                     <div class="info-model clearfix">
                         <span>商品名称</span>
                         <input type="hidden" name="id" value="{$res.id}">
