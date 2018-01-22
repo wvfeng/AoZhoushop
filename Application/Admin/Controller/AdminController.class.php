@@ -4,7 +4,7 @@ namespace Admin\Controller;
 class AdminController extends CommonController
 {
     public function index()
-    {
+    {  
         $Model = M('admin');
         $this->assign('list', $Model->select());
         $this->display();

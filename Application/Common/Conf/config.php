@@ -16,7 +16,7 @@ return array(
     '__PATH_PHOTO__'  => C('__PATH_UPLOAD__').'image/photo/',   // 相册目录，上线后加深一个层级
     '__PATH_VIDEO__'  => C('__PATH_UPLOAD__').'video/',         // 视频和视频缩略图资源
     '__PATH_HEADER__' => C('__PATH_UPLOAD__').'header/',        // 用户头像像资源
-
+    'url_model' => 1,
     //分享功能配置
     'EWM_PATH'        => 'Public/Uploads/image/erweima/',    // 分享二维码存放路径
     'EWM_URL'         => 'http://www.xuanwb.com/register/0', // 分享二维码跳转地址
