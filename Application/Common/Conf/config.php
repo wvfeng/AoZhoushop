@@ -33,10 +33,8 @@ return array(
 
     //需要登陆验证的接口
     'CHECKLIST' => [
-        'Myinfo/getIndex',
-        'Myinfo/getUserInfo',
+        //小写pathinfo
     ],
-
 
     /* 数据缓存设置 */
     'DATA_CACHE_TIME' =>  604800,      // 设置数据缓存有效期为 7天
