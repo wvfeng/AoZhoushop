@@ -22,7 +22,7 @@ class IndexController extends CommonController
     protected function getshop($typestr,$limit,$sort='desc'){
         $db = M('shop');
         $map['type'] = array('like','%'.$typestr.'%');
-        $data = $db->where($map)->limit($limit)->field('img,tit,price,rate,id,classify_id')
+        $data = $db->where($map)->limit($limit)->field('img,tit,price,rate,id,classify_id,oldprice')
         ->order('id '.$sort)->select();
         foreach ($data as $key => &$v) {
             $v['classifyname'] = M('classify')->where(['id'=>$v['classify_id']])->getField('classname');
