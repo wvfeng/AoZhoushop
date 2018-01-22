@@ -48,6 +48,7 @@ class ShopController extends Controller {
         $data['sliedimg'] = implode('|*|', I('slide')).'|*|';
         $data['type'] = implode('|*|', array_unique(I('type_all'))).'|*|';
     	$data['tit'] = I('tit');
+        $data['oldprice'] = I('oldprice');
         $data['price'] = I('price');
         $data['detail'] = I('detail');
     	$data['img'] = I('img');
