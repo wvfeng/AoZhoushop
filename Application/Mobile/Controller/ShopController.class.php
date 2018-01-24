@@ -16,7 +16,7 @@ class ShopController extends CommonController
         }
     	$db = M('shop');
         $data['data'] = $db->where(['id'=>I('id')])->field('sliedimg,tit,price,specifications,origin,
-            storage,rate,detail')->find();
+            storage,rate,detail,oldprice')->find();
     	if(empty($data['data'])){
     		$this->returnAjaxError($data);
     	}else{
