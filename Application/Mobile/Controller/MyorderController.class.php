@@ -122,7 +122,7 @@ class MyorderController extends CommonController
     public function newUser(){
         $db = M('user');
        I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
-        if(I('post.password')==I('post.passwords'))$this->returnAjaxError(array('data'=>'密码重复'));
+        if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
         // die();
        $where['username'] = I('post.username');
        // 判断是手机号还是email
