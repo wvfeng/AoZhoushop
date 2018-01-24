@@ -47,13 +47,13 @@ class ShopController extends Controller {
     public function doadd(){
         $data['sliedimg'] = implode('|*|', I('slide')).'|*|';
         $data['type'] = implode('|*|', array_unique(I('type_all'))).'|*|';
-    	$data['tit'] = I('tit');
+    	$data['tit'] = I('tit','');
         $data['oldprice'] = I('oldprice');
         $data['price'] = I('price');
-        $data['detail'] = I('detail');
+        $data['detail'] = htmlspecialchars_decode(I('detail'));
     	$data['img'] = I('img');
         $data['tit_en'] = I('tit_en');
-        $data['detail_en'] = I('detail_en');
+        $data['detail_en'] = htmlspecialchars_decode(I('detail_en'));
         $data['specifications'] = I('specifications');
         $data['origin'] = I('origin');
         $data['storage'] = I('storage');

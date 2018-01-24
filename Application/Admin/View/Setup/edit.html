@@ -1,0 +1,55 @@
+<extend name="Index:shouye" />
+<block name="body">
+    <div class="info-main main FromUpToDown">
+        <h1>首页图片编辑 <a href="javascript:history.go(-1);"style="float:right;">返回上一级</a></h1>
+        <form method="post" action="{:U('doadd')}" id="postform">
+            <div class="info-list clearfix">
+                <div class="info-right" style="width: 700px;">
+                    <div class="info-model clearfix">
+                        <span>图片分类</span>
+                        <div>
+                            <select name="type" class="is_vip" style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                                    <option value="1"<if condition="1 eq $res['type']">selected="selected"</if>>首页轮播</option>
+                                    <option value="2"<if condition="2 eq $res['type']">selected="selected"</if>>首页中间广告位</option>
+                                    <option value='3'<if condition="3 eq $res['type']">selected="selected"</if>>分类页广告位</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="info-model clearfix">
+                        <span>图片超链接</span>
+                        <div><input type="text" name="link" value="{$res.link}" placeholder="图片超链接"/></div>
+                    </div>
+                    <div class="info-model clearfix">
+                    <span>商品图片<br/></span>
+                    <div style="height:80px;">
+                        <input type="hidden" name="img"value="{$res.img}">
+                        <img src="__PUBLIC__/slide/{$res.img}"style="width:80px;height:80px;" id="browse">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <input type="hidden" name="id" value="{$res.id}">
+            <button class="info-submit" type="submit">确定</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+    //实例化一个plupload上传对象
+    var uploader = new plupload.Uploader({
+        browse_button : 'browse', //触发文件选择对话框的按钮，为那个元素id
+        url : "{:U('upload')}", //服务器端的上传页面地址
+        flash_swf_url : '__PUBLIC__/admin/js/plupload/Moxie.swf', //swf文件，当需要使用swf方式进行上传时需要配置该参数
+        silverlight_xap_url : '__PUBLIC__/admin/js/plupload/Moxie.xap' //silverlight文件，当需要使用silverlight方式进行上传时需要配置该参数
+    });    
+
+    //在实例对象上调用init()方法进行初始化
+    uploader.init();
+    //绑定各种事件，并在事件监听函数中做你想做的事
+    uploader.bind('FilesAdded',function(uploader,files){
+      uploader.start();
+    });
+    uploader.bind('FileUploaded',function(uploader,files,responseObject){
+      $('#browse').attr("src","__PUBLIC__/slide/"+responseObject.response+"");
+      $("input[name='img']").val(responseObject.response);
+    });
+    </script>
+</block>

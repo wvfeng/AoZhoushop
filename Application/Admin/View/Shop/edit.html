@@ -47,7 +47,7 @@
                     </script>
                     <div class="info-model clearfix oldprice" style="display:none;">
                         <span>原本价格</span>
-                        <div><input type="number" name="oldprice" value="{$res.oldprice}" placeholder="原本价格"/></div>
+                        <div><input type="number" name="oldprice" value="{$res.oldprice|default='0'}" placeholder="原本价格"/></div>
                     </div>
                     <div class="info-model clearfix">
                         <span>商品名称</span>
@@ -78,11 +78,11 @@
                     </div>
                     <div class="info-model clearfix">
                         <span>所需现金</span>
-                        <div><input type="number" name="price" value="{$res.price}" placeholder="现金"/></div>
+                        <div><input type="number" name="price" value="{$res.price|default='0'}" placeholder="现金"/></div>
                     </div>
                     <div class="info-model clearfix">
                         <span>商品规格</span>
-                        <div><input type="text" name="specifications" value="{$res.specifications}" placeholder="规格"/></div>
+                        <div><input type="text" name="specifications" value="{$res.specifications|default='0'}" placeholder="规格"/></div>
                     </div>
                     <div class="info-model clearfix">
                         <span>商品产地</span>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="info-model clearfix">
                         <span>商品汇率</span>
-                        <div><input type="text" name="rate" value="{$res.rate}" placeholder="汇率"/></div>
+                        <div><input type="text" name="rate" value="{$res.rate|default='0'}" placeholder="汇率"/></div>
                     </div>
                     <div class="info-model clearfix">
                         <span>商品详情</span>
