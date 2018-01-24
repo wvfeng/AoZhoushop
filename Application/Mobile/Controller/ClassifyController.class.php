@@ -49,7 +49,7 @@ class ClassifyController extends CommonController
     		$this->_empty();
     	}
     	$data['data'] = $db->where(['classify_id'=>I('id')])->page($this->page())
-    	->order('id '.I('sort'))->field('img,tit,price,rate')->select();
+    	->order('id '.I('sort'))->field('img,tit,price,rate,id')->select();
     	if(empty($data['data'])){
     		$this->returnAjaxError($data);
     	}else{
