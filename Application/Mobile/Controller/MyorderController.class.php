@@ -110,8 +110,10 @@ class MyorderController extends CommonController
         $where['iphone|email'] = I('post.username');
         $data['data'] = $db ->where($where)->select();
         if(!empty($data)){
+            // var_dump($data);die;
             session('user_id',$data['data'][0]['id']);
-             $this->returnAjaxSuccess($data['data'][0]);
+
+             $this->returnAjaxSuccess($data);
         }else{
              $this->returnAjaxError($data); 
         }
