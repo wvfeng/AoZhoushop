@@ -111,7 +111,7 @@ class MyorderController extends CommonController
         $data['data'] = $db ->where($where)->select();
         if(!empty($data)){
             session('user_id',$data['data'][0]['id']);
-             $this->returnAjaxSuccess($data);
+             $this->returnAjaxSuccess($data['data'][0]);
         }else{
              $this->returnAjaxError($data); 
         }
