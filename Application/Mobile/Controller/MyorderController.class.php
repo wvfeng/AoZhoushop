@@ -108,9 +108,9 @@ class MyorderController extends CommonController
         $db = M('user');
         $where['password'] = md5(I('post.password'));
         $where['iphone|email'] = I('post.username');
-        $data = $db ->where($where)->select();
+        $data['data'] = $db ->where($where)->select();
         if(!empty($data)){
-            session('user_id',$data['id']);
+            session('user_id',$data['data'][0]['id']);
              $this->returnAjaxSuccess($data);
         }else{
              $this->returnAjaxError($data); 
