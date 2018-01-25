@@ -108,7 +108,7 @@ class MyorderController extends CommonController
         $db = M('user');
         $where['password'] = md5(I('post.password'));
         $where['iphone|email'] = I('post.username');
-        $data['data'] = $db ->where($where)->select();
+        $data['data'] = $db ->where($where)->find();
         if(!empty($data)){
             // var_dump($data);die;
             session('user_id',$data['data'][0]['id']);
@@ -166,5 +166,21 @@ class MyorderController extends CommonController
         // 邮箱
         $this->send_email($pwd);
      }
+    }
+    /**
+     * 文件上传入口
+     * string id
+     */
+    public function userSay(){
+        // 用户评星级
+        $where['star'] = I('post.star');
+        $where['con'] = I('post.con');
+        $where['user_id'] = session('user_id');
+        $where['type'] = I('post.type');
+        // 图片接口
+    
+    }
+    public function picture($a){
+        
     }
 }
