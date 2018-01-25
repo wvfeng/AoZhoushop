@@ -15,7 +15,7 @@ class SetupController extends CommonController
             $this->_empty();
         }
     	$db = M('setup');
-        $data['data'] = $db->where(['type'=>I('type')])->field('img,link,type')->find();
+        $data['data'] = $db->where(['type'=>I('type')])->field('img,link,type')->select();
     	if(empty($data['data'])){
     		$this->returnAjaxError($data);
     	}else{
