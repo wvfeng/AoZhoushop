@@ -109,9 +109,11 @@ class MyorderController extends CommonController
         $where['password'] = md5(I('post.password'));
         $where['iphone|email'] = I('post.username');
         $data['data'] = $db ->where($where)->find();
+
         if(!empty($data)){
             // var_dump($data);die;
-            session('user_id',$data['data'][0]['id']);
+            unset($data['data']['password']);
+            // session('user_id',$data['data'][0]['id']);
 
              $this->returnAjaxSuccess($data);
         }else{
@@ -180,7 +182,29 @@ class MyorderController extends CommonController
         // 图片接口
     
     }
-    public function picture($a){
-        
+    public function picture($type="uploads",$file){
+    // 图片上传接口
+              // $type = "conf";
+                $upload = new \Think\Upload();// 实例化上传类
+                $upload->maxSize   =     53145728 ;// 设置附件上传大小
+                $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg','tmp');// 设置附件上传类型
+                $upload->rootPath  =     './Public/'; // 设置附件上传根目录
+                $upload->savePath  =     $type."/"; // 设置附件上传（子）目录
+                $upload->subName   =     '';
+                          //缩略图
+                $upload->uploadReplace     = true; //是否存在同名文件是否覆盖  
+                $upload->autoSub           = true; //是否使用子目录保存图片  
+                $upload->thumbRemoveOrigin = false; //上传图片后删除原图片 
+        foreach ($file as $key => $val) {
+            if (!empty($file[$key]['tmp_name'])) {
+                $info = $upload->uploadOne($file[$key]);
+                if ($info) {
+                     $w = "/conf/".$info['savename'];
+                     $where[$key] = $w;
+                }
+            }
+        }    
+    // 
+       }
     }
 }
