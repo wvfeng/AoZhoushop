@@ -37,9 +37,7 @@ class OrderController extends CommonController
     //猜你喜欢
     public function youlike(){
         $orderid = M('order')->where(['user_id'=>I('user_id')])->order('id desc')->limit(1)->getField('id');
-        if(empty($this->isorder($orderid))){
-            $this->_empty();
-        }
+
         $shop = explode('|*|',M('order')->where(['id'=>$orderid])->getField('shop_id'));
         foreach ($shop as $key => &$v) {
             $classify_id[$key] = M('shop')->where(['id'=>$v])->getField('classify_id');
@@ -48,7 +46,7 @@ class OrderController extends CommonController
         $mapId['id'] = array('not in',$shop);
         $data['data'] = M('shop')->where($mapClassify)->where($mapId)->limit(2)->field('img,id,tit,price,rate')->select();
 
-        if(!empty(count($data))){
+        if(!empty(count($data['data']))){
             $this->returnAjaxSuccess($data);
         }else{
             $data['data'] = M('shop')->limit(2)->field('img,id,tit,price,rate')->select();
