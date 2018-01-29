@@ -34,7 +34,7 @@ class MyinfoModel extends CommonModel
             'non_payment'   => isset($Order['未付款']) ? $Order['未付款']:0,
             'non_shipments' => isset($Order['待发货']) ? $Order['待发货']:0,
             'shipments'     => isset($Order['已发货']) ? $Order['已发货']:0,
-            'non-evaluate'  => isset($Order['待评论']) ? $Order['待评论']:0,
+            'non_evaluate'  => isset($Order['待评论']) ? $Order['待评论']:0,
             'finish'        => isset($Order['已评价']) ? $Order['已评价']:0,
             'after_sale'    => (isset($Order['退货']) ? $Order['退货']:0) + (isset($Order['换货']) ? $Order['换货']:0) + (isset($Order['售后']) ? $Order['售后']:0),
         ];
