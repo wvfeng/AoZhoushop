@@ -22,7 +22,6 @@ class ShopController extends CommonController
     	}else{
     		$this->returnAjaxSuccess($data);
     	}
-    	
     }
     /*加入购物车
       id商品ID
