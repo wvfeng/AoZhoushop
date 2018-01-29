@@ -36,7 +36,7 @@ class MyinfoModel extends CommonModel
             'shipments'     => $Order['已发货'] ?? 0,
             'non-evaluate'  => $Order['待评论'] ?? 0,
             'finish'        => $Order['已评价'] ?? 0,
-            'after_sale'    => ($Order['退货'] ?? 0) + ($Order['换货'] ?? 0) + ($Order['售后'] ?? 0),
+            'after_sale'    => (isset($Order['退货']) ? $Order['退货']:0) + (isset($Order['换货']) ? $Order['换货']:0) + (isset($Order['售后']) ? $Order['售后']:0),
         ];
         return $data;
     }
