@@ -36,7 +36,7 @@ class OrderController extends CommonController
     }
     //猜你喜欢
     public function youlike(){
-        $orderid = I('orderid');
+        $orderid = M('order')->where(['user_id'=>I('user_id')])->order('id desc')->limit(1)->getField('id');
         if(empty($this->isorder($orderid))){
             $this->_empty();
         }
@@ -47,10 +47,12 @@ class OrderController extends CommonController
         $mapClassify['classify_id'] = array('in',array_unique($classify_id));
         $mapId['id'] = array('not in',$shop);
         $data['data'] = M('shop')->where($mapClassify)->where($mapId)->limit(2)->field('img,id,tit,price,rate')->select();
+
         if(!empty(count($data))){
             $this->returnAjaxSuccess($data);
         }else{
-            $this->returnAjaxError(['data'=>['msg'=>'失败']]);
+            $data['data'] = M('shop')->limit(2)->field('img,id,tit,price,rate')->select();
+            $this->returnAjaxSuccess($data);
         }
     }
     //其他人也在买
@@ -92,5 +94,22 @@ class OrderController extends CommonController
     //是否有这个订单
     protected function isorder($id){
         return M('order')->where(['id'=>$id])->count();
+    }
+    //获取评论
+    public function evaluationlist(){
+        if(I('shop_id')){
+            $map = array('shop_id'=>I('shop_id'));
+        }
+        $data['data'] = M('evaluation')->join("mall_shop ON mall_shop.id=mall_evaluation.shop_id")
+        ->page($this->page())
+        ->where($map)
+        ->where(['mall_evaluation.user_id'=>I('user_id')])
+        ->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.id as shop_id,mall_evaluation.date,
+            mall_evaluation.text,mall_evaluation.star,mall_evaluation.img')->select();
+        if(!empty(count($data))){
+            $this->returnAjaxSuccess($data);
+        }else{
+            $this->returnAjaxError(['data'=>['msg'=>'失败']]);
+        }
     }
 }
