@@ -181,15 +181,28 @@ class MyorderController extends CommonController
     public function userSay(){
         // 用户评星级
         $where['star'] = I('post.star');
-        $where['con'] = I('post.con');
+        $where['text'] = I('post.text');
         $where['user_id'] = session('user_id');
+        $where['shop_id'] = I('post.shop_id');
         $where['type'] = I('post.type');
         // 图片接口
-    
+        $file = $_FILES;
+        // var_dump($file);die();
+        $type = "say";
+        $table = "evaluation";
+        $tables = 'order';
+        $this->picture($type,$file,$where,$table,$tables);
     }
-    public function picture($type="uploads",$file){
+    /**
+     * [picture description]
+     * @param  string    $type  [保存路径]
+     * @param  [array]   $file  [图片]
+     * @param  [string]  $where [文字参数]
+     * @param  [data]    $table [存入表中]
+     * @return [json]    $data  [处理结果]
+     */
+    public function picture($type="uploads",$file,$where,$table,$tables){
     // 图片上传接口
-              // $type = "conf";
                 $upload = new \Think\Upload();// 实例化上传类
                 $upload->maxSize   =     53145728 ;// 设置附件上传大小
                 $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg','tmp');// 设置附件上传类型
@@ -205,11 +218,23 @@ class MyorderController extends CommonController
                 $info = $upload->uploadOne($file[$key]);
                 if ($info) {
                      $w = "/conf/".$info['savename'];
-                     $where[$key] = $w;
+                     $img[$key] = $w;
                 }
+
             }
         }    
-    // 
-       
+        $where['img'] = implode($img, "|*|");
+        $db = M($table);
+        $data['data'] = $db->add($where);
+         if(!empty($data['data'])){
+            // 如果评论已提交更改订单状态
+             if($tables){
+               $dbs = M($tables);
+               $con = $dbs->where(['id'=>$where['shop_id']])->save(['type'=>'已评价']);
+               $con?$this->returnAjaxSuccess($data):$this->returnAjaxError($data); 
+             }
+        }else{
+             $this->returnAjaxError($data); 
+        }
     }
 }
