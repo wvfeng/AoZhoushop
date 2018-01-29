@@ -31,8 +31,8 @@ class MyinfoModel extends CommonModel
         $data['id'] = url_encode($data['id'],7,'day');
         $Order = array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true));
         $data['Order'] = [
-            'non-payment'   => isset($Order['未付款']) ? $Order['未付款']:0,
-            'non-shipments' => isset($Order['待发货']) ? $Order['待发货']:0,
+            'non_payment'   => isset($Order['未付款']) ? $Order['未付款']:0,
+            'non_shipments' => isset($Order['待发货']) ? $Order['待发货']:0,
             'shipments'     => isset($Order['已发货']) ? $Order['已发货']:0,
             'non-evaluate'  => isset($Order['待评论']) ? $Order['待评论']:0,
             'finish'        => isset($Order['已评价']) ? $Order['已评价']:0,
