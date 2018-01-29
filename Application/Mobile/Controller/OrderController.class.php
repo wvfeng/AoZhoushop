@@ -10,7 +10,7 @@ class OrderController extends CommonController
 	/*parm:
 	orderid 订单ID
 	*/
-    public function findorder(){
+    public function findorder(){print_r(222);die;
         $orderid = I('orderid');
         if(empty($this->isorder($orderid))){
                 $this->_empty();
@@ -35,7 +35,7 @@ class OrderController extends CommonController
         }
     }
     //猜你喜欢
-    public function youlike(){print_r(222);die;
+    public function youlike(){
         $orderid = M('order')->where(['user_id'=>I('user_id')])->order('id desc')->limit(1)->getField('id');
 
         $shop = explode('|*|',M('order')->where(['id'=>$orderid])->getField('shop_id'));
