@@ -35,7 +35,7 @@ class OrderController extends CommonController
         }
     }
     //猜你喜欢
-    public function youlike(){
+    public function youlike(){print_r(222);die;
         $orderid = M('order')->where(['user_id'=>I('user_id')])->order('id desc')->limit(1)->getField('id');
 
         $shop = explode('|*|',M('order')->where(['id'=>$orderid])->getField('shop_id'));
