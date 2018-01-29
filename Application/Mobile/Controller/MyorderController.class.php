@@ -27,8 +27,17 @@ class MyorderController extends CommonController
              break;
      }
      $db = M('order');
-     $data['data'] = $db->where(['type'=>$type])->select();
-     $this->returnAjaxSuccess($data);
+     $where['type'] = $type;
+     $where['user_id'] = 60;
+     $con = $db->where($where)->field('shop_id')->select();
+     foreach ($con as $key => $value) {
+         $shop_id = explode("|*|",$con[$key]['shop_id']);
+         $wheres['id'] = array('in',implode($shop_id,","));
+         $data[$key]['data'] = M('shop')->where($wheres)->select();
+     }
+     // var_dump($data);die;
+     
+     $this->quickReturn($data);
     }
     /**
      * 待付款->取消付款:立即付款
@@ -49,7 +58,7 @@ class MyorderController extends CommonController
          if(I('get.type')==1){
             // 提醒发货
             $data['data']=$db->where($where)->setInc('warn');
-            if($data['data'])$this->returnAjaxSuccess($data);
+            if($data['data'])$this->quickReturn($data);
          }elseif(I('get.type')==2){
             // 取消订单
          }
@@ -64,7 +73,7 @@ class MyorderController extends CommonController
          $where['_logic'] = 'AND';
          $db = M('credit_order');
          $data['data'] = $db->where($where)->field('LogisticCode')->find();
-         if($data['data'])$this->returnAjaxSuccess($data);
+         if($data['data'])$this->quickReturn($data);
 
     }
     /**
@@ -74,7 +83,7 @@ class MyorderController extends CommonController
     $db = M('order');
     I('get.id')?$where['id']=I('get.id'):$this->returnAjaxError();
     $data['data'] = $db->where(['id'=>I('get.id')])->delete();
-    if($data['data'])$this->returnAjaxSuccess($data);
+    if($data['data'])$this->quickReturn($data);
     }
     /**
      * 地址更新与添加
@@ -87,7 +96,7 @@ class MyorderController extends CommonController
         }else{
            $data['data'] = $db->add($_POST);
         }
-            $this->returnAjaxSuccess($data);
+            $this->quickReturn($data);
     }
     /**
      * 地址删除
@@ -98,7 +107,7 @@ class MyorderController extends CommonController
         $id ? $id : $this->returnAjaxError($con);
         $db = M('address');
         $data['data'] = $db->where(['id'=>$id])->delete();
-        $this->returnAjaxSuccess($data);
+        $this->quickReturn($data);
     }
     /**
      * 登录
@@ -115,7 +124,7 @@ class MyorderController extends CommonController
             unset($data['data']['password']);
             // session('user_id',$data['data'][0]['id']);
 
-             $this->returnAjaxSuccess($data);
+             $this->quickReturn($data);
         }else{
              $this->returnAjaxError($data); 
         }
@@ -138,7 +147,7 @@ class MyorderController extends CommonController
             $data['data'] = $user_id ->add($wher);
         }
         if(!empty($data['data'])){
-             $this->returnAjaxSuccess($data);
+             $this->quickReturn($data);
         }else{
              $this->returnAjaxError($data); 
         }
@@ -231,7 +240,7 @@ class MyorderController extends CommonController
              if($tables){
                $dbs = M($tables);
                $con = $dbs->where(['id'=>$where['shop_id']])->save(['type'=>'已评价']);
-               $con?$this->returnAjaxSuccess($data):$this->returnAjaxError($data); 
+               $con?$this->quickReturn($data):$this->returnAjaxError($data); 
              }
         }else{
              $this->returnAjaxError($data); 
