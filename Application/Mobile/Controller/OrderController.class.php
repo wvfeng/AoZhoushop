@@ -10,7 +10,7 @@ class OrderController extends CommonController
 	/*parm:
 	orderid 订单ID
 	*/
-    public function findorder(){print_r(222);die;
+    public function findorder(){
         $orderid = I('orderid');
         if(empty($this->isorder($orderid))){
                 $this->_empty();
