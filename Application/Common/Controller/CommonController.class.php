@@ -196,19 +196,18 @@ class CommonController extends RestController
      * @param $res
      * @param $action
      */
-    public function quickReturn($res,$action = null){
+    public function quickReturn($res,$action = null,$Methods = null){
         if(empty($action)){
-            if(empty($res)){
-                static::returnAjaxError(['message'=>'没有更多数据了！']);
-            }else{
-                static::returnAjaxSuccess(['data'=>$res]);
-            }
+            $message = '没有更多数据了！';
         }else{
-            if(empty($res)){
-                static::returnAjaxError(['message'=>$action.'失败！']);
-            }else{
-                static::returnAjaxSuccess(['message'=>$action.'成功！']);
-            }
+            $message = $action;
+            $message .= empty($res) ? '失败！':'成功！';
+
+        }
+        if(empty($res)){
+            static::returnAjaxError(['message'=>$message],$Methods);
+        }else{
+            static::returnAjaxSuccess(['data'=>$res,'message'=>$message],$Methods);
         }
     }
 }
