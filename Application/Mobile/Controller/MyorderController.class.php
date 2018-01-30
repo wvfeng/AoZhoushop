@@ -12,6 +12,8 @@ class MyorderController extends CommonController
      */
     public function orderType(){
      switch (I('get.type')) {
+         case 0 : $type = array('in','未付款,待发货,已发货,已完成,未评论');
+             break;
          case 1 : $type = '未付款';
              break;
          case 2 : $type = '待发货';
@@ -28,13 +30,14 @@ class MyorderController extends CommonController
      }
      $db = M('order');
      $where['type'] = $type;
-     $where['user_id'] = 60;
+     $where['user_id'] = session('user_id');
      $con = $db->where($where)->field('shop_id')->select();
      foreach ($con as $key => $value) {
          $shop_id = explode("|*|",$con[$key]['shop_id']);
          $wheres['id'] = array('in',implode($shop_id,","));
          $data[$key]['data'] = M('shop')->where($wheres)->select();
      }
+     
      $this->quickReturn($data);
     }
     /**
