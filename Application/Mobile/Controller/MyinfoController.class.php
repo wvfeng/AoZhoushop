@@ -22,7 +22,7 @@ class MyinfoController extends CommonController
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空！']);
         $model = D('Common/Collect');
         $type = strtolower($type);
-        if(!empty($UserID)) $UserID = url_decode($UserID);
+        //if(!empty($UserID)) $UserID = url_decode($UserID);
         if($type == 'list'){
             if(empty($UserID)) $this->returnAjaxError(['message'=>'缺少用户ID!']);
             $this->quickReturn($model->getList($UserID));
