@@ -31,13 +31,17 @@ class MyorderController extends CommonController
      $db = M('order');
      $where['type'] = $type;
      $where['user_id'] = session('user_id');
-     $con = $db->where($where)->field('shop_id')->select();
+     $con = $db->where($where)->field('shop_id,num')->select();
      foreach ($con as $key => $value) {
          $shop_id = explode("|*|",$con[$key]['shop_id']);
+         $num = explode("|*|",$con[$key]['num']);
          $wheres['id'] = array('in',implode($shop_id,","));
-         $data[$key]['data'] = M('shop')->where($wheres)->select();
+         $data[$key] = M('shop')->where($wheres)->select();
+         foreach ($data[$key] as $k => $v) {
+             $data[$key][$k]['num'] = $num[$k];
+         }
      }
-     
+     // var_dump($data);die;
      $this->quickReturn($data);
     }
     /**
