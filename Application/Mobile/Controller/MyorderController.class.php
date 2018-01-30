@@ -35,8 +35,6 @@ class MyorderController extends CommonController
          $wheres['id'] = array('in',implode($shop_id,","));
          $data[$key]['data'] = M('shop')->where($wheres)->select();
      }
-     var_dump($data);die;
-     
      $this->quickReturn($data);
     }
     /**
