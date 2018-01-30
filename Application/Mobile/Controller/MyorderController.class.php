@@ -30,18 +30,20 @@ class MyorderController extends CommonController
      }
      $db = M('order');
      $where['type'] = $type;
-     $where['user_id'] = session('user_id');
+     $where['user_id'] = I('get.id');
      $con = $db->where($where)->field('shop_id,num')->select();
      foreach ($con as $key => $value) {
+         // 把商品id数量炸开
          $shop_id = explode("|*|",$con[$key]['shop_id']);
          $num = explode("|*|",$con[$key]['num']);
          $wheres['id'] = array('in',implode($shop_id,","));
          $data[$key] = M('shop')->where($wheres)->select();
          foreach ($data[$key] as $k => $v) {
                  foreach ($data[$key] as $ke => $va) {
+                    // 修改时间格式
                     $data[$key][$ke]['date'] = date("Y-m-d",strtotime($data[$key][$ke]['date']));
                  }
-
+             // 订单数量填充入数组
              $data[$key][$k]['number'] = $num[$k];
          }
      }
