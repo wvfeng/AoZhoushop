@@ -29,7 +29,7 @@ class SelectController extends CommonController
         //通过快递鸟查询快递信息
         $res = static::kuaidiniao($LogisticCode,$ShipperCode,$OrderCode);
         $data = json_decode($res,true);
-        if($data['message'] == 'ok' && !empty($data['data'])){
+        if($data['Success'] && !empty($data['Traces'])){
             $Traces['LogisticCode'] = $data['LogisticCode'];
             $Traces['OrderCode']    = $data['OrderCode'];
             $Traces['ShipperCode']  = $data['ShipperCode'];
@@ -39,7 +39,7 @@ class SelectController extends CommonController
         }
 
         //查询失败
-        static::quickReturn(null,'查询');
+        static::quickReturn(null,'查询','GET');
     }
     //快递鸟
     private static function kuaidiniao($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
@@ -58,6 +58,6 @@ class SelectController extends CommonController
 
     private static function ExpressReturn($res,$OrderCode){
         S($OrderCode,$res,1800);
-        static::quickReturn($res);
+        static::quickReturn($res,'查询','GET');
     }
 }
