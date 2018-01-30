@@ -38,7 +38,11 @@ class MyorderController extends CommonController
          $wheres['id'] = array('in',implode($shop_id,","));
          $data[$key] = M('shop')->where($wheres)->select();
          foreach ($data[$key] as $k => $v) {
-             $data[$key][$k]['num'] = $num[$k];
+                 foreach ($data[$key] as $ke => $va) {
+                    $data[$key][$ke]['date'] = date("Y-m-d",strtotime($data[$key][$ke]['date']));
+                 }
+
+             $data[$key][$k]['number'] = $num[$k];
          }
      }
      // var_dump($data);die;
