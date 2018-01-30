@@ -25,13 +25,13 @@ class MyorderController extends CommonController
          case 9 : $type = '未评论';
              break;      
          default:
-            $this->returnAjaxError($data);
+            $this->returnAjaxError();
              break;
      }
      $db = M('order');
      $where['type'] = $type;
      $where['user_id'] = I('get.id');
-     $con = $db->where($where)->field('shop_id,num')->select();
+     $con = $db->where($where)->field('shop_id,num,paymoney,freight')->select();
      foreach ($con as $key => $value) {
          // 把商品id数量炸开
          $shop_id = explode("|*|",$con[$key]['shop_id']);
@@ -45,6 +45,8 @@ class MyorderController extends CommonController
                  }
              // 订单数量填充入数组
              $data[$key][$k]['number'] = $num[$k];
+             $data[$key][$k]['paymoney'] = $con[$key]['paymoney'];
+             $data[$key][$k]['freight'] = $con[$key]['freight'];
          }
      }
      // var_dump($data);die;

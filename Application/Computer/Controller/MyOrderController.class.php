@@ -12,8 +12,8 @@ class MyOrderController extends Controller
    public function orderType(){
      $db = M('order');
       I('get.id')?$where['id'] = I('get.id'):"";
-      $where['user_id'] = session('user_id');
-     $con = $db->where($where)->field('shop_id,num')->select();
+      $where['user_id'] = I('get.user_id');
+     $con = $db->where($where)->field('shop_id,num,type,iphone,name,address,no,paymoney,date')->select();
      foreach ($con as $key => $value) {
          // 把商品id数量炸开
          $shop_id = explode("|*|",$con[$key]['shop_id']);
@@ -21,13 +21,18 @@ class MyOrderController extends Controller
          $wheres['id'] = array('in',implode($shop_id,","));
          $data[$key] = M('shop')->where($wheres)->select();
          foreach ($data[$key] as $k => $v) {
-             // 订单数量填充入数组
+             // 订单信息填充入数组 收货地址 订单号 下单时间 消费总金额
+             $data[$key][$k]['type'] = $con[$key]['type'];
+             $data[$key][$k]['iphone'] = $con[$key]['iphone'];
+             $data[$key][$k]['name'] = $con[$key]['name'];
+             $data[$key][$k]['address'] = $con[$key]['address'];
+             $data[$key][$k]['no'] = $con[$key]['no'];
+             $data[$key][$k]['paymoney'] = $con[$key]['paymoney'];
+             $data[$key][$k]['date'] = $con[$key]['date'];
+             $data[$key][$k]['freight'] = $con[$key]['freight'];
              $data[$key][$k]['number'] = $num[$k];
          }
      }
-         // $shop_id = explode("|*|",$con[0]['shop_id']);
-         // $wheres['id'] = array('in',implode($shop_id,","));
-         // $data = M('shop')->where($wheres)->select();
      if($data){
      	     $this->quickReturn($data);
      	 }else{
