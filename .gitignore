@@ -1,8 +1,4 @@
-#  PhpStorm 索引文件夹
 .idea
-#  ThinkPHP运行记录
 */Runtime
-#  测试控制器
 */TestController.class.php
-#  测试模型
 */TestModel.class.php
