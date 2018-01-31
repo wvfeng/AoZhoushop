@@ -55,6 +55,6 @@ class GitController
      * @param string $exec
      */
     private function writeLog($data,$typa = 'INFO',$exec = 'INPUT'){
-        \Think\Log::write($exec.':'.json_encode($data,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE),'INFO','File',static::$LogPath);
+        \Think\Log::write($exec.':'.var_export($data,true),'INFO','File',static::$LogPath);
     }
 }
