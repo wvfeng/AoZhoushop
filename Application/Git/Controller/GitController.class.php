@@ -41,6 +41,6 @@ class GitController
      * @param string $exec
      */
     private function writeLog($data,$typa = 'INFO',$exec = 'INPUT'){
-        \Think\Log::write($exec.':'.var_export($data,true),'INFO','File','Git.log');
+        \Think\Log::write($exec.':'.var_export($data,true),'INFO');
     }
 }
