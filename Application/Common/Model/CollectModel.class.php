@@ -15,7 +15,7 @@ class CollectModel extends CommonModel
             'mapping_type'  => self::BELONGS_TO,
             'class_name'    => 'shop',
             'foreign_key'   => 's_id',
-            'as_fields'     => 'tit,tit_en,price,rate'
+            'as_fields'     => 'img,tit,tit_en,price,rate'
         ],
     ];
 
@@ -31,10 +31,10 @@ class CollectModel extends CommonModel
 
     public function getList($id){
         $list = $this->field(['id','s_id'])->where(['u_id'=>$id])->relation('shop')->limit($this->page())->select();
-        foreach ($list as $key=>$item) {
-            $list[$key]['id']  = url_encode($item['id']);
-            $list[$key]['s_id']  = url_encode($item['s_id']);
-        }
+//        foreach ($list as $key=>$item) {
+//            $list[$key]['id']  = url_encode($item['id']);
+//            $list[$key]['s_id']  = url_encode($item['s_id']);
+//        }
         return $list;
     }
 

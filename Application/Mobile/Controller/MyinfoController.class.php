@@ -18,7 +18,7 @@ class MyinfoController extends CommonController
         $this->quickReturn($this->Model->save(),'修改');
     }
 
-    public function Collect($UserID =null,$ShopID = null,$CollectID = null,$type = 'list'){
+    public function Collect($UserID =null,$type = 'list',$ShopID = null,$CollectID = null){
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空！']);
         $model = D('Common/Collect');
         $type = strtolower($type);
