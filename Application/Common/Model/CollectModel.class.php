@@ -63,7 +63,16 @@ class CollectModel extends CommonModel
      * @return mixed
      */
     public function addCollect($UserID,$ShopID){
-        return $this->add(['u_id'=>$UserID,'s_id'=>$ShopID]);
+        $where = ['u_id'=>$UserID,'s_id'=>$ShopID];
+        if($this->checkCollect($where)){
+            return true;
+        }else{
+            return $this->add($where);
+        }
+    }
+
+    public function checkCollect($where){
+        return $this->where($where)->find();
     }
 
     /**
@@ -73,6 +82,11 @@ class CollectModel extends CommonModel
      * @return mixed
      */
     public function removeCollect($UserID,$ShopID){
-        return $this->where(['u_id'=>$UserID,'s_id'=>$ShopID])->limit(1)->delete();
+        $where = ['u_id'=>$UserID,'s_id'=>$ShopID];
+        if($this->checkCollect($where)){
+            return $this->where(['u_id'=>$UserID,'s_id'=>$ShopID])->limit(1)->delete();
+        }else{
+            return true;
+        }
     }
 }
