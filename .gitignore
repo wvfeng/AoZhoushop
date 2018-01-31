@@ -4,3 +4,5 @@
 */Runtime
 #  测试文件
 *Test*
+#  日志文件
+*.log
