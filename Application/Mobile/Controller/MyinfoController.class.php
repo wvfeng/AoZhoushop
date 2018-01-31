@@ -76,9 +76,9 @@ class MyinfoController extends CommonController
     }
 
     /**
-     * 售后列表   未完待续
+     * 售后列表   暂不需要
      */
-    public function creditList(){
+    /*public function creditList(){
         var_dump(eval('return strlen(pow(10,10));'));
-    }
+    }*/
 }
