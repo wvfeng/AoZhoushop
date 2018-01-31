@@ -39,8 +39,11 @@ class GitController
             exec($cmd,$data,$status);
 
             if($status === 0){
+                echo 'success';
                 static::writeLog($data,'INFO','EXEC');
             }else{
+                echo 'error'.PHP_EOL;
+                echo 'log_path:'.static::$LogPath;
                 static::writeLog($data,'ERR','EXEC');
             }
         }
