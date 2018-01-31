@@ -12,6 +12,7 @@ class GitController
         'ref','before','after','created','deleted','forced','base_ref','compare','commits'
     ];
     public function Push(){
+        static::writeLog($_SERVER);
         if (!empty($_SERVER['X-GitHub-Event']) || $_SERVER['X-GitHub-Event'] == 'push') {
             $json = json_decode(file_get_contents('php://input'), true);
             foreach ($this->save as $key){
