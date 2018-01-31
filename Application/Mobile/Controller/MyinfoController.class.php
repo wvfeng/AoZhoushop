@@ -6,18 +6,31 @@ namespace Mobile\Controller;
  */
 class MyinfoController extends CommonController
 {
-    //获取个人数据
+    /**
+     * 获取个人数据
+     * @param null $id
+     */
     public function getUserInfo($id = null){
         if(empty($id)) $this->returnAjaxError(['message'=>'用户ID不能为空！']);
         $this->quickReturn($this->Model->getUserInfo($id));
     }
 
+    /**
+     * 更新个人信息
+     */
     public function UpdateUserInfo(){
         $this->Model->create();
         //$this->id = url_decode($this->id);  //解密用户ID
         $this->quickReturn($this->Model->save(),'修改');
     }
 
+    /**
+     * 收藏管理
+     * @param null $UserID
+     * @param string $type
+     * @param null $ShopID
+     * @param null $CollectID
+     */
     public function Collect($UserID =null,$type = 'list',$ShopID = null,$CollectID = null){
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空！']);
         $model = D('Common/Collect');
@@ -37,6 +50,13 @@ class MyinfoController extends CommonController
         }
     }
 
+    /**
+     * 退换货/售后管理
+     * @param null $UserID
+     * @param null $ShopID
+     * @param null $type
+     * @param null $content
+     */
     public function creditOrder($UserID =null,$ShopID = null,$type = null,$content = null){
         if(empty($UserID) || empty($ShopID)) $this->returnAjaxError(['message'=>'缺少用户或商品ID!']);
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空!']);
@@ -46,12 +66,18 @@ class MyinfoController extends CommonController
         $this->quickReturn($model->add(),'申请'.$type);
     }
 
+    /**
+     * 添加物流系信息
+     */
     public function addExpress(){
         $model = D('Credit');
         $model->create();
         $this->quickReturn($model->save(),'添加物流信息');
     }
 
+    /**
+     * 售后列表   未完待续
+     */
     public function creditList(){
         var_dump(eval('return strlen(pow(10,10));'));
     }
