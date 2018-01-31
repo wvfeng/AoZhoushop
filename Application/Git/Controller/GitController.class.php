@@ -20,7 +20,7 @@ class GitController
 
     public function __construct()
     {
-        static::$LogPath = C('LOG_PATH').date('y_m_d').'_Pull.log';
+        static::$LogPath = C('LOG_PATH').date('y_m_d').'_pull.log';
     }
 
     /**
