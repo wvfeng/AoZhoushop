@@ -7,10 +7,20 @@ namespace Git\Controller;
 class GitController
 {
     private $ProjectPath = '/bweb/azshop'; // 生产环境web目录
-    private $token = '89d9a100-0633-11e8-8d23-b19745d39c75';
+    private $LogPath     = null; // 生产环境web目录
+    private $token = '89d9a100-0633-11e8-8d23-b19745d39c75'; //Token
     private $save = [
         'ref','before','after','created','deleted','forced','base_ref','compare','commits'
     ];
+
+    /**
+     * 构造方法
+     */
+
+    public function __construct()
+    {
+        static::$LogPath = C('LOG_PATH').date('y_m_d').'_Pull.log';
+    }
 
     /**
      * push钩子
