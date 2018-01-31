@@ -16,6 +16,21 @@ class GitController
      * push钩子
      */
     public function Push(){
+        $cmd = "cd {$this->ProjectPath};";
+        exec($cmd,$data,$status);
+        echo 'cd=>',PHP_EOL;
+        var_dump($status);
+        echo PHP_EOL;
+        var_dump($data);
+        exec('pwd',$data,$status);
+        echo 'pwd=>',PHP_EOL;
+        var_dump($status);
+        echo PHP_EOL;
+        var_dump($data);
+        exec('type git;',$data,$status);
+        var_dump($status);
+        echo PHP_EOL;
+        var_dump($data);die;
         if (!empty($_SERVER['HTTP_X_GITHUB_EVENT']) || $_SERVER['HTTP_X_GITHUB_EVENT'] == 'push') {
             $json = json_decode(file_get_contents('php://input'), true);
             foreach ($this->save as $key){
@@ -26,7 +41,7 @@ class GitController
 
             exec($cmd,$data,$status);
             $data['EXEC'] = $cmd;
-            
+
             if($status === 0){
                 static::writeLog($data,'INFO','EXEC');
             }else{
