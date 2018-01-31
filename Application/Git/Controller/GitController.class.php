@@ -11,10 +11,7 @@ class GitController
     public function Push(){
         $input = json_decode(file_get_contents('php://input'), true);
 
-        $hook = $input['hook'];
-        if (empty($hook) || !$hook['active'] || in_array('push',$hook['events'])) {
-            static::writeLog($input,'ERR');
-        }else{
+        if (!empty($_SERVER['X-GitHub-Event']) || $_SERVER['X-GitHub-Event'] == 'push') {
             static::writeLog($input);
             $cmd = "cd {$this->ProjectPath} && git pull;";
 
