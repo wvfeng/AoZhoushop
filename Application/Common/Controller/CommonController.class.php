@@ -73,6 +73,7 @@ class CommonController extends RestController
         if($Methods && strtolower($Methods) != 'any'){
             if(is_array($Methods)) $Methods = implode(',',$Methods);
             if(strtolower($Methods) == 'match') $Methods = 'GET,POST';
+            var_dump($Methods);die;
             header('Access-Control-Allow-Methods: '.$Methods);//允许的请求方式
         }
     }
@@ -198,14 +199,14 @@ class CommonController extends RestController
      */
     public function quickReturn($res,$action = null,$Methods = null){
         if(empty($action)){
-            $message = '没有更多数据了！';
+            $message = empty($res) ? '没有更多数据了！':null;
         }else{
             $message = $action;
             $message .= empty($res) ? '失败！':'成功！';
 
         }
         if(empty($res)){
-            static::returnAjaxError(['message'=>$message],$Methods);
+            static::returnAjaxError(['data'=>$res,'message'=>$message],$Methods);
         }else{
             static::returnAjaxSuccess(['data'=>$res,'message'=>$message],$Methods);
         }
