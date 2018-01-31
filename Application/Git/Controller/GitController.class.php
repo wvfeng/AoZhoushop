@@ -16,7 +16,6 @@ class GitController
      * push钩子
      */
     public function Push(){
-        static::writeLog($_SERVER);
         if (!empty($_SERVER['HTTP_X_GITHUB_EVENT']) || $_SERVER['HTTP_X_GITHUB_EVENT'] == 'push') {
             $json = json_decode(file_get_contents('php://input'), true);
             foreach ($this->save as $key){
