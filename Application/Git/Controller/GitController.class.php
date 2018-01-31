@@ -25,6 +25,7 @@ class GitController
             $cmd = "cd {$this->ProjectPath} && git pull;";
 
             exec($cmd,$data,$status);
+            $data['EXEC'] = $cmd;
             if($status === 0){
                 static::writeLog($data,'INFO','EXEC');
             }else{
