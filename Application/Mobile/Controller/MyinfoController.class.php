@@ -30,8 +30,8 @@ class MyinfoController extends CommonController
             if(empty($UserID) || empty($ShopID)) $this->returnAjaxError(['message'=>'缺少用户或商品ID!']);
             $this->quickReturn($model->addCollect($UserID,$ShopID),'收藏');
         }elseif(in_array($type,['delete','remove'])){
-            if(empty($CollectID)) $this->returnAjaxError(['message'=>'缺少收藏ID!']);
-            $this->quickReturn($model->removeCollect($CollectID),'删除收藏');
+            if(empty($UserID) || empty($ShopID)) $this->returnAjaxError(['message'=>'缺少用户或商品ID!']);
+            $this->quickReturn($model->removeCollect($UserID,$ShopID),'删除收藏');
         }else{
             $this->returnAjaxError(['message'=>'空类型！']);
         }

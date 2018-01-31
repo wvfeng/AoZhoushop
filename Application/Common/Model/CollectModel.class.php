@@ -42,7 +42,7 @@ class CollectModel extends CommonModel
         return $this->add(['u_id'=>$UserID,'s_id'=>$ShopID]);
     }
 
-    public function removeCollect($id){
-        return $this->limit($this->page(true))->delete($id);
+    public function removeCollect($UserID,$ShopID){
+        return $this->where(['u_id'=>$UserID,'s_id'=>$ShopID])->limit(1)->delete();
     }
 }
