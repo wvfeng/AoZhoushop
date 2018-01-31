@@ -12,12 +12,13 @@ class CommonController extends RestController
     public function _initialize()
     {
         //登陆验证
-//        $cheCkList = C('CHECKLIST');
-//        foreach ($cheCkList as $value){
-//            if(strtolower($_SERVER['PATH_INFO']) == strtolower($value)){
-//                static::cheCkUser();
-//            }
-//        }
+        $cheCkList = C('CHECKLIST');
+        foreach ($cheCkList as $value){
+            if(strtolower($_SERVER['PATH_INFO']) == strtolower($value)){
+                static::cheCkUser();
+                break;
+            }
+        }
 
         //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
         $this->Model = static::getModel($this);
@@ -28,6 +29,7 @@ class CommonController extends RestController
     const CODE_LOGIN_ERROR = 401;
     const CODE_REFRESH_ERROR = 302;
     const CODE_ARGUMENTS_ERROR = 505; //参数错误
+    const CODE_NOLOGIN = 604; //用户未登录
 
     /**
      * AJAX 返回成功
@@ -133,8 +135,10 @@ class CommonController extends RestController
      * 登陆验证
      */
     private function cheCkUser(){
-        if(empty(session('userInfo'))){
-            static::returnAjaxError(['message'=>'请您先登陆！']);
+        if(empty(session('user_id'))){
+            static::returnAjaxError([['code'=>static::CODE_NOLOGIN]]);
+        }else{
+            $this->UserID = session('user_id');
         }
     }
 
