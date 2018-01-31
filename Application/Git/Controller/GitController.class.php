@@ -17,7 +17,6 @@ class GitController
     /**
      * 构造方法
      */
-
     public function __construct()
     {
         static::$LogPath = C('LOG_PATH').date('y_m_d').'_pull.log';
