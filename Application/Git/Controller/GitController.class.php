@@ -11,6 +11,10 @@ class GitController
     private $save = [
         'ref','before','after','created','deleted','forced','base_ref','compare','commits'
     ];
+
+    /**
+     * push钩子
+     */
     public function Push(){
         static::writeLog($_SERVER);
         if (!empty($_SERVER['X-GitHub-Event']) || $_SERVER['X-GitHub-Event'] == 'push') {
@@ -30,6 +34,11 @@ class GitController
         }
     }
 
+    /**
+     * @param $data
+     * @param string $typa
+     * @param string $exec
+     */
     private function writeLog($data,$typa = 'INFO',$exec = 'INPUT'){
         \Think\Log::write($exec.':'.var_export($data,true),'INFO','File','Git.log');
     }
