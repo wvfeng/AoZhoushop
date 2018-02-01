@@ -68,7 +68,7 @@ class CommonController extends RestController
         //设置中文header头
         header('Content-Type:text/html;CharSet=UTF-8');
 //        header('Content-Type: application/x-www-form-urlencoded; charset=UTF-8');//请求的数据格式
-        if(empty($host)) header('Access-Control-Allow-Origin: '.$host);//请求来源
+        if(!empty($host)) header('Access-Control-Allow-Origin: '.$host);//请求来源
         header('Access-Control-Allow-Headers: content-type,Cookie');//允许的请求头
         header('Access-Control-Allow-Credentials: true');//允许携带cookie数据
         if($Methods && strtolower($Methods) != 'any'){
