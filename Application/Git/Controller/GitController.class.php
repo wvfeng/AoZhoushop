@@ -45,6 +45,8 @@ class GitController
                 echo 'log_path:'.static::$LogPath;
                 static::writeLog($data,'ERR','EXEC');
             }
+        }else{
+            echo 'Test success';
         }
     }
 
