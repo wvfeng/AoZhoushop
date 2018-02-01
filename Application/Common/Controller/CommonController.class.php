@@ -24,6 +24,7 @@ class CommonController extends RestController
     const CODE_REFRESH_ERROR = 302;
     const CODE_ARGUMENTS_ERROR = 505; //参数错误
     const CODE_NOLOGIN = 604; //用户未登录
+    const CODE_ORDER_ERR = 704; //错误的订单号
 
     /**
      * AJAX 返回成功

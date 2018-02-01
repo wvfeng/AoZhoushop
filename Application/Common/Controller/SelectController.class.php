@@ -7,6 +7,13 @@ namespace Common\Controller;
  */
 class SelectController extends CommonController
 {
+    public function _before_autoSelectExpress($OrderCode = null){
+        if(!empty($OrderCode)){
+            if(!M('order')->where(['id'=>$OrderCode,'user_id'=>$this->UserID])->limit(1)->getField('id'))
+                static::returnAjaxError(['message'=>'CODE_ORDER_ERR','status'=>'CODE_ORDER_ERR']);
+        }
+        return false;
+    }
 
     public function autoSelectExpress($LogisticCode = null,$ShipperCode = null,$OrderCode = null){
         if(empty($LogisticCode) || empty($ShipperCode))
