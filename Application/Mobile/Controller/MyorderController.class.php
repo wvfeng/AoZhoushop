@@ -204,7 +204,7 @@ class MyorderController extends CommonController
         // 用户评星级
         $where['star'] = I('post.star');
         $where['text'] = I('post.text');
-        $where['user_id'] = session('user_id');
+        $where['user_id'] = I('get.user_id');
         $where['shop_id'] = I('post.shop_id');
         $where['type'] = I('post.type');
         // 图片接口

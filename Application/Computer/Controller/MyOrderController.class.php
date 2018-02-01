@@ -28,8 +28,8 @@ class MyOrderController extends Controller
              $data[$key][$k]['address'] = $con[$key]['address'];
              $data[$key][$k]['no'] = $con[$key]['no'];
              $data[$key][$k]['paymoney'] = $con[$key]['paymoney'];
-             $data[$key][$k]['date'] = $con[$key]['date'];
              $data[$key][$k]['freight'] = $con[$key]['freight'];
+             $data[$key][$k]['date'] = $con[$key]['date'];
              $data[$key][$k]['number'] = $num[$k];
          }
      }
@@ -39,6 +39,14 @@ class MyOrderController extends Controller
      	 	$this->returnAjaxError($data);
      	 }     
     }
+    public function ceshi(){
+       $db = M('order');
+       $con = $db->where(['id'=>196])->field('date')->select();
+       $day = $con[0][1]['date'];
+      $tomouth = strtotime("last month");
+      $day = time();
+//      var_dump(time());die;
+    }
         /**
      * 文件上传入口
      * string id
@@ -47,9 +55,8 @@ class MyOrderController extends Controller
         // 用户评星级
         $where['star'] = I('post.star');
         $where['text'] = I('post.text');
-        $where['user_id'] = session('user_id');
+        $where['user_id'] = I('post.id');
         $where['shop_id'] = I('post.shop_id');
-        $where['type'] = I('post.type');
         // 图片接口
         $file = $_FILES;
         // var_dump($file);die();
@@ -59,6 +66,70 @@ class MyOrderController extends Controller
         $this->picture($type,$file,$where,$table,$tables);
     }
     /**
+     * 账号管理
+     */
+    public function upInfo(){
+    	// 昵称 性别 所在城市 生日 个性签名
+    	I('post.user_id')?$wheres['user_id'] = I('post.user_id'):$this->returnAjaxError(array('data'=>'用户id必须'));
+    	$where['nickname'] = I('post.nickname');
+    	$where['address'] = I('post.address');
+    	$where['birthday'] = I('post.birthday');
+    	$where['mood'] = I('post.mood');
+    	$where['user_id'] = I('post.user_id');
+    	switch (I('post.sex')) {
+    		case '1':
+    			$where['sex'] = "男";
+    			break;
+    			case '2':
+    			$where['sex'] = "女";
+    			break;
+    		
+    		default:
+    			# code...
+    			break;
+    	}
+    	$db = M('user_detail');
+    	$con = $db->where($wheres)->select();
+    	if($con){
+    		$data = $db->where($wheres)->save($where);
+    	}else{
+    		$data = $db->where($wheres)->add($where);
+    	}
+     	     $this->quickReturn($data);
+    }
+    /**
+     * [newUser description]
+     * @return [type] [description]
+     */
+    public function newUser(){
+	   	// 用户名 邮箱 手机号 密码 验证码
+        $db = M('user');
+       I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
+        if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
+        // die();
+       $where['username'] = I('post.username');
+       // 判断是手机号还是email
+       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
+        $data['data'] = $db ->add($where);
+        if($data){
+            $wher['user_id'] = $data['data'];
+            $user_id = M('user_detail');
+            $data['data'] = $user_id ->add($wher);
+        }
+        if(!empty($data['data'])){
+             $this->quickReturn($data);
+        }else{
+             $this->returnAjaxError($data); 
+        }
+    }
+
+    /**
+     *
+     */
+    public function lookRoad(){
+
+    }
+    /**
      * [picture description]
      * @param  string    $type  [保存路径]
      * @param  [array]   $file  [图片]
@@ -66,7 +137,6 @@ class MyOrderController extends Controller
      * @param  [data]    $table [存入表中]
      * @return [json]    $data  [处理结果]
      */
-    
     public function picture($type="uploads",$file,$where,$table,$tables){
     // 图片上传接口
                 $upload = new \Think\Upload();// 实例化上传类
@@ -91,16 +161,17 @@ class MyOrderController extends Controller
         }    
         $where['img'] = implode($img, "|*|");
         $db = M($table);
-        $data['data'] = $db->add($where);
-         if(!empty($data['data'])){
+        $data = $db->add($where);
+         if(!empty($data)){
             // 如果评论已提交更改订单状态
              if($tables){
                $dbs = M($tables);
                $con = $dbs->where(['id'=>$where['shop_id']])->save(['type'=>'已评价']);
+               // var_dump($con);die;
                $con?$this->quickReturn($data):$this->returnAjaxError($data); 
              }
         }else{
-             $this->returnAjaxError($data); 
+             $this->returnAjaxError(); 
         }
     }
 }
