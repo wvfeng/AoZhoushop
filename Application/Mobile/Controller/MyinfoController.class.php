@@ -10,11 +10,11 @@ class MyinfoController extends CommonController
      * 获取个人数据
      * @param null $id
      */
-    public function getUserInfo($PHPSESSION){
+    public function getUserInfo($PHPSESSID){
 //        session_destroy();
 //        session_id($PHPSESSION);
 //        session_start();
-        cookie('PHPSESSION',$PHPSESSION);
+        cookie('PHPSESSID',$PHPSESSID);
         var_dump($_SESSION);
         var_dump($_COOKIE);
         die;
