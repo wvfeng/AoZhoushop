@@ -14,7 +14,6 @@ class MyinfoController extends CommonController
 //        session_destroy();
 //        session_id($PHPSESSION);
 //        session_start();
-        cookie('PHPSESSID',$PHPSESSID);
         var_dump($_SESSION);
         var_dump($_COOKIE);
         die;
