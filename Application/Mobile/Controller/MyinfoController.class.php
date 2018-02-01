@@ -14,7 +14,9 @@ class MyinfoController extends CommonController
         session_destroy();
         session_id($PHPSESSION);
         session_start();
-        var_dump($_SESSION);die;
+        var_dump($_SESSION);
+        var_dump($_COOKIE);
+        die;
         $this->quickReturn($this->Model->getUserInfo(60/*$this->UserID*/),'获取');
     }
 
