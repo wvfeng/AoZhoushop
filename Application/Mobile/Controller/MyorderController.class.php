@@ -136,8 +136,9 @@ class MyorderController extends CommonController
             // var_dump($data);die;
             unset($data['data']['password']);
             session('user_id',$data['data']['id']);
+            $data['data']['PHPSESSIONID'] = session_id();
 
-             $this->quickReturn($data);
+            $this->quickReturn($data);
         }else{
              $this->returnAjaxError($data); 
         }
