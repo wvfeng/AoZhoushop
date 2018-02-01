@@ -10,8 +10,12 @@ class MyinfoController extends CommonController
      * 获取个人数据
      * @param null $id
      */
-    public function getUserInfo(){
-        $this->quickReturn($this->Model->getUserInfo($this->UserID));
+    public function getUserInfo($PHPSESSION){
+        session_destroy();
+        session_id($PHPSESSION);
+        session_start();
+        var_dump($_SESSION);die;
+        $this->quickReturn($this->Model->getUserInfo(60/*$this->UserID*/),'获取');
     }
 
     /**
