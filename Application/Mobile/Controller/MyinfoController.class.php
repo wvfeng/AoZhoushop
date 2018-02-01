@@ -11,12 +11,7 @@ class MyinfoController extends CommonController
      * @param null $id
      */
     public function getUserInfo($PHPSESSID){
-//        session_destroy();
-//        session_id($PHPSESSION);
-//        session_start();
-        var_dump($_SESSION);
-        var_dump($_COOKIE);
-        die;
+        var_dump($_SERVER);die;
         $this->quickReturn($this->Model->getUserInfo(60/*$this->UserID*/),'获取');
     }
 
