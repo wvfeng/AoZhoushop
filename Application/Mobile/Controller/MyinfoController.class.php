@@ -11,9 +11,9 @@ class MyinfoController extends CommonController
      * @param null $id
      */
     public function getUserInfo($PHPSESSION){
-        session_destroy();
-        session_id($PHPSESSION);
-        session_start();
+//        session_destroy();
+//        session_id($PHPSESSION);
+//        session_start();
         var_dump($_SESSION);
         var_dump($_COOKIE);
         die;
