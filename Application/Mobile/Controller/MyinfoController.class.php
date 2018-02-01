@@ -11,7 +11,6 @@ class MyinfoController extends CommonController
      * @param null $id
      */
     public function getUserInfo($PHPSESSID){
-        var_dump($_SERVER);die;
         $this->quickReturn($this->Model->getUserInfo(60/*$this->UserID*/),'获取');
     }
 

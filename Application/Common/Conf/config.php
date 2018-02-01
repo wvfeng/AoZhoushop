@@ -32,8 +32,11 @@ return array(
 
     //需要登陆验证的接口
     'CHECKLIST' => [
-        //小写pathinfo
+        '/Mobile/Myinfo/*',  //
     ],
+
+    //允许访问的接口的域名
+    'HTTP_ORIGIN' => '',
 
     /* 数据缓存设置 */
     'DATA_CACHE_TIME' =>  604800,      // 设置数据缓存有效期为 7天
