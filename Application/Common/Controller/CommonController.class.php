@@ -12,13 +12,7 @@ class CommonController extends RestController
     public function _initialize()
     {
         //登陆验证
-        $cheCkList = C('CHECKLIST');
-        foreach ($cheCkList as $value){
-            if(strtolower($_SERVER['PATH_INFO']) == strtolower($value)){
-                static::cheCkUser();
-                break;
-            }
-        }
+        if(static::is_cheCkUser($_SERVER['REDIRECT_URL'])) $this->cheCkUser();
 
         //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
         $this->Model = static::getModel($this);
@@ -70,7 +64,7 @@ class CommonController extends RestController
         header('Content-Type:text/html;CharSet=UTF-8');
 //        header('Content-Type: application/x-www-form-urlencoded; charset=UTF-8');//请求的数据格式
         header('Access-Control-Allow-Origin: *');//请求来源
-        header('Access-Control-Allow-Headers: content-type');//允许的请求头
+        header('Access-Control-Allow-Headers: content-type,Cookie');//允许的请求头
         header('Access-Control-Allow-Credentials: true');//允许携带cookie数据
         if($Methods && strtolower($Methods) != 'any'){
             if(is_array($Methods)) $Methods = implode(',',$Methods);
@@ -96,7 +90,8 @@ class CommonController extends RestController
                 'success'  =>  isset($data['success']) ? $data['success']:$tmp['success'],
                 'message'  =>  isset($data['message']) ? $data['message']:$tmp['message'],
                 'status'   =>  isset($data['status'])  ? $data['status']:$tmp['status'],
-                'code'     =>  isset($data['code'])    ? static::$data['code']:$tmp['code'],
+                'status'   =>  isset($data['status'])  ? is_nan($data['status']) ? static::$data['status']:$data['status']:$tmp['status'],
+                'code'     =>  isset($data['code'])    ? is_nan($data['code']) ? static::$data['code']:$data['code']:$tmp['code'],
                 'data'     =>  (object)(isset($data['data']) ? $data['data']:[])
             ];
         }elseif(!is_null(json_decode($data)) && is_array($data = json_decode($data,true))){
@@ -136,7 +131,7 @@ class CommonController extends RestController
      */
     private function cheCkUser(){
         if(empty(session('user_id'))){
-            static::returnAjaxError([['code'=>static::CODE_NOLOGIN]]);
+            static::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>static::CODE_NOLOGIN]);
         }else{
             $this->UserID = session('user_id');
         }
@@ -214,6 +209,21 @@ class CommonController extends RestController
         }else{
             static::returnAjaxSuccess(['data'=>$res,'message'=>$message],$Methods);
         }
+    }
+
+    private static function is_cheCkUser($REDIRECT_URL){
+        $REDIRECT_URL = array_filter(explode('/',strtolower($REDIRECT_URL)));
+        if(empty($REDIRECT_URL)) return false;
+        $cheCkList = array_filter(C('CHECKLIST'));
+        foreach ($cheCkList as $item){
+            $item = array_filter(explode('/',strtolower($item)));
+            $diffs = array_diff_assoc($REDIRECT_URL,$item);
+            if(count($diffs)>1) return false;
+            if(empty($diffs)) return true;
+            $diffs = array_diff_assoc($item,$REDIRECT_URL);
+            if(array_shift($diffs) == '*') return true;
+        }
+
     }
 }
 
