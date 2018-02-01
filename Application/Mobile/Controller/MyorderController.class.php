@@ -116,8 +116,8 @@ class MyorderController extends CommonController
      * int id
      */
     public function deleAdd(){
-        $id = I('get.id');
-        $id ? $id : $this->returnAjaxError($con);
+        $id = session('user_id');
+        $id ? $id : $this->returnAjaxError();
         $db = M('address');
         $data['data'] = $db->where(['id'=>$id])->delete();
         $this->quickReturn($data);
@@ -135,7 +135,7 @@ class MyorderController extends CommonController
         if(!empty($data)){
             // var_dump($data);die;
             unset($data['data']['password']);
-            // session('user_id',$data['data'][0]['id']);
+            session('user_id',$data['data']['id']);
 
              $this->quickReturn($data);
         }else{
