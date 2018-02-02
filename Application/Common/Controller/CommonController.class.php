@@ -136,7 +136,7 @@ class CommonController extends RestController
      * 登陆验证
      */
     private function cheCkUser(){
-        if(empty(I('userId')) || $userId = url_decode(I('userId'))){
+        if(empty(I('userId')) || empty($userId = url_decode(I('userId')))){
             self::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>self::CODE_NOLOGIN]);
         }else{
             $this->userId = $userId;
