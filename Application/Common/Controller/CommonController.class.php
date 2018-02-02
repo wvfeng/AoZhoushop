@@ -7,15 +7,15 @@ use Think\Controller\RestController;
 class CommonController extends RestController
 {
     //引入分页特性
-    use page;
+    use page,getCount;
 
     public function _initialize()
     {
         //登陆验证
-        if(static::is_cheCkUser($_SERVER['REDIRECT_URL'])) $this->cheCkUser();
+        if(self::is_cheCkUser($_SERVER['REDIRECT_URL'])) $this->cheCkUser();
 
         //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
-        $this->Model = static::getModel($this);
+        $this->Model = self::getModel($this);
     }
 
     const CODE_SUCCESS = 200;
@@ -36,9 +36,9 @@ class CommonController extends RestController
      */
     public function returnAjaxSuccess($data,$Methods = null)
     {
-        static::setHeader($Methods);
-        $response = static::dataConversion($data,true);
-        static::ajaxReturn($response,'JSON',JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        self::setHeader($Methods);
+        $response = self::dataConversion($data,true);
+        self::ajaxReturn($response,'JSON',JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
     /**
@@ -50,9 +50,9 @@ class CommonController extends RestController
      */
     public function returnAjaxError($data,$Methods = null)
     {
-        static::setHeader($Methods);
-        $response = static::dataConversion($data,false);
-        static::ajaxReturn($response,'JSON',JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+        self::setHeader($Methods);
+        $response = self::dataConversion($data,false);
+        self::ajaxReturn($response,'JSON',JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
     }
 
     /**
@@ -88,7 +88,7 @@ class CommonController extends RestController
     private static function dataConversion($data,$bool = true){
         $tmp['success'] =   $bool;
         $tmp['message'] =   $bool ? '操作成功！':'操作失败！';
-        $tmp['status']  =   $bool ? static::CODE_SUCCESS:static::CODE_ERROR;
+        $tmp['status']  =   $bool ? self::CODE_SUCCESS:self::CODE_ERROR;
         $tmp['code']    =   $bool ? 1:0;
 
         if(is_array($data)){
@@ -96,23 +96,23 @@ class CommonController extends RestController
                 'success'  =>  isset($data['success']) ? $data['success']:$tmp['success'],
                 'message'  =>  isset($data['message']) ? $data['message']:$tmp['message'],
                 'status'   =>  isset($data['status'])  ? $data['status']:$tmp['status'],
-                'status'   =>  isset($data['status'])  ? (is_numeric($data['status']) ? static::$data['status']:$data['status']):$tmp['status'],
-                'code'     =>  isset($data['code'])    ? (is_numeric($data['code']) ? static::$data['code']:$data['code']):$tmp['code'],
+                'status'   =>  isset($data['status'])  ? is_numeric($data['status']) ? $data['status']:self::getCount($data['status']):$tmp['status'],
+                'code'     =>  isset($data['code'])    ? is_numeric($data['code']) ? $data['code']:self::getCount($data['code']):$tmp['code'],
                 'data'     =>  (object)(isset($data['data']) ? $data['data']:[])
             ];
         }elseif(!is_null(json_decode($data)) && is_array($data = json_decode($data,true))){
-            return static::dataConversion($data);
+            return self::dataConversion($data);
         }elseif(is_object($data)){
-            return static::dataConversion([
+            return self::dataConversion([
                 'data'    => $data->data,
                 'code'    => $data->code,
                 'message' => $data->message,
                 'status'  => $data->status
             ]);
         }elseif(empty($data)){
-            return static::returnAjaxError(['message'=>'空参数！']);
+            return self::returnAjaxError(['message'=>'空参数！']);
         }else{
-            return static::returnAjaxError(['message'=>'参数不是：数组、对象、JSON！']);
+            return self::returnAjaxError(['message'=>'参数不是：数组、对象、JSON！']);
         }
     }
 
@@ -136,10 +136,10 @@ class CommonController extends RestController
      * 登陆验证
      */
     private function cheCkUser(){
-        if(empty(session('user_id'))){
-            static::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>static::CODE_NOLOGIN]);
+        if(empty(I('userId')) || $userId = url_decode(I('userId'))){
+            self::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>self::CODE_NOLOGIN]);
         }else{
-            $this->UserID = session('user_id');
+            $this->userId = $userId;
         }
     }
 
@@ -147,7 +147,7 @@ class CommonController extends RestController
      * 空操作
      */
     public function _empty(){
-        static::returnAjaxSuccess([
+        self::returnAjaxSuccess([
             'message'=>'非法操作: '.ACTION_NAME,
             'data'   => ['访问位置'=>MODULE_NAME.'\\'.CONTROLLER_NAME.'\\'.ACTION_NAME]
         ]);
@@ -176,8 +176,8 @@ class CommonController extends RestController
             if(empty($res)){
                 return M();
             }else{
-                S("tables",static::getTables());
-                static::getModel($obj);
+                S("tables",self::getTables());
+                self::getModel($obj);
             }
         }
     }
@@ -211,9 +211,9 @@ class CommonController extends RestController
 
         }
         if(empty($res)){
-            static::returnAjaxError(['data'=>$res,'message'=>$message],$Methods);
+            self::returnAjaxError(['data'=>$res,'message'=>$message],$Methods);
         }else{
-            static::returnAjaxSuccess(['data'=>$res,'message'=>$message],$Methods);
+            self::returnAjaxSuccess(['data'=>$res,'message'=>$message],$Methods);
         }
     }
 
@@ -245,5 +245,15 @@ Trait page {
         $this->pagesize = $pagesize;
         if($boolean) return $pagesize;
         return $offset.','.$pagesize;
+    }
+}
+
+/**
+ * 动态获取类常量
+ */
+
+Trait getCount {
+    private static function getCount($count){
+        return eval("return self::{$count};");
     }
 }

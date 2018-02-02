@@ -134,9 +134,8 @@ class MyorderController extends CommonController
 
         if(!empty($data)){
             // var_dump($data);die;
+            $data['data']['id'] = url_encode($data['data']['id'],72);
             unset($data['data']['password']);
-            session('user_id',$data['data']['id']);
-            $data['data']['PHPSESSIONID'] = session_id();
 
             $this->quickReturn($data);
         }else{

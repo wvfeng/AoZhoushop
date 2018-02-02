@@ -1226,6 +1226,7 @@ function data_to_xml($data, $item='item', $id='id') {
 function session($name='',$value='') {
     $prefix   =  C('SESSION_PREFIX');
     if(is_array($name)) { // session初始化 在session_start 之前调用
+//        isset($_SESSION) && session_destroy();
         if(isset($name['prefix'])) C('SESSION_PREFIX',$name['prefix']);
         if(C('VAR_SESSION_ID') && isset($_REQUEST[C('VAR_SESSION_ID')])){
             session_id($_REQUEST[C('VAR_SESSION_ID')]);

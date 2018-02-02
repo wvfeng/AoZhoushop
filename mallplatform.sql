@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-01-30 14:10:04
+Date: 2018-02-02 17:42:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -68,7 +68,7 @@ CREATE TABLE `mall_cart` (
   `user_id` int(11) DEFAULT NULL,
   `num` int(11) DEFAULT NULL COMMENT '商品数量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='购物车，登陆后用，登录前存session';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='购物车，登陆后用，登录前存session';
 
 -- ----------------------------
 -- Records of mall_cart
@@ -78,7 +78,8 @@ INSERT INTO `mall_cart` VALUES ('3', '1', '1', null);
 INSERT INTO `mall_cart` VALUES ('4', '1', '1', null);
 INSERT INTO `mall_cart` VALUES ('5', '1', '1', null);
 INSERT INTO `mall_cart` VALUES ('6', '1', '1', null);
-INSERT INTO `mall_cart` VALUES ('7', '19', '1', null);
+INSERT INTO `mall_cart` VALUES ('10', '21', '1', '21');
+INSERT INTO `mall_cart` VALUES ('11', '22', '1', '55');
 
 -- ----------------------------
 -- Table structure for mall_classify
@@ -103,9 +104,9 @@ INSERT INTO `mall_classify` VALUES ('22', '美妆护肤', '20180122/5a65518a14f3
 INSERT INTO `mall_classify` VALUES ('23', '生活护理', '20180122/5a65518f2a439.jpg', '2018-01-22 10:46:56', '1', '0');
 INSERT INTO `mall_classify` VALUES ('24', '婴幼儿食品', '20180122/5a6551940344e.jpg', '2018-01-22 10:47:56', '2', '20');
 INSERT INTO `mall_classify` VALUES ('25', '生鲜水果', '20180122/5a65519a26c16.jpg', '2018-01-22 10:48:08', '2', '20');
-INSERT INTO `mall_classify` VALUES ('26', '零食坚果', '20180122/5a6551a061ae3.jpg', '2018-01-22 10:48:20', '2', '20');
-INSERT INTO `mall_classify` VALUES ('27', '酒水饮料', '20180122/5a6551a670a85.jpg', '2018-01-22 10:50:10', '2', '20');
-INSERT INTO `mall_classify` VALUES ('28', '饼干糕点', '20180122/5a6551ac85401.jpg', '2018-01-22 10:50:22', '2', '20');
+INSERT INTO `mall_classify` VALUES ('26', '零食坚果', '20180122/5a6551a061ae3.jpg', '2018-01-22 10:48:20', '2', '21');
+INSERT INTO `mall_classify` VALUES ('27', '酒水饮料', '20180122/5a6551a670a85.jpg', '2018-01-22 10:50:10', '2', '22');
+INSERT INTO `mall_classify` VALUES ('28', '饼干糕点', '20180122/5a6551ac85401.jpg', '2018-01-22 10:50:22', '2', '23');
 INSERT INTO `mall_classify` VALUES ('29', '蜂蜜', '20180122/5a6551b223ac2.jpg', '2018-01-22 10:50:34', '2', '21');
 
 -- ----------------------------
@@ -118,13 +119,19 @@ CREATE TABLE `mall_collect` (
   `s_id` int(11) unsigned NOT NULL COMMENT '商品ID',
   `create_time` varchar(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='商品收藏表';
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COMMENT='商品收藏表';
 
 -- ----------------------------
 -- Records of mall_collect
 -- ----------------------------
 INSERT INTO `mall_collect` VALUES ('2', '1', '20', '1516162744');
 INSERT INTO `mall_collect` VALUES ('3', '1', '19', '1516162744');
+INSERT INTO `mall_collect` VALUES ('45', '60', '22', '1517390772');
+INSERT INTO `mall_collect` VALUES ('46', '60', '22', '1517390774');
+INSERT INTO `mall_collect` VALUES ('47', '60', '22', '1517390778');
+INSERT INTO `mall_collect` VALUES ('57', '60', '22', '1517396101');
+INSERT INTO `mall_collect` VALUES ('58', '60', '22', '1517396103');
+INSERT INTO `mall_collect` VALUES ('59', '60', '22', '1517396107');
 
 -- ----------------------------
 -- Table structure for mall_coupons
@@ -187,7 +194,7 @@ CREATE TABLE `mall_evaluation` (
   `img` varchar(255) DEFAULT NULL COMMENT '多个图片，以|*|区分字符串,例子20180110/5a559ebfd2923.jpg|*|20180110/5a559ec1f0dfc.jpg|*|',
   `type` int(2) DEFAULT '1' COMMENT '1不匿名  2匿名',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of mall_evaluation
@@ -200,6 +207,8 @@ INSERT INTO `mall_evaluation` VALUES ('5', '22', '60', '2018-01-29 14:38:11', '1
 INSERT INTO `mall_evaluation` VALUES ('6', '22', '60', '2018-01-29 14:43:37', '1111111', '1', '/conf/5a6ec2fc16a65.jpg|*|/conf/5a6ec2fc1c222.jpg', '1');
 INSERT INTO `mall_evaluation` VALUES ('7', '22', '60', '2018-01-29 14:56:32', '1111111', '1', '/conf/5a6ec6033436b.jpg|*|/conf/5a6ec60337502.jpg', '1');
 INSERT INTO `mall_evaluation` VALUES ('8', '214', '60', '2018-01-29 15:09:06', '1111111', '1', '/conf/5a6ec8f5016e3.jpg|*|/conf/5a6ec8f502625.jpg', '1');
+INSERT INTO `mall_evaluation` VALUES ('74', '213', '60', '2018-01-30 16:48:54', 'aaa', '3', '/conf/5a7031dc2aad4.jpg|*|/conf/5a7031dc2ba16.jpg', '1');
+INSERT INTO `mall_evaluation` VALUES ('75', '213', '60', '2018-01-30 16:49:31', 'aaa', '3', '/conf/5a70320101ab3.jpg|*|/conf/5a703201029f6.jpg', '1');
 
 -- ----------------------------
 -- Table structure for mall_kuaidi_code
@@ -318,11 +327,11 @@ INSERT INTO `mall_order` VALUES ('200', '20|*|19|*|215', '191', null, '王婷', 
 INSERT INTO `mall_order` VALUES ('205', '20|*|19|*|216', '220', null, '汪伟娜', '18625269900', '苏州', '2017-12-01', null, null, null, '已发货', '19800.00', null, null, 'super娜', null, '0');
 INSERT INTO `mall_order` VALUES ('206', '20|*|19|*|217', '185', null, '啦啦', '13576764949', '11', '2017-12-01', null, null, null, '已发货', '1298.00', null, null, '777', null, '0');
 INSERT INTO `mall_order` VALUES ('207', '21|*|19|*|218', '185', null, '啦啦', '13576764949', '11', '2017-12-01', null, null, null, '已发货', '19800.00', null, null, '777', null, '0');
-INSERT INTO `mall_order` VALUES ('210', '20|*|19|*|219', '1', '1|*|1|*|1', '1', '2', '3', '2018-01-17', null, null, null, '未付款', '200.00', '222.00', null, '0', '1', '4');
-INSERT INTO `mall_order` VALUES ('211', '20|*|19|*|210', '2', '1|*|1|*|1', null, null, null, '2018-01-17', null, null, null, '未付款', '200.00', null, null, '0', '1', '0');
-INSERT INTO `mall_order` VALUES ('212', '20|*|190|*|210', '1', '1|*|1|*|1', null, null, null, '2018-01-23', null, null, null, '未付款', '100.00', null, null, '0', null, '0');
-INSERT INTO `mall_order` VALUES ('213', '20|*|19|*|219', '60', '1|*|1|*|1', '1', '2', '3', '2018-01-17', null, null, null, '未付款', '200.00', '222.00', null, '0', '1', '4');
-INSERT INTO `mall_order` VALUES ('214', '20|*|190|*|210', '60', '1|*|1|*|1', null, null, null, '2018-01-23', null, null, null, '待发货', '100.00', null, null, '0', null, '0');
+INSERT INTO `mall_order` VALUES ('210', '20|*|19|*|211', '1', '1|*|1|*|1', '1', '2', '3', '2018-01-17', null, null, null, '未付款', '200.00', '222.00', null, '0', '1', '4');
+INSERT INTO `mall_order` VALUES ('211', '20|*|19|*|21', '2', '1|*|1|*|1', null, null, null, '2018-01-17', null, null, null, '未付款', '200.00', null, null, '0', '1', '0');
+INSERT INTO `mall_order` VALUES ('212', '20|*|190|*|21', '1', '1|*|1|*|1', null, null, null, '2018-01-23', null, null, null, '未付款', '100.00', null, null, '0', null, '0');
+INSERT INTO `mall_order` VALUES ('213', '20|*|19|*|21', '60', '1|*|1|*|1', '1', '2', '3', '2018-01-17', null, null, null, '已评价', '200.00', '222.00', null, '0', '1', '4');
+INSERT INTO `mall_order` VALUES ('214', '20|*|190|*|21', '60', '1|*|1|*|1', null, null, null, '2018-01-23', null, null, null, '未付款', '100.00', null, null, '0', null, '0');
 
 -- ----------------------------
 -- Table structure for mall_setup
@@ -334,16 +343,17 @@ CREATE TABLE `mall_setup` (
   `link` varchar(255) DEFAULT NULL COMMENT '链接',
   `type` tinyint(4) DEFAULT NULL COMMENT '1首页轮播2首页中间广告位3分类页banner',
   `sort` tinyint(4) DEFAULT NULL COMMENT '排序',
+  `models` tinyint(4) DEFAULT NULL COMMENT '1pc2移动端',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of mall_setup
 -- ----------------------------
-INSERT INTO `mall_setup` VALUES ('6', '20180125/5a69385ed2094.jpg', 'a@qq.com', '1', null);
-INSERT INTO `mall_setup` VALUES ('7', '20180125/5a6938a9e1002.jpg', 'a@qq.com', '1', null);
-INSERT INTO `mall_setup` VALUES ('8', '20180125/5a6938b4aedbb.png', 'a@qq.com', '2', null);
-INSERT INTO `mall_setup` VALUES ('9', '20180125/5a693921eda9c.png', 'a@qq.com', '3', null);
+INSERT INTO `mall_setup` VALUES ('6', '20180125/5a69385ed2094.jpg', 'a@qq.com', '1', null, null);
+INSERT INTO `mall_setup` VALUES ('7', '20180125/5a6938a9e1002.jpg', 'a@qq.com', '1', null, null);
+INSERT INTO `mall_setup` VALUES ('8', '20180125/5a6938b4aedbb.png', 'a@qq.com', '2', null, null);
+INSERT INTO `mall_setup` VALUES ('9', '20180125/5a693921eda9c.png', 'a@qq.com', '3', null, null);
 
 -- ----------------------------
 -- Table structure for mall_shop
@@ -360,7 +370,7 @@ CREATE TABLE `mall_shop` (
   `origin` varchar(100) DEFAULT NULL COMMENT '产地',
   `storage` varchar(100) DEFAULT NULL COMMENT '储存方法',
   `oldprice` decimal(12,2) DEFAULT NULL COMMENT '原价',
-  `price` decimal(12,2) DEFAULT '0.00' COMMENT '价格',
+  `price` decimal(12,2) DEFAULT '0.00' COMMENT '会员价格',
   `rate` decimal(12,4) DEFAULT NULL COMMENT '汇率',
   `detail_en` text,
   `detail` text COMMENT '详情',
@@ -375,9 +385,9 @@ CREATE TABLE `mall_shop` (
 -- ----------------------------
 -- Records of mall_shop
 -- ----------------------------
-INSERT INTO `mall_shop` VALUES ('19', '20180110/5a559ebdb5fa1.jpg', '20180110/5a559ebfd2923.jpg|*|20180110/5a559ec1f0dfc.jpg|*|', '王企鹅', '21321', '11111', '3123', '12313', '131', '50.00', '0.00', '3131.0000', '<p><span style=\"color: rgb(238, 236, 225);\">231321</span></p>', '<p><span style=\"color: rgb(247, 150, 70);\">32132131</span></p>', null, '2018-01-10 13:04:12', '1', '0', '今日上新|*|');
-INSERT INTO `mall_shop` VALUES ('20', '20180110/5a559f0567a1d.jpg', '20180110/5a559f078eb99.jpg|*|20180110/5a559f0980590.jpg|*|', '烧麦王', '8098098', '1111', '090', '9090', '909', '40.00', '909.00', '909.0000', '<p><span style=\"color: rgb(79, 97, 40);\">0909</span></p>', '<p><span style=\"color: rgb(147, 137, 83);\">0909</span></p>', null, '2018-01-10 13:05:21', '1', '0', '今日特价|*|会员特权|*|热门品牌|*|今日上新|*|');
-INSERT INTO `mall_shop` VALUES ('21', '20180110/5a559f0567a1d.jpg', '20180110/5a559f078eb99.jpg|*|20180110/5a559f0980590.jpg|*|', '烧麦王', '8098098', '1111', '090', '9090', '909', '1000.00', '909.00', '909.0000', '<p><span style=\"color: rgb(217, 150, 148);\">0909</span></p>', '<p><span style=\"color: rgb(215, 227, 188);\">0909</span></p>', null, '2018-01-10 13:05:21', '1', '0', '今日特价|*|会员特权|*|热门品牌|*|');
+INSERT INTO `mall_shop` VALUES ('19', '20180110/5a559ebdb5fa1.jpg', '20180110/5a559ebfd2923.jpg|*|20180110/5a559ec1f0dfc.jpg|*|', '王企鹅3', '21321', '11111', '3123', '12313', '131', '50.00', '0.00', '3131.0000', '<p><span style=\"color: rgb(238, 236, 225);\">231321</span></p>', '<p><span style=\"color: rgb(247, 150, 70);\">32132131</span></p>', null, '2018-01-10 13:04:12', '1', '29', '今日上新|*|');
+INSERT INTO `mall_shop` VALUES ('20', '20180110/5a559f0567a1d.jpg', '20180110/5a559f078eb99.jpg|*|20180110/5a559f0980590.jpg|*|', '烧麦王1', '8098098', '1111', '090', '9090', '909', '40.00', '909.00', '909.0000', '<p><span style=\"color: rgb(79, 97, 40);\">0909</span></p>', '<p><span style=\"color: rgb(147, 137, 83);\">0909</span></p>', null, '2018-01-10 13:05:21', '1', '27', '今日特价|*|会员特权|*|热门品牌|*|今日上新|*|');
+INSERT INTO `mall_shop` VALUES ('21', '20180110/5a559f0567a1d.jpg', '20180110/5a559f078eb99.jpg|*|20180110/5a559f0980590.jpg|*|', '烧麦王2', '8098098', '1111', '090', '9090', '909', '1000.00', '909.00', '909.0000', '<p><span style=\"color: rgb(217, 150, 148);\">0909</span></p>', '<p><span style=\"color: rgb(215, 227, 188);\">0909</span></p>', null, '2018-01-10 13:05:21', '1', '25', '今日特价|*|会员特权|*|热门品牌|*|');
 INSERT INTO `mall_shop` VALUES ('22', '20180122/5a658b4144f8b.png', '20180110/5a559f078eb99.jpg|*|20180110/5a559f0980590.jpg|*|', '烧麦王2222烧麦王烧麦王烧麦王烧麦王烧麦王烧麦王', '8098098', '1111', '090', '9090', '909', '10.00', '909.00', '909.0000', '<p><span style=\"color: rgb(196, 189, 151);\">eqqewq</span></p>', '<p><span style=\"color: rgb(196, 189, 151);\">eqqewq<span style=\"color: rgb(196, 189, 151);\">eqqewq</span><span style=\"color: rgb(196, 189, 151);\">eqqewq</span><span style=\"color: rgb(196, 189, 151);\">eqqewq</span><span style=\"color: rgb(196, 189, 151);\">eqqewq</span></span></p>', null, '2018-01-10 13:05:21', '1', '24', '今日特价|*|会员特权|*|热门品牌|*|今日上新|*|');
 
 -- ----------------------------
@@ -454,7 +464,7 @@ INSERT INTO `mall_user` VALUES ('54', '11', '15517656092', null, '698d51a19d8a12
 INSERT INTO `mall_user` VALUES ('55', '11', '15517656092', null, '6512bd43d9caa6e02c990b0a82652dca', null);
 INSERT INTO `mall_user` VALUES ('56', '11', '15517656092', null, '6512bd43d9caa6e02c990b0a82652dca', null);
 INSERT INTO `mall_user` VALUES ('57', '11', '15517656092', null, '698d51a19d8a121ce581499d7b701668', null);
-INSERT INTO `mall_user` VALUES ('58', '123', '15517656092', null, '698d51a19d8a121ce581499d7b701668', null);
+INSERT INTO `mall_user` VALUES ('58', '123', '15517656092', null, 'e10adc3949ba59abbe56e057f20f883e', null);
 INSERT INTO `mall_user` VALUES ('59', '111', '15517656092', null, '698d51a19d8a121ce581499d7b701668', null);
 INSERT INTO `mall_user` VALUES ('60', '15517656092', '13517656092', null, '698d51a19d8a121ce581499d7b701668', null);
 INSERT INTO `mall_user` VALUES ('61', '18817656092', '18817656092', null, '698d51a19d8a121ce581499d7b701668', null);
@@ -480,7 +490,7 @@ CREATE TABLE `mall_user_detail` (
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=229 DEFAULT CHARSET=utf8 COMMENT='用户信息表，通过user_id关联到user表';
+) ENGINE=MyISAM AUTO_INCREMENT=232 DEFAULT CHARSET=utf8 COMMENT='用户信息表，通过user_id关联到user表';
 
 -- ----------------------------
 -- Records of mall_user_detail
@@ -522,4 +532,5 @@ INSERT INTO `mall_user_detail` VALUES ('221', '竹海', '', '男', 'Jiangsu', 'h
 INSERT INTO `mall_user_detail` VALUES ('220', 'super娜', '', '女', 'Victoria', 'http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIxNRv9KERly31jic2JGosAMad5wAaBOGpSbOwibzUkiapsLUticuusQznMSFRkqIuSrwQoWKgIic8nR6g/0', '2017-12-01', null, '198000', '20171201/220.png', null, null);
 INSERT INTO `mall_user_detail` VALUES ('223', '苏州伊钻祛斑～签不反弹合约', '', '女', 'Jiangsu', 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoeca6DAKEAlh8Vy10faFw0Niamox5W1WBf6rQiaDGzoqKMlX5wv4zayvxloHRVWtTyHs5E9OktGSEg/0', '2017-12-01', null, '0', '20171201/223.png', null, null);
 INSERT INTO `mall_user_detail` VALUES ('224', '马新平', '', '女', 'Jiangsu', 'http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqKLria7oX5323jYJb839qA4RGLyPYW1UmohDOhu1icGwhn5n9MMfzNLVry12UNCuhJEuSLCibPWdpcA/0', '2017-12-01', null, '0', '20171201/224.png', null, null);
+INSERT INTO `mall_user_detail` VALUES ('231', '小可爱', '个性签名', '男', '河南', '', null, null, '0', null, '', '11');
 SET FOREIGN_KEY_CHECKS=1;
