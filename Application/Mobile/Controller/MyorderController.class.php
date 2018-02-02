@@ -140,12 +140,12 @@ class MyorderController extends CommonController
         $where['iphone|email'] = I('post.username');
         $data['data'] = $db ->where($where)->find();
 
-        if(!empty($data)){
+        if(!empty($data['data'])){
             // var_dump($data);die;
             unset($data['data']['password']);
             session('user_id',$data['data']['id']);
             $data['data']['PHPSESSIONID'] = session_id();
-
+            $data['data']['id'] = url_encode($data['data']['id']);
             $this->quickReturn($data);
         }else{
              $this->returnAjaxError($data); 
