@@ -11,7 +11,7 @@ class MyinfoController extends CommonController
      * @param null $id
      */
     public function getUserInfo($PHPSESSID){
-        $this->quickReturn($this->Model->getUserInfo($this->UserID),'获取');
+        $this->quickReturn($this->Model->getUserInfo($this->userId),'获取');
     }
 
     /**
@@ -19,7 +19,7 @@ class MyinfoController extends CommonController
      */
     public function UpdateUserInfo(){
         $this->Model->create();
-        $this->id = $this->UserID;
+        $this->id = $this->userId;
         //$this->id = url_decode($this->id);  //解密用户ID
         $this->quickReturn($this->Model->save(),'修改');
     }
@@ -37,13 +37,13 @@ class MyinfoController extends CommonController
         $type = strtolower($type);
         //if(!empty($UserID)) $UserID = url_decode($UserID);
         if($type == 'list'){
-            $this->quickReturn($model->getList($this->UserID));
+            $this->quickReturn($model->getList($this->userId));
         }elseif($type == 'add'){
             if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
-            $this->quickReturn($model->addCollect($this->UserID,$ShopID),'收藏');
+            $this->quickReturn($model->addCollect($this->userId,$ShopID),'收藏');
         }elseif(in_array($type,['delete','remove'])){
             if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
-            $this->quickReturn($model->removeCollect($this->UserID,$ShopID),'删除收藏');
+            $this->quickReturn($model->removeCollect($this->userId,$ShopID),'删除收藏');
         }else{
             $this->returnAjaxError(['message'=>'空类型！']);
         }
@@ -62,7 +62,7 @@ class MyinfoController extends CommonController
         if(in_array(strtolower($type),['退货','换货','售后','1','2','3'])) $this->returnAjaxError(['message'=>'类型错误!']);
         $model = D('Credit');
         $model->create();
-        $model->id = $this->UserID;
+        $model->id = $this->userId;
         $this->quickReturn($model->add(),'申请'.$type);
     }
 
