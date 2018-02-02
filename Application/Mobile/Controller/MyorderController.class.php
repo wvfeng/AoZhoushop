@@ -8,11 +8,11 @@ class MyorderController extends CommonController
     /**
      * int type
      * 订单类型
-     * 1代表未付款、2待发货、3已发货、4已完成、5代表已评价、6代表退货、7代表换货、9代表未评论
+     * 1代表未付款、2待发货、3已发货、4已完成、5代表已评价、6代表退货、7代表换货、8代表售后、9代表未评论
      */
     public function orderType(){
      switch (I('get.type')) {
-         case 0 : $type = array('in','未付款,待发货,已发货,已完成,未评论');
+         case 0 : $type = array('in','未付款,待发货,已发货,待评论,已评论,退货,换货,售后,已评论');
              break;
          case 1 : $type = '未付款';
              break;
@@ -20,9 +20,17 @@ class MyorderController extends CommonController
              break;
          case 3 : $type = '已发货';
              break;
-         case 4 : $type = '已完成';
-             break;    
-         case 9 : $type = '未评论';
+         // case 4 : $type = '已完成';
+         //     break;   
+         case 5 : $type = '已评论';
+             break;
+         case 6 : $type = '退货';
+             break;  
+         case 7 : $type = '换货';
+             break;   
+         case 8 : $type = '售后';
+             break;        
+         case 9 : $type = '待评论';
              break;      
          default:
             $this->returnAjaxError();
