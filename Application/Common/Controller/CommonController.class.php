@@ -96,8 +96,8 @@ class CommonController extends RestController
                 'success'  =>  isset($data['success']) ? $data['success']:$tmp['success'],
                 'message'  =>  isset($data['message']) ? $data['message']:$tmp['message'],
                 'status'   =>  isset($data['status'])  ? $data['status']:$tmp['status'],
-                'status'   =>  isset($data['status'])  ? is_nan($data['status']) ? static::$data['status']:$data['status']:$tmp['status'],
-                'code'     =>  isset($data['code'])    ? is_nan($data['code']) ? static::$data['code']:$data['code']:$tmp['code'],
+                'status'   =>  isset($data['status'])  ? (is_numeric($data['status']) ? static::$data['status']:$data['status']):$tmp['status'],
+                'code'     =>  isset($data['code'])    ? (is_numeric($data['code']) ? static::$data['code']:$data['code']):$tmp['code'],
                 'data'     =>  (object)(isset($data['data']) ? $data['data']:[])
             ];
         }elseif(!is_null(json_decode($data)) && is_array($data = json_decode($data,true))){
