@@ -42,4 +42,12 @@ return array(
     'DATA_CACHE_TIME' =>  604800,      // 设置数据缓存有效期为 7天
 
     '__NAMESPACE__'   => ['Mobile','Computer','Common'],          //模块列表
+
+    //设置管理员
+    'Administrators' => [
+        '吴伟锋' => 'wvfeng@live.com',
+        '陈冲'   => '2379920898@qq.com',
+        '赵辉'   => '805492074@qq.com',
+        '明明'   => '1025812312@qq.com',
+    ],
 );
