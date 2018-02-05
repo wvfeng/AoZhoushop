@@ -32,7 +32,7 @@ class GitController
                 $input[$key] = $json[$key];
             }
             static::writeLog($input);
-            $cmd = "cd {$this->ProjectPath} && git pull;";
+            $cmd = "cd {$this->ProjectPath} && git pull 2>&1;";
 
             $data['EXEC'] = $cmd;
             exec($cmd,$data,$status);
