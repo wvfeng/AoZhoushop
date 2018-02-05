@@ -17,7 +17,7 @@ class ShopController extends CommonController
     	$db = M('shop');
         $data['data'] = $db->where(['id'=>I('id')])->field('sliedimg,tit,price,specifications,origin,
             storage,rate,detail,oldprice')->find();
-        $data['data']['shoucang'] = M('collect')->where(['u_id'=>session('user_id'),'s_id'=>I('id')])->count();
+        $data['data']['shoucang'] = M('collect')->where(['u_id'=>url_decode(I('userId')),'s_id'=>I('id')])->count();
     	if(empty($data['data'])){
     		$this->returnAjaxError($data);
     	}else{
@@ -42,17 +42,17 @@ class ShopController extends CommonController
         session('cart',$olddata);
         //如果用户登录，存入数据库
         session('user_id',1);
-        if(session('user_id')){
+        if(url_decode(I('userId'))){
             foreach (session('cart') as $key => $v) {
-                $iscart = M('cart')->where(['shop_id'=>$v['id'],'user_id'=>session('user_id')])->count();
+                $iscart = M('cart')->where(['shop_id'=>$v['id'],'user_id'=>url_decode(I('userId'))])->count();
                 if(empty($iscart)){
-                    M('cart')->add(['shop_id'=>$v['id'],'user_id'=>session('user_id')]);
+                    M('cart')->add(['shop_id'=>$v['id'],'user_id'=>url_decode(I('userId'))]);
                 }
             }
         }
         //查询是否添加成功
-        if(session('user_id')){
-            $isreturn = M('cart')->where(['shop_id'=>I('id'),'user_id'=>session('user_id')])->count();
+        if(url_decode(I('userId'))){
+            $isreturn = M('cart')->where(['shop_id'=>I('id'),'user_id'=>url_decode(I('userId'))])->count();
         }else{
             foreach (session('cart') as $key => $v) {
                 if($v['id']==I('id')){
@@ -69,9 +69,9 @@ class ShopController extends CommonController
     }
     //查询购物车
     public function cartlist(){
-        if(session('user_id')){
+        if(url_decode(I('userId'))){
             $cart = M('cart')->join("RIGHT JOIN mall_shop ON mall_shop.id=mall_cart.shop_id")
-            ->where(['mall_cart.user_id'=>session('user_id')])->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price')->select();
+            ->where(['mall_cart.user_id'=>url_decode(I('userId'))])->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price')->select();
             $this->quickReturn($cart);
         }else{
             foreach (session('cart') as $key => &$v) {
@@ -91,7 +91,7 @@ class ShopController extends CommonController
                 $this->_empty();
             }
             //删除表购物车
-            M('cart')->where(['user_id'=>session('user_id'),'shop_id'=>$v])->delete();
+            M('cart')->where(['user_id'=>url_decode(I('userId')),'shop_id'=>$v])->delete();
         }
         //删除session购物车
         foreach (session('cart') as $key => &$v) {
@@ -117,7 +117,7 @@ class ShopController extends CommonController
         }
         $data['shop_id'] = implode('|*|',$id);
         $data['num'] = implode('|*|',$num);
-        $data['user_id'] = session('user_id');
+        $data['user_id'] = url_decode(I('userId'));
         $data['date'] = date('Y-m-d');
         $data['type'] = 1;
         $data['money'] = $total;

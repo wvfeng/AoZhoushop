@@ -60,7 +60,7 @@ class OrderController extends CommonController
     }
     //其他人也在买
     public function otherbuying(){
-        $mapUser['user_id'] = array('not in',array(session('user_id')));
+        $mapUser['user_id'] = array('not in',array(url_decode(I('userId'))));
         $order = M('order')->where($mapUser)->order('id desc')->field('shop_id')->select();
         $shopCount = array();
         foreach ($order as $key => $v) {
