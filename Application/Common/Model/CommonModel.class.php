@@ -12,7 +12,21 @@ use Think\Model\RelationModel;;
 
 class CommonModel extends RelationModel
 {
+    public $class;
+
     use \Common\Controller\page;
+
+//    public function __construct($name = '', $tablePrefix = '', $connection = '')
+//    {
+//        parent::__construct($name, $tablePrefix, $connection);
+//        echo 45423154748541452;
+//    }
+
+    public function __construct(){
+        echo 99999;
+
+    }
+
     //根据数据表获取全部字段信息
     public function getFields($obj){
 
