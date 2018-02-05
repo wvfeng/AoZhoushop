@@ -9,22 +9,41 @@ class CommonController extends RestController
     //引入分页特性
     use page,getCount;
 
-    public function _initialize()
-    {
-        //登陆验证
-        if(self::is_cheCkUser($_SERVER['REDIRECT_URL'])) $this->cheCkUser();
-
-        //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
-        $this->Model = self::getModel($this);
-    }
+    private $userId;
+    private $Model;
 
     const CODE_SUCCESS = 200;
+
     const CODE_ERROR = 400;
     const CODE_LOGIN_ERROR = 401;
     const CODE_REFRESH_ERROR = 302;
     const CODE_ARGUMENTS_ERROR = 505; //参数错误
     const CODE_NOLOGIN = 604; //用户未登录
     const CODE_ORDER_ERR = 704; //错误的订单号
+
+    public function _initialize()
+    {
+        //登陆验证
+        if(self::is_cheCkUser($_SERVER['REDIRECT_URL'])) $this->cheCkUser();
+
+        //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
+//        $this->Model = self::getModel($this);
+    }
+
+    public function __get($name){
+        if(isset($this->$name)){
+            return $this->$name;
+        }else{
+            switch ($name){
+                case 'Model'://使用模型成员时进行生成
+                    return $this->Model = self::getModel($this);
+                case 'userId'://使用用户ID时进行判断登陆
+                    return $this->cheCkUser();
+                default :
+                    return null;
+            }
+        }
+    }
 
     /**
      * AJAX 返回成功
@@ -139,7 +158,7 @@ class CommonController extends RestController
         if(empty(I('userId')) || empty($userId = url_decode(I('userId')))){
             self::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>self::CODE_NOLOGIN]);
         }else{
-            $this->userId = $userId;
+            return $this->userId = htmlspecialchars($userId);
         }
     }
 
