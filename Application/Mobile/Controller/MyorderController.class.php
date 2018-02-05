@@ -119,6 +119,13 @@ class MyorderController extends CommonController
         }
             $this->quickReturn($data);
     }
+    public function addSele(){
+        $db = M('address');
+        if(!empty(session('user_id'))){
+            $con = $db->where(['id'=>session('user_id')])->select();
+            var_dump($con);die();
+        }
+    }
     /**
      * 地址删除
      * int id
