@@ -131,7 +131,7 @@ class MyorderController extends CommonController
      * int id
      */
     public function deleAdd(){
-        $id = session('user_id');
+        $id = url_decode(I('userId'));
         $id ? $id : $this->returnAjaxError();
         $db = M('address');
         $data['data'] = $db->where(['id'=>$id])->delete();

@@ -10,7 +10,7 @@ class MyinfoController extends CommonController
      * 获取个人数据
      * @param null $id
      */
-    public function getUserInfo($PHPSESSID){
+    public function getUserInfo(){
         $this->quickReturn($this->Model->getUserInfo($this->userId),'获取');
     }
 
