@@ -34,7 +34,7 @@ class GitController
             static::writeLog($input);
             $cmd = "cd {$this->ProjectPath} && git pull 2>&1;";
 
-            $data['EXEC'] = $cmd;
+            $data['Command'] = $cmd;
             exec($cmd,$data,$status);
 
             if($status === 0){
