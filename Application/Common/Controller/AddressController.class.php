@@ -7,6 +7,7 @@ class AddressController extends CommonController
     public $Model_class;
 
     public function Address($type,$id = null){
+        $where = ['user_id'=>$this->userId,'id'=>$id];
         switch ($type){
             case 'add':
                 $message = '添加';
@@ -16,26 +17,23 @@ class AddressController extends CommonController
                 break;
             case 'remove':
                 $message = '删除';
-                $model = $this->Model->where(['user_id'=>$this->userId,'id'=>$id])->find();
-                $res = $model->delete();
+                $res = $this->Model->where($where)->delete();
+                $res = $res === false ? $res:true;
                 break;
             case 'update':
                 $message = '更新';
-                $model = $this->Model->where(['user_id'=>$this->userId,'id'=>$id])->find();
-                $res = $model->save();
+                $this->Model->where($where)->find();
+                $this->Model->create();
+                $res = $this->Model->save();
+                $res = $res === false ? $res:true;
                 break;
             case 'list':
                 $message = '查询';
-                $res = $this->Model->where(['user_id'=>$this->userId,'id'=>$id])->select();
+                $res = $this->Model->where($where)->select();
                 break;
             case 'default':
                 $message = '设置默认地址';
-//                $this->Model->class = 'Common\Model\AddressModel';
-//                $res = eval("return {$this->Model_class}".'::$a;');
-                var_dump($this->Model);die;
-                $model = $this->Model->where(['user_id'=>$this->userId,'id'=>$id])->find();
-                var_dump($model);die;
-                $res = $model->setField('sdefault',1);
+                $res = $this->Model->setDefault($where);
                 break;
             default :
                 $message = 'Error';
