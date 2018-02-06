@@ -8,6 +8,9 @@ class AddressController extends CommonController
 
     public function Address($type,$id = null){
         $where = ['user_id'=>$this->userId,'id'=>$id];
+
+
+        
         switch ($type){
             case 'add':
                 $message = '添加';
