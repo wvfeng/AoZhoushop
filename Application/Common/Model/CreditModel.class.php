@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobile\Model;
+namespace Common\Model;
 
 /**
  * Class creditOrderModel
