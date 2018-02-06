@@ -30,4 +30,18 @@ class AddressModel extends CommonModel
         var_dump(15441544);
     }
 
+    public function setDefault(array $where){
+        $res = $this->where(array_merge($where,['sdefault'=>'1']))->find();
+        if(!empty($res)) return true;
+        $this->startTrans();
+        $delDefault = $this->where(['user_id'=>$where['user_id'],'sdefault'=>'1'])->setField('sdefault','0');
+        $setDefault = $this->where($where)->setField('sdefault','1');
+        if($delDefault === false || $setDefault === false){
+            $this->rollback();
+            return false;
+        }else{
+            $this->commit();
+            return true;
+        }
+    }
 }
