@@ -47,6 +47,7 @@ class GitController
             }else{
                 echo 'error'.PHP_EOL;
                 echo 'log_path:'.static::$LogPath;
+                print_r($data);
                 static::writeLog($data,'ERR','EXEC');
                 $content = '<h1 style="color: red">错误详情:</h1>';
                 foreach ($data as $itme){
