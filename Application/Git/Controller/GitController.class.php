@@ -57,7 +57,7 @@ class GitController
                 $this->content = $content;
                 A('Common/Email')->SendEmail($this->title,$this->content,$this->Address);
             }
-        }elseif(!in_array('refs/heads/master',$input)){
+        }elseif(!in_array('refs/heads/master',$input) && !empty($input['ref'])){
             echo $input['ref'];
         }else{
             echo 'Test success';
