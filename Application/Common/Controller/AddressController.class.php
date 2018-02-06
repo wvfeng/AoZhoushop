@@ -4,21 +4,21 @@ namespace Common\Controller;
 class AddressController extends CommonController
 {
     public $message = '收货地址';
-    public $Model_class;
 
-    public function Address($type,$id = null){
+    public function manage($type,$id = null){
         $where = ['user_id'=>$this->userId,'id'=>$id];
-
-
-        
         switch ($type){
             case 'add':
                 $message = '添加';
-                $this->Model->create();
-                $this->Model->user_id = $this->userId;
-                $res = $this->Model->add();
+                $data = $this->Model->create();
+                if($this->Model->checkFields($data)){
+                    $this->Model->user_id = $this->userId;
+                    $res = $this->Model->add();
+                }else{
+                    $res = false;
+                }
                 break;
-            case 'remove':
+            case 'c':
                 $message = '删除';
                 $res = $this->Model->where($where)->delete();
                 $res = $res === false ? $res:true;
@@ -32,7 +32,7 @@ class AddressController extends CommonController
                 break;
             case 'list':
                 $message = '查询';
-                $res = $this->Model->where($where)->select();
+                $res = $this->Model->where($where)->limit($this->page())->select();
                 break;
             case 'default':
                 $message = '设置默认地址';
