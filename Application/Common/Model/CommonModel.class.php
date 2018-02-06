@@ -99,6 +99,8 @@ class CommonModel extends RelationModel
         return $obj->where($where)->count();
     }
 
+    
+
     /**
      * @param string $name 传递用户名，判断用户名是否存在
      * @return mixed 存在返回用户ID，不存在返回false
