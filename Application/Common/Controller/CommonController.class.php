@@ -34,14 +34,9 @@ class CommonController extends RestController
         if(isset($this->$name)){
             return $this->$name;
         }else{
-            switch ($name){
-                case 'Model'://使用模型成员时进行生成
-                    return $this->Model = self::getModel($this);
-                case 'userId'://使用用户ID时进行判断登陆
-                    return $this->cheCkUser();
-                default :
-                    return null;
-            }
+            $getfunction = 'get'.ucfirst($name);
+            if(method_exists($this,$getfunction)) return $this->$getfunction();
+            return null;
         }
     }
 
@@ -162,6 +157,10 @@ class CommonController extends RestController
         }
     }
 
+    public function getUserId(){
+        return $this->cheCkUser();
+    }
+
     /**
      * 空操作
      */
@@ -173,7 +172,8 @@ class CommonController extends RestController
     }
 
     //模型工厂
-    private static function getModel($obj){
+    private function getModel($obj){
+        if(is_null($obj)) $obj = $this;
         if(!is_object($obj)) return M();
         //记录所有数据表名
         $tables = S("tables");

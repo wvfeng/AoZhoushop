@@ -8,28 +8,13 @@ namespace Mobile\Model;
  * 用户模型库
  */
 
-class MyinfoModel extends CommonModel
+class OrderModel extends CommonModel
 {
-    protected $tableName = 'User';
-    protected $_link = [
-        'User_detail'=> [
-            'mapping_type'  => self::HAS_ONE,
-            'class_name'    => 'user_detail',
-            'foreign_key'   => 'user_id',
-            'as_fields'     => 'nickname,headimgurl,mood,sex,surplus_int,country,province,city'
-            ],
-    ];
-
-    protected $_map = [
-        //'表单' => '字段名'
-    ];
-
-    //获取个人数据
-    public function getUserInfo($id){
-        if(empty($id)) return false;
-        $data = $this->field('iphone,email,password',true)->relation('User_detail')->find($id);
-        $data['id'] = url_encode($data['id'],7,'day');
-        $data['Order'] = array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true));
-        return $data;
-    }
+   protected $_validate = array(
+     // array('verify','require','验证码必须！'), //默认情况下用正则进行验证
+     array('tel','','手机号已存在！',0,'unique',1), // 在新增的时候验证name字段是否唯一
+     // array('value',array(1,2,3),'值的范围不正确！',2,'in'), // 当值不为空的时候判断是否在一个范围内
+     // array('repassword','password','确认密码不正确',0,'confirm'), // 验证确认密码是否和密码一致
+     // array('password','checkPwd','密码格式不正确',0,'function'), // 自定义函数验证密码格式
+   );
 }
