@@ -28,10 +28,15 @@ class CreditController extends CommonController
     }
 
     /**
-     * 售后列表   暂不需要
+     * 售后列表
      */
     public function creditList(){
         $fields = ['update_time'];
         $this->quickReturn($this->Model->field($fields,true)->where(['u_id'=>$this->userId])->relation('shop')->limit($this->page())->select(),'查询');
+    }
+
+    public function getShopInfo($shopId = null){
+        if(empty($shopId)) $this->quickReturn(null,'查询');
+        $this->quickReturn(D('Shop')->getShopInfoMin($shopId),'查询');
     }
 }
