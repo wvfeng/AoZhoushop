@@ -30,11 +30,11 @@ class GitController
      * push钩子
      */
     public function Push(){
-        if (!empty($_SERVER['HTTP_X_GITHUB_EVENT']) || $_SERVER['HTTP_X_GITHUB_EVENT'] == 'push') {
-            $json = json_decode(file_get_contents('php://input'), true);
-            foreach ($this->save as $key){
-                $input[$key] = $json[$key];
-            }
+        $json = json_decode(file_get_contents('php://input'), true);
+        foreach ($this->save as $key){
+            $input[$key] = $json[$key];
+        }
+        if (!empty($_SERVER['HTTP_X_GITHUB_EVENT']) && $_SERVER['HTTP_X_GITHUB_EVENT'] == 'push' && in_array('refs/heads/master',$input)) {
             static::writeLog($input);
             $cmd = "cd {$this->ProjectPath} && git pull 2>&1;";
 
