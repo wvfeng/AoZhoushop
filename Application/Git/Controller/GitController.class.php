@@ -30,7 +30,7 @@ class GitController
      * push钩子
      */
     public function Push(){
-        echo 111;die;
+        echo 111;
         $json = json_decode(file_get_contents('php://input'), true);
         foreach ($this->save as $key){
             $input[$key] = $json[$key];
