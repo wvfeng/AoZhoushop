@@ -61,4 +61,24 @@ class MyaccountController extends CommonController
     protected function isorder($id){
         return M('order')->where(['id'=>$id])->count();
     }
+    //猜你喜欢
+    public function youLike(){
+        $user_id = url_decode(I('userId'));
+        $orderid = M('order')->where(['user_id'=>$user_id])->order('id desc')->limit(1)->getField('id');
+
+        $shop = explode('|*|',M('order')->where(['id'=>$orderid])->getField('shop_id'));
+        foreach ($shop as $key => &$v) {
+            $classify_id[$key] = M('shop')->where(['id'=>$v])->getField('classify_id');
+        }
+        $mapClassify['classify_id'] = array('in',array_unique($classify_id));
+        $mapId['id'] = array('not in',$shop);
+        $data['data'] = M('shop')->where($mapClassify)->where($mapId)->limit(4)->field('img,id,tit,price,rate')->select();
+
+        if(!empty(count($data['data']))){
+            $this->returnAjaxSuccess($data);
+        }else{
+            $data['data'] = M('shop')->limit(4)->field('img,id,tit,price,rate')->select();
+            $this->returnAjaxSuccess($data);
+        }
+    }
 }
