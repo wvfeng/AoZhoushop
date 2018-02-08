@@ -154,7 +154,7 @@ class CommonController extends RestController
      * 登陆验证
      */
     private function cheCkUser(){
-        if(empty(I('userId')) || empty($userId = htmlspecialchars(I('userId')))){
+        if(empty(I('userId')) || empty($userId = url_decode(I('get.userId') ? :I('post.userId')))){
             self::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>self::CODE_NOLOGIN]);
         }else{
             $this->isGuest = false;
