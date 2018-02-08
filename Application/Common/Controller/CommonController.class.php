@@ -9,8 +9,12 @@ class CommonController extends RestController
     //引入分页特性
     use page,getCount;
 
+    //用户id,该成员会自动检测用户登陆状态
     private $userId;
+    //该成员会保存控制器对应的模型，如果不存在则生成操作控制器对应数据表的模型，如果控制器对应的数据表不存在则保存空数据模型
     private $Model;
+    //该成员会获取用户的登陆状态,未登录为true,登陆为false
+    private $isGuest;
 
     const CODE_SUCCESS = 200;
 
@@ -74,16 +78,11 @@ class CommonController extends RestController
      */
     private static function setHeader($Methods = null)
     {
-        if(APP_DEBUG){
-            $host = $_SERVER['HTTP_ORIGIN'];
-        }else{
-            $host = C('HTTP_ORIGIN');
-        }
         header('Content-type: application/json');//请求的数据格式
         //设置中文header头
         header('Content-Type:text/html;CharSet=UTF-8');
 //        header('Content-Type: application/x-www-form-urlencoded; charset=UTF-8');//请求的数据格式
-        if(!empty($host)) header('Access-Control-Allow-Origin: '.$host);//请求来源
+        header('Access-Control-Allow-Origin: '.self::getHost());//请求来源
         header('Access-Control-Allow-Headers: content-type,Cookie');//允许的请求头
         header('Access-Control-Allow-Credentials: true');//允许携带cookie数据
         if($Methods && strtolower($Methods) != 'any'){
@@ -92,6 +91,11 @@ class CommonController extends RestController
             var_dump($Methods);die;
             header('Access-Control-Allow-Methods: '.$Methods);//允许的请求方式
         }
+    }
+
+    private static function getHost(){
+        if(defined(APP_DEBUG) && APP_DEBUG === false) return $_SERVER['HTTP_ORIGIN'];
+        return C('HTTP_ORIGIN');
     }
 
     /**
@@ -153,12 +157,22 @@ class CommonController extends RestController
         if(empty(I('userId')) || empty($userId = url_decode(I('userId')))){
             self::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>self::CODE_NOLOGIN]);
         }else{
+            $this->isGuest = false;
             return $this->userId = htmlspecialchars($userId);
         }
     }
 
     public function getUserId(){
         return $this->cheCkUser();
+    }
+
+    public function getIsGuest(){
+        if(empty(I('userId')) || empty($userId = url_decode(I('userId')))){
+            return $this->isGuest = true;
+        }else{
+            $this->userId = htmlspecialchars($userId);
+            return $this->isGuest = false;
+        }
     }
 
     /**
