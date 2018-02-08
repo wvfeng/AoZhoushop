@@ -17,7 +17,6 @@ class CollectController extends CommonController
         if($type == 'list'){
             $this->quickReturn($model->getList($this->userId));
         }elseif($type == 'add'){
-            $this->quickReturn(I('post.'));
             if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
             $this->quickReturn($model->addCollect($this->userId,$ShopID),'收藏');
         }elseif(in_array($type,['delete','remove'])){
