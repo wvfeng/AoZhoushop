@@ -10,7 +10,7 @@ class CollectController extends CommonController
      * @param null $ShopID
      * @param null $CollectID
      */
-    public function Collect($type = 'list',$ShopID = null,$CollectID = null){
+    public function manage($type = 'list',$ShopID = null,$CollectID = null){
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空！']);
         $model = $this->Model;
         $type = strtolower($type);
