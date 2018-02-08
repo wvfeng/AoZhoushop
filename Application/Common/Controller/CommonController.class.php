@@ -186,7 +186,7 @@ class CommonController extends RestController
     }
 
     //模型工厂
-    private function getModel($obj){
+    private function getModel($obj = null){
         if(is_null($obj)) $obj = $this;
         if(!is_object($obj)) return M();
         //记录所有数据表名
