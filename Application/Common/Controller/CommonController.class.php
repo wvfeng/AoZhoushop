@@ -94,7 +94,7 @@ class CommonController extends RestController
     }
 
     private static function getHost(){
-        if(defined(APP_DEBUG) && APP_DEBUG === false) return $_SERVER['HTTP_ORIGIN'];
+        if(defined(APP_DEBUG) && APP_DEBUG === true) return $_SERVER['HTTP_ORIGIN'];
         return C('HTTP_ORIGIN');
     }
 
