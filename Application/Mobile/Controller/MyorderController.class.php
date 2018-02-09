@@ -11,6 +11,7 @@ class MyorderController extends CommonController
      * 1代表未付款、2待发货、3已发货、4已完成、5代表已评价、6代表退货、7代表换货、8代表售后、9代表未评论
      */
     public function orderType(){
+//        xiugai
      switch (I('get.type')) {
          case 0 : $type = array('in','未付款,待发货,已发货,待评论,已评论,退货,换货,售后,已评论');
              break;
