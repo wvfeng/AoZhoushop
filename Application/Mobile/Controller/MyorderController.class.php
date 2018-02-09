@@ -38,7 +38,7 @@ class MyorderController extends CommonController
      }
      $db = M('order');
      $where['type'] = $type;
-     $where['user_id'] = I('get.id');
+     $where['user_id'] = url_decode(I('userId'));
      $con = $db->where($where)->field('shop_id,num,paymoney,freight')->select();
      foreach ($con as $key => $value) {
          // 把商品id数量炸开
@@ -57,7 +57,7 @@ class MyorderController extends CommonController
              $data[$key][$k]['freight'] = $con[$key]['freight'];
          }
      }
-     // var_dump($data);die;
+//      var_dump($data);die;
      $this->quickReturn($data);
     }
     /**
@@ -83,6 +83,19 @@ class MyorderController extends CommonController
          }elseif(I('get.type')==2){
             // 取消订单
          }
+    }
+    /**
+     * 测试
+     */
+    public function a(){
+        $User = D("order"); // 实例化User对象
+        if ($User->create($_POST)){
+            $con = $User->add();
+            var_dump($con);die();
+        }else{
+            var_dump($User->getError());
+        }
+
     }
     /**
      * 待收货->:查看物流:确认收货
