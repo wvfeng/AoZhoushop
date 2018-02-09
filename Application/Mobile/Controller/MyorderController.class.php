@@ -4,13 +4,14 @@ namespace Mobile\Controller;
  * 我的订单接口
  */
 class MyorderController extends CommonController
-{	
+{
     /**
      * int type
      * 订单类型
      * 1代表未付款、2待发货、3已发货、4已完成、5代表已评价、6代表退货、7代表换货、8代表售后、9代表未评论
      */
     public function orderType(){
+        $this->quickReturn(I('get.'));
      switch (I('get.type')) {
          case 0 : $type = array('in','未付款,待发货,已发货,待评论,已评论,退货,换货,售后,已评论');
              break;
