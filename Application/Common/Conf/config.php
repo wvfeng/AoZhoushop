@@ -35,8 +35,14 @@ return array(
         '/Mobile/Myinfo/*',  //
     ],
 
+    //设置登陆过期时长
+    'LandExpirationTime'=>[
+        'number'=>'1',
+        'nuit'=>'month',
+    ],
+
     //允许访问的接口的域名
-    'HTTP_ORIGIN' => '',
+    'HTTP_ORIGIN' => '127.0.0.1',
 
     /* 数据缓存设置 */
     'DATA_CACHE_TIME' =>  604800,      // 设置数据缓存有效期为 7天

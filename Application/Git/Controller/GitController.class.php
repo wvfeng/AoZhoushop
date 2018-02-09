@@ -30,11 +30,11 @@ class GitController
      * push钩子
      */
     public function Push(){
-        if (!empty($_SERVER['HTTP_X_GITHUB_EVENT']) || $_SERVER['HTTP_X_GITHUB_EVENT'] == 'push') {
-            $json = json_decode(file_get_contents('php://input'), true);
-            foreach ($this->save as $key){
-                $input[$key] = $json[$key];
-            }
+        $json = json_decode(file_get_contents('php://input'), true);
+        foreach ($this->save as $key){
+            $input[$key] = $json[$key];
+        }
+        if (!empty($_SERVER['HTTP_X_GITHUB_EVENT']) && $_SERVER['HTTP_X_GITHUB_EVENT'] == 'push' && in_array('refs/heads/master',$input)) {
             static::writeLog($input);
             $cmd = "cd {$this->ProjectPath} && git pull 2>&1;";
 
@@ -47,6 +47,7 @@ class GitController
             }else{
                 echo 'error'.PHP_EOL;
                 echo 'log_path:'.static::$LogPath;
+                print_r($data);
                 static::writeLog($data,'ERR','EXEC');
                 $content = '<h1 style="color: red">错误详情:</h1>';
                 foreach ($data as $itme){
@@ -56,6 +57,8 @@ class GitController
                 $this->content = $content;
                 A('Common/Email')->SendEmail($this->title,$this->content,$this->Address);
             }
+        }elseif(!in_array('refs/heads/master',$input) && !empty($input['ref'])){
+            echo $input['ref'];
         }else{
             echo 'Test success';
         }

@@ -165,7 +165,7 @@ class MyorderController extends CommonController
         if(!empty($data['data'])){
             // var_dump($data);die;
             unset($data['data']['password']);
-            $data['data']['id'] = url_encode($data['data']['id'],72);
+            $data['data']['id'] = url_encode($data['data']['id'],C('LandExpirationTime.number'),C('LandExpirationTime.nuit'));
             $this->quickReturn($data);
         }else{
              $this->returnAjaxError($data); 

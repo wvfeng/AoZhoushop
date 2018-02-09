@@ -17,7 +17,7 @@ class CreditModel extends CommonModel
             'mapping_type'  => self::BELONGS_TO,
             'class_name'    => 'shop',
             'foreign_key'   => 's_id',
-            'as_fields'     => 'price'
+            'as_fields'     => 'price,tit,img'
         ],
     ];
 

@@ -34,10 +34,10 @@ class MyOrderController extends Controller
          }
      }
      if($data){
-     	     $this->quickReturn($data);
-     	 }else{
-     	 	$this->returnAjaxError($data);
-     	 }     
+     	 $this->quickReturn($data);
+     }else{
+     	 $this->returnAjaxError($data);
+     }     
     }
     public function ceshi(){
        $db = M('order');
