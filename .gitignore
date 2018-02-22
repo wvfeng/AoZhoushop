@@ -6,3 +6,7 @@
 *Test*
 #  日志文件
 *.log
+#  公共目录
+/Public
+#  上传目录
+/Uploads
