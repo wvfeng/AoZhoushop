@@ -13,7 +13,16 @@ class CreditController extends CommonController
     public function creditOrder($ShopID = null,$type = null,$content = null){
         if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空!']);
-        if(in_array(strtolower($type),['退货','换货','售后','1','2','3'])) $this->returnAjaxError(['message'=>'类型错误!']);
+        $types = [
+            1=>'退货',
+            2=>'换货',
+            3=>'售后',
+            '1',
+            '2',
+            '3'
+        ];
+        if(in_array(strtolower($type),$types)) $this->returnAjaxError(['message'=>'类型错误!']);
+        if(is_numeric($type)) $type = $types[$type];
         $this->Model->create();
         $this->Model->u_id = $this->userId;
         $this->quickReturn($this->Model->add(),'申请'.$type);
@@ -22,9 +31,11 @@ class CreditController extends CommonController
     /**
      * 添加物流系信息
      */
-    public function addExpress(){
-        $this->Model->create();
-        $this->quickReturn($this->Model->save(),'添加物流信息');
+    public function addExpress($ShopID = null){
+        $creditOrder = $this->Model->where(['s_id'=>$ShopID,'u_id'=>$this->userId])->find();
+        if(empty($creditOrder)) $this->returnAjaxError(['message'=>'CODE_ORDER_ERR','status'=>'CODE_ORDER_ERR']);
+        $creditOrder->create();
+        $this->quickReturn($creditOrder->save(),'添加物流信息');
     }
 
     /**
