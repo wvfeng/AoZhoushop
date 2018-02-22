@@ -8,11 +8,7 @@ use Think\Model;
  * 用户模型库
  */
 
-class OrderMo\
-
-
-
-del extends Model
+class OrderModel extends Model
 {
    protected $_validate = array(
      // array('verify','require','验证码必须！'), //默认情况下用正则进行验证
