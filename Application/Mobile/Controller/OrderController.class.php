@@ -109,6 +109,9 @@ class OrderController extends CommonController
         ->where(['mall_evaluation.user_id'=>I('user_id')])
         ->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.id as shop_id,mall_evaluation.date,
             mall_evaluation.text,mall_evaluation.star,mall_evaluation.img')->select();
+        foreach ($data['data'] as $key => &$v) {
+            $v['headimg'] = M('user_detail')->where(['user_id'=>I('user_id')])->getField('headimgurl');
+        }
         if(!empty(count($data))){
             $this->returnAjaxSuccess($data);
         }else{
