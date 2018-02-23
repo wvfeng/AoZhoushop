@@ -10,12 +10,12 @@ return array(
     'DB_PREFIX'				=>	'mall_',		  // 表前缀
     //配置文件上传路径
     '__PATH_ROOT__'   => '/bweb/azshop/',                       // 接口根目录
-    '__PATH_UPLOAD__' => 'Public/Uploads/',  // 文件上传目录
-    '__PATH_IMAGE__'  => C('__PATH_UPLOAD__').'image/',         // 图片路径
-    '__PATH_TUIHUAN__'=> C('__PATH_UPLOAD__').'image/tuihuan/', // 退换货，售后
-    '__PATH_PHOTO__'  => C('__PATH_UPLOAD__').'image/photo/',   // 相册目录，上线后加深一个层级
-    '__PATH_VIDEO__'  => C('__PATH_UPLOAD__').'video/',         // 视频和视频缩略图资源
-    '__PATH_HEADER__' => C('__PATH_UPLOAD__').'header/',        // 用户头像像资源
+    '__PATH_UPLOAD__' => 'Public/',  // 文件上传目录
+    '__PATH_IMAGE__'  => 'Public/image/',         // 图片路径
+    '__PATH_TUIHUAN__'=> 'Public/image/tuihuan/', // 退换货，售后
+    '__PATH_PHOTO__'  => 'Public/image/photo/',   // 相册目录，上线后加深一个层级
+    '__PATH_VIDEO__'  => 'Public/video/',         // 视频和视频缩略图资源
+    '__PATH_HEADER__' => 'Public/header/',        // 用户头像像资源
     'url_model' => 1,
     //分享功能配置
     'EWM_PATH'        => 'Public/Uploads/image/erweima/',    // 分享二维码存放路径
