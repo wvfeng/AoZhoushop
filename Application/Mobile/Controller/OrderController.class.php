@@ -106,11 +106,11 @@ class OrderController extends CommonController
         $data['data'] = M('evaluation')->join("mall_shop ON mall_shop.id=mall_evaluation.shop_id")
         ->page($this->page())
         ->where($map)
-        ->where(['mall_evaluation.user_id'=>I('user_id')])
+        /*->where(['mall_evaluation.user_id'=>I('user_id')])*/
         ->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.id as shop_id,mall_evaluation.date,
-            mall_evaluation.text,mall_evaluation.star,mall_evaluation.img')->select();
+            mall_evaluation.text,mall_evaluation.star,mall_evaluation.img,mall_evaluation.user_id')->select();
         foreach ($data['data'] as $key => &$v) {
-            $v['headimg'] = M('user_detail')->where(['user_id'=>I('user_id')])->getField('headimgurl');
+            $v['headimg'] = M('user_detail')->where(['user_id'=>$v['user_id']])->getField('headimgurl');
         }
         if(!empty(count($data))){
             $this->returnAjaxSuccess($data);

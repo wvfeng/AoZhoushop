@@ -269,7 +269,7 @@ class MyorderController extends CommonController
             if (!empty($file[$key]['tmp_name'])) {
                 $info = $upload->uploadOne($file[$key]);
                 if ($info) {
-                     $w = "/conf/".$info['savename'];
+                     $w = "/pinglun/".$info['savename'];
                      $img[$key] = $w;
                 }
 
