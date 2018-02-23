@@ -10,6 +10,7 @@ namespace Mobile\Model;
 
 class MyinfoModel extends CommonModel
 {
+    public $Error = null;
     protected $tableName = 'User';
     protected $_link = [
         'User_detail'=> [
@@ -39,5 +40,22 @@ class MyinfoModel extends CommonModel
             'after_sale'    => (isset($Order['退货']) ? $Order['退货']:0) + (isset($Order['换货']) ? $Order['换货']:0) + (isset($Order['售后']) ? $Order['售后']:0),
         ];
         return $data;
+    }
+
+    //修改头像
+    public function uploadHead(){
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath  =      './'; // 设置附件上传根目录
+        $upload->savePath  =      C('__PATH_HEADER__'); // 设置附件上传目录    // 上传单个文件
+        $upload->subName   =    array('date','Ymd');
+        $info   =   $upload->uploadOne($_FILES['head']);
+        if(!$info) {// 上传错误提示错误信息
+            $this->Error = $upload->getError();
+            return false;
+        }else{// 上传成功 获取上传文件信息
+            return $info['savepath'].$info['savename'];
+        }
     }
 }

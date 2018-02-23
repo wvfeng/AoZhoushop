@@ -18,9 +18,13 @@ class MyinfoController extends CommonController
      * 更新个人信息
      */
     public function UpdateUserInfo(){
+        if(!empty($_FILES['head'])){
+            $fileName = $this->Model->uploadHead();
+            if($fileName === null) $this->returnAjaxError(['message'=>$this->Model->Error]);
+            $this->headimgurl = $fileName;
+        }
         $this->Model->create();
         $this->id = $this->userId;
-        //$this->id = url_decode($this->id);  //解密用户ID
-        $this->quickReturn($this->Model->save(),'修改');
+        $this->quickReturn($this->Model->relation(true)->save(),'修改');
     }
 }
