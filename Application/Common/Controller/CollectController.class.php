@@ -26,4 +26,15 @@ class CollectController extends CommonController
             $this->returnAjaxError(['message'=>'空类型！']);
         }
     }
+
+    //可选的操作
+    private $actions = ['add','list','delete','remove'];
+    public function _empty($method, $args){
+        if(in_array(strtolower($method),$this->actions)) $this->CallAction($method);
+        parent::_empty();
+    }
+
+    public function CallAction($method){
+        $this->manage($method,I('ShopID'),I('CollectID'));
+    }
 }
