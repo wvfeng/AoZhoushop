@@ -35,6 +35,6 @@ class CollectController extends CommonController
     }
 
     public function CallAction($method){
-        $this->manage($method,I('ShopID'),I('CollectID'));
+        $this->manage($method,I('ShopID',null),I('CollectID',null));
     }
 }
