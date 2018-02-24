@@ -7,7 +7,7 @@ class AddressController extends CommonController
 
     public function manage($type,$id = null){
         $where = ['user_id'=>$this->userId,'id'=>$id];
-        switch ($type){
+        switch (strtolower($type)){
             case 'add':
                 $message = '添加';
                 $data = $this->Model->create();
@@ -18,10 +18,13 @@ class AddressController extends CommonController
                     $res = false;
                 }
                 break;
-            case 'c':
+            case 'remove':
                 $message = '删除';
                 $res = $this->Model->where($where)->delete();
                 $res = $res === false ? $res:true;
+                break;
+            case 'delete':
+                $this->manage('remove',$id);
                 break;
             case 'update':
                 $message = '更新';
@@ -43,5 +46,16 @@ class AddressController extends CommonController
                 $res = null;
         }
         $this->quickReturn($res,$message == 'Error' ? '错误类型！操作':$message.$this->message);
+    }
+
+    //可选的操作
+    private $actions = ['add','list','delete','remove','update','default'];
+    public function _empty($method, $args){
+        if(in_array(strtolower($method),$this->actions)) $this->CallAction($method);
+        parent::_empty();
+    }
+
+    public function CallAction($method){
+        $this->manage($method,I('id',null));
     }
 }
