@@ -23,19 +23,19 @@ class CreditController extends CommonController
         ];
         if(in_array(strtolower($type),$types)) $this->returnAjaxError(['message'=>'类型错误!']);
         if(is_numeric($type)) $type = $types[$type];
-        $this->Model->create();
-        $this->Model->u_id = $this->userId;
-        $this->quickReturn($this->Model->add(),'申请'.$type);
+        $data = $this->Model->create();
+        $data['u_id'] = $this->userId;
+        $this->quickReturn($this->Model->add($data),'申请'.$type);
     }
 
     /**
      * 添加物流系信息
      */
     public function addExpress($ShopID = null){
-        $creditOrder = $this->Model->where(['s_id'=>$ShopID,'u_id'=>$this->userId])->find();
+        $this->Model->where(['s_id'=>$ShopID,'u_id'=>$this->userId])->find();
         if(empty($creditOrder)) $this->returnAjaxError(['message'=>'CODE_ORDER_ERR','status'=>'CODE_ORDER_ERR']);
-        $creditOrder->create();
-        $this->quickReturn($creditOrder->save(),'添加物流信息');
+        $creditOrder = $this->Model->create();
+        $this->quickReturn($this->Model->where(['s_id'=>$ShopID,'u_id'=>$this->userId])->save($creditOrder),'添加物流信息');
     }
 
     /**
