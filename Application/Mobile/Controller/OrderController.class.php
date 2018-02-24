@@ -104,7 +104,7 @@ class OrderController extends CommonController
             $map = array('shop_id'=>I('shop_id'));
         }
         $data['data'] = M('evaluation')->join("mall_shop ON mall_shop.id=mall_evaluation.shop_id")
-        ->page($this->page())
+        ->limit($this->page())
         ->where($map)
         /*->where(['mall_evaluation.user_id'=>I('user_id')])*/
         ->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.id as shop_id,mall_evaluation.date,

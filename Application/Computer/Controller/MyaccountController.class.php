@@ -19,7 +19,7 @@ class MyaccountController extends CommonController
         if(I('type')){
             $map = array('type'=>I('type'));
         }
-        $data['data'] = $db->where($map)->where('user_id='.$userId.' and status=1')->page($this->page())->field('date,id,shop_id,num,type')->select();
+        $data['data'] = $db->where($map)->where('user_id='.$userId.' and status=1')->limit($this->page())->field('date,id,shop_id,num,type')->select();
         foreach ($data['data'] as $k => &$v) {
             $shopIdArr = explode("|*|",$v['shop_id']);
             $shopNumArr = explode("|*|",$v['num']);

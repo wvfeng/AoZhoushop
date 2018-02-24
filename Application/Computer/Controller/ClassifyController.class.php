@@ -60,10 +60,10 @@ class ClassifyController extends CommonController
     		$this->_empty();
     	}
     	if(!empty($type)){
-    		$data['data'] = $db->where(['classify_id'=>I('id')])->page($this->page())
+    		$data['data'] = $db->where(['classify_id'=>I('id')])->limit($this->page())
     	->order($type.' '.I('sort'))->field('img,tit,price,rate,id')->select();
 	    }else{
-	    	$data['data'] = $db->where(['classify_id'=>I('id')])->page($this->page())->field('img,tit,price,rate,id')->select();
+	    	$data['data'] = $db->where(['classify_id'=>I('id')])->limit($this->page())->field('img,tit,price,rate,id')->select();
 	    }
     	
     	if(empty($data['data'])){
