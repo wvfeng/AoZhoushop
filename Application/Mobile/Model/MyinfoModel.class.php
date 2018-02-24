@@ -11,6 +11,12 @@ namespace Mobile\Model;
 class MyinfoModel extends CommonModel
 {
     public $Error = null;
+    public $Header;
+    public $Header_odl;
+    public $Header_thumb;
+    public $Header_thumb_odl;
+
+    protected $fields = ['id','username','iphone','email'/*,'nickname','headimgurl','mood','sex','surplus_int','country','province','city'*/];
     protected $tableName = 'User';
     protected $_link = [
         'User_detail'=> [
@@ -43,7 +49,7 @@ class MyinfoModel extends CommonModel
     }
 
     //修改头像
-    public function uploadHead(){
+    public function uploadHead($Header_odl){
         $upload = new \Think\Upload();// 实例化上传类
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
@@ -55,7 +61,15 @@ class MyinfoModel extends CommonModel
             $this->Error = $upload->getError();
             return false;
         }else{// 上传成功 获取上传文件信息
-            return $info['savepath'].$info['savename'];
+            //获取旧的头像信息
+            $this->Header_odl = $Header_odl;
+            $this->Header_thumb_odl = dirname($this->Header_odl).'/thumb_'.basename($this->Header_odl);
+            //生成缩略图
+            $this->Header = $info['savepath'].$info['savename'];
+            $image = new \Think\Image(\Think\Image::IMAGE_GD,$this->Header);
+            $this->Header_thumb = dirname($this->Header).'/thumb_'.basename($this->Header);
+            $res = $image->thumb(C('__HEADER_W__'), C('__HEADER_H___'))->save($this->Header_thumb);
+            return $this->Header;
         }
     }
 }
