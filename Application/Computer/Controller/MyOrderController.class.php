@@ -60,7 +60,7 @@ class MyOrderController extends Controller
     /**
      * 注册
      */
-    public function newUser(){
+    public function newUser(){print_r(I(''));die;
         $db = M('user');
         I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
         if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));

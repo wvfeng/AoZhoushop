@@ -10,6 +10,13 @@ class OrderController extends CommonController
         if(I('type')){
             $type = ['type'=>I('type')];
         }
+        if(I('id')){
+            $type = ['id'=>I('id')];
+        }
+        if(I('shopname')){
+            $shopNameId = M('shop')->where(['tit'=>I('shopname')])->getField('id');
+            $type['shop_id'] = array('like',array('|*|'.$shopNameId.'|*|'));
+        }
         $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1])->where($type)->limit($this->page())
         ->field('shop_id,user_id,num,date,type,money,paymoney,id')->select();
         foreach ($data['data'] as $key => &$v) {
