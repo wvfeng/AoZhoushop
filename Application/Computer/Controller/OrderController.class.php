@@ -5,8 +5,7 @@ class OrderController extends CommonController
 {	
     //我的订单,通过筛选 编号，类型，商品名称
     public function myOrder(){
-        /*$userId = url_decode(I('userId'));*/
-        $userId = I('userId');
+        $userId = url_decode(I('userId'));
         if(I('type')){
             $type = ['type'=>I('type')];
         }
