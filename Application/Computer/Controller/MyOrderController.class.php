@@ -39,15 +39,79 @@ class MyOrderController extends Controller
      	 $this->returnAjaxError($data);
      }     
     }
-    public function ceshi(){
-       $db = M('order');
-       $con = $db->where(['id'=>196])->field('date')->select();
-       $day = $con[0][1]['date'];
-      $tomouth = strtotime("last month");
-      $day = time();
-//      var_dump(time());die;
+    /**
+     * 登录
+     * 产生session('userInfo') value: $data;
+     */
+    public function login(){
+        $db = M('user');
+        $where['password'] = md5(I('post.password'));
+        $where['iphone|email'] = I('post.username');
+        $data['data'] = $db ->where($where)->find();
+
+        if(!empty($data['data'])){
+            unset($data['data']['password']);
+            $data['data']['id'] = url_encode($data['data']['id'],C('LandExpirationTime.number'),C('LandExpirationTime.nuit'));
+            $this->quickReturn($data);
+        }else{
+             $this->returnAjaxError($data); 
+        }
     }
-        /**
+    /**
+     * 注册
+     */
+    public function newUser(){
+        $db = M('user');
+        I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
+        if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
+        // die();
+       $where['username'] = I('post.username');
+       // 判断是手机号还是email
+       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
+        $data['data'] = $db ->add($where);
+        if($data){
+            $wher['user_id'] = $data['data'];
+            $user_id = M('user_detail');
+            $data['data'] = $user_id ->add($wher);
+        }
+        if(!empty($data['data'])){
+             $this->quickReturn($data);
+        }else{
+             $this->returnAjaxError($data); 
+        }
+    }
+    /**
+     * 忘记密码
+     */
+    public function upPwd(){
+        $db = M('user');
+        // 判断输入的是手机号还是邮箱
+        $where['iphone|email'] = I('post.username');
+        $data = $db ->where($where)->select();
+        // 手机号或者邮箱存在
+        if(count($data) == 1){
+        // 判断是手机还是邮箱 1手机 2email
+        is_numeric(I('post.username'))==1 ? $type="1":$type="2";
+        
+        }
+    }
+    // 短信验证码ajax
+    public  function ajaxProve(){
+          $pwd = '';
+           $length = 6;
+            $pattern = '1234567890abcdefghijklmnopkrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for($i = 0; $i < $length; $i ++) {
+                $pwd .= $pattern {mt_rand ( 0, 50 )}; //生成php随机数验证码
+            }
+     is_numeric(I('get.type'))==1 ? $type="1":$type="2";
+     if($type="1"){
+        // 手机号
+     }elseif($type="2"){
+        // 邮箱
+        $this->send_email($pwd);
+     }
+    }
+    /**
      * 文件上传入口
      * string id
      */

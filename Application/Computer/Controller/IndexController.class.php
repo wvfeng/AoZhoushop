@@ -48,4 +48,10 @@ class IndexController extends CommonController
         $db = M('setup');
         return $db->where(['models'=>1,'type'=>1])->select();
     }
+    //首页中间广告图片
+    public function banner(){
+        $db = M('setup');
+        $data['data'] = $db->where(['models'=>1,'type'=>2])->field('img,link')->find();
+        $this->quickReturn($data);
+    }
 }
