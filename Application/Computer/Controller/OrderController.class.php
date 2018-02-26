@@ -3,7 +3,7 @@ namespace Computer\Controller;
 
 class OrderController extends CommonController
 {	
-    //我的订单
+    //我的订单,通过筛选 编号，类型，商品名称
     public function myOrder(){
         /*$userId = url_decode(I('userId'));*/
         $userId = I('userId');
@@ -15,7 +15,7 @@ class OrderController extends CommonController
         }
         if(I('shopname')){
             $shopNameId = M('shop')->where(['tit'=>I('shopname')])->getField('id');
-            $type['shop_id'] = array('like',array('|*|'.$shopNameId.'|*|'));
+            $type['shop_id'] = array('like',array('%|*|'.$shopNameId.'|*|%',$shopNameId.'|*|%','%|*|'.$shopNameId));
         }
         $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1])->where($type)->limit($this->page())
         ->field('shop_id,user_id,num,date,type,money,paymoney,id')->select();
