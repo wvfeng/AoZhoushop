@@ -15,6 +15,8 @@ class CommonController extends RestController
     private $Model;
     //该成员会获取用户的登陆状态,未登录为true,登陆为false
     private $isGuest;
+    //数据提供者，模型工厂会检测该成员有没有对应的数据并实例化数据模型
+    protected $DataProvider = null;
 
     const CODE_SUCCESS = 200;
 
@@ -192,7 +194,7 @@ class CommonController extends RestController
         //记录所有数据表名
         $tables = S("tables");
         $namespaces = C('__NAMESPACE__');
-        $table = preg_replace('/(?:\w+)\\\(?:\w+\\\)+(\w+)Controller/',"$1",get_class($obj));
+        $table = empty($this->DataProvider) ? preg_replace('/(?:\w+)\\\(?:\w+\\\)+(\w+)Controller/',"$1",get_class($obj)):$this->DataProvider;
 
         //检测当前模块有没有控制器的同名模型
         if(class_exists(MODULE_NAME.'\Model\\'.$table.'Model')) return D($table);
@@ -286,7 +288,7 @@ Trait page {
  */
 
 Trait getCount {
-    private static function getCount($count){
-        return eval("return self::{$count};");
+    private static function getCount($count,$class = 'self'){
+        return eval("return {$class}::{$count};");
     }
 }
