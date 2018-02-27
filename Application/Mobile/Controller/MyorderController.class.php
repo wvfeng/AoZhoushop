@@ -177,7 +177,6 @@ class MyorderController extends CommonController
      * 注册
      */
     public function newUser(){
-        $this->quickReturn(I('request.'));
         $db = M('user');
         I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
         if(I('post.password')!==I('post.rpassword'))$this->returnAjaxError(array('data'=>'两次密码不同'));
