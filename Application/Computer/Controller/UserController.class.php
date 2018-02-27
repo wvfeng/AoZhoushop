@@ -37,19 +37,17 @@ class UserController extends MyinfoController
         var_dump(A('Mobile/Myorder'));
     }
 
-    public function newUser(){
-        A('Mobile/Myorder')->newUser();
-    }
 
-    public function login(){
-        A('Mobile/Myorder')->login();
-    }
-
-    public function upPwd(){
-        A('Mobile/Myorder')->upPwd();
-    }
-
-    public function ajaxProve(){
-        A('Mobile/Myorder')->ajaxProve();
+    //映射手机端接口
+    //可选的操作
+    private $actions = ['newuser'=>'newUser','login'=>'login','uppwd'=>'upPwd','ajaxprove'=>'ajaxProve'];
+    public function _empty($method, $args){
+        $method = strtolower($method);
+        if(array_key_exists($method,$this->actions)){
+            $method = $this->actions[$method];
+            A('Mobile/Myorder')->$method();
+        }else{
+            parent::_empty();
+        }
     }
 }
