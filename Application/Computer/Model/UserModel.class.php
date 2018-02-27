@@ -21,10 +21,10 @@ class UserModel extends MyinfoModel
     }
 
     //验证用户是否可注册
-    private function is_uniqid($username =null,$iphone = null,$email = null){
-        if(!empty($this->Model->where(['username'=>$username])->find())) return 'USER_NAME_EXISTING';
-        if(!empty($this->Model->where(['iphone'=>$iphone])->find())) return 'USER_IPHONE_EXISTING';
-        if(!empty($this->Model->where(['email'=>$email])->find())) return 'USER_EMAIL_EXISTING';
+    public function is_uniqid($username =null,$iphone = null,$email = null){
+        if(!is_null($username))if(!empty($this->Model->where(['username'=>$username])->find())) return 'USER_NAME_EXISTING';
+        if(!is_null($iphone))if(!empty($this->Model->where(['iphone'=>$iphone])->find())) return 'USER_IPHONE_EXISTING';
+        if(!is_null($email))if(!empty($this->Model->where(['email'=>$email])->find())) return 'USER_EMAIL_EXISTING';
         return true;
     }
 }

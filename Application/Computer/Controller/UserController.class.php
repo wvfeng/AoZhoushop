@@ -33,6 +33,15 @@ class UserController extends MyinfoController
         $this->quickReturn($res !== false,'注册');
     }
 
+    public function is_uniqid($username = null,$iphone = null,$email = null){
+        $res = $this->Model->is_uniqid($username,$iphone,$email);
+        if($res !== true){
+            $this->returnAjaxError(['message'=>$res,'status'=>$res]);
+        }else{
+            $this->returnAjaxSuccess(['message'=>'AVAILABLE']);
+        }
+    }
+
     public function Test(){
         var_dump(A('Mobile/Myorder'));
     }
