@@ -14,6 +14,13 @@ class UserController extends MyinfoController
     const USER_EMAIL_EXISTING = 603; //用户邮箱已存在
     const USER_NONEXISTENT = 605;    //用户不存在
 
+    public $ErrorMessage = [
+        'USER_NAME_EXISTING'=>'用户名已存在!',
+        'USER_IPHONE_EXISTING'=>'用户手机号已存在!',
+        'USER_EMAIL_EXISTING'=>'用户邮箱已存在!',
+        'USER_NONEXISTENT'=>'用户不存在!',
+    ];
+
     //前端实现
     public function LogOut(){
 
@@ -34,9 +41,10 @@ class UserController extends MyinfoController
     }
 
     public function is_uniqid($username = null,$iphone = null,$email = null){
+
         $res = $this->Model->is_uniqid($username,$iphone,$email);
         if($res !== true){
-            $this->returnAjaxError(['message'=>$res,'status'=>$res]);
+            $this->returnAjaxError(['message'=>$this->ErrorMessage[$res],'status'=>$res]);
         }else{
             $this->returnAjaxSuccess(['message'=>'AVAILABLE']);
         }
