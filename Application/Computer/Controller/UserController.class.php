@@ -19,6 +19,7 @@ class UserController extends MyinfoController
         'USER_IPHONE_EXISTING'=>'用户手机号已存在!',
         'USER_EMAIL_EXISTING'=>'用户邮箱已存在!',
         'USER_NONEXISTENT'=>'用户不存在!',
+        'AVAILABLE'=>'信息可用!',
     ];
 
     //前端实现
@@ -46,7 +47,7 @@ class UserController extends MyinfoController
         if($res !== true){
             $this->returnAjaxError(['message'=>$this->ErrorMessage[$res],'status'=>$res]);
         }else{
-            $this->returnAjaxSuccess(['message'=>'AVAILABLE']);
+            $this->returnAjaxSuccess(['message'=>$this->ErrorMessage['AVAILABLE']]);
         }
     }
 
