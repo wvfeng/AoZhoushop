@@ -158,6 +158,7 @@ class MyorderController extends CommonController
      * 产生session('userInfo') value: $data;
      */
     public function login(){
+        $this->quickReturn(I('request.'));
         $db = M('user');
         $where['password'] = md5(I('post.password'));
         $where['iphone|email'] = I('post.username');
@@ -176,6 +177,7 @@ class MyorderController extends CommonController
      * 注册
      */
     public function newUser(){
+        $this->quickReturn(I('request.'));
         $db = M('user');
        I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
         if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
