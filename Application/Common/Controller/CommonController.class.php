@@ -288,7 +288,7 @@ Trait page {
  */
 
 Trait getCount {
-    private static function getCount($count,$class = 'self'){
+    private static function getCount($count,$class = 'static'){
         return eval("return {$class}::{$count};");
     }
 }
