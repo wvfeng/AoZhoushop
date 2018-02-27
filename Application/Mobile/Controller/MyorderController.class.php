@@ -160,7 +160,7 @@ class MyorderController extends CommonController
     public function login(){
         $db = M('user');
         $where['password'] = md5(I('post.password'));
-        $where['iphone|email'] = I('post.username');
+        $where['username|iphone'] = I('post.username');
         $data['data'] = $db ->where($where)->find();
 
         if(!empty($data['data'])){
