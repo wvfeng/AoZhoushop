@@ -196,14 +196,19 @@ class MyorderController extends CommonController
              $this->returnAjaxError($data); 
         }
     }
+
+    public function is_uniqid($username = null,$iphone = null,$email = null){
+        A('Computer/User')->is_uniqid($username,$iphone,$email);
+    }
+
     /**
      * 忘记密码
      */
     public function upPwd(){
         $db = M('user');
         // 判断输入的是手机号还是邮箱
-        $where['iphone|email'] = I('post.username');
-        $data = $db ->where($where)->select();
+        $where['iphone'] = I('post.username');
+        $data = $db ->where($where)->find();
         // 手机号或者邮箱存在
         if(count($data) == 1){
         // 判断是手机还是邮箱 1手机 2email
