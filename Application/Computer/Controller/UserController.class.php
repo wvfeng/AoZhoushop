@@ -14,11 +14,6 @@ class UserController extends MyinfoController
     const USER_EMAIL_EXISTING = 603; //用户邮箱已存在
     const USER_NONEXISTENT = 605;    //用户不存在
 
-    //用户登陆
-    public function LogIn(){
-
-    }
-
     //前端实现
     public function LogOut(){
 
@@ -31,21 +26,30 @@ class UserController extends MyinfoController
 //        $data['User_detail'] = M('User_detail')->create();
         $res = $this->Model->checkdata($data);
         if($res !== true) $this->returnAjaxError(['message'=>'CODE_ARGUMENTS_ERROR','status'=>'CODE_ARGUMENTS_ERROR']);
-        $res = $this->user_exists($data['username'],$data['iphone'],$data['email']);
+        $res = $this->Model->is_uniqid($data['username'],$data['iphone'],$data['email']);
         if($res !== true) $this->returnAjaxError(['message'=>$res,'status'=>$res]);
-        $res = $this->Model->relation(true)->add($data);
+        $data['password'] = md5($data['password']);
+        $res = $this->Model->add($data);
         $this->quickReturn($res !== false,'注册');
     }
 
-    //验证用户是否可注册
-    private function user_exists($username =null,$iphone = null,$email = null){
-        if(!empty($this->Model->where(['username'=>$username])->find())) return 'USER_NAME_EXISTING';
-        if(!empty($this->Model->where(['iphone'=>$iphone])->find())) return 'USER_IPHONE_EXISTING';
-        if(!empty($this->Model->where(['email'=>$email])->find())) return 'USER_EMAIL_EXISTING';
-        return true;
+    public function Test(){
+        var_dump(A('Mobile/Myorder'));
     }
 
-    public function Test(){
-        var_dump($this->Model);
+    public function newUser(){
+        A('Mobile/Myorder')->newUser();
+    }
+
+    public function login(){
+        A('Mobile/Myorder')->login();
+    }
+
+    public function upPwd(){
+        A('Mobile/Myorder')->upPwd();
+    }
+
+    public function ajaxProve(){
+        A('Mobile/Myorder')->ajaxProve();
     }
 }
