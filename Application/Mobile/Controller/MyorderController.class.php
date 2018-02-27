@@ -158,7 +158,6 @@ class MyorderController extends CommonController
      * 产生session('userInfo') value: $data;
      */
     public function login(){
-        $this->quickReturn(I('request.'));
         $db = M('user');
         $where['password'] = md5(I('post.password'));
         $where['iphone|email'] = I('post.username');
