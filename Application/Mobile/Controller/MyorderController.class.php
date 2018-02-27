@@ -183,6 +183,7 @@ class MyorderController extends CommonController
        $where['username'] = I('post.username');
        // 判断是手机号还是email
        is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
+       if(is_numeric($where['username'])) $this->returnAjaxError(['message'=>'用户名错误！']);
         $data['data'] = $db ->add($where);
         if($data){
             $wher['user_id'] = $data['data'];
