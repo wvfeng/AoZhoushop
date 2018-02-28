@@ -12,7 +12,7 @@ class MyorderController extends CommonController
      */
     public function orderType(){
 //        xiugai
-     switch (I('get.type')) {
+     switch (I('type')) {
          case 0 : $type = array('in','未付款,待发货,已发货,待评论,已评论,退货,换货,售后,已评论');
              break;
          case 1 : $type = '未付款';
@@ -38,7 +38,7 @@ class MyorderController extends CommonController
              break;
      }
      $userId = url_decode(I('userId'));
-     $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1,'type'=>$type])->where($type)->limit($this->page())
+     $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1,'type'=>$type])->limit($this->page())
         ->field('shop_id,user_id,num,date,type,money,paymoney,id,freight')->select();
         foreach ($data['data'] as $key => &$v) {
             $shopId = explode('|*|',$v['shop_id']);
