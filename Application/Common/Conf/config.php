@@ -56,4 +56,12 @@ return array(
         '赵辉'   => '805492074@qq.com',
         '明明'   => '1025812312@qq.com',
     ],
+
+    //短信接口配置
+    'SMS'   => [
+        'accessKeyId' => 'LTAIJXecFLjg5ccx',
+        'accessKeySecret' => '1rgvy5Acy5JMP9Mi0sf1HPq0GDY9IZ',
+        'signName' => '步云网络信息公司',
+        'templateCode' => 'SMS_124730072'
+    ],
 );
