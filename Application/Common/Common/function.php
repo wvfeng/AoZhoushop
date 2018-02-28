@@ -38,3 +38,31 @@ function url_decode($destr){
         return false;
     }
 }
+
+function is_mobile($mobile){
+    if(preg_match('/^\d{11}$/',$mobile) == 0){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+function is_email($email,$type = 0){
+    $email1 = '/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/';
+    $email2 = '/^[A-Za-z0-9\x7f-\xff]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/';
+    switch ($type){
+        case 0:
+            $res = (boolean)(preg_match($email1,$email) == 1 || preg_match($email2,$email) == 1);
+            break;
+        case 1:
+            $res = (boolean)(preg_match($email1,$email) == 1);
+            break;
+        case 2:
+            $res = (boolean)(preg_match($email1,$email) == 1);
+            break;
+        default :
+            $res = (boolean)(preg_match($email1,$email) == 1 || preg_match($email2,$email) == 1);
+            break;
+    }
+    return $res;
+}
