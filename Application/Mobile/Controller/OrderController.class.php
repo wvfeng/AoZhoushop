@@ -137,8 +137,7 @@ class OrderController extends CommonController
     }
     //我的订单-全部,通过筛选 类型
     public function myOrder(){
-        //$userId = url_decode(I('userId'));
-        $userId = I('userId');
+        $userId = url_decode(I('userId'));
         if(I('type')){
             $type = ['type'=>I('type')];
         }
