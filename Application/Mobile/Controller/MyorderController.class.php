@@ -37,6 +37,7 @@ class MyorderController extends CommonController
             $this->returnAjaxError();
              break;
      }
+     $userId = url_decode(I('userId'));
      $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1,'type'=>$type])->where($type)->limit($this->page())
         ->field('shop_id,user_id,num,date,type,money,paymoney,id,freight')->select();
         foreach ($data['data'] as $key => &$v) {
