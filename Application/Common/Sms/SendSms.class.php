@@ -9,5 +9,6 @@ class SendSms extends Sms
     public function SendSms($mobile,$code){
         $status = $this->send_verify($mobile, $code);
         if($status !== true) \Think\Log::write($this->getError(),'ERR');
+        return $status;
     }
 }
