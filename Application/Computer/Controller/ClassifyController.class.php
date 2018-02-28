@@ -27,6 +27,12 @@ class ClassifyController extends CommonController
 		    	}
     			$data['data'] = $db->where(['level'=>2,'uid'=>I('id')])->order('id '.I('sort'))->select();
     			break;
+            case 'all':
+                $data['data'] = $db->where(['level'=>1])->order('id '.I('sort'))->select();
+                foreach ($data['data'] as $key => &$v) {
+                    $v['children'] = $db->where(['level'=>2,'uid'=>$v['id']])->order('id '.I('sort'))->select();
+                }
+                break;
     	}
     	if(empty($data['data'])){
     		$this->returnAjaxError($data);
