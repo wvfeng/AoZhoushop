@@ -17,7 +17,7 @@ class UserModel extends MyinfoModel
         foreach ($this->checkdata as $field){
             if(!isset($data[$field])) return false;
         }
-        if(preg_match('/^[A-Za-z0-9]{6,20}$/',$data['password'])) return false;
+        if(preg_match('/^[A-Za-z0-9]{6,20}$/',$data['password']) != 1) return false;
         if($data['password'] != $data['rpassword']) return false;
         return true;
     }
