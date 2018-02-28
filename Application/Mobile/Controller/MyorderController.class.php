@@ -37,28 +37,18 @@ class MyorderController extends CommonController
             $this->returnAjaxError();
              break;
      }
-     $db = M('order');
-     $where['type'] = $type;
-     $where['user_id'] = url_decode(I('userId'));
-     $con = $db->where($where)->field('shop_id,num,paymoney,freight')->select();
-     foreach ($con as $key => $value) {
-         // 把商品id数量炸开
-         $shop_id = explode("|*|",$con[$key]['shop_id']);
-         $num = explode("|*|",$con[$key]['num']);
-         $wheres['id'] = array('in',implode($shop_id,","));
-         $data[$key] = M('shop')->where($wheres)->select();
-         foreach ($data[$key] as $k => $v) {
-                 foreach ($data[$key] as $ke => $va) {
-                    // 修改时间格式
-                    $data[$key][$ke]['date'] = date("Y-m-d",strtotime($data[$key][$ke]['date']));
-                 }
-             // 订单数量填充入数组
-             $data[$key][$k]['number'] = $num[$k];
-             $data[$key][$k]['paymoney'] = $con[$key]['paymoney'];
-             $data[$key][$k]['freight'] = $con[$key]['freight'];
-         }
-     }
-//      var_dump($data);die;
+     $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1,'type'=>$type])->where($type)->limit($this->page())
+        ->field('shop_id,user_id,num,date,type,money,paymoney,id,freight')->select();
+        foreach ($data['data'] as $key => &$v) {
+            $shopId = explode('|*|',$v['shop_id']);
+            $shopNum = explode('|*|',$v['num']);
+            $v['sum'] = array_sum($shopNum);
+            $map['id'] = array('in',$shopId);
+            $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price')->select();
+            foreach ($v['shop'] as $keys => &$vs) {
+                $vs['paynum'] = $shopNum[$keys];
+            }
+        }
      $this->quickReturn($data);
     }
     /**
