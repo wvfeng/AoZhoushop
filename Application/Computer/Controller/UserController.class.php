@@ -31,12 +31,15 @@ class UserController extends MyinfoController
     public function regUser(){
         //创建数据
         $data = $this->Model->create();
+        $data['password'] = I('post.password',null);
+        $data['rpassword'] = I('post.rpassword',null);
 //        $data['User_detail'] = M('User_detail')->create();
         $res = $this->Model->checkdata($data);
         if($res !== true) $this->returnAjaxError(['message'=>'CODE_ARGUMENTS_ERROR','status'=>'CODE_ARGUMENTS_ERROR']);
-        $res = $this->Model->is_uniqid($data['username'],$data['iphone'],$data['email']);
+        $res = $this->is_uniqid($data['username'],$data['iphone'],$data['email']);
         if($res !== true) $this->returnAjaxError(['message'=>$res,'status'=>$res]);
         $data['password'] = md5($data['password']);
+        unset($data['rpassword']);
         $res = $this->Model->add($data);
         $this->quickReturn($res !== false,'注册');
     }
