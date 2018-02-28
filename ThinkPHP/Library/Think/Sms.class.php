@@ -8,23 +8,24 @@ namespace Think;
 
 class Sms {
     // 保存错误信息
-    public $error;
+    private $error;
     // Access Key ID
-    private $accessKeyId = 'LTAIJXecFLjg5ccx';
+    private $accessKeyId;
     // Access Access Key Secret
-    private $accessKeySecret = '1rgvy5Acy5JMP9Mi0sf1HPq0GDY9IZ';
+    private $accessKeySecret;
     // 签名
-    private $signName = '步云网络信息公司';
+    private $signName;
     // 模版ID
-    private $templateCode = 'SMS_124730072';
+    private $templateCode;
 
     public function __construct()
     {
         // 配置参数
-        $this->accessKeyId = C('SMS.accessKeyId');
-        $this->accessKeySecret = C('SMS.accessKeySecret');
-        $this->signName = C('SMS.signName');
-        $this->templateCode = C('SMS.templateCode');
+        $config = unserialize(base64_decode(C('SMS')));
+        $this->accessKeyId = $config['accessKeyId'];
+        $this->accessKeySecret = $config['accessKeySecret'];
+        $this->signName = $config['signName'];
+        $this->templateCode = $config['templateCode'];
     }
 
     private function percentEncode($string) {
@@ -90,10 +91,13 @@ class Sms {
         $result = json_decode ( $result, true );
         //var_dump($result);die;
         if (isset ( $result ['Code'] )) {
-            $this->error = $this->getErrorMessage ( $result ['Code'] );
-            return false;
+            if($result ['Code'] == 'OK'){
+                return true;
+            }else{
+                $this->error = $this->getErrorMessage ( $result ['Code'] );
+                return false;
+            }
         }
-        return true;
     }
     /**
      * 获取详细错误信息
@@ -136,5 +140,9 @@ class Sms {
             return $message [$status];
         }
         return $status;
+    }
+
+    public function getError(){
+        return $this->error;
     }
 }

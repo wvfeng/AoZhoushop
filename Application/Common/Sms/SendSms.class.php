@@ -6,17 +6,8 @@ use Think\Sms;
 class SendSms extends Sms
 {
     //发送验证码
-    public function SendSms($mobile = null,$code = null){
-//        $mobile = '17826829936';
-        $mobile = '17634313914';
-        $code = rand ( 1000, 9999 );
-
+    public function SendSms($mobile,$code){
         $status = $this->send_verify($mobile, $code);
-
-        if (!$status) {
-            echo $this->error;
-        }else{
-            echo 11111111;
-        }
+        if($status !== true) \Think\Log::write($this->getError(),'ERR');
     }
 }
