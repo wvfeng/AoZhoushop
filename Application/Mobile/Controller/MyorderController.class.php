@@ -207,32 +207,47 @@ class MyorderController extends CommonController
      * 忘记密码
      */
     public function upPwd(){
-        $db = M('user');
-        // 判断输入的是手机号还是邮箱
-        $where['iphone'] = I('post.username');
-        $data = $db ->where($where)->find();
-        // 手机号或者邮箱存在
-        if(empty($data)){
-            $this->returnAjaxError(['message'=>'未注册的手机号！']);
+        //收集数据
+        $mobile = I('post.iphone',null);
+        $code = I('post.code',null);
+        $new_password = I('post.new_password',null);
+        if(is_null($mobile) || is_null($code) || is_null($new_password)) $this->returnAjaxError(['message'=>'缺少必要的参数！']);
+        //验证数据c
+        if(is_mobile($mobile)  && D("Computer/User")->is_uniqid(null,$mobile) === 'USER_IPHONE_EXISTING'){
+            $Redis = S(['type'=>'Redis']);
+            if($odl_code = S(md5($mobile.__function__))){
+                if($code == $odl_code){
+                    $res = M('User')->where(['iphone'=>$mobile])->save(['password'=>md5($new_password)]);
+                    $this->quickReturn($res !== false,'密码修改');
+                }else{
+                    $this->returnAjaxError(['message'=>'验证码错误！']);
+                }
+            }else{
+                $this->returnAjaxError(['message'=>'验证码已过期！']);
+            }
         }else{
-            //等待短信接口
+            $this->returnAjaxError(['message'=>'未注册的手机号！']);
         }
     }
     // 短信验证码ajax
     public  function ajaxProve(){
-          $pwd = '';
-           $length = 6;
-            $pattern = '1234567890abcdefghijklmnopkrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            for($i = 0; $i < $length; $i ++) {
-                $pwd .= $pattern {mt_rand ( 0, 50 )}; //生成php随机数验证码
-            }
-     is_numeric(I('get.type'))==1 ? $type="1":$type="2";
-     if($type="1"){
-        // 手机号
-     }elseif($type="2"){
-        // 邮箱
-        $this->send_email($pwd);
-     }
+        $type = I('get.type',null);
+        $mobile = I('get.mobile',null);
+        if(is_null($type) || is_null($mobile)) $this->returnAjaxError(['message'=>'缺少必要的参数!']);
+        if(is_mobile($mobile)){
+          $res = D("Computer/User")->is_uniqid(null,$mobile);
+          if($res === true) $this->returnAjaxError(['message'=>'未注册的手机号！']);
+          $Redis = S(['type'=>'Redis']);
+          if(md5($mobile.$type)){
+              $this->quickReturn(false,'获取验证码');
+          }else{
+              $code = mt_rand(100000,999999);
+              $Redis->set(md5($mobile.$type),$code);
+              $Redis->expire(md5($mobile.$type),60);
+          }
+          $res = A('Common/Send','Sms')->SendSms($mobile,$code);
+          $this->quickReturn($res,'获取验证码');
+        }
     }
     /**
      * 文件上传入口
