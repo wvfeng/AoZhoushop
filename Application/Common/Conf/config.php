@@ -57,11 +57,9 @@ return array(
         '明明'   => '1025812312@qq.com',
     ],
 
+    //邮箱配置
+    'EMAIL'=>'YTo4OntzOjg6IlNNVFBBdXRoIjtiOjE7czo0OiJIb3N0IjtzOjEyOiJzbXRwLjE2My5jb20iO3M6ODoiVXNlcm5hbWUiO3M6Njoid3ZmZW5nIjtzOjg6IlBhc3N3b3JkIjtzOjEwOiJwaHBtYWlsMTYzIjtzOjY6IklzSFRNTCI7YjoxO3M6NzoiQ2hhclNldCI7czo1OiJVVEYtOCI7czo0OiJGcm9tIjtzOjE0OiJ3dmZlbmdAMTYzLmNvbSI7czo4OiJGcm9tTmFtZSI7czo2OiJ3dmZlbmciO30',
+
     //短信接口配置
-    'SMS'   => [
-        'accessKeyId' => 'LTAIJXecFLjg5ccx',
-        'accessKeySecret' => '1rgvy5Acy5JMP9Mi0sf1HPq0GDY9IZ',
-        'signName' => '步云信息技术',
-        'templateCode' => 'SMS_124730072'
-    ],
+    'SMS'   => 'YTo0OntzOjExOiJhY2Nlc3NLZXlJZCI7czoxNjoiTFRBSUpYZWNGTGpnNWNjeCI7czoxNToiYWNjZXNzS2V5U2VjcmV0IjtzOjMwOiIxcmd2eTVBY3k1Sk1QOU1pMHNmMUhQcTBHRFk5SVoiO3M6ODoic2lnbk5hbWUiO3M6MTg6IuatpeS6keS/oeaBr+aKgOacryI7czoxMjoidGVtcGxhdGVDb2RlIjtzOjEzOiJTTVNfMTI0NzMwMDcyIjt9',
 );
