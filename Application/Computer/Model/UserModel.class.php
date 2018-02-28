@@ -29,13 +29,13 @@ class UserModel extends MyinfoModel
             if(!empty($this->where(['username'=>$username])->find())) return 'USER_NAME_EXISTING';
         }
         if(!is_null($iphone)){
-            if(preg_match('/^\d*$/',$username) == 0) return 'USER_IPHONE_EXISTING';
+            if(preg_match('/^\d*$/',$iphone) == 0) return 'USER_IPHONE_EXISTING';
             if(!empty($this->where(['iphone'=>$iphone])->find())) return 'USER_IPHONE_EXISTING';
         }
         if(!is_null($email)){
             $email1 = '^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$';
             $email2 = '^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$';
-            if(preg_match($email1,$username) == 0 && preg_match($email2,$username) == 0) return 'USER_EMAIL_EXISTING';
+            if(preg_match($email1,$email) == 0 && preg_match($email2,$email) == 0) return 'USER_EMAIL_EXISTING';
             if(!empty($this->where(['email'=>$email])->find())) return 'USER_EMAIL_EXISTING';
         }
         return true;
