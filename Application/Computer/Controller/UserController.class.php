@@ -36,9 +36,10 @@ class UserController extends MyinfoController
 //        $data['User_detail'] = M('User_detail')->create();
         $res = $this->Model->checkdata($data);
         if($res !== true) $this->returnAjaxError(['message'=>'CODE_ARGUMENTS_ERROR','status'=>'CODE_ARGUMENTS_ERROR']);
-        $res = $this->is_uniqid($data['username'],$data['iphone'],$data['email']);
-        if($res !== true) $this->returnAjaxError(['message'=>$res,'status'=>$res]);
+        $res = $this->Model->is_uniqid($data['username'],$data['iphone'],$data['email']);
+        if($res !== true) $this->returnAjaxError(['message'=>$this->Message[$res],'status'=>$res]);
         $data['password'] = md5($data['password']);
+        $data['accessToken'] = uniqid();
         unset($data['rpassword']);
         $res = $this->Model->add($data);
         $this->quickReturn($res !== false,'注册');
