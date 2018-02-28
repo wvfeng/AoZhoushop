@@ -118,4 +118,42 @@ class OrderController extends CommonController
             $this->returnAjaxError(['data'=>['msg'=>'失败']]);
         }
     }
+    //订单详情-评论设计图
+    public function orderDeatil(){
+        $userId = url_decode(I('userId'));
+        $id = I('id');
+        $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1,'id'=>$id])
+        ->field('shop_id,user_id,num,date,type,money,paymoney,id,paytype,freight,name,iphone,address')->select();
+        foreach ($data['data'] as $key => &$v) {
+            $shopId = explode('|*|',$v['shop_id']);
+            $shopNum = explode('|*|',$v['num']);
+            $map['id'] = array('in',$shopId);
+            $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price')->select();
+            foreach ($v['shop'] as $keys => &$vs) {
+                $vs['paynum'] = $shopNum[$keys];
+            }
+        }
+        $this->quickReturn($data);
+    }
+    //我的订单-全部,通过筛选 类型
+    public function myOrder(){
+        //$userId = url_decode(I('userId'));
+        $userId = I('userId');
+        if(I('type')){
+            $type = ['type'=>I('type')];
+        }
+        $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1])->where($type)->limit($this->page())
+        ->field('shop_id,user_id,num,date,type,money,paymoney,id,freight')->select();
+        foreach ($data['data'] as $key => &$v) {
+            $shopId = explode('|*|',$v['shop_id']);
+            $shopNum = explode('|*|',$v['num']);
+            $v['sum'] = array_sum($shopNum);
+            $map['id'] = array('in',$shopId);
+            $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price')->select();
+            foreach ($v['shop'] as $keys => &$vs) {
+                $vs['paynum'] = $shopNum[$keys];
+            }
+        }
+        $this->quickReturn($data);
+    }  
 }
