@@ -40,6 +40,7 @@ class UserController extends MyinfoController
         if($res !== true) $this->returnAjaxError(['message'=>$this->Message[$res],'status'=>$res]);
         $data['password'] = md5($data['password']);
         $data['accessToken'] = uniqid();
+        $data['status'] = 2;
         unset($data['rpassword']);
         $res = $this->Model->add($data);
         $this->quickReturn($res !== false,'注册');
