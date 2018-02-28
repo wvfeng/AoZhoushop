@@ -61,7 +61,7 @@ return array(
     'SMS'   => [
         'accessKeyId' => 'LTAIJXecFLjg5ccx',
         'accessKeySecret' => '1rgvy5Acy5JMP9Mi0sf1HPq0GDY9IZ',
-        'signName' => '步云网络信息公司',
+        'signName' => '步云信息技术',
         'templateCode' => 'SMS_124730072'
     ],
 );
