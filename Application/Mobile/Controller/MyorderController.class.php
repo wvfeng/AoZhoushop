@@ -176,25 +176,26 @@ class MyorderController extends CommonController
      * 注册
      */
     public function newUser(){
-        $db = M('user');
-        I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
-        if(I('post.password')!==I('post.rpassword'))$this->returnAjaxError(array('data'=>'两次密码不同'));
-        // die();
-       $where['username'] = I('post.username');
-       // 判断是手机号还是email
-       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
-       if(is_numeric($where['username'])) $this->returnAjaxError(['message'=>'用户名错误！']);
-        $data['data'] = $db ->add($where);
-        if($data){
-            $wher['user_id'] = $data['data'];
-            $user_id = M('user_detail');
-            $data['data'] = $user_id ->add($wher);
-        }
-        if(!empty($data['data'])){
-             $this->quickReturn($data);
-        }else{
-             $this->returnAjaxError($data); 
-        }
+        A('Computer/User')->regUser();
+//        $db = M('user');
+//        I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
+//        if(I('post.password')!==I('post.rpassword'))$this->returnAjaxError(array('data'=>'两次密码不同'));
+//        // die();
+//       $where['username'] = I('post.username');
+//       // 判断是手机号还是email
+//       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
+//       if(is_numeric($where['username'])) $this->returnAjaxError(['message'=>'用户名错误！']);
+//        $data['data'] = $db ->add($where);
+//        if($data){
+//            $wher['user_id'] = $data['data'];
+//            $user_id = M('user_detail');
+//            $data['data'] = $user_id ->add($wher);
+//        }
+//        if(!empty($data['data'])){
+//             $this->quickReturn($data);
+//        }else{
+//             $this->returnAjaxError($data);
+//        }
     }
 
     public function is_uniqid($username = null,$iphone = null,$email = null){
@@ -210,10 +211,10 @@ class MyorderController extends CommonController
         $where['iphone'] = I('post.username');
         $data = $db ->where($where)->find();
         // 手机号或者邮箱存在
-        if(count($data) == 1){
-        // 判断是手机还是邮箱 1手机 2email
-        is_numeric(I('post.username'))==1 ? $type="1":$type="2";
-        
+        if(empty($data)){
+            $this->returnAjaxError(['message'=>'未注册的手机号！']);
+        }else{
+            //等待短信接口
         }
     }
     // 短信验证码ajax
