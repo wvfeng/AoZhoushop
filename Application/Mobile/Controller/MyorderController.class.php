@@ -201,7 +201,7 @@ class MyorderController extends CommonController
         $mobile = I('post.iphone',null);
         $code = I('post.code',null);
         $new_password = I('post.new_password',null);
-        if(is_null($mobile) || is_null($code) || is_null($new_password)) $this->returnAjaxError(['message'=>'缺少必要的参数！']);
+        if(empty($mobile) || empty($code) || empty($new_password)) $this->returnAjaxError(['message'=>'缺少必要的参数！']);
         //验证数据c
         if(is_mobile($mobile)  && D("Computer/User")->is_uniqid(null,$mobile) === 'USER_IPHONE_EXISTING'){
             $Redis = S(['type'=>'Redis']);
@@ -225,15 +225,28 @@ class MyorderController extends CommonController
     public  function ajaxProve(){
         $type = I('post.type',null);
         $mobile = I('post.iphone',null);
-        if(is_null($type) || is_null($mobile)) $this->returnAjaxError(['message'=>'缺少必要的参数!']);
+        if(empty($type) || empty($mobile)) $this->returnAjaxError(['message'=>'缺少必要的参数!']);
         if(is_mobile($mobile)){
           $res = D("Computer/User")->is_uniqid(null,$mobile);
           if($res === true) $this->returnAjaxError(['message'=>'未注册的手机号！']);
           $Redis = S(['type'=>'Redis']);
-          if(S(md5($mobile.$type))) $this->returnAjaxError(['message'=>'操作太频繁!']);
-          $code = mt_rand(100000,999999);
+          $info = S(md5($mobile.$type));
+          //检测验证码是否存在
+          if($info === false){
+              //不存在，重新创建
+              $code = mt_rand(100000,999999).','.time();
+          }else{
+              //存在
+              $info = explode(',',$info);
+              $code = array_shift($info);
+              $startTime = array_shift($info);
+              //判断是否需要重新发送验证码
+              if((time()-$startTime)<C('SECURITY_CODE.MIN_TIME')) $this->returnAjaxError(['message'=>'操作太频繁!']);
+              //需要重新发送，发送原来的验证码
+              $code =  $code.','.$startTime;
+          }
           $Redis->set(md5($mobile.$type),$code);
-          $Redis->expire(md5($mobile.$type),60);
+          $Redis->expire(md5($mobile.$type),C('SECURITY_CODE.MAX_TIME'));
           $res = A('Common/Send','Sms')->SendSms($mobile,$code);
           $this->quickReturn($res,'获取验证码');
         }else{
