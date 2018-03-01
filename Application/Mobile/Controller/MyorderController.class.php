@@ -126,8 +126,9 @@ class MyorderController extends CommonController
     }
     public function addSele(){
         $db = M('address');
-        if(!empty(session('user_id'))){
-            $con = $db->where(['user_id'=>session('user_id')])->order('sdefault desc')->select();
+        $userId = url_decode(I('userId'));
+        if(!empty($userId)){
+            $con = $db->where(['user_id'=>$userId])->order('sdefault desc')->select();
         $this->quickReturn($con);
         }else{
             $this->returnAjaxError();
