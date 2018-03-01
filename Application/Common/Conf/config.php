@@ -57,6 +57,12 @@ return array(
         '明明'   => '1025812312@qq.com',
     ],
 
+    //验证码配置
+    'SECURITY_CODE'=>[
+        'MAX_TIME'=> 60 * 15,//十五分钟之内有效
+        'MIN_TIME'=> 60,   //将允许重新获取的时间
+    ],
+
     //Redis配置
     'REDIS_HOST'=>'127.0.0.1',
 
