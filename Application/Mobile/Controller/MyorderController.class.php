@@ -229,7 +229,7 @@ class MyorderController extends CommonController
           $res = D("Computer/User")->is_uniqid(null,$mobile);
           if($res === true) $this->returnAjaxError(['message'=>'未注册的手机号！']);
           $Redis = S(['type'=>'Redis']);
-          if(md5($mobile.$type)){
+          if(S(md5($mobile.$type))){
               $this->quickReturn(false,'获取验证码');
           }else{
               $code = mt_rand(100000,999999);
