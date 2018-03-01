@@ -2,7 +2,7 @@
 
 namespace Computer\Model;
 
-use Common\CommonModel as Model;
+use Common\Model\CommonModel as Model;
 
 /**
  * Class CommonModel
