@@ -5,8 +5,9 @@ class AddressController extends CommonController
 {
     public $message = '收货地址';
 
-    public function manage($type,$id = null){
-        $where = ['user_id'=>$this->userId,'id'=>$id];
+    public function manage($type = 'list',$id = null){
+        $where = ['user_id'=>$this->userId];
+        if(is_numeric($id)) $where['id'] = $id;
         switch (strtolower($type)){
             case 'add':
                 $message = '添加';
@@ -36,6 +37,11 @@ class AddressController extends CommonController
             case 'list':
                 $message = '查询';
                 $res = $this->Model->where($where)->limit($this->page())->select();
+                if($res === false){
+                    $this->quickReturn(false,$message == 'Error' ? '错误类型！操作':$message.$this->message);
+                }else{
+                    $this->returnAjaxSuccess(['data'=>$res,'message'=>$message.$this->message.'成功！']);
+                }
                 break;
             case 'default':
                 $message = '设置默认地址';
