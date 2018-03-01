@@ -20,7 +20,6 @@ class ShopController extends CommonController
             $this->returnAjaxError(['message'=>$this->message]);
         }
     }
-    
 
     public function _empty($method, $args)
     {

@@ -57,14 +57,14 @@ return array(
         '明明'   => '1025812312@qq.com',
     ],
 
-    //Redis配置
-    'REDIS_HOST'=>'127.0.0.1',
-
     //验证码配置
     'SECURITY_CODE'=>[
         'MAX_TIME'=> 60 * 15,//十五分钟之内有效
         'MIN_TIME'=> 60,   //将允许重新获取的时间
     ],
+
+    //Redis配置
+    'REDIS_HOST'=>'127.0.0.1',
 
     //邮箱配置
     'EMAIL'=>'YTo4OntzOjg6IlNNVFBBdXRoIjtiOjE7czo0OiJIb3N0IjtzOjEyOiJzbXRwLjE2My5jb20iO3M6ODoiVXNlcm5hbWUiO3M6Njoid3ZmZW5nIjtzOjg6IlBhc3N3b3JkIjtzOjEwOiJwaHBtYWlsMTYzIjtzOjY6IklzSFRNTCI7YjoxO3M6NzoiQ2hhclNldCI7czo1OiJVVEYtOCI7czo0OiJGcm9tIjtzOjE0OiJ3dmZlbmdAMTYzLmNvbSI7czo4OiJGcm9tTmFtZSI7czo2OiJ3dmZlbmciO30',
