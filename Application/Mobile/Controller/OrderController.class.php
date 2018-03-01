@@ -128,7 +128,7 @@ class OrderController extends CommonController
             $shopId = explode('|*|',$v['shop_id']);
             $shopNum = explode('|*|',$v['num']);
             $map['id'] = array('in',$shopId);
-            $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price')->select();
+            $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price,id')->select();
             foreach ($v['shop'] as $keys => &$vs) {
                 $vs['paynum'] = $shopNum[$keys];
             }
