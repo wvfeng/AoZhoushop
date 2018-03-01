@@ -223,7 +223,7 @@ class MyorderController extends CommonController
     // 短信验证码ajax
     public  function ajaxProve(){
         $type = I('get.type',null);
-        $mobile = I('get.mobile',null);
+        $mobile = I('get.iphone',null);
         if(is_null($type) || is_null($mobile)) $this->returnAjaxError(['message'=>'缺少必要的参数!']);
         if(is_mobile($mobile)){
           $res = D("Computer/User")->is_uniqid(null,$mobile);
@@ -238,6 +238,8 @@ class MyorderController extends CommonController
           }
           $res = A('Common/Send','Sms')->SendSms($mobile,$code);
           $this->quickReturn($res,'获取验证码');
+        }else{
+            $this->returnAjaxError(['message'=>'手机号码错误！']);
         }
     }
     /**
