@@ -87,7 +87,7 @@ class OrderController extends CommonController
         if(empty($this->isorder($orderid))){
             $this->_empty();
         }
-        $data['data'] = M('order')->where(['id'=>$orderid])->field('name,iphone,address,paymoney')->find();
+        $data['data'] = M('order')->where(['id'=>$orderid])->field('name,iphone,address,paymoney,id')->find();
         if(!empty(count($data))){
             $this->returnAjaxSuccess($data);
         }else{
