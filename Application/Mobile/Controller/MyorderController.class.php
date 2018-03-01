@@ -154,7 +154,6 @@ class MyorderController extends CommonController
         $where['password'] = md5(I('post.password'));
         $where['username|iphone'] = I('post.username');
         $data['data'] = $db ->where($where)->find();
-
         if(!empty($data['data'])){
             // var_dump($data);die;
             unset($data['data']['password']);
@@ -208,7 +207,9 @@ class MyorderController extends CommonController
             $Redis = S(['type'=>'Redis']);
             if($odl_code = S(md5($mobile.__function__))){
                 if($code == $odl_code){
+                    if(preg_match('/^[A-Za-z0-9]{6,20}$/',$new_password) != 1) $this->returnAjaxError(['message'=>'密码不符合规则！']);
                     $res = M('User')->where(['iphone'=>$mobile])->save(['password'=>md5($new_password)]);
+                    if($res !== false) S(md5($mobile.__function__),null);
                     $this->quickReturn($res !== false,'密码修改');
                 }else{
                     $this->returnAjaxError(['message'=>'验证码错误！']);
