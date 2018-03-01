@@ -206,7 +206,11 @@ class MyorderController extends CommonController
         if(is_mobile($mobile)  && D("Computer/User")->is_uniqid(null,$mobile) === 'USER_IPHONE_EXISTING'){
             $Redis = S(['type'=>'Redis']);
             if($odl_code = S(md5($mobile.__function__))){
-                if($code == $odl_code){
+                $info = explode(',',$odl_code);
+                $odl_code = array_shift($info);
+                $startTime = array_shift($info);
+                $sumTime = (time()-$startTime);
+                if($code == $odl_code && $sumTime < C('SECURITY_CODE.MAX_TIME')){
                     if(preg_match('/^[A-Za-z0-9]{6,20}$/',$new_password) != 1) $this->returnAjaxError(['message'=>'密码不符合规则！']);
                     $res = M('User')->where(['iphone'=>$mobile])->save(['password'=>md5($new_password)]);
                     if($res !== false) S(md5($mobile.__function__),null);
