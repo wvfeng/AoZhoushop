@@ -11,7 +11,7 @@ class SendEmail extends Mailer
     public function SendEmail($title,$content,$Address,$Attachment = null){
 
         //读取配置文件
-        $config = unserialize(base64_decode(C('EMAIL')));;
+        $config = unserialize(base64_decode(C('EMAIL')));
         /*服务器相关信息*/
         $this->IsSMTP();
         $this->SMTPAuth   = $config['SMTPAuth'];

@@ -238,8 +238,8 @@ class MyorderController extends CommonController
           $info = S(md5($mobile.$type));
           //检测验证码是否存在
           if($info === false){
-              //不存在，重新创建
-              $code = mt_rand(100000,999999).','.time();
+              //不存在，重新创建验证码
+              $code = $this->getProv();
           }else{
               //存在
               $info = explode(',',$info);
@@ -247,8 +247,14 @@ class MyorderController extends CommonController
               $startTime = array_shift($info);
               //判断是否需要重新发送验证码
               if((time()-$startTime)<C('SECURITY_CODE.MIN_TIME')) $this->returnAjaxError(['message'=>'操作太频繁!']);
-              //需要重新发送，发送原来的验证码
-              $code =  $code.','.$startTime;
+              //需要重新发送
+              if((time()-$startTime)<C('SECURITY_CODE.MAX_TIME')){
+                  //验证码未超时，发送原来的验证码
+                  $code =  $code.','.$startTime;
+              }else{
+                  //验证码已超时，重新创建验证码
+                  $code =  $this->getProv();
+              }
           }
           $Redis->set(md5($mobile.$type),$code);
           $Redis->expire(md5($mobile.$type),C('SECURITY_CODE.MAX_TIME'));
@@ -257,6 +263,11 @@ class MyorderController extends CommonController
         }else{
             $this->returnAjaxError(['message'=>'手机号码错误！']);
         }
+    }
+
+    //获取验证码
+    public function getProv(){
+        return mt_rand(100000,999999).','.time();
     }
     /**
      * 文件上传入口
