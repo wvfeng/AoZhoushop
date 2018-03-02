@@ -81,4 +81,65 @@ class MyaccountController extends CommonController
             $this->returnAjaxSuccess($data);
         }
     }
+    /**
+     * 账号管理->上传个人信息
+     */
+    public function upuserinfo()
+    {
+        $user_id = 74;
+        if($user_id == ''){
+            $this->returnAjaxError($data['data']=['user_id,不存在/或者为空']);
+        }
+        //查询用户信息判断存在不存在详细信息
+        $model = M('user_detail');
+        $info = $model->where(['user_id'=>$user_id])->find();
+        if(!$info){
+            //创建数据
+            $model->create();
+        }
+        if($_FILES['head'] != null){
+            $img = $this->uploadHead($info['headimgurl']);
+            if(!$img){
+                $this->returnAjaxError($data['data']=['上传失败']);
+            }else{
+                $arr['headimgurl'] = $img;
+            }
+        }
+        //接收传输参数
+        $arr['nickname'] = trim(I('nickname'));
+        $arr['sex'] = trim(I('sex'));
+        $arr['address'] = trim(I('address'));
+        $arr['birthday'] = I('birthday');
+        $arr['mood'] = I('mood');
+        //执行修改 启动事物
+        $model->startTrans();
+        $bool = $model->where(['user_id'=>$user_id])->save($arr);
+        if($bool){
+            //提交事物
+            $model->commit();
+            $info = $model->where(['user_id'=>$user_id])->find();
+            $this->returnAjaxSuccess($data['data']=['信息更改成功']);
+        }else{
+            $model->rollback();
+            $this->returnAjaxError($data['data']=['信息更改失败']);
+        }
+    }
+    /**
+     * @param $Header_odl
+     * @return bool|mixed|null
+     * 修改头像方法
+     */
+    public function uploadHead($Header_odl){
+        $this->Header = $img =  $this->uploadImage($_FILES['head'],C('__PATH_HEADER__'),true,C('__HEADER_W__'), C('__HEADER_H___'));
+        if(!$img) {// 上传错误提示错误信息
+           return false;
+        }else{// 上传成功 获取上传文件信息
+            //获取旧的头像信息
+            $this->Header_odl = $Header_odl;
+            $this->Header_thumb_odl = dirname($this->Header_odl).'/thumb_'.basename($this->Header_odl);
+            $this->Header_thumb = $this->ImagePathName_thumb;
+            return $img;
+        }
+    }
+
 }
