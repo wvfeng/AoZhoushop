@@ -54,11 +54,12 @@ class ShopController extends CommonController
             $this->_empty();
         }
         $db = M('shop');
+        $limit = I('limit',4);
         $classifyId = $db->where(['id'=>I('id')])->getField('classify_id');
         $data['data'] = $db->where(['classify_id'=>$classifyId])
-        ->field('img,tit,tit_en,rate,oldprice')->select();
+        ->field('img,tit,tit_en,rate,oldprice')->limit($limit)->select();
         if(empty($data['data'])){
-            $data['data'] = $db->order('id desc')->limit(4)->field('img,tit,tit_en,rate,oldprice')->select();
+            $data['data'] = $db->order('id desc')->limit($limit)->field('img,tit,tit_en,rate,oldprice')->select();
         }
         if(empty($data['data'])){ 
             $this->returnAjaxError($data);
