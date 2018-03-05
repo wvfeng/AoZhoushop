@@ -34,7 +34,9 @@ return array(
     //需要登陆验证的接口
     'CHECKLIST' => [
         'Mobile/Myinfo/*',  //获取个人信息都需要验证登陆
-        'Computer/Shop/comment*',  //评论管理
+        'Computer/Shop/comment',  //评论管理
+        'Computer/Shop/commentadd',  //评论管理
+        'Computer/Shop/commentremove',  //评论管理
     ],
 
     //设置登陆过期时长
