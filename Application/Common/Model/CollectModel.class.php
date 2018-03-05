@@ -81,10 +81,15 @@ class CollectModel extends CommonModel
      * @param $ShopID
      * @return mixed
      */
-    public function removeCollect($UserID,$ShopID){
-        $where = ['u_id'=>$UserID,'s_id'=>$ShopID];
+    public function removeCollect($UserID,$ShopID = null){
+        if(empty($ShopID)){
+            $where = ['id'=>$UserID];
+        }else{
+            $where = ['u_id'=>$UserID,'s_id'=>$ShopID];
+        }
+
         if($this->checkCollect($where)){
-            return $this->where(['u_id'=>$UserID,'s_id'=>$ShopID])->limit(1)->delete();
+            return $this->where($where)->limit(1)->delete();
         }else{
             return true;
         }
