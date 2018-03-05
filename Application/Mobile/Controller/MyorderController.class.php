@@ -235,7 +235,8 @@ class MyorderController extends CommonController
           $res = D("Computer/User")->is_uniqid(null,$mobile);
           if($res === true) $this->returnAjaxError(['message'=>'未注册的手机号！']);
           $Redis = S(['type'=>'Redis']);
-          $info = S(md5($mobile.$type));
+          $key = md5($mobile.$type);
+          $info = S($key);
           //检测验证码是否存在
           if($info === false){
               //不存在，重新创建验证码
@@ -256,9 +257,13 @@ class MyorderController extends CommonController
                   $code =  $this->getProv();
               }
           }
-          $Redis->set(md5($mobile.$type),$code);
-          $Redis->expire(md5($mobile.$type),C('SECURITY_CODE.MAX_TIME'));
+
+          $Redis->set($key,$code);
+          $Redis->expire($key,C('SECURITY_CODE.MAX_TIME'));
+          $info = explode(',',$code);
+          $code = array_shift($info);
           $res = A('Common/Send','Sms')->SendSms($mobile,$code);
+
           $this->quickReturn($res,'获取验证码');
         }else{
             $this->returnAjaxError(['message'=>'手机号码错误！']);
