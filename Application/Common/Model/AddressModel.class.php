@@ -9,7 +9,7 @@ namespace Common\Model;
 class AddressModel extends CommonModel
 {
     public $delDefault = 'Test';
-    public $_map = [
+    protected $_map = [
         'default' => 'sdefault',
         'name' => 'sname',
         'tel' => 'siphone',
