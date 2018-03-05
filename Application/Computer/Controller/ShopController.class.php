@@ -6,11 +6,10 @@ namespace Computer\Controller;
  */
 class ShopController extends CommonController
 {
-    private $actions = ['commentlist'=>'list','commentadd'=>'add','commentremove'=>'remove','commentupdate'=>'update'];
+    private $actions = ['commentlist'=>'list','commentadd'=>'add','commentremove'=>'remove'/*,'commentupdate'=>'update'*/];
     private $data;
     private $message;
     public function comment($type = 'list'){
-
         $type= strtolower($type);
         if(!in_array($type,$this->actions)) $this->quickReturn(false,'错误操作！');
         $method = __FUNCTION__.ucfirst($type);
