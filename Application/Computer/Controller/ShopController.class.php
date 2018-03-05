@@ -41,7 +41,7 @@ class ShopController extends CommonController
         }
     	$db = M('shop');
         $data['data'] = $db->where(['id'=>I('id')])->field('sliedimg,tit,price,specifications,origin,
-            storage,rate,detail,oldprice')->find();
+            storage,rate,detail,oldprice,num,instructions,weight')->find();
     	if(empty($data['data'])){ 
     		$this->returnAjaxError($data);
     	}else{
@@ -69,37 +69,39 @@ class ShopController extends CommonController
     }
     /*加入购物车
       id商品ID
-      num数量
+      num数量,不要传，固定1
+      pick_type送货方式1物流2上门
     */
     public function addcart(){
         if(empty($this->isshop(I('id')))){
             $this->_empty();
         }
-        $num = I('num');
+        $num = 1;
         $id = I('id');
+        $pick_type = I('pick_type');
+        $userId = url_decode(I('userId'));
         if(session('cart')!=null){
             $olddata = session('cart');
         }
         //商品数据这里输入
-        $data = ['id'=>$id,'num'=>$num];
+        $data = ['id'=>$id,'num'=>$num,'pick_type'=>$pick_type];
         $olddata[] = $data;
         //没登录，商品添加到这里
         session('cart',$olddata);
         //如果用户登录，存入数据库
-        session('user_id',1);
-        if(session('user_id')){
+        if(!empty($userId)){
             foreach (session('cart') as $key => $v) {
-                $iscart = M('cart')->where(['shop_id'=>$v['id'],'user_id'=>session('user_id')])->count();
+                $iscart = M('cart')->where(['shop_id'=>$v['id'],'user_id'=>$userId])->count();
                 if(empty($iscart)){
-                    M('cart')->add(['shop_id'=>$v['id'],'user_id'=>session('user_id'),'num'=>$v['num']]);
+                    M('cart')->add(['shop_id'=>$v['id'],'user_id'=>$userId,'num'=>$v['num'],'pick_type'=>$pick_type]);
                 }else{
-                    M('cart')->where(['shop_id'=>$v['id'],'user_id'=>session('user_id')])->save(['num'=>$v['num']]);
+                    M('cart')->where(['shop_id'=>$v['id'],'user_id'=>$userId])->setInc('num');
                 }
             }
         }
         //查询是否添加成功
-        if(session('user_id')){
-            $isreturn = M('cart')->where(['shop_id'=>I('id'),'user_id'=>session('user_id')])->count();
+        if(!empty($userId)){
+            $isreturn = M('cart')->where(['shop_id'=>I('id'),'user_id'=>$userId])->count();
         }else{
             foreach (session('cart') as $key => $v) {
                 if($v['id']==I('id')){
@@ -116,9 +118,10 @@ class ShopController extends CommonController
     }
     //查询购物车
     public function cartlist(){
-        if(session('user_id')){
+        $userId = url_decode(I('userId'));
+        if(!empty($userId)){
             $cart = M('cart')->join("RIGHT JOIN mall_shop ON mall_shop.id=mall_cart.shop_id")
-            ->where(['mall_cart.user_id'=>session('user_id')])
+            ->where(['mall_cart.user_id'=>$userId])
             ->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num as kucun_num,mall_shop.oldprice,mall_cart.num as cart_num')->select();
             $this->quickReturn($cart);
         }else{
@@ -134,13 +137,14 @@ class ShopController extends CommonController
     }
     //删除购物车商品,传入商品id[]
     public function cartdelete(){
+        $userId = url_decode(I('userId'));
         $id = I('id');
         foreach ($id as $key => $v) {
             if(empty($this->isshop($v))){
                 $this->_empty();
             }
             //删除表购物车
-            M('cart')->where(['user_id'=>session('user_id'),'shop_id'=>$v])->delete();
+            M('cart')->where(['user_id'=>$userId,'shop_id'=>$v])->delete();
         }
         //删除session购物车
         foreach (session('cart') as $key => &$v) {
@@ -152,6 +156,7 @@ class ShopController extends CommonController
     }
     //购物车商品入订单
     public function cartorder(){
+        $userId = url_decode(I('userId'));
         $id = I('id');
         $num = I('num');
         $total = I('total');
@@ -166,7 +171,7 @@ class ShopController extends CommonController
         }
         $data['shop_id'] = implode('|*|',$id);
         $data['num'] = implode('|*|',$num);
-        $data['user_id'] = session('user_id');
+        $data['user_id'] = $userId;
         $data['date'] = date('Y-m-d');
         $data['type'] = 1;
         $data['money'] = $total;
