@@ -16,6 +16,7 @@ return array(
     '__PATH_PHOTO__'  => 'Public/image/photo/',   // 相册目录，上线后加深一个层级
     '__PATH_VIDEO__'  => 'Public/video/',         // 视频和视频缩略图资源
     '__PATH_HEADER__' => 'Public/header/',        // 用户头像像资源
+    '__PATH_COMMENT__' => 'Public/comment/',        // 商品评论图片
     'url_model' => 1,
     //分享功能配置
     'EWM_PATH'        => 'Public/Uploads/image/erweima/',    // 分享二维码存放路径
@@ -32,7 +33,8 @@ return array(
 
     //需要登陆验证的接口
     'CHECKLIST' => [
-        '/Mobile/Myinfo/*',  //
+        'Mobile/Myinfo/*',  //获取个人信息都需要验证登陆
+        'Computer/Shop/comment*',  //评论管理
     ],
 
     //设置登陆过期时长
