@@ -12,7 +12,7 @@ class AddressController extends CommonController
             case 'add':
                 $message = '添加';
                 $data = $this->Model->create();
-                if($this->Model->checkFields($data)){
+                if($this->Model->checkFields($data) && is_mobile($data['siphone'])){
                     $this->Model->user_id = $this->userId;
                     $res = $this->Model->add();
                 }else{
@@ -29,10 +29,13 @@ class AddressController extends CommonController
                 break;
             case 'update':
                 $message = '更新';
-                $this->Model->where($where)->find();
-                $this->Model->create();
-                $res = $this->Model->save();
-                $res = $res === false ? $res:true;
+                $data = $this->Model->create();
+                if(isset($data['siphone'])){
+                    if(!is_mobile($data['siphone'])){
+                        $this->returnAjaxError(['message'=>'手机号错误！']);
+                    }
+                }
+                $res = $this->Model->where($where)->save($data);
                 break;
             case 'list':
                 $message = '查询';

@@ -37,11 +37,11 @@ class CommentModel extends CommonModel
         return $this->delete(I('post.CommentId',null));
     }
 
-    public function CommentUpdate(ShopController $shop){
-        $data = $this->create();
-        $data['user_id'] = $shop->userId;
-        return $this->where(['id'=>I('post.CommentId',null)])->save(I('post.CommentId'));
-    }
+//    public function CommentUpdate(ShopController $shop){
+//        $data = $this->create();
+//        $data['user_id'] = $shop->userId;
+//        return $this->where(['id'=>I('post.CommentId',null)])->save(I('post.CommentId'));
+//    }
 
     public function _after_insert($data, $options)
     {
