@@ -20,8 +20,13 @@ class CollectController extends CommonController
             if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
             $this->quickReturn($model->addCollect($this->userId,$ShopID),'收藏');
         }elseif(in_array($type,['delete','remove'])){
-            if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
-            $this->quickReturn($model->removeCollect($this->userId,$ShopID),'删除收藏');
+            if(empty($CollectID)){
+                if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
+                $this->quickReturn($model->removeCollect($this->userId,$ShopID),'删除收藏');
+            }else{
+                $this->quickReturn($model->removeCollect(['id'=>$CollectID]),'删除收藏');
+            }
+
         }else{
             $this->returnAjaxError(['message'=>'空类型！']);
         }
