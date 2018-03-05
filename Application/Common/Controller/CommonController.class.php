@@ -30,7 +30,7 @@ class CommonController extends RestController
     public function _initialize()
     {
         //登陆验证
-        if(self::is_cheCkUser($_SERVER['REDIRECT_URL'])) $this->cheCkUser();
+        if(self::is_cheCkUser(MODULE_NAME.'/'.CONTROLLER_NAME.'/'.ACTION_NAME)) $this->cheCkUser();
 
         //实例化当前控制器对应的模型并保存到当前控制器的Model属性中
 //        $this->Model = self::getModel($this);
@@ -256,15 +256,18 @@ class CommonController extends RestController
         $REDIRECT_URL = array_filter(explode('/',strtolower($REDIRECT_URL)));
         if(empty($REDIRECT_URL)) return false;
         $cheCkList = array_filter(C('CHECKLIST'));
+
         foreach ($cheCkList as $item){
             $item = array_filter(explode('/',strtolower($item)));
-            $diffs = array_diff_assoc($REDIRECT_URL,$item);
-            if(count($diffs)>1) return false;
-            if(empty($diffs)) return true;
-            $diffs = array_diff_assoc($item,$REDIRECT_URL);
-            if(array_shift($diffs) == '*') return true;
+            $diffs_1 = array_diff_assoc($REDIRECT_URL,$item);
+            if(count($diffs_1)>1) continue;
+            if(empty($diffs_1)) return true;
+            $subject = array_shift($diffs_1);
+            $diffs_2 = array_shift(array_diff_assoc($item,$REDIRECT_URL));
+            $pattern = '/^'.substr($diffs_2,0,strpos($diffs_2,'*')).'.*$/';
+            if(preg_match($pattern,$subject)) return true;
         }
-
+        return false;
     }
 }
 
