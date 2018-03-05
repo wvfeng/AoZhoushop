@@ -263,7 +263,12 @@ class CommonController extends RestController
             if(empty($diffs_1)) return true;
             $subject = array_shift($diffs_1);
             $diffs_2 = array_shift(array_diff_assoc($item,$REDIRECT_URL));
-            $pattern = '/^'.substr($diffs_2,0,strpos($diffs_2,'*')).'.*$/';
+            $end = strpos($diffs_2,'*');
+            if($end === false){
+                $pattern = '/^'.$diffs_2.'$/';
+            }else{
+                $pattern = '/^'.substr($diffs_2,0,strpos($diffs_2,'*')).'.*$/';
+            }
             if(preg_match($pattern,$subject)) return true;
         }
         return false;
