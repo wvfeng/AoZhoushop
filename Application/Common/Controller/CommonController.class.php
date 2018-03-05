@@ -243,7 +243,6 @@ class CommonController extends RestController
         }else{
             $message = $action;
             $message .= empty($res) ? '失败！':'成功！';
-
         }
         if(empty($res)){
             self::returnAjaxError(['data'=>$res,'message'=>$message],$Methods);
