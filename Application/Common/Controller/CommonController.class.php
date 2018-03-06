@@ -280,8 +280,8 @@ class CommonController extends RestController
      */
 Trait page {
     public function page($boolean = false){
-        $page = isset($_POST['page']) ? $_POST['page']:1;
-        $pagesize = isset($_POST['pagesize']) ? $_POST['pagesize']:C('__PAGESIZE__');
+        $page = I('request.page',1);
+        $pagesize = I('request.page',C('__PAGESIZE__'));
         $offset = ($page-1) * $pagesize;
         $this->offset   = $offset;
         $this->pagesize = $pagesize;
