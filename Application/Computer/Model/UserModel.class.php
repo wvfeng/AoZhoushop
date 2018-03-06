@@ -25,15 +25,15 @@ class UserModel extends MyinfoModel
     //验证用户是否可注册
     public function is_uniqid($username =null,$iphone = null,$email = null){
         if(!empty($username)){
-            if(preg_match('/^\d*$/',$username) == 1) return 'USER_NAME_EXISTING';
+            if(preg_match('/^\d*$/',$username) == 1) return 'USER_NAME_ERROR';
             if(!empty($this->where(['username'=>$username])->find())) return 'USER_NAME_EXISTING';
         }
         if(!empty($iphone)){
-            if(!is_mobile($iphone)) return 'USER_IPHONE_EXISTING';
+            if(!is_mobile($iphone)) return 'USER_IPHONE_ERROR';
             if(!empty($this->where(['iphone'=>$iphone])->find())) return 'USER_IPHONE_EXISTING';
         }
         if(!empty($email)){
-            if(!is_email($email)) return 'USER_EMAIL_EXISTING';
+            if(!is_email($email)) return 'USER_EMAIL_ERROR';
             if(!empty($this->where(['email'=>$email])->find())) return 'USER_EMAIL_EXISTING';
         }
         return true;
