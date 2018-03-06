@@ -40,7 +40,7 @@ function url_decode($destr){
 }
 
 function is_mobile($mobile){
-    if(preg_match('/^\d{11}$/',$mobile) == 0){
+    if(preg_match('/^1[3|4|5|7|8][0-9]{9}$/',$mobile) == 0){
         return false;
     }else{
         return true;
