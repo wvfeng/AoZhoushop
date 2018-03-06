@@ -36,7 +36,7 @@ class ShopController extends CommonController
             $olddata = session('cart');
         }
         //商品数据这里输入
-        $data = ['id'=>$id];
+        $data = ['id'=>$id,'selected'=>false];
         $olddata[] = $data;
         //没登录，商品添加到这里
         session('cart',$olddata);
@@ -71,7 +71,7 @@ class ShopController extends CommonController
     public function cartlist(){
         if(url_decode(I('userId'))){
             $cart = M('cart')->join("RIGHT JOIN mall_shop ON mall_shop.id=mall_cart.shop_id")
-            ->where(['mall_cart.user_id'=>url_decode(I('userId'))])->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price')->select();
+            ->where(['mall_cart.user_id'=>url_decode(I('userId'))])->field('mall_cart.selected,mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price')->select();
             $this->quickReturn($cart);
         }else{
             foreach (session('cart') as $key => &$v) {
