@@ -19,7 +19,6 @@ class AddressController extends CommonController
                     $res = false;
                 }
                 if($res === false){
-                    var_dump($this->Model->Error);die;
                     $message .= $this->message;
                     if($this->Model->Error) $message = $this->Model->Error;
                     $this->returnAjaxError(['message'=>$message]);
