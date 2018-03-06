@@ -86,7 +86,7 @@ class ShopController extends CommonController
     }
     //删除购物车商品,传入商品id[]
     public function cartdelete(){
-        $id = I('id');
+        $id = explode(',',I('id'));
         foreach ($id as $key => $v) {
             if(empty($this->isshop($v))){
                 $this->_empty();
