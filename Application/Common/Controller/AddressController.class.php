@@ -12,11 +12,17 @@ class AddressController extends CommonController
             case 'add':
                 $message = '添加';
                 $data = $this->Model->create();
-                if($this->Model->checkFields($data) && is_mobile($data['siphone'])){
+                if($this->Model->checkFields($data)){
                     $this->Model->user_id = $this->userId;
                     $res = $this->Model->add();
                 }else{
                     $res = false;
+                }
+                if($res === false){
+                    var_dump($this->Model->Error);die;
+                    $message .= $this->message;
+                    if($this->Model->Error) $message = $this->Model->Error;
+                    $this->returnAjaxError(['message'=>$message]);
                 }
                 break;
             case 'remove':
@@ -30,16 +36,16 @@ class AddressController extends CommonController
             case 'update':
                 $message = '更新';
                 $data = $this->Model->create();
-                if(isset($data['siphone'])){
-                    if(!is_mobile($data['siphone'])){
-                        $this->returnAjaxError(['message'=>'手机号错误！']);
-                    }
-                }
                 $res = $this->Model->where($where)->save($data);
+                if($res === false){
+                    $message .= $this->message;
+                    if($this->Model->Error) $message = $this->Model->Error;
+                    $this->returnAjaxError(['message'=>$message]);
+                }
                 break;
             case 'list':
                 $message = '查询';
-                $res = $this->Model->where($where)->limit($this->page())->select();
+                $res = $this->Model->where($where)->order('id desc')/*->limit($this->page())*/->select();
                 if($res === false){
                     $this->quickReturn(false,$message == 'Error' ? '错误类型！操作':$message.$this->message);
                 }else{
