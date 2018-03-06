@@ -18,6 +18,9 @@ class UserController extends MyinfoController
         'USER_NAME_EXISTING'=>'用户名已存在!',
         'USER_IPHONE_EXISTING'=>'用户手机号已存在!',
         'USER_EMAIL_EXISTING'=>'用户邮箱已存在!',
+        'USER_NAME_ERROR'=>'用户名错误!',
+        'USER_IPHONE_ERROR'=>'用户手机号错误!',
+        'USER_EMAIL_ERROR'=>'用户邮箱错误!',
         'USER_NONEXISTENT'=>'用户不存在!',
         'AVAILABLE'=>'信息可用!',
     ];
