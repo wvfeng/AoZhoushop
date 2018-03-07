@@ -90,6 +90,9 @@ class ShopController extends CommonController
     //删除购物车商品,传入商品id[]
     public function cartdelete(){
         $id = explode(',',I('id'));
+        if(empty(count($id))){
+            $this->returnAjaxError(['data'=>['msg'=>'没有参数哦！','type'=>false]]);
+        }
         foreach ($id as $key => $v) {
             if(empty($this->isshop($v))){
                 $this->_empty();
@@ -107,10 +110,15 @@ class ShopController extends CommonController
     }
     //购物车商品入订单
     public function cartorder(){
-        $id = I('id');
-        $num = I('num');
+        $id = explode(',',I('id'));
+        $num = explode(',',I('num'));
         $total = I('total');
+        if(count($id)!=count($num)){
+            $this->returnAjaxError(['data'=>['msg'=>'商品和数量不一致','type'=>false]]);
+        }
+        
         //如果没有这个商品，报错
+        $istotal = 0;
         foreach ($id as $key => $v) {
             if(empty($this->isshop($v))){
                 $this->_empty();
@@ -118,6 +126,10 @@ class ShopController extends CommonController
             if(M('shop')->where(['id'=>$v])->getField('num')<=0){
                 $this->returnAjaxError(['data'=>['msg'=>'库存不足','shopname'=>M('shop')->where(['id'=>$v])->getField('tit')]]);
             }
+            $istotal[$key] = M('shop')->where(['id'=>$v])->getField('price')*$num[$key];
+        }
+        if(array_sum($istotal)!=$total){
+            $this->returnAjaxError(['data'=>['msg'=>'总值参数错误','type'=>false]]);
         }
         $data['shop_id'] = implode('|*|',$id);
         $data['num'] = implode('|*|',$num);
