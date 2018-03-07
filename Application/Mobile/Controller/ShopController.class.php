@@ -74,7 +74,7 @@ class ShopController extends CommonController
     public function cartlist(){
         if(url_decode(I('userId'))){
             $cart = M('cart')->join("RIGHT JOIN mall_shop ON mall_shop.id=mall_cart.shop_id")
-            ->where(['mall_cart.user_id'=>url_decode(I('userId'))])->field('mall_cart.selected,mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price,mall_shop.id')->select();
+            ->where(['mall_cart.user_id'=>url_decode(I('userId'))])->field('mall_cart.num as cart_num,mall_cart.selected,mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price,mall_shop.id')->select();
             $this->quickReturn($cart);
         }else{
             foreach (session('cart') as $key => &$v) {
