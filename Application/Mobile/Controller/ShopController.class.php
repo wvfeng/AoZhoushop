@@ -26,6 +26,7 @@ class ShopController extends CommonController
     }
     /*加入购物车
       id商品ID
+      selected前台需求要加的！
     */
     public function addcart(){
         if(empty($this->isshop(I('id')))){
@@ -36,7 +37,7 @@ class ShopController extends CommonController
             $olddata = session('cart');
         }
         //商品数据这里输入
-        $data = ['id'=>$id];
+        $data = ['id'=>$id,'selected'=>false];
         $olddata[] = $data;
         //没登录，商品添加到这里
         session('cart',$olddata);
@@ -71,11 +72,11 @@ class ShopController extends CommonController
     public function cartlist(){
         if(url_decode(I('userId'))){
             $cart = M('cart')->join("RIGHT JOIN mall_shop ON mall_shop.id=mall_cart.shop_id")
-            ->where(['mall_cart.user_id'=>url_decode(I('userId'))])->field('mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price')->select();
+            ->where(['mall_cart.user_id'=>url_decode(I('userId'))])->field('mall_cart.selected,mall_shop.img,mall_shop.tit,mall_shop.tit_en,mall_shop.num,mall_shop.price,mall_shop.id')->select();
             $this->quickReturn($cart);
         }else{
             foreach (session('cart') as $key => &$v) {
-                $shop = M('shop')->field('img,tit,tit_en,num,price')->where(['id'=>$v['id']])->find();
+                $shop = M('shop')->field('img,tit,tit_en,num,price,id')->where(['id'=>$v['id']])->find();
                 if(!empty($shop)){
                     $data[$key] = $shop;
                 }
@@ -85,7 +86,7 @@ class ShopController extends CommonController
     }
     //删除购物车商品,传入商品id[]
     public function cartdelete(){
-        $id = I('id');
+        $id = explode(',',I('id'));
         foreach ($id as $key => $v) {
             if(empty($this->isshop($v))){
                 $this->_empty();

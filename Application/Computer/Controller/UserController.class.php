@@ -13,11 +13,22 @@ class UserController extends MyinfoController
     const USER_IPHONE_EXISTING = 602;//用户手机号已存在
     const USER_EMAIL_EXISTING = 603; //用户邮箱已存在
     const USER_NONEXISTENT = 605;    //用户不存在
+    const USER_NAME_ERROR = 606;    //用户名错误
+    const USER_IPHONE_ERROR = 607;    //用户手机号错误
+    const USER_EMAIL_ERROR = 608;    //用户邮箱错误
+    const USER_PASS_ERROR = 609;    //用户密码错误
+    const USER_PASS_DIVERSE = 610;    //两次密码不一致
+    const AVAILABLE = 200;    //信息可用
 
     public $Message = [
         'USER_NAME_EXISTING'=>'用户名已存在!',
         'USER_IPHONE_EXISTING'=>'用户手机号已存在!',
         'USER_EMAIL_EXISTING'=>'用户邮箱已存在!',
+        'USER_NAME_ERROR'=>'用户名错误!',
+        'USER_IPHONE_ERROR'=>'用户手机号错误!',
+        'USER_EMAIL_ERROR'=>'用户邮箱错误!',
+        'USER_PASS_ERROR'=>'用户密码错误!',
+        'USER_PASS_DIVERSE'=>'两次密码不一致!',
         'USER_NONEXISTENT'=>'用户不存在!',
         'AVAILABLE'=>'信息可用!',
     ];
@@ -35,8 +46,12 @@ class UserController extends MyinfoController
         $data['rpassword'] = I('post.rpassword',null);
 //        $data['User_detail'] = M('User_detail')->create();
         $res = $this->Model->checkdata($data);
-        if($res !== true) $this->returnAjaxError(['message'=>'CODE_ARGUMENTS_ERROR','status'=>'CODE_ARGUMENTS_ERROR']);
-        $res = $this->Model->is_uniqid($data['username'],$data['iphone'],$data['email']);
+        if($res === false){
+            $this->returnAjaxError(['message'=>'CODE_ARGUMENTS_ERROR','status'=>'CODE_ARGUMENTS_ERROR']);
+        }elseif($res !== true){
+            $this->returnAjaxError(['message'=>$this->Message[$res],'status'=>$res]);
+        }
+        $res = $this->Model->is_uniqid($data['username'],$data['iphone'],$data['email'],false);
         if($res !== true) $this->returnAjaxError(['message'=>$this->Message[$res],'status'=>$res]);
         $data['password'] = md5($data['password']);
         $data['accessToken'] = uniqid();
