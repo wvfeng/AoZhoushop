@@ -42,10 +42,36 @@ class UserController extends MyinfoController
         $data['accessToken'] = uniqid();
         $data['status'] = 2;
         unset($data['rpassword']);
-        $res = $this->Model->add($data);
-        $this->quickReturn($res !== false,'注册');
+        $this->startTrans();
+        $bool[] = $res = $this->Model->add($data);
+        if($res){
+            //接收分享人信息sdsd
+            $shareid =I('post.usershare');
+            $thisid = $res;
+            //分享人存在则进行查询当前注册用户信息
+            if(isset($shareid) && $shareid != ''){
+               $bool[]=$this->recommend($shareid,$thisid);
+            }
+            if(!in_array(false,$bool)){
+                $this->commit();
+                $this->quickReturn($res !== false,'注册');
+            }
+        }else{
+            $this->rollback();
+            $this->returnAjaxError(['message'=>'用户注册失败']);
+        }
     }
 
+    /**
+     * @param $sid
+     * @param $zid
+     * 处理用户分享成为下级的操作
+     */
+    public function recommend($sid,$zid)
+    {
+        $bool = $this->Model->where(['id'=>$zid])->save(['parent_id'=>$sid]);
+        return $bool;
+    }
     public function is_uniqid($username = null,$iphone = null,$email = null){
 
         $res = $this->Model->is_uniqid($username,$iphone,$email);
