@@ -113,6 +113,9 @@ class ShopController extends CommonController
         $id = explode(',',I('id'));
         $num = explode(',',I('num'));
         $total = I('total');
+        if(empty(count($id))){
+            $this->returnAjaxError(['data'=>['msg'=>'没有参数哦！','type'=>false]]);
+        }
         if(count($id)!=count($num)){
             $this->returnAjaxError(['data'=>['msg'=>'商品和数量不一致','type'=>false]]);
         }
