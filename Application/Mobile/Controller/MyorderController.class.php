@@ -155,7 +155,6 @@ class MyorderController extends CommonController
         $is_username = $db->checkpaeg(['username' => I('post.username')]) === true;
         $is_pass = $db->checkpaeg(['password' => I('post.password')]) === true;
         if(($is_mobile || $is_username) && $is_pass){
-            $where['status'] = 2;
             $where['password'] = md5(I('post.password'));
             $where['username|iphone'] = I('post.username');
             $data['data'] = $db->where($where)->find();
@@ -163,6 +162,7 @@ class MyorderController extends CommonController
             $this->returnAjaxError(['message'=>'用户名或密码错误！']);
         }
         if(!empty($data['data'])){
+            if($data['data']['status'] != '正常') $this->returnAjaxError(['message'=>$data['data']['status']]);
             unset($data['data']['password']);
             $data['data']['id'] = url_encode($data['data']['id'],C('LandExpirationTime.number'),C('LandExpirationTime.nuit'));
             $this->quickReturn($data);
