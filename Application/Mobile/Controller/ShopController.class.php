@@ -48,6 +48,8 @@ class ShopController extends CommonController
                 $iscart = M('cart')->where(['shop_id'=>$v['id'],'user_id'=>url_decode(I('userId'))])->count();
                 if(empty($iscart)){
                     M('cart')->add(['shop_id'=>$v['id'],'user_id'=>url_decode(I('userId'))]);
+                }else{
+                    M('cart')->where(['shop_id'=>$v['id'],'user_id'=>url_decode(I('userId'))])->setInc('num');
                 }
             }
         }
