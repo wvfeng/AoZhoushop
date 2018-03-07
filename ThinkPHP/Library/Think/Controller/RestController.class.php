@@ -87,6 +87,8 @@ class RestController extends Controller {
             }else{
                 E(L('_ERROR_ACTION_').':'.ACTION_NAME);
             }
+        }else{
+            E(L('_ERROR_ACTION_').':'.$method);
         }
     }
 
