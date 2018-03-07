@@ -121,7 +121,7 @@ class ShopController extends CommonController
         }
         
         //如果没有这个商品，报错
-        $istotal = 0;
+        $istotal = [];
         foreach ($id as $key => $v) {
             if(empty($this->isshop($v))){
                 $this->_empty();
