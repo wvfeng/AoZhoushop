@@ -90,7 +90,7 @@ class ShopController extends CommonController
     //删除购物车商品,传入商品id[]
     public function cartdelete(){
         $id = explode(',',I('id'));
-        if(empty(count($id))){
+        if(empty($id[0])){
             $this->returnAjaxError(['data'=>['msg'=>'没有参数哦！','type'=>false]]);
         }
         foreach ($id as $key => $v) {
@@ -113,7 +113,7 @@ class ShopController extends CommonController
         $id = explode(',',I('id'));
         $num = explode(',',I('num'));
         $total = I('total');
-        if(empty($id)==false){
+        if(empty($id[0])){
             $this->returnAjaxError(['data'=>['msg'=>'没有参数哦！','type'=>false]]);
         }
         if(count($id)!=count($num)){
@@ -142,7 +142,7 @@ class ShopController extends CommonController
         $data['money'] = $total;
         $res = M('order')->add($data);
         if(!empty($res)){
-            $this->returnAjaxSuccess(['data'=>['msg'=>'成功','orderid'=>$res]]);
+            $this->returnAjaxSuccess(['data'=>['msg'=>'成功','orderid'=>$res,'type'=>true]]);
         }else{
             $this->returnAjaxError(['data'=>['msg'=>'失败']]);
         }
