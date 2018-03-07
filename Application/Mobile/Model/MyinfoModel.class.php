@@ -15,7 +15,7 @@ class MyinfoModel extends CommonModel
     public $Header_thumb;
     public $Header_thumb_odl;
 
-    protected $fields = ['id','username','iphone','email'/*,'nickname','headimgurl','mood','sex','surplus_int','country','province','city'*/];
+    protected $fields = ['id','username','iphone','email','status','password'/*,'nickname','headimgurl','mood','sex','surplus_int','country','province','city'*/];
     protected $tableName = 'User';
     protected $_link = [
         'User_detail'=> [

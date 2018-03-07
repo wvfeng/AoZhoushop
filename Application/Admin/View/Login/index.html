@@ -56,7 +56,7 @@
     $("#adminForm").click(function(){
         var self = $("form");
         $.post(self.attr("action"), self.serialize(), success, "json");
-        return false;
+        //return false;
 
         function success(data){
             if(data.status == 0){

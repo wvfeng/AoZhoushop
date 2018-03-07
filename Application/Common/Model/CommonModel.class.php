@@ -2,7 +2,7 @@
 
 namespace Common\Model;
 
-use Think\Model\RelationModel;;
+use Think\Model\RelationModel;
 
 /**
  * Class CommonModel
