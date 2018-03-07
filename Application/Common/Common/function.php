@@ -48,21 +48,29 @@ function is_mobile($mobile){
 }
 
 function is_email($email,$type = 0){
-    $email1 = '/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/';
-    $email2 = '/^[A-Za-z0-9\x7f-\xff]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/';
+    $email_en = '/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/';
+    $email_ch = '/^[A-Za-z0-9\x7f-\xff]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/';
     switch ($type){
         case 0:
-            $res = (boolean)(preg_match($email1,$email) == 1 || preg_match($email2,$email) == 1);
+            $res = (boolean)(preg_match($email_en,$email) == 1 || preg_match($email_ch,$email) == 1);
             break;
         case 1:
-            $res = (boolean)(preg_match($email1,$email) == 1);
+            $res = (boolean)(preg_match($email_en,$email) == 1);
             break;
         case 2:
-            $res = (boolean)(preg_match($email1,$email) == 1);
+            $res = (boolean)(preg_match($email_ch,$email) == 1);
             break;
         default :
-            $res = (boolean)(preg_match($email1,$email) == 1 || preg_match($email2,$email) == 1);
+            $res = (boolean)(preg_match($email_en,$email) == 1 || preg_match($email_ch,$email) == 1);
             break;
     }
     return $res;
+}
+
+function is_idcard($idcard){
+    if(preg_match('/^(\d{6})(18|19|20)?(\d{2})([01]\d)([0123]\d)(\d{3})(\d|X|x)?$/',$idcard) == 0){
+        return false;
+    }else{
+        return true;
+    }
 }
