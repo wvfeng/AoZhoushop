@@ -57,7 +57,7 @@ class UserController extends MyinfoController
         $data['accessToken'] = uniqid();
         $data['status'] = 2;
         unset($data['rpassword']);
-        $this->startTrans();
+        $this->Model->startTrans();
         $bool[] = $res = $this->Model->add($data);
         if($res){
             //接收分享人信息sdsd
@@ -68,11 +68,11 @@ class UserController extends MyinfoController
                $bool[]=$this->recommend($shareid,$thisid);
             }
             if(!in_array(false,$bool)){
-                $this->commit();
+                $this->Model->commit();
                 $this->quickReturn($res !== false,'注册');
             }
         }else{
-            $this->rollback();
+            $this->Model->rollback();
             $this->returnAjaxError(['message'=>'用户注册失败']);
         }
     }
