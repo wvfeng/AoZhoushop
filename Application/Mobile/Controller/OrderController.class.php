@@ -18,7 +18,7 @@ class OrderController extends CommonController
         $order = M('order')->where(['id'=>$orderid])->find();
         $ordernum = explode('|*|',$order['num']);
     	foreach (explode('|*|',$order['shop_id']) as $key => $v) {
-            $isokshop = M('shop')->where(['id'=>$v])->field('img,tit,price,rate')->find();
+            $isokshop = M('shop')->where(['id'=>$v])->field('img,tit,price,rate,specifications')->find();
             if(empty(count($isokshop))){
                 continue;
             }
