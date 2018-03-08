@@ -1,15 +1,16 @@
-<extend name="Index:shouye" />
+<extend name="Index:shouye"/>
 <block name="body">
     <div class="info-main main">
-        <h1>代理折扣编辑 <a href="javascript:history.go(-1);"style="float:right;">返回上一级</a></h1>
+        <h1>代理折扣编辑 <a href="javascript:history.go(-1);" style="float:right;">返回上一级</a></h1>
         <form method="post" action="{:U('Funds/Fundsedit')}" id="postform">
             <div class="info-list clearfix">
                 <div class="info-right" style="width: 700px;">
 
-                    <div class="info-model clearfix"id="_type"style="width:800px;">
+                    <div class="info-model clearfix" id="_type1" style="width:800px;">
                         <span>选择代理</span>
                         <div style="width:199px;">
-                            <select onchange="checktype()" id="select1" name="rebate_this_id" class="is_vip _type" style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                            <select onchange="checktype(this)" id="select1" name="rebate_this_id" class="is_vip _type"
+                                    style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
                                 <option value=''>请选择</option>
                                 <foreach name="data1" item="vo">
                                     <option value='{$vo.grade_level}'>{$vo.grade_name}</option>
@@ -17,13 +18,24 @@
                             </select>
                         </div>
                     </div>
-                    <div id="div"></div>
+                    <div class="info-model clearfix" id="_type2" style="width:800px;">
+                        <span>邀请代理</span>
+                        <div style="width:199px;">
+                            <select id="select2" name="rebate_this_id" class="is_vip _type"
+                                    style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                                <!---->
+                            </select>
+                        </div>
+                    </div>
+
 
                     <div class="info-model clearfix checkboxist">
                         <span>返利方式</span>
-                        <span id="radio" style="overflow: hidden;line-height:15px;height: auto;float: left;width:457px;">
+                        <span id="radio"
+                              style="overflow: hidden;line-height:15px;height: auto;float: left;width:457px;">
                             <label class="label"><input type="radio" id="radio1" name="rebate_rate_type" value="1"/>充值返钱</label>
-                            <label class="label"><input type="radio" id="radio2" name="rebate_rate_type" value="2"/>购物返利&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i style="color:red">充值返钱:返金额,购物返利:返百分比</i></label>
+                            <label class="label"><input type="radio" id="radio2" name="rebate_rate_type" value="2"/>购物返利&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
+                                    style="color:red">充值返钱:返金额,购物返利:返百分比</i></label>
                         </span>
                     </div>
                     <div class="info-model clearfix">
@@ -32,26 +44,28 @@
                     </div>
                 </div>
             </div>
-            <button type="button"  class="info-submit" id="fileSave" style="cursor: pointer;">确定</button>
+            <button type="button" class="info-submit" id="fileSave" style="cursor: pointer;">确定</button>
         </form>
     </div>
     <script>
-        $('#_type').clone().appendTo('#div');
-        function checktype() {
+        function checktype(_this) {
+            $('#select2').children().remove();
+            if ($(_this).find('option:selected').val() != '') {
+                var count = $(_this).find('option:selected').val();
+                for (var i = 0; i <= count; i++) {
+                    $('#select1').find('option').eq(i + 1).clone().appendTo('#select2');
+                }
+            }
             //获取选择代理的type类型
-            var select1=$("._type option:selected").eq(0);
+            var select1 = $("._type option:selected");
             //获取邀请代理的type类型
-            var select2=$("._type option:selected");
-            console.log(select2);
-            console.log(select1);
-            if(select1.val() == '' || select2.val() == ''){
+            var select2 = $("._type option:selected");
+
+            if (select1.val() == '' || select2.val() == '') {
                 return false;
             }
-            if(select1.val() < select2.val()){
-                alert('邀请代理的等级不能大于选择代理的等级~');
-                return false;
-            }
-            if(select1.val() != '' && select2.val() != '') {
+
+            if (select1.val() != '' && select2.val() != '') {
                 $.ajax({
                     url: "{:U('Funds/selectRebate')}",
                     data: {
@@ -59,34 +73,35 @@
                         rebate_cover_id: select2.val()
                     },
                     type: 'post',
-                    datatype:'html',
+                    datatype: 'html',
                     success: function (data) {
                         $('#price').val(data.rebate_rate);
-                        $('#radio label input').each(function (k,v) {
+                        $('#radio label input').each(function (k, v) {
                             var id = $(v).val();
-                            if(id == data.rebate_rate_type){
-                                if(data.rebate_rate_type == 1){
+                            if (id == data.rebate_rate_type) {
+                                if (data.rebate_rate_type == 1) {
                                     $('#radio2').removeAttr('checked');
-                                }else{
+                                } else {
                                     $('#radio1').removeAttr('checked');
                                 }
-                                $(v).prop('checked','checked');
+                                $(v).prop('checked', 'checked');
                             }
                         })
                     }
                 });
             }
         }
+
         $('#fileSave').click(function () {
             //获取选择代理的type类型
-            var select1=$("#select1 option:selected");
+            var select1 = $("#select1 option:selected");
             //获取邀请代理的type类型
-            var select2=$("#select2 option:selected");
-            if(select1.val() == '' || select2.val() == ''){
+            var select2 = $("#select2 option:selected");
+            if (select1.val() == '' || select2.val() == '') {
                 alert('必须选择代理等级');
                 return false;
             }
-            if($('#price').val() == ''){
+            if ($('#price').val() == '') {
                 alert('返利不能是空');
                 return false;
             }
@@ -94,12 +109,12 @@
                 url: "{:U('Funds/SaveRebate')}",
                 data: $('#postform').serialize(),
                 type: 'post',
-                datatype:'html',
+                datatype: 'html',
                 success: function (data) {
-                    if(data == 1){
+                    if (data == 1) {
                         alert('修改成功');
                         location.reload(true);
-                    }else{
+                    } else {
                         alert('网络异常');
                     }
                 }
