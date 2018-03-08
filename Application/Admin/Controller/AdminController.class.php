@@ -46,10 +46,12 @@ class AdminController extends CommonController
     {
         if (empty($_POST['password'])) {
             unset($_POST['password']);
+        }else{
+            $data['password'] = md5(I('password'));
         }
         $Model = M('admin');
         $data['name'] = I('name');
-        $data['password'] = md5(I('password'));
+
         $data['status'] = I('status');
         $res = $Model->where(['id'=>I('id')])->save($data);
         if($res!==false){
