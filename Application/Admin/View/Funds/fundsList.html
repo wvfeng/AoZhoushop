@@ -16,6 +16,7 @@
                 <tr>
                     <th>名称</th>
                     <th>有效时间：<i style="color: red">点击“下面”的数字修改代理等级的生效时间，单位（月）</i></th>
+                    <th>购物返利：<i style="color: red">点击“下面”的数字修改代理等级的购物返利，单位（%）</i></th>
                     <th>修改时间</th>
 
                     <th width="200">操作</th>
@@ -26,7 +27,8 @@
                     <tr>
                         <td class="color">{$vo.grade_name}</td>
                         <td data="{$vo.grade_id}" yue="{$vo.yue}" id="td" class="color">{$vo.yue}</td>
-                        <td class="color">{$vo.grade_ctime}</td>
+                        <td datas="{$vo.grade_id}" yues="{$vo.grade_rate}" id="rate">{$vo.grade_rate}</td>
+                        <td  class="color">{$vo.grade_ctime}</td>
                         <td>
                             <div class="operate-list">
                                 <a class="pen" style="line-height:22px;width:40px;" href="{:U('Funds/Fundsedit',array('id'=>$vo['grade_id']))}" title="编辑">
@@ -51,8 +53,36 @@
             </style>
         </div>
         <script type="text/javascript">
-
             $(function(){
+                $('table #rate').click(function(){
+                    var id = $(this).attr('datas');
+                    var yue = $(this).attr('yues');
+                    if(!$(this).is('.input')){
+                        $(this).addClass('input').html('<input type="text" value="'+ $(this).text() +'" />').find('input').focus().blur(function(){
+                            $(this).parent().removeClass('input').html($(this).val() || 0);
+                            var value = $(this).val();
+                            var reg=/^\d+(\.\d+)?$/;
+                            if(reg.test(value)==true){
+                                if(value == 0){
+                                    alert('不能是0');
+                                    return false;
+                                }else{
+                                    SaveRebate(id,$(this).val(),yue);
+                                }
+                            }else{
+                                alert("必须为纯数字");
+                                return false;
+                            }
+                        });
+                    }
+                }).hover(function(){
+                    $(this).addClass('hover');
+                },function(){
+                    $(this).removeClass('hover');
+                });
+
+
+
                 $('table #td').click(function(){
                    var id = $(this).attr('data');
                    var yue = $(this).attr('yue');
@@ -80,6 +110,34 @@
                     $(this).removeClass('hover');
                 });
             });
+
+            function SaveRebate(id,num,yue) {
+                if(num == yue){
+                    return false
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: "{:U('Funds/SaveRebates')}",
+                    data: {
+                        id:id,
+                        num:num
+                    },
+                    dataType: 'json',
+                    success : function (data){
+                        if(data == 1){
+                            alert('设置生效');
+                            return false;
+                        }else if(data == 2){
+                            alert('网络异常');
+                            return false;
+                        }else if(data == 3){
+                            alert('不是整形');
+                            return false;
+                        }
+                    }
+                });
+            }
+
             function SaveNum(id,num,yue) {
                 if(num == yue){
                     return false

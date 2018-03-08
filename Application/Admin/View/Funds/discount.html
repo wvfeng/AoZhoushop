@@ -27,19 +27,8 @@
                             </select>
                         </div>
                     </div>
-
-
-                    <div class="info-model clearfix checkboxist">
-                        <span>返利方式</span>
-                        <span id="radio"
-                              style="overflow: hidden;line-height:15px;height: auto;float: left;width:457px;">
-                            <label class="label"><input type="radio" id="radio1" name="rebate_rate_type" value="1"/>充值返钱</label>
-                            <label class="label"><input type="radio" id="radio2" name="rebate_rate_type" value="2"/>购物返利&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i
-                                    style="color:red">充值返钱:返金额,购物返利:返百分比</i></label>
-                        </span>
-                    </div>
                     <div class="info-model clearfix">
-                        <span>返利金额</span>
+                        <span>充值返钱</span>
                         <div><input type="text" id="price" name="rebate_rate" placeholder="折扣(直接填写数字)"/></div>
                     </div>
                 </div>
@@ -80,17 +69,6 @@
                     datatype: 'html',
                     success: function (data) {
                         $('#price').val(data.rebate_rate);
-                        $('#radio label input').each(function (k, v) {
-                            var id = $(v).val();
-                            if (id == data.rebate_rate_type) {
-                                if (data.rebate_rate_type == 1) {
-                                    $('#radio2').removeAttr('checked');
-                                } else {
-                                    $('#radio1').removeAttr('checked');
-                                }
-                                $(v).prop('checked', 'checked');
-                            }
-                        })
                     }
                 });
             }
@@ -99,26 +77,23 @@
         $('#fileSave').click(function () {
             //获取选择代理的type类型
             var select1 = $("#select1 option:selected");
+            console.log(parseInt(select1.val()));
+            console.log(select2);
             //获取邀请代理的type类型
             var select2 = parseInt($('#select2').find("option:selected").val());
-            var rebate_rate_type= $('input:radio[name="rebate_rate_type"]:checked').val();
-            if (select1.val() == '' || select2 == '') {
+            if (isNaN(parseInt(select1.val())) || typeof(select2) == "undefined") {
                 alert('必须选择代理等级');
                 return false;
             }
-
             if ($('#price').val() == '') {
                 alert('返利不能是空');
                 return false;
             }
-            console.log($(select1).val());
-            console.log(select2);
             $.ajax({
                 url: "{:U('Funds/SaveRebate')}",
                 data: {
                     'rebate_this_id':$(select1).val(),
                     'rebate_cover_id':select2,
-                    'rebate_rate_type':rebate_rate_type,
                     'rebate_rate':$('#price').val()
                 },
                 type: 'post',

@@ -126,4 +126,17 @@ class FundsService extends CommonController
             return 2;
         }
     }
+
+    static public function SaveRebates($param)
+    {
+        $id = $param['id'];
+        $num = $param['num'];
+        $model = new GradeModel();
+        $bool = $model->where(['grade_id'=>$id])->save(['grade_rate'=>$num]);
+        if($bool){
+            return 1;
+        }else{
+            return 2;
+        }
+    }
 }

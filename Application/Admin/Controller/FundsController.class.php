@@ -75,6 +75,12 @@ class FundsController extends CommonController
         echo FundsService::SaveNum($param);
     }
 
+    public function SaveRebates()
+    {
+        $param = I('post.');
+        echo FundsService::SaveRebates($param);
+    }
+
 
 
 
