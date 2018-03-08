@@ -50,8 +50,8 @@
     <script>
         function checktype(_this) {
             $('#select2').children().remove();
-            if ($(_this).find('option:selected').val() != '') {
-                var count = $(_this).find('option:selected').val();
+            var count = $(_this).find('option:selected').val();
+            if (count != '') {
                 for (var i = 0; i <= count; i++) {
                     $('#select1').find('option').eq(i + 1).clone().appendTo('#select2');
                 }
