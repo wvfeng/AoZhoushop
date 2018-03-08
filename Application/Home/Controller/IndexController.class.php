@@ -3,6 +3,6 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        echo '欢迎来到澳洲商城！';
+        return $this->show('<center><h1>欢迎来到澳洲商城！</h1></center>');
     }
 }
