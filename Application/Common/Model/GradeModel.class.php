@@ -1,6 +1,9 @@
 <?php
 
 namespace Common\Model;
-class GradeModel extends CommonModel
+use Think\Model;
+
+class GradeModel extends Model
 {
+    protected $tableName = 'grade';
 }
