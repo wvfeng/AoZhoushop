@@ -57,7 +57,7 @@ class AddressController extends CommonController
                 if($res === false){
                     $this->quickReturn(false,$message == 'Error' ? '错误类型！操作':$message.$this->message);
                 }else{
-                    $this->returnAjaxSuccess(['data'=>$res,'message'=>$message.$this->message.'成功！']);
+                    $this->returnAjaxSuccess(['data'=>$res,'message'=>$message.$this->message.'成功！','code'=>empty($res)?0:1]);
                 }
                 break;
             case 'getdefault':
