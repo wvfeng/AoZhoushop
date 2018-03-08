@@ -9,7 +9,7 @@
                     <div class="info-model clearfix" id="_type1" style="width:800px;">
                         <span>选择代理</span>
                         <div style="width:199px;">
-                            <select onchange="checktype(this)" id="select1" name="rebate_this_id" class="is_vip _type"
+                            <select onchange="checktype(this,1)" id="select1" name="rebate_this_id" class="is_vip _type"
                                     style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
                                 <option value=''>请选择</option>
                                 <foreach name="data1" item="vo">
@@ -21,7 +21,7 @@
                     <div class="info-model clearfix" id="_type2" style="width:800px;">
                         <span>邀请代理</span>
                         <div style="width:199px;">
-                            <select id="select2" name="rebate_this_id" class="is_vip _type"
+                            <select onchange="checktype('',2)" id="select2" name="rebate_cover_id" class="is_vip _type"
                                     style="color: #666;width:199px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
                                 <!---->
                             </select>
@@ -48,24 +48,27 @@
         </form>
     </div>
     <script>
-        function checktype(_this) {
-            $('#select2').children().remove();
-            if ($(_this).find('option:selected').val() != '') {
-                var count = $(_this).find('option:selected').val();
-                for (var i = 0; i <= count; i++) {
-                    $('#select1').find('option').eq(i + 1).clone().appendTo('#select2');
+        function checktype(_this,type) {
+            if(type == 1){
+                $('#select2').children().remove();
+                if ($(_this).find('option:selected').val() != '') {
+                    var count = $(_this).find('option:selected').val();
+                    for (var i = 0; i <= count; i++) {
+                        $('#select1').find('option').eq(i + 1).clone().appendTo('#select2');
+                    }
                 }
             }
             //获取选择代理的type类型
             var select1 = $("._type option:selected");
             //获取邀请代理的type类型
-            var select2 = $("._type option:selected");
+            var select2 = $("#select2 option:selected");
 
             if (select1.val() == '' || select2.val() == '') {
                 return false;
             }
 
-            if (select1.val() != '' && select2.val() != '') {
+            if (select1.val() != '' && select2.val() != ''){
+
                 $.ajax({
                     url: "{:U('Funds/selectRebate')}",
                     data: {
@@ -96,18 +99,27 @@
             //获取选择代理的type类型
             var select1 = $("#select1 option:selected");
             //获取邀请代理的type类型
-            var select2 = $("#select2 option:selected");
-            if (select1.val() == '' || select2.val() == '') {
+            var select2 = parseInt($('#select2').find("option:selected").val());
+            var rebate_rate_type= $('input:radio[name="rebate_rate_type"]:checked').val();
+            if (select1.val() == '' || select2 == '') {
                 alert('必须选择代理等级');
                 return false;
             }
+
             if ($('#price').val() == '') {
                 alert('返利不能是空');
                 return false;
             }
+            console.log($(select1).val());
+            console.log(select2);
             $.ajax({
                 url: "{:U('Funds/SaveRebate')}",
-                data: $('#postform').serialize(),
+                data: {
+                    'rebate_this_id':$(select1).val(),
+                    'rebate_cover_id':select2,
+                    'rebate_rate_type':rebate_rate_type,
+                    'rebate_rate':$('#price').val()
+                },
                 type: 'post',
                 datatype: 'html',
                 success: function (data) {

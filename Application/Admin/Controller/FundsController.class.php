@@ -66,6 +66,15 @@ class FundsController extends CommonController
         echo FundsService::SaveRebate($param);
     }
 
+    /**
+     * 设置代理的生命周期
+     */
+    public function SaveNum()
+    {
+        $param = I('post.');
+        echo FundsService::SaveNum($param);
+    }
+
 
 
 

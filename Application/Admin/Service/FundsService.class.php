@@ -14,6 +14,7 @@ class FundsService extends CommonController
     {
         //会员信息
         $data = self::SelectData();
+
         return $data;
     }
 
@@ -27,6 +28,10 @@ class FundsService extends CommonController
         $count = $model->count();
         $p = self::getpage($count,5); //分页
         $data = $model->order('grade_ctime desc')->limit($p->firstRow, $p->listRows)->select();// 赋值数据集
+        foreach ($data as $key=>$vs)
+        {
+            $data[$key]['yue'] = (int)($vs['grader_term_of_validity']/24/60/60/30);
+        }
         $page =  $p->show();// 赋值分页输出
         return [
             'data'=>$data,
@@ -98,5 +103,27 @@ class FundsService extends CommonController
        unset($param['rebate_cover_id']);
        unset($param['rebate_this_id']);
        return $model->where(['rebate_this_id'=>$rebate_this_id,'rebate_cover_id'=>$rebate_cover_id])->save($param);
+    }
+
+    /**
+     * @param $param
+     * @return int
+     * 修改代理的生命周期
+     */
+    static public function SaveNum($param)
+    {
+        $id = $param['id'];
+        $num = $param['num'];
+        $num = (int)($num*24*60*60*30);
+        if(!is_int($num)){
+            return 3;
+        }
+        $model = new GradeModel();
+        $bool = $model->where(['grade_id'=>$id])->save(['grader_term_of_validity'=>$num]);
+        if($bool){
+            return 1;
+        }else{
+            return 2;
+        }
     }
 }
