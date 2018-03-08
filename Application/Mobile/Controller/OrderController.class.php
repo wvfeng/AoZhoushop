@@ -18,7 +18,7 @@ class OrderController extends CommonController
         $order = M('order')->where(['id'=>$orderid])->find();
         $ordernum = explode('|*|',$order['num']);
     	foreach (explode('|*|',$order['shop_id']) as $key => $v) {
-            $isokshop = M('shop')->where(['id'=>$v])->field('img,tit,price,rate,specifications')->find();
+            $isokshop = M('shop')->where(['id'=>$v])->field('img,tit,price,rate,specifications,id')->find();
             if(empty(count($isokshop))){
                 continue;
             }
@@ -79,6 +79,15 @@ class OrderController extends CommonController
             $this->returnAjaxSuccess($data);
         }else{
             $this->returnAjaxError(['data'=>['msg'=>'失败']]);
+        }
+    }
+    //删除订单
+    public function saveorder(){
+        $res = M('order')->where(['id'=>$orderid,'user_id'=>url_decode(I('userId'))])->save(['status'=>0]);
+        if($res!==false){
+            $this->returnAjaxSuccess(['data'=>['msg'=>'成功','type'=>true]]);
+        }else{
+            $this->returnAjaxError(['data'=>['msg'=>'失败','type'=>false]]);
         }
     }
     //付款成功
