@@ -49,7 +49,11 @@ class AddressController extends CommonController
                 break;
             case 'list':
                 $message = '查询';
-                $res = $this->Model->where($this->where)->order('id desc')/*->limit($this->page())*/->select();
+                $res = $this->Model->where($this->where)->order('id desc')->select();
+                if(empty($res) && isset($this->where['sdefault'])){
+                    unset($this->where['sdefault']);
+                    $res = $this->Model->where($this->where)->order('id desc')->limit(1)->select();
+                }
                 if($res === false){
                     $this->quickReturn(false,$message == 'Error' ? '错误类型！操作':$message.$this->message);
                 }else{
