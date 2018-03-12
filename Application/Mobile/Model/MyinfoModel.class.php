@@ -22,7 +22,7 @@ class MyinfoModel extends CommonModel
             'mapping_type'  => self::HAS_ONE,
             'class_name'    => 'user_detail',
             'foreign_key'   => 'user_id',
-            'as_fields'     => 'nickname,headimgurl,mood,sex,surplus_int,address'/*country,province,city*/
+            'as_fields'     => 'nickname,headimgurl,mood,sex,surplus_int,address,birthday'/*country,province,city*/
             ],
     ];
 
