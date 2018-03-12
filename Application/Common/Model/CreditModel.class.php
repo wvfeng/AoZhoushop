@@ -24,6 +24,7 @@ class CreditModel extends CommonModel
     protected $_map = [
         'ShopID' => 's_id',
         'UserID' => 'u_id',
+        'id'     => 'o_id',
     ];
 
     public function _before_insert(&$data, $options)
