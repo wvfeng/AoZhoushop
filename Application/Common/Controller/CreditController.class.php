@@ -21,7 +21,7 @@ class CreditController extends CommonController
             '2',
             '3'
         ];
-        if(in_array(strtolower($type),$types)) $this->returnAjaxError(['message'=>'类型错误!']);
+        if(!in_array(strtolower($type),$types)) $this->returnAjaxError(['message'=>'类型错误!']);
         if(is_numeric($type)) $type = $types[$type];
         $data = $this->Model->create();
         $data['u_id'] = $this->userId;
