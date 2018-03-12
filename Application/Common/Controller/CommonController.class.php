@@ -159,8 +159,13 @@ class CommonController extends RestController
         if(empty($userId = I('request.userId')) || empty($userId = url_decode($userId))){
             self::returnAjaxError(['message'=>'CODE_NOLOGIN','status'=>self::CODE_NOLOGIN]);
         }else{
-            $this->isGuest = false;
-            return $this->userId = htmlspecialchars($userId);
+            $res = M('User')->where(['status'=>'正常','id'=>$userId])->find();
+            if(empty($res)){
+                self::returnAjaxError(['message'=>'USER_NONEXISTENT','status'=>\Computer\Controller\User::USER_NONEXISTENT]);
+            }else{
+                $this->isGuest = false;
+                return $this->userId = htmlspecialchars($userId);
+            }
         }
     }
 
