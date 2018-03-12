@@ -27,7 +27,7 @@ class MyinfoController extends CommonController
             if($fileName === null) $this->returnAjaxError(['message'=>$this->Model->Error]);
             $data['User_detail']['headimgurl'] = $fileName;
         }
-        $this->quickReturn(file_get_contents('php://input'));
+        $this->returnAjaxError(['data'=>$_SERVER]);
         $res = $this->Model->where(['id'=>$this->userId])->relation(true)->save($data);
         if($res === false){
             //修改失败，资源回收
