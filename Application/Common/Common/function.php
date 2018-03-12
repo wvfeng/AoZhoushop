@@ -21,9 +21,12 @@ function url_encode($enstr,$num = 1,$hours = 'hours'){
 
 //对url中加密传输的字段进行解密
 function url_decode($destr){
+    $timg_str = ['year','month','week','day','hour','Minute','second'];
     $encode = explode(',',base64_decode($destr));
     $entime = explode(',',base64_decode(array_pop($encode)));
+
     $hours  = array_pop($entime);
+    if(!(in_array($hours,$timg_str) || in_array(rtrim($hours,'s'),$timg_str))) return false;
     $num    = array_pop($entime);
     $entime = array_pop($entime);
     $time   = time();
