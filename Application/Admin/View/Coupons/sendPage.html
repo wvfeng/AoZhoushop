@@ -1,0 +1,58 @@
+<div id="html" class="table-list">
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+        <tr>
+            <th style="width: 7%"><input type="checkbox" name="selectall">全选</th>
+            <th style="width: 7%">手机号</th>
+            <th style="width: 7%">email</th>
+            <th style="width: 5%">头像</th>
+            <th style="width: 10%">昵称</th>
+            <th style="width: 10%">时间</th>
+            <th style="width: 7%">余额
+                <if condition="$order eq 'desc'">
+                    <a href="{:U('index',['order'=>'asc'])}"><span style="color:#999;font-size:16px;margin-right:2px;">↑</span><span style="color:#999;font-size:16px;">↓</span></a>
+                    <else />
+                    <a href="{:U('index',['order'=>'desc'])}"><span style="color:#999;font-size:16px;margin-right:2px;">↑</span><span style="color:#999;font-size:16px;">↓</span></a>
+                </if>
+            </th>
+            <th style="width: 7%">积分</th>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="data" id="v">
+            <tr>
+                <td><input type="checkbox" name="stuCheckBox" value="{$v.id}"></td>
+                <td>{$v.user.iphone}</td>
+                <td>{$v.user.email}</td>
+                <td><img src="{$v.headimgurl}"style="width:40px;height:40px;"> </td>
+                <td> {$v.nickname|default="-"} </td>
+                <td> {$v.date} </td>
+                <td class="surplus-money"> {$v.surplus_money|default="-"} </td>
+                <td> {$v.surplus_int|default="-"} </td>
+            </tr>
+        </volist>
+        </tbody>
+        <input onclick="sendMultiple()" type="button" class="form-button color-bg-green" value="发放优惠卷" style="width: 80px;">&nbsp;
+        <input onclick="sendAll()" type="button" class="form-button color-bg-green" value="发所有用户" style="width: 80px;">&nbsp;
+
+    </table>
+    <div class="page">
+        {$page}
+    </div>
+</div>
+<script>
+    $('input[name="selectall"]').click(function(){
+        if($(this).is(':checked')){
+            $('input[name="stuCheckBox"]').each(function(){
+                //此处如果用attr，会出现第三次失效的情况
+                $(this).prop("checked",true);
+            });
+        }else{
+            $('input[name="stuCheckBox"]').each(function(){
+                $(this).removeAttr("checked",false);
+            });
+            //$(this).removeAttr("checked");
+        }
+
+    });
+</script>

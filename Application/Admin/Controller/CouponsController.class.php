@@ -1,5 +1,6 @@
 <?php
 namespace Admin\Controller;
+use Admin\Service\CouponsService;
 use Think\Controller;
 class CouponsController extends Controller {
     public function index(){
@@ -54,6 +55,44 @@ class CouponsController extends Controller {
     	}else{
     		$this->error('出错');
     	}
-    	
+    }
+
+    /**
+     * 发优惠卷列表页面
+     */
+    public function SendUserlist()
+    {
+        $cid = I('get.cid');
+        $this->assign('cid',$cid);
+        $this->display();
+    }
+
+    /**
+     * 无刷新分页列表
+     */
+    public function Sendpage()
+    {
+        $data = CouponsService::SendUserlist();
+        $this->assign('data',$data['data']);
+        $this->assign('page',$data['page']);
+        $this->display();
+    }
+
+    /**
+     * 发送多个优惠卷
+     */
+    public function SendUser()
+    {
+        $param = I('post.');
+        echo CouponsService::SendUser($param);
+    }
+
+    /**
+     * 发送给所有的用户
+     */
+    public function SendUserAll()
+    {
+        $param = I('post.cid');
+        echo CouponsService::SendUserAll($param);
     }
 }

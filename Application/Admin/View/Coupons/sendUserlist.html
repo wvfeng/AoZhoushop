@@ -1,0 +1,150 @@
+<extend name="Index:shouye" />
+<block name="body"> 
+<style>
+    .head-title{width:300px;float:none;height:auto;line-height:1;padding:10px 0 0;}
+    .head-text{float:left;margin:6px 0px 0px 0px;}
+</style>
+<style>
+    .prev,.num,.next{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+    .news-left .current{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+    .table-list table img {
+        width: 60px;
+        margin: 0;
+    }
+    .photo:hover div{display:block!important;}
+</style>
+    <div class="main">
+        <div class="head-content">
+            <div class="content" style="position: relative;">
+                <form method="get" action="{:U('index')}">
+                    <div style="float:left;height:55px;">
+                        <div class="head-title">优惠卷发放列表</div>
+                    </div>    
+                        <div class="head-search" style="margin-right: 0px;">
+                            <div class="form-input-btn" style="margin-left: 10px;cursor: pointer;">
+                                <input type="hidden" name="clsea" value="1" class="clsea">
+                            </div>
+                            <div class="form-input-btn select_1">
+                                <input style="width:230px;" type="text" name="clvar" class="form-input-small" placeholder="请输入昵称" id="clvar" value="{$clvar}">
+                            </div>
+                            <div class="form-input-btn select_2">
+                                <select name="clsea_grade"style="color: #666;width:159px;font-size: 14px;border:1px solid #eef1f1;border-radius:3px;height: 36px;margin-right: 5px;">
+                                    <option value='0'>选择级别</option>
+                                    <volist name="grade" id="v">
+                                    <option value='{$v.id}'<if condition="$v['id'] eq $clsea_grade">
+                                        selected="selected"
+                                    </if>>{$v.lev_name}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <input id="search" type="button" onclick="sendpage()" class="form-button color-bg-green" value="查找" style="width: 80px;">&nbsp;
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div id="html" class="table-list">
+        </div>
+    </div>
+    <script>
+        //判断数据是否正确
+        var cid ='{$cid}';
+        console.log(cid);
+        if(cid == ''){
+            alert('数据错误请返回');
+            location.href="{:U('Coupons/Index')}";
+
+        }
+        //触发分页
+        sendpage();
+        /**
+         * 无刷新分页的处理
+         */
+        function sendpage(page)
+        {
+            if(page == '' || page == undefined){
+                page = 1;
+            }
+            $.ajax({
+                url: "{:U('Coupons/Sendpage')}",
+                data: {
+                    p:page,
+                },
+                type: 'get',
+                datatype: 'html',
+                success: function (data) {
+                    $('#html').html('');
+                    $('#html').html(data);
+                    $('.page').find('a').bind('click',function () {
+                        var str = $(this).attr('href');
+                        var strs = str.substr(1).match(new RegExp('.*/(.*).html'))[1];
+                        $(this).attr('href', 'javascript:void(0)');
+                        sendpage(strs);
+                    });
+
+                }
+            });
+        }
+
+        /**
+         * 发送给多个用户
+         * @returns {boolean}
+         */
+        function sendMultiple() {
+            if(window.confirm('确认要给选中的人发送优惠卷？')){
+                //获取所有被选中的值
+                var arr = '';
+                $.each($('input[name=stuCheckBox]:checked'),function (k,v) {
+                    arr+=$(v).val()+',';
+                });
+                if(arr == ''){
+                    alert('请选择用户');
+                    return false;
+                }
+                $.ajax({
+                    url: "{:U('Coupons/SendUser')}",
+                    data: {
+                        cid:cid,
+                        data:arr
+                    },
+                    type: 'post',
+                    datatype: 'html',
+                    success: function (data) {
+                        if(data != 0){
+                            alert('发送成功');
+                        }else{
+                            alert('网络异常');
+                        }
+                    }
+                });
+            }else{
+                return false;
+            }
+        }
+        /**
+         * 发送给所有的用户
+         */
+        function sendAll() {
+            if(window.confirm('确认给所有的人发送优惠卷？')){
+                $.ajax({
+                    url: "{:U('Coupons/SendUserAll')}",
+                    data: {
+                        cid:cid,
+                    },
+                    type: 'post',
+                    datatype: 'html',
+                    success: function (data) {
+                        if(data != 0){
+                            alert('发送成功');
+                        }else{
+                            alert('网络异常');
+                        }
+                    }
+                });
+            }else{
+                return false;
+            }
+
+        }
+    </script>
+</block>
+
