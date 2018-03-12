@@ -2,6 +2,9 @@
 namespace Admin\Model;
 use Think\Model;
 class UserModel extends Model {
+
+    protected $tableName = 'user_detail';
+
     public function duihuan($id){
         
     }

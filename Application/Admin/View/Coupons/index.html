@@ -29,6 +29,9 @@
                             <td class="color">{$v.yend_date|default="-"}</td>
                             <td>
                                 <div class="operate-list">
+                                    <a class="pen" style="line-height:22px;width:40px;" href="{:U('SendUserlist')}?cid={$v.id}" title="发放">
+                                        <i class="iconfont">发放</i>
+                                    </a>
                                     <a class="pen" style="line-height:22px;width:40px;" href="{:U('edit',array('id'=>$v['id']))}" title="编辑">
                                         <i class="iconfont">编辑</i>
                                     </a>
