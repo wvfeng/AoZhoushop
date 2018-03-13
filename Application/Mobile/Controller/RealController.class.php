@@ -12,7 +12,7 @@ class RealController extends CommonController
             $data['data']=['res'=>'数据不完整'];
             $this->returnAjaxError($data);
         }
-        if(!I('zheng')||!I('fan')){
+        if($_FILES['zheng']==false||$_FILES['fan']==false){
             $data['data']=['res'=>'数据不完整'];
             $this->returnAjaxError($data);
         }
@@ -44,7 +44,7 @@ class RealController extends CommonController
         if(!$info) {// 上传错误提示错误信息
             return ['res'=>$upload->getError()];
         }else{// 上传成功 获取上传文件信息
-            return ['path'=>$info['savepath'].$info['savename']];
+            return $info['savepath'].$info['savename'];
         }
     }
 }
