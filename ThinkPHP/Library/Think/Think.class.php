@@ -104,7 +104,6 @@ class Think {
 
       // 设置系统时区
       date_default_timezone_set(C('DEFAULT_TIMEZONE'));
-
       // 检查应用目录结构 如果不存在则自动创建
       if(C('CHECK_APP_DIR')) {
           $module     =   defined('BIND_MODULE') ? BIND_MODULE : C('DEFAULT_MODULE');
@@ -118,6 +117,7 @@ class Think {
       G('loadTime');
       // 运行应用
       App::run();
+
     }
 
     // 注册classmap

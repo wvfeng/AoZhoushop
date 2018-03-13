@@ -81,4 +81,11 @@ return array(
 
     //短信接口配置
     'SMS'   => 'YTo0OntzOjExOiJhY2Nlc3NLZXlJZCI7czoxNjoiTFRBSUpYZWNGTGpnNWNjeCI7czoxNToiYWNjZXNzS2V5U2VjcmV0IjtzOjMwOiIxcmd2eTVBY3k1Sk1QOU1pMHNmMUhQcTBHRFk5SVoiO3M6ODoic2lnbk5hbWUiO3M6MTg6IuatpeS6keS/oeaBr+aKgOacryI7czoxMjoidGVtcGxhdGVDb2RlIjtzOjEzOiJTTVNfMTI0NzMwMDcyIjt9',
-);
+
+    //paypal 国外支付
+    'PAY_PAL'=>[
+        'Client_ID' => 'AR6l_kVKMYzG3BJVEK-xhNioG671frL2lGV3AnLmDdyfciA31Yl9rSs8HMntGDshdbQcG2A6vx23UApf',
+        'Secret' => 'EEHN998CJXPHosF9uw3M4kv1BU-xIrH3iO_TqO3W248g8rgW2G-RUNvtvZnc1e5Z2iDkRueWR6RDIwML'
+    ]
+
+    );
