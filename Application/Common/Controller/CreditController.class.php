@@ -43,7 +43,8 @@ class CreditController extends CommonController
      */
     public function creditList(){
         $fields = ['update_time'];
-        $this->quickReturn($this->Model->field($fields,true)->where(['u_id'=>$this->userId])->relation('shop')->limit($this->page())->select(),'查询');
+        $data = $this->Model->field($fields,true)->where(['u_id'=>$this->userId])->relation('shop')->limit($this->page())->select();
+        $this->quickReturn($data,'查询');
     }
 
     public function getShopInfo($shopId = null){
