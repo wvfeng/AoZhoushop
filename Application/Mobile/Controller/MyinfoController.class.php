@@ -19,18 +19,17 @@ class MyinfoController extends CommonController
      */
     public function UpdateUserInfo(){
         //创建数据
-        $data = $this->Model->create();
-        $data['User_detail'] = M('User_detail')->create();
+        $data = M('User_detail')->create();
         //上传头像
         if(!empty($_FILES['head'])){
             $fileName = $this->Model->uploadHead($this->Model->where(['id'=>$this->userId])->relation(true)->find()['headimgurl']);
             if($fileName === null) $this->returnAjaxError(['message'=>$this->Model->Error]);
-            $data['User_detail']['headimgurl'] = $fileName;
+            $data['headimgurl'] = $fileName;
         }
         if(empty($data)){
             $this->quickReturn(true,'修改');
         }else{
-            $res = $this->Model->where(['id'=>$this->userId])->relation(true)->save($data);
+            $res = M('User_detail')->where(['user_id'=>$this->userId])->save($data);
         }
         if($res === false){
             //修改失败，资源回收
