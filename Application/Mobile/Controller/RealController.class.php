@@ -8,7 +8,7 @@ class RealController extends CommonController
     //添加数组
     public function realnameadd(){
         $realname = D('Realname');
-        if(!I('user_id')){
+        if(!I('userId')){
             $data['data']=['res'=>'数据不完整'];
             $this->returnAjaxError($data);
         }
@@ -17,6 +17,7 @@ class RealController extends CommonController
             $this->returnAjaxError($data);
         }
         $addData = I('');
+        $addData['user_id'] = url_decode(I('userId'));
         $addData['zheng'] = $this->uploadrealnameimg($_FILES['zheng']);
         $addData['fan'] = $this->uploadrealnameimg($_FILES['fan']);
         if (!$realname->create()){
