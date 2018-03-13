@@ -9,7 +9,5 @@ class RealnameModel extends Model
    	 array('name','require','不能为空！',1),
      array('idtype','require','不能为空！',1),
      array('no','require','不能为空！',1),
-     array('zheng','require','不能为空！',1),
-     array('fan','require','不能为空！',1),
    );
 }
