@@ -83,6 +83,5 @@ class CreditModel extends CommonModel
         }else{
             return false;
         }
-
     }
 }

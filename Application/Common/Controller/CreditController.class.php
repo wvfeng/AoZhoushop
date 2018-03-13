@@ -11,7 +11,6 @@ class CreditController extends CommonController
      * @param null $content
      */
     public function creditOrder($ShopID = null,$type = null,$id = null,$content = null){
-        $this->returnAjaxError(['data'=>I('post.')]);
         if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空!']);
         if(empty($id)) $this->returnAjaxError(['message'=>'订单ID不能为空!']);
@@ -46,6 +45,14 @@ class CreditController extends CommonController
         foreach ($data as $key=>$value){
             $data[$key]['create_time'] = date('Y-m-d',$data[$key]['create_time']);
         }
+        $this->quickReturn($data,'查询');
+    }
+
+    public function getcreditshop($ShopID = null,$OrderID = null){
+        $data = $this->Model->alias('C')->field(['C.type','C.status','C.create_time','S.tit','S.price','S.img','O.paytype','C.content'])
+            ->where(['C.s_id'=>$ShopID,'C.o_id'=>$OrderID,'u_id'=>$this->userId])
+            ->join('__SHOP__ S ON S.id = C.s_id')
+            ->join('__ORDER__ O ON O.id = C.o_id')->find();
         $this->quickReturn($data,'查询');
     }
 

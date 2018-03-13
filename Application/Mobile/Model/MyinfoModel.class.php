@@ -35,7 +35,12 @@ class MyinfoModel extends CommonModel
         if(empty($id)) return false;
         $data = $this->field('id,username')->relation('User_detail')->find($id);
         $data['id'] = url_encode($data['id'],7,'day');
-        $Order = array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true));
+        //查询订单数据
+        $Order = array_merge(
+            array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true)),
+            array_count_values(M('Credit_order')->where(['u_id'=>$id])->getField('type',true))
+        );
+
         $data['Order'] = [
             'non_payment'   => isset($Order['未付款']) ? $Order['未付款']:0,
             'non_shipments' => isset($Order['待发货']) ? $Order['待发货']:0,
