@@ -48,6 +48,7 @@ class CreditController extends CommonController
         $this->quickReturn($data,'查询');
     }
 
+    //获取退货订单详情
     public function getcreditshop($ShopID = null,$OrderID = null){
         $data = $this->Model->alias('C')->field(['C.type','C.status','C.create_time','S.tit','S.price','S.img','O.paytype','C.content'])
             ->where(['C.s_id'=>$ShopID,'C.o_id'=>$OrderID,'u_id'=>$this->userId])
