@@ -10,24 +10,21 @@ class CreditController extends CommonController
      * @param null $type
      * @param null $content
      */
-    public function creditOrder($ShopID = null,$type = null,$content = null){
+    public function creditOrder($ShopID = null,$type = null,$id = null,$content = null){
+        $this->returnAjaxError(['data'=>I('post.')]);
         if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空!']);
-        $types = [
-            1=>'退货',
-            2=>'换货',
-            3=>'售后',
-            '1',
-            '2',
-            '3'
-        ];
-        if(!in_array(strtolower($type),$types)) $this->returnAjaxError(['message'=>'类型错误!']);
+        if(empty($id)) $this->returnAjaxError(['message'=>'订单ID不能为空!']);
+        $types = [1=>'退货',2=>'换货',3=>'售后','1','2','3'];
+        if(!in_array($type,$types)) $this->returnAjaxError(['message'=>'类型错误!']);
         if(is_numeric($type)) $type = $types[$type];
         $data = $this->Model->create();
         $data['u_id'] = $this->userId;
-        $this->quickReturn(I('post.'),'申请'.$type);
-//        exit(json_encode(['data'=>explode(',',I('post.img'))]));
-        $this->quickReturn($this->Model->add($data),'申请'.$type);
+        $res = $this->Model->chedate($data);
+        if($res === false) $this->returnAjaxError(['message'=>'申请'.$type.'失败！','data'=>['Credit_message'=>$this->Model->Credit_message]]);
+        $images = array_filter(str_replace('&quot;','',explode('&quot;,&quot;',preg_replace('/\[|\]/','',I('post.img')))));
+        $this->Model->startTrans();
+        $this->quickReturn($this->Model->add($data,['images'=>$images]),'申请'.$type);
     }
 
     /**

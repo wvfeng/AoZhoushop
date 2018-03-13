@@ -90,7 +90,6 @@ class CommonController extends RestController
         if($Methods && strtolower($Methods) != 'any'){
             if(is_array($Methods)) $Methods = implode(',',$Methods);
             if(strtolower($Methods) == 'match') $Methods = 'GET,POST';
-            var_dump($Methods);die;
             header('Access-Control-Allow-Methods: '.$Methods);//允许的请求方式
         }
     }
@@ -286,7 +285,7 @@ class CommonController extends RestController
 Trait page {
     public function page($boolean = false){
         $page = I('request.page',1);
-        $pagesize = I('request.page',C('__PAGESIZE__'));
+        $pagesize = I('request.pagesize',C('__PAGESIZE__'));
         $offset = ($page-1) * $pagesize;
         $this->offset   = $offset;
         $this->pagesize = $pagesize;
