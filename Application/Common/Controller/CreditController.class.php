@@ -25,6 +25,7 @@ class CreditController extends CommonController
         if(is_numeric($type)) $type = $types[$type];
         $data = $this->Model->create();
         $data['u_id'] = $this->userId;
+        $this->quickReturn(I('post.'),'申请'.$type);
 //        exit(json_encode(['data'=>explode(',',I('post.img'))]));
         $this->quickReturn($this->Model->add($data),'申请'.$type);
     }
