@@ -1,8 +1,16 @@
 <?php
 namespace Admin\Controller;
+
+use Admin\Service\OrderService;
 use Think\Controller;
-class OrderController extends CommonController {
-    public function index(){
+
+class OrderController extends CommonController
+{
+    /**
+     * 购买记录首页的
+     */
+    public function index()
+    {
     	$table = M('order');
         if(I('clsea')==1){
             $map = null;
@@ -35,5 +43,26 @@ class OrderController extends CommonController {
         $this->assign('clvar_date_er',I('clvar_date_er'));
 		$this->display();
     }
-    
+
+    /**
+     * 订单列表
+     */
+    public function orderList()
+    {
+        $data = OrderService::orderList();
+        $this->assign('data',$data['data']);
+        $this->assign('page',$data['page']);
+        $this->display();
+    }
+
+    /**
+     * 订单详情
+     */
+    public function orderDetails()
+    {
+        $oid = I('get.id');
+        $data = OrderService::orderDetails();
+
+    }
+
 }

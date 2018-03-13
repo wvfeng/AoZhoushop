@@ -57,6 +57,7 @@ class CouponsService extends CommonController
     }
 
     /**
+     * TODO 优惠卷
      * @param $cid
      * @return bool
      * 发送给所有用户的处理方法

@@ -1,0 +1,61 @@
+<extend name="Index:shouye" />
+<block name="body">
+    <div class="main">
+        <div class="head-content">
+            <div class="content" style="position: relative;">
+                <div class="head-title">订单列表</div>
+            </div>
+        </div>
+        <style>
+            .prev,.num,.next{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+            .news-left .current{width: 40px;border-radius: 3px;display: inline-block;width: 34px;height: 30px;margin-right: 6px;border: 1px solid #ddd;text-align: center;line-height: 30px;color: #727171;}
+            .table-list table img {
+                width: 60px;
+            }
+            .photo:hover div{display:block!important;}
+        </style>
+        <div class="table-list">
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>订单号</th>
+                    <th>订单状态</th>
+                    <th>订单时间</th>
+                    <th>订单金额</th>
+                    <th>运费</th>
+                    <th>优惠卷金额</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="data" id="v">
+                    <tr>
+                        <td class="color">{$v.id|default="-"}</td>
+                        <td class="color">{$v.type|default="-"}</td>
+                        <td class="color">{$v.date}</td>
+                        <td class="color">{$v.paymoney}</td>
+                        <td class="color"></td>
+                        <td class="color"></td>
+                        <td class="color">
+                            <a href="{:U('Order/orderDetails')}?id={$v.id}" style="">详情</a>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+            <div class="page">
+                {$page}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".surplus-money").each(function(){
+            var num =parseFloat($(this).text(),10);
+
+            var n = num.toFixed(1);
+            $(this).text(n);
+        });
+
+    </script>
+</block>
