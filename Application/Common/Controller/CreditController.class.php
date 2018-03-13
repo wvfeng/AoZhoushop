@@ -25,6 +25,7 @@ class CreditController extends CommonController
         if(is_numeric($type)) $type = $types[$type];
         $data = $this->Model->create();
         $data['u_id'] = $this->userId;
+        exit(json_encode(['data'=>explode(',',I('post.img'))]));
         $this->quickReturn($this->Model->add($data),'申请'.$type);
     }
 
@@ -44,6 +45,9 @@ class CreditController extends CommonController
     public function creditList(){
         $fields = ['update_time'];
         $data = $this->Model->field($fields,true)->where(['u_id'=>$this->userId])->relation('shop')->limit($this->page())->select();
+        foreach ($data as $key=>$value){
+            $data[$key]['create_time'] = date('Y-m-d',$data[$key]['create_time']);
+        }
         $this->quickReturn($data,'查询');
     }
 
