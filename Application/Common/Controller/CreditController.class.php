@@ -36,7 +36,7 @@ class CreditController extends CommonController
         $this->Model->tel = I('post.tel','');
         $this->Model->company_id = I('post.company_id','');
         $this->Model->LogisticCode = I('post.LogisticCode','');
-        $this->quickReturn($this->Model->where($where)->save(),'添加物流信息');
+        $this->quickReturn($this->Model->save(),'添加物流信息');
     }
 
     /**
