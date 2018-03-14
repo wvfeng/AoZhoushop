@@ -24,10 +24,18 @@ class RealController extends CommonController
             $data['data']=['res'=>'数据不完整'];
             $this->returnAjaxError($data);
         }else{
-            $res = $realname->add($addData);
+            $isthere = M('realname')->where(['user_id'=>url_decode(I('userId'))])->count();
+            if(empty($isthere)){
+                $res = $realname->add($addData);
+            }else{
+                $res = $realname->where(['user_id'=>url_decode(I('userId')),'type'=>0])->save($addData);
+            }
             if(!empty($res)){
-                $data['data']=['res'=>'增加数据成功'];
+                $data['data']=['res'=>'增加/编辑数据成功'];
                 $this->returnAjaxSuccess($data);
+            }else{
+                $data['data']=['res'=>'无操作'];
+                $this->returnAjaxError($data);
             }
         }
     }
@@ -46,5 +54,10 @@ class RealController extends CommonController
         }else{// 上传成功 获取上传文件信息
             return $info['savepath'].$info['savename'];
         }
+    }
+    //查询实名认证
+    public function getRealname(){
+        $data['data'] = M('realname')->where(['user_id'=>url_decode(I('userId'))])->find();
+        $this->returnAjaxSuccess($data);
     }
 }
