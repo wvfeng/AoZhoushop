@@ -29,11 +29,14 @@ class CreditController extends CommonController
     /**
      * 添加物流系信息
      */
-    public function addExpress($ShopID = null){
-        $this->Model->where(['s_id'=>$ShopID,'u_id'=>$this->userId])->find();
+    public function addExpress(){
+        $where = ['id'=>I('post.id'),'u_id'=>$this->userId];
+        $creditOrder = $this->Model->where($where)->find();
         if(empty($creditOrder)) $this->returnAjaxError(['message'=>'CODE_ORDER_ERR','status'=>'CODE_ORDER_ERR']);
-        $creditOrder = $this->Model->create();
-        $this->quickReturn($this->Model->where(['s_id'=>$ShopID,'u_id'=>$this->userId])->save($creditOrder),'添加物流信息');
+        $this->Model->tel = I('post.tel','');
+        $this->Model->company_id = I('post.company_id','');
+        $this->Model->LogisticCode = I('post.LogisticCode','');
+        $this->quickReturn($this->Model->where($where)->save(),'添加物流信息');
     }
 
     /**
