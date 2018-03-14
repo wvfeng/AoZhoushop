@@ -163,13 +163,13 @@ class Dispatcher {
 
             // 加载模块别名定义
             if(is_file(MODULE_PATH.'Conf/alias.php'))
-                Think::addMap(include MODULE_PATH.'Conf/alias.php');
+                Think::addMap(include_once MODULE_PATH.'Conf/alias.php');
             // 加载模块tags文件定义
             if(is_file(MODULE_PATH.'Conf/tags.php'))
-                Hook::import(include MODULE_PATH.'Conf/tags.php');
+                Hook::import(include_once MODULE_PATH.'Conf/tags.php');
             // 加载模块函数文件
             if(is_file(MODULE_PATH.'Common/function.php'))
-                include MODULE_PATH.'Common/function.php';
+                include_once MODULE_PATH.'Common/function.php';
 
             $urlCase        =   C('URL_CASE_INSENSITIVE');
             // 加载模块的扩展配置文件
