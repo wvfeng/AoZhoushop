@@ -47,10 +47,12 @@ class CreditController extends CommonController
 
     //获取退货订单详情
     public function getcreditshop($ShopID = null,$OrderID = null){
-        $data = $this->Model->alias('C')->field(['C.type','C.status','from_unixtime(C.create_time, "%Y-%m-%d") create_time','S.tit','S.price','S.img','O.paytype','C.content'])
-            ->where(['C.s_id'=>$ShopID,'C.o_id'=>$OrderID,'u_id'=>$this->userId])
+        $fields = ['S.id','C.type','C.status','from_unixtime(C.create_time, "%Y-%m-%d") create_time','S.tit','S.price','S.img','O.paytype','C.content','O.shop_id','O.num'];
+        $data = $this->Model->alias('C')->field($fields)->where(['C.s_id'=>$ShopID,'C.o_id'=>$OrderID,'u_id'=>$this->userId])
             ->join('__SHOP__ S ON S.id = C.s_id')
             ->join('__ORDER__ O ON O.id = C.o_id')->find();
+        $data['num'] = explode ('|*|',$data['num'])[array_flip(explode ('|*|',$data['shop_id']))[$data['id']]];
+        unset($data['shop_id']);
         $this->quickReturn($data,'查询');
     }
 
