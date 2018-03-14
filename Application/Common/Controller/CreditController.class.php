@@ -40,17 +40,14 @@ class CreditController extends CommonController
      * 售后列表
      */
     public function creditList(){
-        $fields = ['update_time'];
-        $data = $this->Model->field($fields,true)->where(['u_id'=>$this->userId])->relation('shop')->limit($this->page())->select();
-        foreach ($data as $key=>$value){
-            $data[$key]['create_time'] = date('Y-m-d',$data[$key]['create_time']);
-        }
+        $fields = ['id','o_id','s_id','u_id','content','is_get','type','status','company_id','LogisticCode','tel','from_unixtime(create_time, "%Y-%m-%d") create_time'];
+        $data = $this->Model->field($fields)->where(['u_id'=>$this->userId])->relation('shop')->limit($this->page())->select();
         $this->quickReturn($data,'查询');
     }
 
     //获取退货订单详情
     public function getcreditshop($ShopID = null,$OrderID = null){
-        $data = $this->Model->alias('C')->field(['C.type','C.status','C.create_time','S.tit','S.price','S.img','O.paytype','C.content'])
+        $data = $this->Model->alias('C')->field(['C.type','C.status','from_unixtime(C.create_time, "%Y-%m-%d") create_time','S.tit','S.price','S.img','O.paytype','C.content'])
             ->where(['C.s_id'=>$ShopID,'C.o_id'=>$OrderID,'u_id'=>$this->userId])
             ->join('__SHOP__ S ON S.id = C.s_id')
             ->join('__ORDER__ O ON O.id = C.o_id')->find();
