@@ -43,6 +43,13 @@ class MyorderController extends CommonController
         foreach ($data['data'] as $key => &$v) {
             $shopId = explode('|*|',$v['shop_id']);
             $shopNum = explode('|*|',$v['num']);
+            foreach ($shopId as $l => $vx) {
+                $isShopComment = M('shop_comment')->where(['user_id'=>$userId,'shop_id'=>$vx,'order_id'=>$v['id']])->count();
+                if(!empty($isShopComment)){
+                    unset($shopNum[$l]);
+                    unset($shopId[$l]);
+                }
+            }
             $v['sum'] = array_sum($shopNum);
             $map['id'] = array('in',$shopId);
             $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price')->select();
