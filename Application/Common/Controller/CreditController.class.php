@@ -14,7 +14,7 @@ class CreditController extends CommonController
         if(empty($ShopID)) $this->returnAjaxError(['message'=>'缺少商品ID!']);
         if(empty($type)) $this->returnAjaxError(['message'=>'操作类型不能为空!']);
         if(empty($id)) $this->returnAjaxError(['message'=>'订单ID不能为空!']);
-        $types = [1=>'退货',2=>'换货',3=>'售后','1','2','3'];
+        $types = [1=>'退货',2=>'换货',3=>'售后',4=>'退款','1','2','3','4'];
         if(!in_array($type,$types)) $this->returnAjaxError(['message'=>'类型错误!']);
         if(is_numeric($type)) $type = $types[$type];
         $data = $this->Model->create();
