@@ -15,6 +15,7 @@ class CommentModel extends CommonModel
     protected $Comment_pictures = [];
     protected $_map = [
         'ShopID' => 'shop_id',
+        'OrderID' => 'order_id',
     ];
     public function CommentAdd(ShopController $shop){
         $data = $this->create();
@@ -31,7 +32,12 @@ class CommentModel extends CommonModel
                 $data['star'] = 1;
             }
         }
+
         $data['user_id'] = $shop->userId;
+        $res = $this->add($data);
+        if($res !== false){
+            $Order = $shop->where(['id'=>$data['order_id']])->find();
+        }
         return $this->add($data);
     }
 
