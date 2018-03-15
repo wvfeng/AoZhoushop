@@ -58,6 +58,9 @@ class RealController extends CommonController
     //查询实名认证
     public function getRealname(){
         $data['data'] = M('realname')->where(['user_id'=>url_decode(I('userId'))])->find();
+        if(empty($data['data'])){
+            $data['data']['type'] = 2;
+        }
         $this->returnAjaxSuccess($data);
     }
 }
