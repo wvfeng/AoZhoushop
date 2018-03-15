@@ -1,12 +1,12 @@
 <?php
 
-namespace Computer\Model;
+namespace Common\Model;
 
 /**
  * Class CommentModel
  * @package Computer\Model
  */
-use Computer\Controller\ShopController;
+use Common\Controller\ShopController;
 
 class CommentModel extends CommonModel
 {
@@ -49,8 +49,7 @@ class CommentModel extends CommonModel
             $where = ['shop_id'=>$ShopID];
         }
         if(empty($where)) return false;
-        $this->field('update_time',true)->where($where)->select();
-        return $this->field('update_time',true)->where($where)->select();
+        return $this->field('update_time',true)->where($where)->limit($shop->page())->select();
     }
 
 //    public function CommentUpdate(ShopController $shop){
