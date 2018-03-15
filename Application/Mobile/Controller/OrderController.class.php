@@ -83,6 +83,7 @@ class OrderController extends CommonController
     }
     //删除订单
     public function saveorder(){
+        $orderid = I('orderid');
         $res = M('order')->where(['id'=>$orderid,'user_id'=>url_decode(I('userId'))])->save(['status'=>0]);
         if($res!==false){
             $this->returnAjaxSuccess(['data'=>['msg'=>'成功','type'=>true]]);
