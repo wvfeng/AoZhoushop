@@ -60,26 +60,26 @@ class MyOrderController extends Controller
     /**
      * 注册
      */
-    public function newUser(){print_r(I(''));die;
-        $db = M('user');
-        I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
-        if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
-        // die();
-       $where['username'] = I('post.username');
-       // 判断是手机号还是email
-       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
-        $data['data'] = $db ->add($where);
-        if($data){
-            $wher['user_id'] = $data['data'];
-            $user_id = M('user_detail');
-            $data['data'] = $user_id ->add($wher);
-        }
-        if(!empty($data['data'])){
-             $this->quickReturn($data);
-        }else{
-             $this->returnAjaxError($data); 
-        }
-    }
+//    public function newUser(){print_r(I(''));die;
+//        $db = M('user');
+//        I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
+//        if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
+//        // die();
+//       $where['username'] = I('post.username');
+//       // 判断是手机号还是email
+//       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
+//        $data['data'] = $db ->add($where);
+//        if($data){
+//            $wher['user_id'] = $data['data'];
+//            $user_id = M('user_detail');
+//            $data['data'] = $user_id ->add($wher);
+//        }
+//        if(!empty($data['data'])){
+//             $this->quickReturn($data);
+//        }else{
+//             $this->returnAjaxError($data);
+//        }
+//    }
     /**
      * 忘记密码
      */
@@ -165,27 +165,27 @@ class MyOrderController extends Controller
      * [newUser description]
      * @return [type] [description]
      */
-    public function newUser(){
-	   	// 用户名 邮箱 手机号 密码 验证码
-        $db = M('user');
-       I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
-        if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
-        // die();
-       $where['username'] = I('post.username');
-       // 判断是手机号还是email
-       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
-        $data['data'] = $db ->add($where);
-        if($data){
-            $wher['user_id'] = $data['data'];
-            $user_id = M('user_detail');
-            $data['data'] = $user_id ->add($wher);
-        }
-        if(!empty($data['data'])){
-             $this->quickReturn($data);
-        }else{
-             $this->returnAjaxError($data); 
-        }
-    }
+//    public function newUser(){
+//	   	// 用户名 邮箱 手机号 密码 验证码
+//        $db = M('user');
+//       I('post.password')?$where['password'] = md5(I('post.password')):$this->returnAjaxError();
+//        if(I('post.password')!==I('post.passwords'))$this->returnAjaxError(array('data'=>'两次密码不同'));
+//        // die();
+//       $where['username'] = I('post.username');
+//       // 判断是手机号还是email
+//       is_numeric(I('post.emtel'))==1 ? $where['iphone']=I('post.emtel'):$where['email'] = I('post.emtel');
+//        $data['data'] = $db ->add($where);
+//        if($data){
+//            $wher['user_id'] = $data['data'];
+//            $user_id = M('user_detail');
+//            $data['data'] = $user_id ->add($wher);
+//        }
+//        if(!empty($data['data'])){
+//             $this->quickReturn($data);
+//        }else{
+//             $this->returnAjaxError($data);
+//        }
+//    }
 
     /**
      *
@@ -230,7 +230,7 @@ class MyOrderController extends Controller
             // 如果评论已提交更改订单状态
              if($tables){
                $dbs = M($tables);
-               $con = $dbs->where(['id'=>$where['shop_id']])->save(['type'=>'已评价']);
+               $con = $dbs->where(['id'=>$where['shop_id']])->save(['type'=>'已完成']);
                // var_dump($con);die;
                $con?$this->quickReturn($data):$this->returnAjaxError($data); 
              }
