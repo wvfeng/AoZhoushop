@@ -37,11 +37,11 @@ class CommentModel extends CommonModel
         }
         $Order = M('Order')->field(['shop_id','type'])->where(['id'=>$data['order_id']])->find();
         $shop_id = $Order['shop_id'];
-        if($Order['type'] != '待评论'){
-            $shop->message = '订单状态错误！';
-            return false;
-        }elseif(empty($shop_id)){
+        if(empty($shop_id)){
             $shop->message = '订单不存在！';
+            return false;
+        }elseif($Order['type'] != '待评论'){
+            $shop->message = '订单状态错误！';
             return false;
         }elseif(strpos($shop_id,$data['shop_id']) === false){
             $shop->message = '商品错误！';
