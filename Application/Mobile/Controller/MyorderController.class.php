@@ -349,7 +349,7 @@ class MyorderController extends CommonController
             // 如果评论已提交更改订单状态
              if($tables){
                $dbs = M($tables);
-               $con = $dbs->where(['id'=>$where['shop_id']])->save(['type'=>'已评价']);
+               $con = $dbs->where(['id'=>$where['shop_id']])->save(['type'=>'已完成']);
                $con?$this->quickReturn($data):$this->returnAjaxError($data); 
              }
         }else{
