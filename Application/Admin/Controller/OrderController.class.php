@@ -2,9 +2,10 @@
 namespace Admin\Controller;
 
 use Admin\Service\OrderService;
+use Common\Controller\PaypalController;
 use Think\Controller;
 
-class OrderController extends CommonController
+class OrderController extends  Controller
 {
     /**
      * 购买记录首页的
@@ -63,6 +64,22 @@ class OrderController extends CommonController
         $oid = I('get.id');
         $data = OrderService::orderDetails();
 
+    }
+    public function tests()
+    { $arr = [
+        'cmd'=>'_xclick', // 标识立即购买
+        'business'=>C('PAY_PAL')['AccountTest'], //收款账号
+        'title'=>'8核 i7处理器 1T固态硬盘 1080显卡电脑', // 商品名称
+        'numbers'=>'77889900', // 物品号
+        'amount'=>'10000', // 订单金额
+        'currency_code'=>'USD', //货币
+        'return'=>'http://www.297buy.com/notify.php', // 支付成功同步跳转地址
+        'notify_url'=>'http://www.297buy.com/notify.php',//异步通知地址
+        'cancel_return'=>'', // 取消交易返回地址
+        'invoice'=>uniqid()
+    ];
+        $this->assign('parameter',$arr);
+        $this->display();
     }
 
 }

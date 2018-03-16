@@ -24,7 +24,11 @@ return  array(
     'APP_DOMAIN_SUFFIX'     =>  '', // 域名后缀 如果是com.cn net.cn 之类的后缀必须设置    
     'ACTION_SUFFIX'         =>  '', // 操作方法后缀
     'MULTI_MODULE'          =>  true, // 是否允许多模块 如果为false 则必须设置 DEFAULT_MODULE
+<<<<<<< HEAD
+//    'MODULE_DENY_LIST'      =>  array('Common','Runtime'),
+=======
     'MODULE_DENY_LIST'      =>  array(/*'Common',*/'Runtime'),
+>>>>>>> 13d5184a6f0e5516963c7d7b7ddb66754a972875
     'CONTROLLER_LEVEL'      =>  1,
     'APP_AUTOLOAD_LAYER'    =>  'Controller,Model', // 自动加载的应用类库层 关闭APP_USE_NAMESPACE后有效
     'APP_AUTOLOAD_PATH'     =>  '', // 自动加载的路径 关闭APP_USE_NAMESPACE后有效

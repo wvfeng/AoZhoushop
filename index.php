@@ -20,6 +20,7 @@ define('BUILD_LITE_FILE',!APP_DEBUG);
 
 // 定义应用目录
 define('APP_PATH','./Application/');
+require './vendor/autoload.php';
 
 // 引入ThinkPHP入口文件
 if(defined('BUILD_LITE_FILE') && BUILD_LITE_FILE && file_exists(APP_PATH.'Runtime/lite.php')){

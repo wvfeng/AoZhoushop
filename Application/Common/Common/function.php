@@ -77,3 +77,4 @@ function is_idcard($idcard){
         return true;
     }
 }
+?>

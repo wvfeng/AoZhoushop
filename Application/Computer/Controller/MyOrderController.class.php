@@ -4,7 +4,7 @@ use Common\Controller\CommonController as Controller;
 /**
  * 订单多种状态
  */
-class MyOrderController extends Controller
+class MyorderController extends Controller
 {
 	/**
 	 * [type] [订单的各种状态]

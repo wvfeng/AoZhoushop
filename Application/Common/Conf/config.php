@@ -84,8 +84,10 @@ return array(
 
     //paypal 国外支付
     'PAY_PAL'=>[
-        'Client_ID' => 'AR6l_kVKMYzG3BJVEK-xhNioG671frL2lGV3AnLmDdyfciA31Yl9rSs8HMntGDshdbQcG2A6vx23UApf',
-        'Secret' => 'EEHN998CJXPHosF9uw3M4kv1BU-xIrH3iO_TqO3W248g8rgW2G-RUNvtvZnc1e5Z2iDkRueWR6RDIwML'
+        'Client_ID' => 'AVxNWX6-Ps4IZZg6foezeIH2CykIsmokTUWKtNqjzT6auAQc4diM9QDIbDUiPuqkKy98Z6rz9XXEJte7',
+        'Secret' => 'ECEbhhV12ZmAPoXPpkSoRA7s5xOSrSouhqFMasWK34EdfZgQ0U6XrIWN7Uwv8iUU8s4Qo4jUllRl1PkP',
+        'Account'=>'account@brandingrewards.com.au', // 正式账号
+        'AccountTest'=>'account-facilitator@Brandingrewards.com.au' // 测试账号
     ]
 
     );
