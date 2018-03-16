@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Pay\\' => array($vendorDir . '/zoujingli/pay-php-sdk/src'),
 );

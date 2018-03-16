@@ -89,5 +89,45 @@
             "psr",
             "psr-3"
         ]
+    },
+    {
+        "name": "zoujingli/pay-php-sdk",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zoujingli/pay-php-sdk.git",
+            "reference": "2ff8f97bbf22fd484476ec455d9eb98b8c62b8df"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/zoujingli/pay-php-sdk/2ff8f97bbf22fd484476ec455d9eb98b8c62b8df.zip",
+            "reference": "2ff8f97bbf22fd484476ec455d9eb98b8c62b8df",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "ext-openssl": "*",
+            "php": ">=5.3.3"
+        },
+        "time": "2018-03-14T07:27:13+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Pay\\": "./src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "WxPay and AliPay development of SDK",
+        "homepage": "https://github.com/zoujingli/pay-php-sdk",
+        "keywords": [
+            "Wxpay",
+            "alipay",
+            "pay-php-sdk"
+        ]
     }
 ]

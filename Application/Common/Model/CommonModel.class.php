@@ -29,7 +29,7 @@ class CommonModel extends RelationModel
     }
 
     //封装图片上传方法bas64
-    public function uploadImg($image,$path){
+    public function uploadImg($image,$path,$thumb = false,$thumb_w = 150,$thumb_h = 150){
 
         //base64转换
         $image = explode(',',$image);
@@ -44,6 +44,13 @@ class CommonModel extends RelationModel
         $imagePath =  $path."/". $imageName;  //图片名字
         $r = file_put_contents($imagePath, base64_decode($image['1']));//返回的是字节数
         if($r) {
+            if($thumb){
+                //生成缩略图
+                $this->ImagePathName = $imagePath;
+                $image = new \Think\Image(\Think\Image::IMAGE_GD,$this->ImagePathName);
+                $this->ImagePathName_thumb = dirname($this->ImagePathName).'/thumb_'.basename($this->ImagePathName);
+                $image->thumb($thumb_w, $thumb_h)->save($this->ImagePathName_thumb);
+            }
             return $imagePath;
         }else{
             return json_decode(['data'=>null,"code"=>0,"msg"=>"图片生成失败"]);

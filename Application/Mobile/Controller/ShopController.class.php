@@ -1,10 +1,10 @@
 <?php
 namespace Mobile\Controller;
-
+use Common\Controller\ShopController as Shop;
 /**
  * 商品详情接口
  */
-class ShopController extends CommonController
+class ShopController extends Shop
 {	
 	//商品详情
 	/*parm:

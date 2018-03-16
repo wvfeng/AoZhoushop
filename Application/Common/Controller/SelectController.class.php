@@ -67,4 +67,8 @@ class SelectController extends CommonController
         S($OrderCode,$res,1800);
         static::quickReturn($res,'查询','GET');
     }
+
+    public function getKuaidi(){
+        static::quickReturn(M('kuaidi_code')->limit($this->page())->select(),'查询','GET');
+    }
 }

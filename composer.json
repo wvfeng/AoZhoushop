@@ -13,7 +13,8 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "paypal/rest-api-sdk-php": "1.7.2"
+        "paypal/rest-api-sdk-php": "1.7.2",
+        "zoujingli/pay-php-sdk": "dev-master"
     },
     "minimum-stability": "dev"
 }

@@ -14,6 +14,7 @@ class MyinfoModel extends CommonModel
     public $Header_odl;
     public $Header_thumb;
     public $Header_thumb_odl;
+    protected $after_sale = ['退货','换货','售后','退款'];
 
     protected $fields = ['id','username','iphone','email','status','password'/*,'nickname','headimgurl','mood','sex','surplus_int','country','province','city'*/];
     protected $tableName = 'User';
@@ -35,14 +36,26 @@ class MyinfoModel extends CommonModel
         if(empty($id)) return false;
         $data = $this->field('id,username')->relation('User_detail')->find($id);
         $data['id'] = url_encode($data['id'],7,'day');
-        $Order = array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true));
+        //查询订单数据
+        $Order = array_merge(
+            array_count_values(M('Order')->where(['user_id'=>$id])->getField('type',true)),
+            array_count_values(M('Credit_order')->where(['u_id'=>$id])->getField('type',true))
+        );
+        //弹出售后统计
+        foreach ($this->after_sale as $item){
+            if(isset($Order[$item])){
+                $after_sale[$item] = $Order[$item];
+                unset($Order[$item]);
+            }
+        }
+
         $data['Order'] = [
-            'non_payment'   => isset($Order['未付款']) ? $Order['未付款']:0,
-            'non_shipments' => isset($Order['待发货']) ? $Order['待发货']:0,
-            'shipments'     => isset($Order['已发货']) ? $Order['已发货']:0,
-            'non_evaluate'  => isset($Order['待评论']) ? $Order['待评论']:0,
-            'finish'        => isset($Order['已评价']) ? $Order['已评价']:0,
-            'after_sale'    => (isset($Order['退货']) ? $Order['退货']:0) + (isset($Order['换货']) ? $Order['换货']:0) + (isset($Order['售后']) ? $Order['售后']:0),
+            'non_payment'   => intval($Order['未付款']),
+            'non_shipments' => intval($Order['待发货']),
+            'shipments'     => intval($Order['已发货']),
+            'non_evaluate'  => intval($Order['待评论']),
+            'finish'        => intval($Order['已评价']),
+            'after_sale'    => array_sum($after_sale),
         ];
         return $data;
     }

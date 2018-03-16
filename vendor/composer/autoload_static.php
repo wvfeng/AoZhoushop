@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitbfa9cb54e142af7c6f5b275911c8e2de
 {
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Pay\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Pay\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zoujingli/pay-php-sdk/src',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'P' => 
         array (
@@ -23,6 +37,8 @@ class ComposerStaticInitbfa9cb54e142af7c6f5b275911c8e2de
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbfa9cb54e142af7c6f5b275911c8e2de::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbfa9cb54e142af7c6f5b275911c8e2de::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitbfa9cb54e142af7c6f5b275911c8e2de::$prefixesPsr0;
 
         }, null, ClassLoader::class);
