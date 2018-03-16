@@ -13,7 +13,7 @@ class MyorderController extends CommonController
     public function orderType(){
 //        xiugai
      switch (I('type')) {
-         case 0 : $type = array('in','未付款,待发货,已发货,待评论,已评论,退货,换货,售后,已评论');
+         case 0 : $type = array('in','未付款,待发货,已发货,待评论,已完成');
              break;
          case 1 : $type = '未付款';
              break;
@@ -21,23 +21,16 @@ class MyorderController extends CommonController
              break;
          case 3 : $type = '已发货';
              break;
-         case 4 : $type = '已完成';
+         case 4 : $type = '待评论';
              break;   
-         case 5 : $type = '已评论';
+         case 5 : $type = '已完成';
              break;
-         case 6 : $type = '退货';
-             break;  
-         case 7 : $type = '换货';
-             break;   
-         case 8 : $type = '售后';
-             break;        
-         case 9 : $type = '待评论';
-             break;      
          default:
             $this->returnAjaxError();
              break;
      }
      $userId = url_decode(I('userId'));
+     $userId = I('userId');
      $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1,'type'=>$type])
         ->field('shop_id,user_id,num,date,type,money,paymoney,id,freight')->select();
         foreach ($data['data'] as $key => &$v) {
@@ -56,7 +49,7 @@ class MyorderController extends CommonController
                 $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price,id')->select();
             }else{
                 //订单商品所有的评论完，订单状态改已完成，不显示订单
-                M('order')->where(['id'=>$v['id']])->save(['type'=>'已完成']);
+                M('order')->where(['id'=>$v['id']])->save(['type'=>5]);
                 unset($data['data'][$key]);
             }
             foreach ($v['shop'] as $keys => &$vs) {
