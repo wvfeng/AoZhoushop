@@ -21,8 +21,8 @@ class MyorderController extends CommonController
              break;
          case 3 : $type = '已发货';
              break;
-         // case 4 : $type = '已完成';
-         //     break;   
+         case 4 : $type = '已完成';
+             break;   
          case 5 : $type = '已评论';
              break;
          case 6 : $type = '退货';
@@ -54,6 +54,10 @@ class MyorderController extends CommonController
             if(!empty($shopId)){
                 $map['id'] = array('in',$shopId);
                 $v['shop'] = M('shop')->where($map)->field('img,tit,tit_en,price,id')->select();
+            }else{
+                //订单商品所有的评论完，订单状态改已完成，不显示订单
+                M('order')->where(['id'=>$v['id']])->save(['type'=>'已完成']);
+                unset($data['data'][$key]);
             }
             foreach ($v['shop'] as $keys => &$vs) {
                 $vs['paynum'] = $shopNum[$keys];
