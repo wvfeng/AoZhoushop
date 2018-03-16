@@ -30,7 +30,6 @@ class MyorderController extends CommonController
              break;
      }
      $userId = url_decode(I('userId'));
-     $userId = I('userId');
      $data['data'] = M('order')->where(['user_id'=>$userId,'status'=>1,'type'=>$type])
         ->field('shop_id,user_id,num,date,type,money,paymoney,id,freight')->select();
         foreach ($data['data'] as $key => &$v) {
